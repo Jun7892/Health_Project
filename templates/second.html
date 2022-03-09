@@ -15,10 +15,10 @@
         title="second page video" frameborder="0"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></iframe>
 
-<img src="../static/img/music.png" onclick="charm(sound1)" style="z-index: 2; position: absolute; top: 1vw; left: 1vw; width: 4vw; background-color: orangered; border-radius: 30%;">
+<img src="../static/img/music.png" onclick="charm(sound1)" class="music">
 <audio id="myAudio" src="{% static "music/bgm.m4a" %}" preload="auto"></audio>
 <img src="../static/img/logo_red.png" style="position: absolute; top: 0.5vw; left: 77%; width: 23vw; height: 4vw; border-radius: 5%;">
-<div style="z-index: 2; position: absolute; top: 15%; left: 25%; width: 20%; height: 60%;" onclick="modalOn()"></div>
+<div class="modalonbox" onclick="modalOn()"></div>
 
 
 <div class="maincontain">
@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<div class="signupbox groom" id="modal">
+<div class="signupbox groom" id="modal" style="display: none;">
     <div class="backgroundimg">
         <div class="signuptext">
             <h2 id="SBL_font" onclick="modalOff()" class="signuptitle">SIGN-UP</h2>
@@ -52,17 +52,17 @@
         </div>
         <div class="genderbox">
             <p id="SBL_font" style="float:left; font-weight: bolder;  margin-left: 0.5vw;">성별</p>
-            <label for="man" style="cursor:pointer; padding-left: 6vw;"><input type="checkbox" id="SBL_font man"/> 남자</label>
-            <label for="woman" style="cursor:pointer; padding-left: 6.5vw;"><input type="checkbox" id="SBL_font woman"/> 여자</label>
+            <label for="man" class="checkboxman"><input type="checkbox" id="SBL_font man"/> 남자</label>
+            <label for="woman" class="checkboxwoman"><input type="checkbox" id="SBL_font woman"/> 여자</label>
             <div class="genderpic">
                 <img src="../static/img/male.png" style="padding-left: 5vw;">
                 <img src="../static/img/female.png" style="padding-left: 4vw;">
             </div>
         </div>
         <div class="workoutlevel">
-            <label for="id2" style="cursor:pointer; margin-left: 5.5vw;"><input type="checkbox" id="id2 SBL_font"/> 초심자</label>
-            <label for="pw2" style="cursor:pointer; margin-left: 3vw;"><input type="checkbox" id="pw2 SBL_font"/> 중급자</label>
-            <label for="nick2" style="cursor:pointer; margin-left: 3vw;"><input type="checkbox" id="nick2 SBL_font"/> 상급자</label>
+            <label for="id2" class="levelbox" style="margin-left: 5.5vw;"><input type="checkbox" id="id2 SBL_font"/> 초심자</label>
+            <label for="pw2" class="levelbox" style="margin-left: 3vw;"><input type="checkbox" id="pw2 SBL_font"/> 중급자</label>
+            <label for="nick2" class="levelbox" style="margin-left: 3vw;"><input type="checkbox" id="nick2 SBL_font"/> 상급자</label>
             <div class="levelpic">
                 <p id="SBL_font" style="float:left; font-weight: bolder; margin-left: 0.5vw;">Level</p>
                 <div class="locationlevel">
@@ -73,13 +73,13 @@
             </div>
         </div>
         <div class="inputbtn">
-            <input type="submit" value="회원가입" style="width: 12vw; height: 2vw; font-weight: bolder; font-size: 1.5vw;">
+            <input type="submit" value="회원가입" class="signupbtn">
         </div>
     </div>
 </div>
 
 <div>
-    <img src="../static/img/login.png" onclick="location.href='http://127.0.0.1:8000/main/'" style="position: absolute; top: 44.6%; left: 92.4%; width: 5.3vw; background-color: white; border-radius: 50%;">
+    <img src="../static/img/login.png" onclick="location.href='http://127.0.0.1:8000/main/'" class="loginbtn">
 </div>
 
 <script type="text/javascript" src="../static/js/second.js"></script>

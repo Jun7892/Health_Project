@@ -13,6 +13,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    cursor: url("/static/img/pointer.png") 2 6, default;
 }
 
 .loginbox {
@@ -56,6 +57,27 @@ input[type="text"], input[type="password"] {
     appearance: none;
 }
 
+.music {
+    z-index: 2;
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    width: 4vw;
+    background-color: orangered;
+    border-radius: 30%;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+.modalonbox {
+    z-index: 2;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    width: 20%;
+    height: 60%;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
 .signupbox {
     position: absolute;
     top: 8%;
@@ -65,9 +87,32 @@ input[type="text"], input[type="password"] {
     background-image: url("../img/back3.jpg");
     background-size: cover;
     /*background-color: cornflowerblue;*/
- /*<a href='https://.pngtree.com/free-backgrounds'>무료 배경 사진 .pngtree.com/</a>*/
+    /*<a href='https://.pngtree.com/free-backgrounds'>무료 배경 사진 .pngtree.com/</a>*/
     border: 10px solid indianred;
     opacity: 0.97;
+    cursor: url("/static/img/pointer.png") 2 6, default;
+}
+
+.checkboxman {
+    cursor: url("/static/img/press.png") 2 2, default;
+    padding-left: 6vw;
+}
+
+.checkboxwoman {
+    cursor: url("/static/img/press.png") 2 2, default;
+    padding-left: 6.5vw;
+}
+
+.levelbox {
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+.signupbtn {
+    width: 12vw;
+    height: 2vw;
+    font-weight: bolder;
+    font-size: 1.5vw;
+    cursor: url("/static/img/press.png") 2 2, default;
 }
 
 .groom {
@@ -111,7 +156,7 @@ input[type="text"], input[type="password"] {
     font-weight: bolder;
 }
 
-.genderbox{
+.genderbox {
     width: 100%;
     height: 20%;
     /*background-color: blue;*/
@@ -140,15 +185,28 @@ input[type="text"], input[type="password"] {
     text-align: center;
 }
 
-input[type="submit"] { font-family: SB_L;
+input[type="submit"] {
+    font-family: SB_L;
 }
 
-input[type="text"] { font-family: SB_L;
+input[type="text"] {
+    font-family: SB_L;
 }
 
-input[type="password"] { font-family: SB_L;
+input[type="password"] {
+    font-family: SB_L;
 }
 
 .backgroundimg {
     /*background-image: url("../img/signback.jpg");*/
+}
+
+.loginbtn {
+    position: absolute;
+    top: 44.6%;
+    left: 92.4%;
+    width: 5.3vw;
+    background-color: white;
+    border-radius: 50%;
+    cursor: url("/static/img/press.png") 2 2, default;
 }
