@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
     <meta charset="UTF-8">
+    <script>var sound1 = "{% static "music/bgm.m4a" %}"</script>
     <link href="../static/css/second.css" rel="stylesheet" type="text/css"/>
 {#    <script type="text/javascript" src="../static/js/second.js"></script>#}
     <title>SECOND</title>
-</head>
-<body>
+{% endblock %}
+
+{% block title %}SECOND{% endblock %}
+
+{% block content %}
 <iframe src="https://www.youtube.com/embed/TY-RRhU4Z9o?autoplay=1&mute=1&controls=0&loop=1&playlist=TY-RRhU4Z9o"
         title="second page video" frameborder="0"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></iframe>
 
-<img src="../static/img/music.png" style="position: absolute; top: 1vw; left: 1vw; width: 4vw; background-color: orangered; border-radius: 30%;">
+<img src="../static/img/music.png" onclick="charm(sound1)" style="z-index: 2; position: absolute; top: 1vw; left: 1vw; width: 4vw; background-color: orangered; border-radius: 30%;">
 <img src="../static/img/logo_red.png" style="position: absolute; top: 0.5vw; left: 77%; width: 23vw; height: 4vw; border-radius: 5%;">
 <div style="z-index: 2; position: absolute; top: 15%; left: 25%; width: 20%; height: 60%;" onclick="modalOn()"></div>
 
@@ -78,5 +83,4 @@
 </div>
 
 <script type="text/javascript" src="../static/js/second.js"></script>
-</body>
-</html>
+{% endblock %}
