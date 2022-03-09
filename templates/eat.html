@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block others %}
+    <meta charset="UTF-8">
+    <link href="../static/css/eat.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../static/js/eat.js"></script>
+{% endblock %}
+
+{% block title %}EAT{% endblock %}
+
+{% block content %}
+
+<img src="../static/img/eatbackgorund.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+<div class="fullcontain">
+    <div class="maincontain">
+        <img src="../static/img/foodlogo.png" style="z-index: 2; position: absolute; top: -10%; left: 42%; width: 15vw;">
+        <div class="firstbox">
+            <img src="../static/img/meatlover.png" style="width: 10vw; display: block; margin: auto;">
+        </div>
+        <div class="secondbox">
+            <img src="../static/img/soup.png" style="width: 6vw; display: block; margin: auto;">
+        </div>
+        <div class="thirdbox">
+
+        </div>
+        <div class="fourthbox">
+            <img src="../static/img/vegetarian.png" style="width: 10vw; display: block; margin: auto;">
+        </div>
+        <div class="fifthbox">
+            <img src="../static/img/western.png" style="width: 8vw; display: block; margin: auto;">
+        </div>
+        <div class="inputbox" id="SBL_font" style="text-align: center;">
+            <div style="margin-top: 5%;">
+                INGREDIENTS : <input type="text" id="" name="" placeholder="냉장고에 있는 재료를 적으세요">
+            </div>
+            <div style="margin-top: 2%;">
+                <input type="submit" value="Recipe">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
