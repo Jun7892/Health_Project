@@ -84,11 +84,13 @@ input[type="text"], input[type="password"] {
     left: 47%;
     width: 32vw;
     height: 39vw;
-    background-image: url("../img/back3.jpg");
+    background-image: url("../img/signupbackgorund.jpg");
     background-size: cover;
     /*background-color: cornflowerblue;*/
     /*<a href='https://.pngtree.com/free-backgrounds'>무료 배경 사진 .pngtree.com/</a>*/
-    border: 10px solid indianred;
+    border-style: outset;
+    border-color: indianred;
+    border-width: medium;
     opacity: 0.97;
     cursor: url("/static/img/pointer.png") 2 6, default;
 }

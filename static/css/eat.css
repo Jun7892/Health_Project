@@ -7,6 +7,7 @@
     cursor: url("/static/img/pointer.png") 2 6, default;
 }
 
+/*임시로 백그라운드 칼라 넣어놨어요! 구역구분할라고 / 나중에 삭제예정*/
 .maincontain {
     position: fixed;
     top: 15%;
@@ -20,18 +21,21 @@
     border-width: medium;
 }
 
+/*임시로 백그라운드 칼라 넣어놨어요! 구역구분할라고 / 나중에 삭제예정*/
 .firstbox {
     width: 30%;
     height: 50%;
     background-color: cornflowerblue;
 }
 
+/*임시로 백그라운드 칼라 넣어놨어요! 구역구분할라고 / 나중에 삭제예정*/
 .secondbox {
     width: 30%;
     height: 50%;
     background-color: yellow;
 }
 
+/*임시로 백그라운드 칼라 넣어놨어요! 구역구분할라고 / 나중에 삭제예정*/
 .thirdbox {
     position: absolute;
     top: 0;
@@ -41,6 +45,7 @@
     background-color: pink;
 }
 
+/*임시로 백그라운드 칼라 넣어놨어요! 구역구분할라고 / 나중에 삭제예정*/
 .fourthbox {
     position: absolute;
     width: 30%;
@@ -51,6 +56,7 @@
     left: 70%;
 }
 
+/*임시로 백그라운드 칼라 넣어놨어요! 구역구분할라고 / 나중에 삭제예정*/
 .fifthbox {
     position: absolute;
     width: 30%;
@@ -61,6 +67,7 @@
     left: 70%;
 }
 
+/*임시로 백그라운드 칼라 넣어놨어요! 구역구분할라고 / 나중에 삭제예정*/
 .inputbox {
     position: absolute;
     top: 80%;
