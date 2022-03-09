@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'first',
     'second',
     'main',
+    'eat',
+    'workout',
+    'plan',
+    'item',
 ]
 
 MIDDLEWARE = [
