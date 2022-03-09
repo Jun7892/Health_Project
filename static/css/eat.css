@@ -89,3 +89,7 @@ input[type="text"] {
 #SBL_font {
     font-family: "SB_L";
 }
+
+.inputtmp {
+    cursor: url("../img/press.png") 2 2, default;
+}

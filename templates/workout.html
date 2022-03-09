@@ -6,13 +6,55 @@
     <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
     <link href="../static/css/workout.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../static/js/workout.js"></script>
-{#    Photo Designed By 壮年听雨 From <a href="https://kr.lovepik.com/image-400113020/health-movement-background.html">LovePik.com</a>#}
+    {#    Photo Designed By 壮年听雨 From <a href="https://kr.lovepik.com/image-400113020/health-movement-background.html">LovePik.com</a>#}
 {% endblock %}
 
 {% block title %}WORKOUT{% endblock %}
 
 {% block content %}
 
-<img src="../static/img/workoutback.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    <img src="../static/img/workoutback.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+
+    <div class="fullcontain">
+        <div>
+            <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn()"
+                    style="position: absolute; top: 20%; left: 15%; width: 20vw;">
+                TODAY
+            </button>
+            <button id="SBL_font" class="w-btn w-btn-indigo" type="button"
+                    style="position: absolute; top: 30%; left: 15%; width: 20vw;">
+                LEVEL
+            </button>
+            <button id="SBL_font" class="w-btn w-btn-indigo" type="button"
+                    style="position: absolute; top: 40%; left: 15%; width: 20vw;">
+                GENDER
+            </button>
+        </div>
+
+        <div class="modalbox" id="modal">
+            <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff()">TODAY'S WORKOUT</p>
+            <div class="recom1">
+                <iframe src="https://www.youtube.com/embed/2N7AVUNJzRA?autoplay=1&mute=1&controls=0&loop=1&playlist=2N7AVUNJzRA"
+                        title="workout" frameborder="0" style="width: 100%;"></iframe>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 전신</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 상급자</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 10min / 횟수 : 1회</p>
+            </div>
+            <div class="recom2">
+                <iframe src="https://www.youtube.com/embed/2N7AVUNJzRA?autoplay=1&mute=1&controls=0&loop=1&playlist=2N7AVUNJzRA"
+                        title="workout" frameborder="0" style="width: 100%;"></iframe>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 전신</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 상급자</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 10min / 횟수 : 1회</p>
+            </div>
+            <div class="recom3">
+                <iframe src="https://www.youtube.com/embed/2N7AVUNJzRA?autoplay=1&mute=1&controls=0&loop=1&playlist=2N7AVUNJzRA"
+                        title="workout" frameborder="0" style="width: 100%;"></iframe>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 전신</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 상급자</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 10min / 횟수 : 1회</p>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
