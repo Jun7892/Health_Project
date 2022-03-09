@@ -1,0 +1,84 @@
+.fullcontain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: url("/static/img/pointer.png") 2 6, default;
+}
+
+.maincontain {
+    position: fixed;
+    top: 15%;
+    left: 10%;
+    width: 80%;
+    height: 70%;
+    background-color: gray;
+    border-radius: 3%;
+    border-style: groove;
+    border-color: lightgreen;
+    border-width: medium;
+}
+
+.firstbox {
+    width: 30%;
+    height: 50%;
+    background-color: cornflowerblue;
+}
+
+.secondbox {
+    width: 30%;
+    height: 50%;
+    background-color: yellow;
+}
+
+.thirdbox {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 80%;
+    background-color: pink;
+}
+
+.fourthbox {
+    position: absolute;
+    width: 30%;
+    height: 50%;
+    background-color: lightgreen;
+    /*float:right;*/
+    top: 0;
+    left: 70%;
+}
+
+.fifthbox {
+    position: absolute;
+    width: 30%;
+    height: 50%;
+    background-color: orangered;
+    /*float:right;*/
+    top: 50%;
+    left: 70%;
+}
+
+.inputbox {
+    position: absolute;
+    top: 80%;
+    left: 30%;
+    width: 40%;
+    height: 20%;
+    background-color: white;
+}
+
+input[type="text"] {
+    font-family: SB_L;
+}
+
+@font-face {
+    src: url("../font/SB_L.ttf");
+    font-family: "SB_L";
+}
+
+#SBL_font {
+    font-family: "SB_L";
+}
