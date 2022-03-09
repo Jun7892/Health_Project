@@ -1,26 +1,33 @@
-/*@font-face {*/
-/*    src: url("../font/SB_L.ttf");*/
-/*    font-family: "SB_L";*/
-/*}*/
+@font-face {
+    src: url("../font/SB_L.ttf");
+    font-family: "SB_L";
+}
 
-/*#SBL_font {*/
-/*    font-family: "SB_L";*/
-/*}*/
+#SBL_font {
+    font-family: "SB_L";
+}
 
-/*@font-face {*/
-/*    src: url("../font/SB_B.ttf");*/
-/*    font-family: "SB_B";*/
-/*}*/
+@font-face {
+    src: url("../font/SB_B.ttf");
+    font-family: "SB_B";
+}
 
-/*#SBL_font {*/
-/*    font-family: "SB_B";*/
-/*}*/
+#SBL_font {
+    font-family: "SB_B";
+}
 
-/*@font-face {*/
-/*    src: url("../font/SB_M.ttf");*/
-/*    font-family: "SB_M";*/
-/*}*/
+@font-face {
+    src: url("../font/SB_M.ttf");
+    font-family: "SB_M";
+}
 
-/*#SBL_font {*/
-/*    font-family: "SB_M";*/
-/*}*/
+#SBL_font {
+    font-family: "SB_M";
+}
+
+p {
+    /*cursor: url("/static/img/pointer.ac1efb5.png") 2 2,pointer;*/
+  font-family: "SB_L", sans-serif;
+  font-weight: bolder;
+  text-decoration: none;
+}
