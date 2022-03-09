@@ -21,17 +21,17 @@
                     style="position: absolute; top: 20%; left: 15%; width: 20vw;">
                 TODAY
             </button>
-            <button id="SBL_font" class="w-btn w-btn-indigo" type="button"
+            <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn2()"
                     style="position: absolute; top: 30%; left: 15%; width: 20vw;">
                 LEVEL
             </button>
-            <button id="SBL_font" class="w-btn w-btn-indigo" type="button"
+            <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn3()"
                     style="position: absolute; top: 40%; left: 15%; width: 20vw;">
                 GENDER
             </button>
         </div>
 
-        <div class="modalbox" id="modal">
+        <div class="modalbox" id="modal" style="display: none;">
             <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff()">TODAY'S WORKOUT</p>
             <div class="recom1">
                 <iframe src="https://www.youtube.com/embed/2N7AVUNJzRA?autoplay=1&mute=1&controls=0&loop=1&playlist=2N7AVUNJzRA"
@@ -53,6 +53,58 @@
                 <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 전신</p>
                 <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 상급자</p>
                 <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 10min / 횟수 : 1회</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modalbox" id="modal2" style="display: none;">
+            <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff2()">TODAY'S WORKOUT</p>
+            <div class="recom1">
+                <iframe src="https://www.youtube.com/embed/7YbqxhL2UB8?autoplay=1&mute=1&controls=0&loop=1&playlist=7YbqxhL2UB8"
+                        title="workout" frameborder="0" style="width: 100%;"></iframe>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 하체</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 하급자</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 20min / 횟수 : 1회</p>
+            </div>
+            <div class="recom2">
+                <iframe src="https://www.youtube.com/embed/7YbqxhL2UB8?autoplay=1&mute=1&controls=0&loop=1&playlist=7YbqxhL2UB8"
+                        title="workout" frameborder="0" style="width: 100%;"></iframe>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 하체</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 하급자</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 20min / 횟수 : 1회</p>
+            </div>
+            <div class="recom3">
+                <iframe src="https://www.youtube.com/embed/7YbqxhL2UB8?autoplay=1&mute=1&controls=0&loop=1&playlist=7YbqxhL2UB8"
+                        title="workout" frameborder="0" style="width: 100%;"></iframe>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 하체</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 하급자</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 20min / 횟수 : 1회</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modalbox" id="modal3" style="display: none;">
+            <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff3()">TODAY'S WORKOUT</p>
+            <div class="recom1">
+                <iframe src="https://www.youtube.com/embed/SxCMUHS8kGk?autoplay=1&mute=1&controls=0&loop=1&playlist=SxCMUHS8kGk"
+                        title="workout" frameborder="0" style="width: 100%;"></iframe>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 엉덩이</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 중급자</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 11min / 횟수 : 2회</p>
+            </div>
+            <div class="recom2">
+                <iframe src="https://www.youtube.com/embed/SxCMUHS8kGk?autoplay=1&mute=1&controls=0&loop=1&playlist=SxCMUHS8kGk"
+                        title="workout" frameborder="0" style="width: 100%;"></iframe>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 엉덩이</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 중급자</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 11min / 횟수 : 2회</p>
+            </div>
+            <div class="recom3">
+                <iframe src="https://www.youtube.com/embed/SxCMUHS8kGk?autoplay=1&mute=1&controls=0&loop=1&playlist=SxCMUHS8kGk"
+                        title="workout" frameborder="0" style="width: 100%;"></iframe>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 운동 부위 : 엉덩이</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 난이도 : 중급자</p>
+                <p id="SBL_font" style="top: 55%; margin-left: 5%;"> 권장 시간 : 11min / 횟수 : 2회</p>
             </div>
         </div>
     </div>
