@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
     <meta charset="UTF-8">
+    <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
     <link href="../static/css/workout.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../static/js/workout.js"></script>
 {#    Photo Designed By 壮年听雨 From <a href="https://kr.lovepik.com/image-400113020/health-movement-background.html">LovePik.com</a>#}
-    <title>Title</title>
-</head>
-<body>
+{% endblock %}
+
+{% block title %}WORKOUT{% endblock %}
+
+{% block content %}
 
 <img src="../static/img/workoutback.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
 
-</body>
-</html>
+{% endblock %}
