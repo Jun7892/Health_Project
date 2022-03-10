@@ -1,10 +1,233 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block others %}
+    <meta charset="UTF-8">
+    <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/item.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../static/js/item.js"></script>
+{% endblock %}
+
+{% block title %}ITEM{% endblock %}
+
+{% block content %}
+
+<div class="header">
+    <h2 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 2.5vw;">ITEM</h2>
+    <h3 STYLE="margin-left: 10vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Recommendation</h3>
+    <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Protein</h3>
+    <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Supplements</h3>
+    <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Equiment</h3>
+    <img src="../static/img/logo.png" style="float: right; width: 25vw;">
+</div>
+
+<div class="fullcontain">
+    <video muted autoplay loop style="position: absolute; top: 0; left: 0; width: 100%;z-index: -1;">
+        <source src="../static/video/itemback.mp4" type="video/mp4">
+        <strong>Your browser does not support the video tag.</strong>
+    </video>
+
+    <div class="itemlist">
+        <h1 id="SBL_font" class="item-category">요즘뜨는 아이템</h1>
+        <div style="padding-left: 1vw;">
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+        </div>
+
+        <h1>&nabla;</h1>
+        <h1 id="SBL_font" class="item-category">프로틴</h1>
+        <div style="padding-left: 1vw;">
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+        </div>
+
+
+        <h1>&nabla;</h1>
+        <h1 id="SBL_font" class="item-category">영양제</h1>
+        <div style="padding-left: 1vw;">
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+        </div>
+
+        <h1>&nabla;</h1>
+        <h1 id="SBL_font" class="item-category">장비</h1>
+        <div style="padding-left: 1vw;">
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1273" style="float: left; width: 18vw;">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
+                <figcaption>
+                    <h3>Fletch Skinner</h3>
+                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what
+                        happens to me anyway. </p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+        </div>
+
+    </div>
+
+{% endblock %}
