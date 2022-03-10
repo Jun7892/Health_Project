@@ -350,3 +350,9 @@ button {
     height: 70%;
     background-color: gray;
 }
+
+.modaltext {
+    top: 55%;
+    margin-left: 5%;
+    font-weight: normal;
+}
