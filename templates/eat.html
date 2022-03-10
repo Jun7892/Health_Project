@@ -5,61 +5,66 @@
     <meta charset="UTF-8">
     <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
     <link href="../static/css/eat.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="../static/js/eat.js"></script>
+{#    <script type="text/javascript" src="../static/js/eat.js"></script>#}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 {% endblock %}
 
 {% block title %}EAT{% endblock %}
 
 {% block content %}
 
-<img src="../static/img/eatfullbackgorund.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-<div class="fullcontain">
-    <div class="maincontain">
-        <img src="../static/img/foodlogo.png" style="z-index: 2; position: absolute; top: -10%; left: 42%; width: 15vw;">
-        <div class="firstbox">
-            <img src="../static/img/meatback.jpg" style="position: absolute; top: 0; left: 0; width: 30%; height: 50%; opacity: 0.6;">
-            <img src="../static/img/meatlover.png" style="z-index: 2; position: absolute; left: 9%; width: 10vw;">
-            <p id="SBL_font" style="color: white; position: absolute; top: 10%; left: 1%; font-weight: bolder"> 쌀밥 스테이크 김치 된장국 ...</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 30%; left: 1%; font-weight: bolder"> 총 칼로리 : 7,800 kcal</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 35%; left: 1%; font-weight: bolder"> 가격 : 19,500 원</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 40%; left: 1%; font-weight: bolder"> 재료 : 스테이크, 흰 쌀, 김치, 감자, 두부, 양파, 된장 ...</p>
+<div class="section" id="section1">
+    <div id="section1_detail">
+        <img src="../static/img/meatback.jpg" class="eatback">
+        <div id="SBL_font" class="eatcategory1">
+            <h1>Meat Lover</h1>
+            <h2 style="font-size: 1vw;">흰 쌀 / 돼지고기 / 된장찌개 / 김치</h2>
+            <h1>&nbsp</h1>
+            <h2 style="font-size: 1.5vw;">Total Kcal : 12,300 kal</h2>
+            <h2 style="font-size: 1.5vw;">예상 가격 : 15,500 원</h2>
         </div>
-        <div class="secondbox">
-            <img src="../static/img/soupback.jpg" style="position: absolute; top: 50%; left: 0; width: 30%; height: 50%; opacity: 0.6;">
-            <img src="../static/img/soup.png" style="width: 6vw; z-index: 2; position: absolute; left: 11%; ">
-            <p id="SBL_font" style="color: white; position: absolute; top: 60%; left: 1%; font-weight: bolder"> 쌀밥 스테이크 김치 된장국 ...</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 80%; left: 1%; font-weight: bolder"> 총 칼로리 : 7,800 kcal</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 85%; left: 1%; font-weight: bolder"> 가격 : 19,500 원</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 90%; left: 1%; font-weight: bolder"> 재료 : 스테이크, 흰 쌀, 김치, 감자, 두부, 양파, 된장 ...</p>
-        </div>
-        <div class="thirdbox">
-            <img src="../static/img/refrige.back.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 125%; opacity: 0.6;">
-        </div>
-        <div class="fourthbox">
-            <img src="../static/img/vegetarianback.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.6;">
-            <img src="../static/img/vegetarian.png" style="width: 10vw; z-index: 2; position: absolute; left: 30%; ">
-            <p id="SBL_font" style="color: white; position: absolute; top: 22%; left: 3%; font-weight: bolder"> 쌀밥 스테이크 김치 된장국 ...</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 61%; left: 3%; font-weight: bolder"> 총 칼로리 : 7,800 kcal</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 71%; left: 3%; font-weight: bolder"> 가격 : 19,500 원</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 81%; left: 3%; font-weight: bolder"> 재료 : 스테이크, 흰 쌀, 김치, 감자, 두부, 양파, 된장 ...</p>
-        </div>
-        <div class="fifthbox">
-            <img src="../static/img/westernback.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.6;">
-            <img src="../static/img/western.png" style="width: 8vw; position: absolute; left: 38%;">
-            <p id="SBL_font" style="color: white; position: absolute; top: 22%; left: 3%; font-weight: bolder"> 쌀밥 스테이크 김치 된장국 ...</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 61%; left: 3%; font-weight: bolder"> 총 칼로리 : 7,800 kcal</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 71%; left: 3%; font-weight: bolder"> 가격 : 19,500 원</p>
-            <p id="SBL_font" style="color: white; position: absolute; top: 81%; left: 3%; font-weight: bolder"> 재료 : 스테이크, 흰 쌀, 김치, 감자, 두부, 양파, 된장 ...</p>
-        </div>
-        <div class="inputbox" id="SBL_font" style="text-align: center;">
-            <div style="margin-top: 5%">
-                INGREDIENTS : <input type="text" class="inputtmp" id="" name="" placeholder="냉장고에 있는 재료를 적으세요">
-            </div>
-            <div style="margin-top: 2%;">
-                <input type="submit" value="Recipe">
-            </div>
-        </div>
+
+
+
     </div>
 </div>
+
+<div class="section" id="section2">
+    <img src="../static/img/vegetarianback.png" class="eatback">
+    <div id="SBL_font" class="eatcategory2">
+            <h1>Vegetarian</h1>
+            <h2 style="font-size: 1vw;">흰 쌀 / 돼지고기 / 된장찌개 / 김치</h2>
+            <h1>&nbsp</h1>
+            <h2 style="font-size: 1.5vw;">Total Kcal : 12,300 kal</h2>
+            <h2 style="font-size: 1.5vw;">예상 가격 : 15,500 원</h2>
+        </div>
+</div>
+
+<div class="section" id="section3">
+    <img src="../static/img/soupback.jpg" class="eatback">
+    <div id="SBL_font" class="eatcategory1">
+            <h1>Soup</h1>
+            <h2 style="font-size: 1vw;">흰 쌀 / 돼지고기 / 된장찌개 / 김치</h2>
+            <h1>&nbsp</h1>
+            <h2 style="font-size: 1.5vw;">Total Kcal : 12,300 kal</h2>
+            <h2 style="font-size: 1.5vw;">예상 가격 : 15,500 원</h2>
+        </div>
+</div>
+
+<div class="section" id="section4">
+    <img src="../static/img/westernback.png" class="eatback">
+    <div id="SBL_font" class="eatcategory2">
+            <h1>Western</h1>
+            <h2 style="font-size: 1vw;">흰 쌀 / 돼지고기 / 된장찌개 / 김치</h2>
+            <h1>&nbsp</h1>
+            <h2 style="font-size: 1.5vw;">Total Kcal : 12,300 kal</h2>
+            <h2 style="font-size: 1.5vw;">예상 가격 : 15,500 원</h2>
+        </div>
+</div>
+
+
+<script type="text/javascript" src="../static/js/eat.js"></script>
 
 {% endblock %}
