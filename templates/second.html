@@ -26,44 +26,45 @@
     <div class="loginbox">
         <div class="idcontain textbox">
             <form>
-                <input id="SBL_font" type="text" name="" placeholder="ID 입력하세요">
+                <input id="SBL_font" type="text" name="username" placeholder="ID 입력하세요">
             </form>
         </div>
         <div class="pwcontain textbox">
             <form>
-                <input id="SBL_font" type="password" name="" placeholder="PW 입력하세요">
+                <input id="SBL_font" type="password" name="password" placeholder="PW 입력하세요">
             </form>
         </div>
     </div>
 </div>
 
-<div class="signupbox groom" id="modal" style="display: none;">
+<form class="signupbox groom" id="modal" style="display: none;" method="post" action="/second/sign_up">
+    {% csrf_token %}
     <div class="backgroundimg">
         <div class="signuptext">
             <h2 id="SBL_font" onclick="modalOff()" class="signuptitle">SIGN-UP</h2>
         </div>
         <div class="signupinfo" id="SBL_font" style="color: white;">
             <div>
-                ID : <input type="text" id="" name="" placeholder="사용할 ID">
-                PW : <input type="password" id="" name="" placeholder="사용할 PW">
+                ID : <input type="text" id="" name="username" placeholder="사용할 ID">
+                PW : <input type="password" id="" name="password" placeholder="사용할 PW">
             </div>
             <div style="margin-top: 2vw;">
-                NickName : <input type="text" id="" name="" placeholder="사용할 닉네임">
+                NickName : <input type="text" id="" name="nickname" placeholder="사용할 닉네임">
             </div>
         </div>
         <div class="genderbox" style="color: white;">
             <p id="SBL_font" style="float:left; font-weight: bolder; margin-left: 0.5vw;">성별</p>
-            <label for="man" class="checkboxman"><input type="checkbox" id="SBL_font man"/> 남자</label>
-            <label for="woman" class="checkboxwoman"><input type="checkbox" id="SBL_font woman"/> 여자</label>
+            <label for="man" class="checkboxman"><input type="radio" id="SBL_font man" name="gender" value="남자"/> 남자</label>
+            <label for="woman" class="checkboxwoman"><input type="radio" id="SBL_font woman" name="gender" value="여자"/> 여자</label>
             <div class="genderpic">
                 <img src="../static/img/male.png" style="padding-left: 5vw;">
                 <img src="../static/img/female.png" style="padding-left: 4vw;">
             </div>
         </div>
         <div class="workoutlevel" style="color: white;">
-            <label for="id2" class="levelbox" style="margin-left: 5.5vw;"><input type="checkbox" id="id2 SBL_font"/> 초심자</label>
-            <label for="pw2" class="levelbox" style="margin-left: 3vw;"><input type="checkbox" id="pw2 SBL_font"/> 중급자</label>
-            <label for="nick2" class="levelbox" style="margin-left: 3vw;"><input type="checkbox" id="nick2 SBL_font"/> 상급자</label>
+            <label for="id2" class="levelbox" style="margin-left: 5.5vw;"><input type="radio" id="id2 SBL_font" name="level" value="초심자"/> 초심자</label>
+            <label for="pw2" class="levelbox" style="margin-left: 3vw;"><input type="radio" id="pw2 SBL_font" name="level" value="중급자"/> 중급자</label>
+            <label for="nick2" class="levelbox" style="margin-left: 3vw;"><input type="radio" id="nick2 SBL_font" name="level" value="상급자"/> 상급자</label>
             <div class="levelpic">
                 <p id="SBL_font" style="float:left; font-weight: bolder; margin-left: 0.5vw;">Level</p>
                 <div class="locationlevel">
@@ -77,7 +78,7 @@
             <input type="submit" value="회원가입" class="signupbtn">
         </div>
     </div>
-</div>
+</form>
 
 <div>
     <img src="../static/img/login.png" onclick="location.href='http://127.0.0.1:8000/main/'" class="loginbtn">
