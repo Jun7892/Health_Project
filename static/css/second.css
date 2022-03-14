@@ -76,6 +76,11 @@ input[type="text"], input[type="password"] {
     width: 20%;
     height: 60%;
     cursor: url("/static/img/press.png") 2 2, default;
+    opacity: 0;
+}
+
+.modalonbox:hover {
+    opacity: 1;
 }
 
 .signupbox {
