@@ -181,3 +181,25 @@ pyvenv.cfg
 pip-selfcheck.json
 
 # End of https://www.toptal.com/developers/gitignore/api/venv,python
+=======
+.idea
+
+db.sqlite3
+
+__pycache__
+
+venv/
+
+.venv
+
+0001_initial.py
+
+0002_initial.py
+
+0003_initial.py
+
+0004_initial.py
+
+0005_initial.py
+
+0006_initial.py
