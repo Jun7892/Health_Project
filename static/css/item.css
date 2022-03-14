@@ -164,3 +164,7 @@
 .snip1273.hover figcaption:after {
   opacity: 0.1;
 }
+
+.movemain {
+    cursor: url("/static/img/press.png") 2 2, default;
+}
