@@ -200,3 +200,23 @@ button {
     transform: translate(-50%, -50%);
     animation: ring 1.5s infinite;
 }
+
+.movemain {
+    position: absolute;
+    top: 1%;
+    left: 95%;
+    width: 5vw;
+    color: antiquewhite;
+    z-index: 2;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+.logout {
+    position: absolute;
+    top: 93%;
+    left: 95%;
+    width: 5vw;
+    color: antiquewhite;
+    z-index: 2;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
