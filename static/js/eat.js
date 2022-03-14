@@ -39,3 +39,55 @@ $(window).on("wheel", function(e) {
     var posTop =(page-1) * $(window).height();
     mHtml.animate({scrollTop : posTop});
 })
+
+const modal = document.getElementById("modal")
+
+function modalOn() {
+    const modal = document.getElementById("modal")
+    modal.style.display = "flex"
+}
+
+function modalOff() {
+    const modal = document.getElementById("modal")
+    console.log(modal)
+    modal.style.display = "none"
+}
+
+const modal2 = document.getElementById("modal2")
+
+function modalOn2() {
+    const modal2 = document.getElementById("modal2")
+    modal2.style.display = "flex"
+}
+
+function modalOff2() {
+    const modal2 = document.getElementById("modal2")
+    console.log(modal2)
+    modal2.style.display = "none"
+}
+
+const modal3 = document.getElementById("modal3")
+
+function modalOn3() {
+    const modal3 = document.getElementById("modal3")
+    modal3.style.display = "flex"
+}
+
+function modalOff3() {
+    const modal3 = document.getElementById("modal3")
+    console.log(modal3)
+    modal3.style.display = "none"
+}
+
+const modal4 = document.getElementById("modal4")
+
+function modalOn4() {
+    const modal4 = document.getElementById("modal4")
+    modal4.style.display = "flex"
+}
+
+function modalOff4() {
+    const modal4 = document.getElementById("modal4")
+    console.log(modal4)
+    modal4.style.display = "none"
+}
