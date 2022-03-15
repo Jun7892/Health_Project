@@ -31,11 +31,15 @@ function charm(sound1) {
 // });
 // 회원가입 진행
 $('#btn-signup').click(function () {
+
+
     var id = $('#user_id').val();
     var pw = $('#login-user-password').val();
     var nn = $('#user_nn').val();
     var ge = $("input[name='gender']:checked").val();
     var le = $("input[name='level']:checked").val();
+
+
     // let form_data = new FormData();
     //
     // form_data.append('username',id);
@@ -43,12 +47,12 @@ $('#btn-signup').click(function () {
     // form_data.append('nickname',nn);
     // form_data.append('gender',ge);
     // form_data.append('level',le);
+
     console.log(id)
     console.log(pw)
     console.log(nn)
     console.log(ge)
     console.log(le)
-    // console.log(form_data)
     $.ajax({
         url: '/second/sign_up/',
         // form에 file type 이 있는 경우 enctype: 'multipart/form-data'를 설정해야 한다.
@@ -95,6 +99,7 @@ $('.btn-login').click(function (e) {
     }).done(function (data) {
         if (data.works) {
             alert('로그인되었습니다')
+
         } else if (data.wrongInformation) {
             alert('입력된 정보와 일치하는 회원 정보가 없습니다');
             $('#login-user-password').val("");

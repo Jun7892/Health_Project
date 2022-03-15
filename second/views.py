@@ -10,27 +10,36 @@ import json
 
 @csrf_exempt
 def sign_up(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = str(request.POST['password'])
-        nickname = request.POST['nickname']
-        gender = request.POST.get('gender') #체크박스를 아무것도 선택하지 않았을때 값이없기때문에 에러가남.
-        level = request.POST.get('level') # request.POST.get('키값')으로 받아오면 none값이 뜸
-        print(gender, level)
+    select = json.loads(request.body.decode('utf-8'))
+    print(select)
 
-        msg = check_blank(username,password,nickname,gender,level) #빈칸확인함수
-        if msg != '통과':
-            print(msg)
-            return JsonResponse({'blank':True})
-        else:#빈칸이 아니면
-            founduser= User.objects.filter(username=username)
-            if len(founduser) > 0: #같은아이디가 있을때.
-                print('여기서 걸리니?:','founduser')
-                return JsonResponse({'existid': True}) #이거 표시할 곳 필요
-            else: #중복아이디가 아니면
-                result = create_user(username,password,nickname,gender,level) #유저생성함수
-                auth.login(request, result)
-                return JsonResponse({'works':True})
+    # if request.method == 'POST':
+    username = select['username']
+    print(username)
+    password = select['password']
+    print(password)
+    nickname = select['nickname']
+    print(nickname)
+    gender = select['gender']
+    print(gender)
+    level = select['level']
+    print(level)
+
+   
+    msg = check_blank(username,password,nickname,gender,level) #빈칸확인함수
+    if msg != '통과':
+        print(msg)
+        return JsonResponse({'blank':True})
+    else:#빈칸이 아니면
+        founduser= User.objects.filter(username=username)
+        if len(founduser) > 0: #같은아이디가 있을때.
+            print('여기서 걸리니?:','founduser')
+            return JsonResponse({'existid': True}) #이거 표시할 곳 필요
+        else: #중복아이디가 아니면
+            result = create_user(username,password,nickname,gender,level) #유저생성함수
+            auth.login(request, result)
+            return JsonResponse({'works':True})
+
 
 
 def sign_in(request):
