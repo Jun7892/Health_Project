@@ -58,6 +58,7 @@ def sign_in(request):
         else:#해당하는 유저정보없으면
             return render(request, 'second.html', {'error':'id, pw를 확인하세요'})#이것도 표시할 곳 필요할듯
 
+
 @login_required #로그인해야 로그아웃 가능
 def logout(request):
     auth.logout(request)
