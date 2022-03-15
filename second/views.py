@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 
@@ -7,7 +7,7 @@ from second.models import User
 from django.contrib import auth
 
 from second.services.join_service import create_user, check_blank
-
+from django.contrib import messages
 
 
 @csrf_exempt
@@ -23,19 +23,21 @@ def sign_up(request):
         msg = check_blank(username,password,nickname,gender,level) #빈칸확인함수
         if msg != '통과':
             print(msg)
-            return JsonResponse({'error': msg})
+            messages.error(request, msg)
+            return redirect('sign_in')
         else:#빈칸이 아니면
             founduser= User.objects.filter(username=username)
             if len(founduser) > 0: #같은아이디가 있을때.
-                return JsonResponse({'error': '해당아이디는 이미 존재합니다.'}) #이거 표시할 곳 필요
+                messages.error(request, '해당아이디는 이미 존재합니다.')
+                return redirect('sign_in')
             else: #중복아이디가 아니면
-                result = create_user(username,password,nickname,gender,level)
-                auth.login(request, result) #ajax가 응답을 기다릴까봐 걱정.....
+                result = create_user(username,password,nickname,gender,level) #유저생성함수
+                auth.login(request, result)
                 return redirect('main')
 
 
 def sign_in(request):
-    if request.method == 'GET':  # 로그아웃 같은상황으로 이쪽으로 던저주게 되면
+    if request.method == 'GET': #겟요청
         return render(request, 'second.html')  # second.html 렌더링해줌.
     else: # post로 들어왔을때
         #장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
