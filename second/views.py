@@ -21,15 +21,16 @@ def sign_up(request):
         msg = check_blank(username,password,nickname,gender,level) #빈칸확인함수
         if msg != '통과':
             print(msg)
-            return JsonResponse({'error': msg})
+            return JsonResponse({'blank':True})
         else:#빈칸이 아니면
             founduser= User.objects.filter(username=username)
             if len(founduser) > 0: #같은아이디가 있을때.
-                return JsonResponse({'error': '해당아이디는 이미 존재합니다.'}) #이거 표시할 곳 필요
+                print('여기서 걸리니?:','founduser')
+                return JsonResponse({'existid': True}) #이거 표시할 곳 필요
             else: #중복아이디가 아니면
                 result = create_user(username,password,nickname,gender,level) #유저생성함수
                 auth.login(request, result)
-                return 0
+                return JsonResponse({'works':True})
 
 
 def sign_in(request):
