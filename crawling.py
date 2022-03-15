@@ -54,7 +54,7 @@ def make_food_data(urllist):
         num += 1
 
         title = soup.select('#contents_area > div.view2_summary.st3 > h3')[0]  # h3 태그 가져오기 리스트제거
-        title = re.sub('[-=+,#/\?:^.@*\"※~ㆍ!』‘|\(\)\[\]`\'…》\”\“\’·]', '', title.get_text())  # 텍스트만 추출
+        title = re.sub('[-=+,#/\?:^.@*\"※~ㆍ!』‘|\(\)\[\]`\'…》\”\“\’·]', '', title.get_text())  # 텍스트만 추출 특수문자 제거
 
         li_list = soup.select('#divConfirmedMaterialArea > ul > a > li')  # li 태그 리스트로 만들어주기
         if li_list == []:

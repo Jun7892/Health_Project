@@ -1,28 +1,20 @@
 // 버튼 클릭시 display: flex 값 / 닫기 버튼 클릭시 modal display none 값
-
 const modal = document.getElementById("modal")
-
 function modalOn() {
     modal.style.display = "flex"
 }
-
 function modalOff() {
     const modal = document.getElementById("modal")
     console.log(modal)
     modal.style.display = "none"
 }
-
 let isPlaying = false;
 let audio = document.getElementById("myAudio");
-
 function charm(sound1) {
-
     // let audio = new Audio(sound1);
     audio.loop = true;
     audio.volume = 0.5;
     isPlaying ? audio.pause() : audio.play();
-
-
     audio.onplaying = function () {
         isPlaying = true;
     };
@@ -31,17 +23,15 @@ function charm(sound1) {
     };
     console.log('aaaa');
 }
-
-
 // $(function () {
 // // 회원가입, 로그인 창 닫기
 // $('.btn-close').click(function (e) {
 //     // 회원가입, 로그인 창 닫을 시 현재 화면으로 새로고침
 //     location.reload();
 // });
-
 // 회원가입 진행
 $('#btn-signup').click(function () {
+
 
     var id = $('#user_id').val();
     var pw = $('#login-user-password').val();
@@ -63,9 +53,6 @@ $('#btn-signup').click(function () {
     console.log(nn)
     console.log(ge)
     console.log(le)
-
-    // console.log(form_data)
-
     $.ajax({
         url: '/second/sign_up/',
         // form에 file type 이 있는 경우 enctype: 'multipart/form-data'를 설정해야 한다.
@@ -96,13 +83,11 @@ $('#btn-signup').click(function () {
         }
     });
 });
-
 // 로그인 진행
 $('.btn-login').click(function (e) {
     // e.preventDefault();
     var form = $('#user-login')[0];
     var formData = new FormData(form);
-
     $.ajax({
         url: '/second/',
         enctype: 'multipart/form-data',
@@ -118,7 +103,6 @@ $('.btn-login').click(function (e) {
         } else if (data.wrongInformation) {
             alert('입력된 정보와 일치하는 회원 정보가 없습니다');
             $('#login-user-password').val("");
-
         } else if (data.noPassword) {
             alert('비밀번호를 입력해주세요');
         } else {
@@ -126,8 +110,6 @@ $('.btn-login').click(function (e) {
         }
     });
 });
-
-
 //     // 로그아웃 진행
 //     $('.user-logout').click(function (e) {
 //         e.preventDefault();
