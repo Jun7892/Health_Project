@@ -6,6 +6,7 @@
     <script>var sound1 = "{% static "music/bgm.m4a" %}"</script>
     <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
     <link href="../static/css/second.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {#    <script type="text/javascript" src="../static/js/second.js"></script>#}
 {% endblock %}
 
@@ -30,12 +31,12 @@
         <div class="loginbox">
             <div class="idcontain textbox">
                 <form>
-                    <input id="SBL_font" type="text" name="username" placeholder="ID 입력하세요">
+                    <input type="text" name="username" placeholder="ID 입력하세요">
                 </form>
             </div>
             <div class="pwcontain textbox">
                 <form>
-                    <input id="SBL_font" type="password" name="password" placeholder="PW 입력하세요">
+                    <input type="password" name="password" placeholder="PW 입력하세요">
                 </form>
             </div>
         </div>
@@ -45,21 +46,21 @@
         {% csrf_token %}
         <div class="backgroundimg">
             <div class="signuptext">
-                <h2 id="SBL_font" onclick="modalOff()" class="signuptitle">SIGN-UP</h2>
+                <h2 onclick="modalOff()" class="signuptitle">SIGN-UP</h2>
             </div>
-            <div class="signupinfo" id="SBL_font" style="color: white;">
+            <div class="signupinfo" style="color: white;">
                 <div>
-                    ID : <input type="text" id="" name="username" placeholder="사용할 ID">
+                    ID : <input type="text" id="user_id" name="username" placeholder="사용할 ID">
                     PW : <input type="password" id="login-user-password" name="password" placeholder="사용할 PW">
                 </div>
                 <div style="margin-top: 2vw;">
-                    NickName : <input type="text" id="signup-nickname" name="nickname" placeholder="사용할 닉네임">
+                    NickName : <input type="text" id="user_nn" name="nickname" placeholder="사용할 닉네임">
                 </div>
             </div>
             <div class="genderbox" style="color: white;">
-                <p id="SBL_font" style="float:left; font-weight: bolder; margin-left: 0.5vw;">성별</p>
-                <label for="man" class="checkboxman"><input type="radio" id="SBL_font man" name="gender" value="남자"/> 남자</label>
-                <label for="woman" class="checkboxwoman"><input type="radio" id="SBL_font woman" name="gender"
+                <p style="float:left; font-weight: bolder; margin-left: 0.5vw;">성별</p>
+                <label for="man" class="checkboxman"><input type="radio" class="gender" id="man" name="gender" value="남자"/> 남자</label>
+                <label for="woman" class="checkboxwoman"><input type="radio" class="gender" id="woman" name="gender"
                                                                 value="여자"/> 여자</label>
                 <div class="genderpic">
                     <img src="../static/img/male.png" style="padding-left: 5vw;">
@@ -67,17 +68,17 @@
                 </div>
             </div>
             <div class="workoutlevel" style="color: white;">
-                <label for="low" class="levelbox" style="margin-left: 5.5vw;"><input type="radio" id="low SBL_font"
+                <label for="low" class="levelbox" style="margin-left: 5.5vw;"><input type="radio" class="level" id="low"
                                                                                      name="level" value="초심자"/>
                     초심자</label>
-                <label for="middle" class="levelbox" style="margin-left: 3vw;"><input type="radio" id="middle SBL_font"
+                <label for="middle" class="levelbox" style="margin-left: 3vw;"><input type="radio" class="level" id="middle"
                                                                                    name="level" value="중급자"/>
                     중급자</label>
-                <label for="upper" class="levelbox" style="margin-left: 3vw;"><input type="radio" id="upper SBL_font"
+                <label for="upper" class="levelbox" style="margin-left: 3vw;"><input type="radio" class="level" id="upper"
                                                                                      name="level" value="상급자"/>
                     상급자</label>
                 <div class="levelpic">
-                    <p id="SBL_font" style="float:left; font-weight: bolder; margin-left: 0.5vw;">Level</p>
+                    <p style="float:left; font-weight: bolder; margin-left: 0.5vw;">Level</p>
                     <div class="locationlevel">
                         <img src="../static/img/lowlevel.png" style="opacity: 0.6;">
                         <img src="../static/img/middlelevel.png" style="margin-left: 1.5vw; opacity: 0.6;">
@@ -86,7 +87,7 @@
                 </div>
             </div>
             <div class="inputbtn">
-                <input type="submit" value="회원가입" class="signupbtn btn-signup">
+                <input value="회원가입" class="signupbtn" id="btn-signup">
             </div>
         </div>
     </form>
