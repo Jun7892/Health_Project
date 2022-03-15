@@ -9,9 +9,6 @@ from django.contrib import auth
 from second.services.join_service import create_user, check_blank
 
 
-def showloginpage(request):
-    if request.method == 'GET': #로그아웃 같은상황으로 이쪽으로 던저주게 되면
-        return render(request, 'second.html') #second.html 렌더링해줌.
 
 @csrf_exempt
 def sign_up(request):
@@ -38,25 +35,28 @@ def sign_up(request):
 
 
 def sign_in(request):
-    #장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
-    founduser = auth.authenticate(request,
-                                  username=request.POST['username'],
-                                  password=request.POST['password'])
-    if founduser is not None:
-        auth.login(request, founduser)
-        redirect('main')
-    else:#해당하는 유저정보없으면
-        return render(request, 'second.html', {'error':'id, pw를 확인하세요'})#이것도 표시할 곳 필요할듯
-    if request.method == 'POST':
+    if request.method == 'GET':  # 로그아웃 같은상황으로 이쪽으로 던저주게 되면
+        return render(request, 'second.html')  # second.html 렌더링해줌.
+    else: # post로 들어왔을때
         #장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
         founduser = auth.authenticate(request,
-                                      username=request.POST['username'],
-                                      password=request.POST['password'])
+                                  username=request.POST['username'],
+                                  password=request.POST['password'])
         if founduser is not None:
             auth.login(request, founduser)
-            return redirect('main')
+            redirect('main')
         else:#해당하는 유저정보없으면
             return render(request, 'second.html', {'error':'id, pw를 확인하세요'})#이것도 표시할 곳 필요할듯
+        if request.method == 'POST':
+            #장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
+            founduser = auth.authenticate(request,
+                                          username=request.POST['username'],
+                                          password=request.POST['password'])
+            if founduser is not None:
+                auth.login(request, founduser)
+                return redirect('main')
+            else:#해당하는 유저정보없으면
+                return render(request, 'second.html', {'error':'id, pw를 확인하세요'})#이것도 표시할 곳 필요할듯
 
 @login_required #로그인해야 로그아웃 가능
 def logout(request):
