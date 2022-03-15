@@ -34,20 +34,14 @@ window.onload = function () {
         showMain();
         currentDateget();
         resetInsert();
-    }
-
-    function showMain() {
-        const mainDay = document.querySelector('.main-day');
-        const mainDate = document.querySelector('.main-date');
-        const dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        mainDay.innerHTML = dayList[today.getDay()];
-        mainDate.innerHTML = today.getDate();
+        showSide()
     }
 
     function makeElement(firstDate) {
         let weekly = 100;
         let dateSet = 1;
-        for (let i = 0; i < 6; i++) {
+        //Weekly 행
+        for (let i = 0; i < 5; i++) {
             let weeklyEl = document.createElement('div');
             weeklyEl.setAttribute('class', weekly);
             weeklyEl.setAttribute('id', "weekly");
@@ -92,6 +86,16 @@ window.onload = function () {
         mainDate.innerHTML = today.getDate();
     }
 
+    //오른쪽에 현재 날짜 업데이트 해주기
+
+    function showSide() {
+        const sideDate = document.querySelector('.right-date');
+        const dayListKor = ['일', '월', '화', '수', '목', '금', '토'];
+        viewdate = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일 ${dayListKor[today.getDay()]}`;
+        sideDate.innerHTML = viewdate;
+
+    }
+
     prevEl.addEventListener('click', function () {
         today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
         removeCalendar();
@@ -125,6 +129,7 @@ window.onload = function () {
         currentDateget();
         redrawLi();
         resetInsert();
+        showSide();
     });
 
     inputBtn.addEventListener('click', function (e) {
@@ -132,6 +137,22 @@ window.onload = function () {
         let inputValue = inputBox.value;
         insertTodo(inputValue);
     });
+    //
+    // function ajax() {
+    //     var xhr = new XMLHttpRequest();
+    //
+    //     xhr.onreadystatechange = function() {
+    //       if (xhr.readyState === 4) {
+    //         if (xhr.status === 200) {
+    //           console.log("작업내용 작성");
+    //         }
+    //       }
+    //     };
+    //
+    //     xhr.open("POST", "/todo/TodoTypeServlet", true);
+    //     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //     xhr.send(null);
+    //   }
 
     function insertTodo(text) {
         let todoObj = {
@@ -188,9 +209,11 @@ window.onload = function () {
     }
 
 // 다음달,이전달 다른날, 첫 로드 될 때 마다 todo 목록이 있으면(if로 조건문 처리) 다 지우고 다시 그려주는 함수
+    //쉽게 말하자면 클릭을 하면 왼쪽의 넘어가는 날짜랑 요일이 계속 바뀌게 된다.
     function resetInsert() {
         let storeObj = localStorage.getItem(currentDate);
         if (storeObj !== null) {
+            // liEl
             let liEl = document.querySelectorAll('LI');
             for (let i = 0; i < liEl.length; i++) {
                 inputList.removeChild(liEl[i]);
@@ -249,6 +272,20 @@ window.onload = function () {
         localStorage.setItem(currentDate, JSON.stringify(DATA[currentDate]));
     }
 
+    let coll = document.getElementsByClassName("fa-solid");
+    let i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            let content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
 }
 
 
