@@ -27,13 +27,15 @@
             </video>
             <p id="SBL_font" class="movepagebtn" onclick="location.href='http://127.0.0.1:8000/workout/'" style="position: absolute; top: 40%; left: 40%; color: white; font-size: 2vw; font-weight: bolder;">WORK OUT</p>
         </div>
+        {% if user.is_authenticated %}
         <div class="thirdvideo">
             <video muted autoplay loop>
               <source src="../static/video/plan.mp4" type="video/mp4">
               <strong>Your browser does not support the video tag.</strong>
             </video>
-            <p id="SBL_font" class="movepagebtn" onclick="location.href='http://127.0.0.1:8000/plan/'" style="position: absolute; top: 40%; left: 45%; color: white; font-size: 2vw; font-weight: bolder;">PLAN</p>
+            <p id="SBL_font" class="movepagebtn" onclick="location.href='/plan/{{ user.id }}'" style="position: absolute; top: 40%; left: 45%; color: white; font-size: 2vw; font-weight: bolder;">PLAN</p>
         </div>
+        {% endif %}
         <div class="fourthvideo">
             <video muted autoplay loop>
               <source src="../static/video/item.mp4" type="video/mp4">
