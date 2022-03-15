@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <link href="../../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/eat.css" rel="stylesheet" type="text/css"/>
+    {#    <script type="text/javascript" src="../../static/js/eat.js"></script>#}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="../../static/js/eat.js"></script>
+
+{% endblock %}
+
+{% block title %}EAT{% endblock %}
+
+{% block content %}
+    <div class="header">
+        <h2 class="movemain" STYLE="margin-left: 2vw; display: inline; color: white; font-size: 2.5vw;" onclick="location.href='/main/'">RECIPE</h2>
+        <h3 STYLE="margin-left: 10vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Recommendation</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Protein</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Supplements</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Equiment</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;" onclick="location.href=/second/'">Logout</h3>
+        <img src="../static/img/logo.png" style="float: right; width: 25vw;">
+    </div>
+
+    <div id="container">
+        {% for i in recipe %}
+        <div class="recipe">
+            <img src="{{ i.image }}" onclick="location.href=/detail/{{ i.id }}">
+            <p>{{ i.title }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
