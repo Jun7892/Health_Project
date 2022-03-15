@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/main.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../static/js/main.js"></script>
+{% endblock %}
+
+{% block title %}MAIN{% endblock %}
+
+{% block content %}
+
+    <div class="fullmain">
+        <div class="firstvideo">
+            <video muted autoplay loop>
+              <source src="../static/video/eat.mp4" type="video/mp4">
+              <strong>Your browser does not support the video tag.</strong>
+            </video>
+            <p id="SBL_font" class="movepagebtn" onclick="location.href='http://127.0.0.1:8000/eat/'" style="position: absolute; top: 40%; left: 44%; color: white; font-size: 2vw; font-weight: bolder;">EAT</p>
+        </div>
+        <div class="secondvideo">
+            <video muted autoplay loop>
+              <source src="../static/video/workout.mp4" type="video/mp4">
+              <strong>Your browser does not support the video tag.</strong>
+            </video>
+            <p id="SBL_font" class="movepagebtn" onclick="location.href='http://127.0.0.1:8000/workout/'" style="position: absolute; top: 40%; left: 40%; color: white; font-size: 2vw; font-weight: bolder;">WORK OUT</p>
+        </div>
+        <div class="thirdvideo">
+            <video muted autoplay loop>
+              <source src="../static/video/plan.mp4" type="video/mp4">
+              <strong>Your browser does not support the video tag.</strong>
+            </video>
+            <p id="SBL_font" class="movepagebtn" onclick="location.href='http://127.0.0.1:8000/plan/'" style="position: absolute; top: 40%; left: 45%; color: white; font-size: 2vw; font-weight: bolder;">PLAN</p>
+        </div>
+        <div class="fourthvideo">
+            <video muted autoplay loop>
+              <source src="../static/video/item.mp4" type="video/mp4">
+              <strong>Your browser does not support the video tag.</strong>
+            </video>
+            <p id="SBL_font" class="movepagebtn" onclick="location.href='http://127.0.0.1:8000/item/'" style="position: absolute; top: 40%; left: 46%; color: white; font-size: 2vw; font-weight: bolder;">ITEM</p>
+        </div>
+
+        <img src="../static/img/service.png" class="movepagebtn" style="position: absolute; top: 30%; left: 40%; width: 20vw;">
+    </div>
+
+{% endblock %}

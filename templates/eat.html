@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/eat.css" rel="stylesheet" type="text/css"/>
+    {#    <script type="text/javascript" src="../static/js/eat.js"></script>#}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+{% endblock %}
+
+{% block title %}EAT{% endblock %}
+
+{% block content %}
+
+    <div class="section" id="section1">
+        <div id="section1_detail">
+            <img src="../static/img/meatback.jpg" class="eatback">
+            <div id="SBL_font" class="eatcategory1">
+                <h1 onclick="modalOn()" class="cursorclick">Meat Lover</h1>
+                <h2 style="font-size: 1vw;">흰 쌀 / 돼지고기 / 된장찌개 / 김치</h2>
+                <h1>&nbsp</h1>
+                <h2 style="font-size: 1.5vw;">Total Kcal : 12,300 kal</h2>
+                <h2 style="font-size: 1.5vw;">예상 가격 : 15,500 원</h2>
+            </div>
+        </div>
+
+        <p onclick="location.href='http://127.0.0.1:8000/main/'" class="movemain")>Main</p>
+        <p onclick="location.href='http://127.0.0.1:8000/second/'" class="logout")>Logout</p>
+
+        <div id="modal" style="display: none;">
+            <div class="modalcontain" id="SBL_font" style="color: white">
+                <div class="allmenu">
+                    <h2 onclick="modalOff()" class="cursorclick">Menu</h2>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section" id="section2">
+        <img src="../static/img/vegetarianback.png" class="eatback">
+        <div id="SBL_font" class="eatcategory2">
+            <h1 onclick="modalOn2()" class="cursorclick">Vegetarian</h1>
+            <h2 style="font-size: 1vw;">흰 쌀 / 돼지고기 / 된장찌개 / 김치</h2>
+            <h1>&nbsp</h1>
+            <h2 style="font-size: 1.5vw;">Total Kcal : 12,300 kal</h2>
+            <h2 style="font-size: 1.5vw;">예상 가격 : 15,500 원</h2>
+        </div>
+
+
+        <div id="modal2" style="display: none;">
+            <div class="modalcontain" id="SBL_font" style="color: white">
+                <div class="allmenu">
+                    <h2 onclick="modalOff2()" class="cursorclick">Menu</h2>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                    <div class="singlemenu">
+                        <p>음식이름</p>
+                        <P>초급 / 중급 / 고급 / 아무나</P>
+                        <p>술안주 / 일상 / 손님접대</p>
+                        <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                        <p>조리 시간 : 30분이내</p>
+                        <p>재료</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="section" id="section3">
+        <img src="../static/img/soupback.jpg" class="eatback">
+        <div id="SBL_font" class="eatcategory1">
+            <h1 onclick="modalOn3()" class="cursorclick">Soup</h1>
+            <h2 style="font-size: 1vw;">흰 쌀 / 돼지고기 / 된장찌개 / 김치</h2>
+            <h1>&nbsp</h1>
+            <h2 style="font-size: 1.5vw;">Total Kcal : 12,300 kal</h2>
+            <h2 style="font-size: 1.5vw;">예상 가격 : 15,500 원</h2>
+        </div>
+
+            <div id="modal3" style="display: none;">
+                <div class="modalcontain" id="SBL_font" style="color: white">
+                    <div class="allmenu">
+                        <h2 onclick="modalOff3()" class="cursorclick">Menu</h2>
+                        <div class="singlemenu">
+                            <p>음식이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                        <div class="singlemenu">
+                            <p>음식이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                        <div class="singlemenu">
+                            <p>음식이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                        <div class="singlemenu">
+                            <p>음식이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                        <div class="singlemenu">
+                            <p>음식이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+
+    <div class="section" id="section4">
+        <img src="../static/img/westernback.png" class="eatback">
+        <div id="SBL_font" class="eatcategory2">
+            <h1 onclick="modalOn4()" class="cursorclick">Western</h1>
+            <h2 style="font-size: 1vw;">흰 쌀 / 돼지고기 / 된장찌개 / 김치</h2>
+            <h1>&nbsp</h1>
+            <h2 style="font-size: 1.5vw;">Total Kcal : 12,300 kal</h2>
+            <h2 style="font-size: 1.5vw;">예상 가격 : 15,500 원</h2>
+        </div>
+
+             <div id="modal4" style="display: none;">
+                <div class="modalcontain" id="SBL_font" style="color: white">
+                    <div class="allmenu">
+                        <h2 onclick="modalOff4()" class="cursorclick">Menu</h2>
+                        <div class="singlemenu">
+                            <p>이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                        <div class="singlemenu">
+                            <p>이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                        <div class="singlemenu">
+                            <p>이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                        <div class="singlemenu">
+                            <p>이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                        <div class="singlemenu">
+                            <p>이름</p>
+                            <P>초급 / 중급 / 고급 / 아무나</P>
+                            <p>술안주 / 일상 / 손님접대</p>
+                            <p>해물류 / 고기 / 밀가루 / 채소류</p>
+                            <p>조리 시간 : 30분이내</p>
+                            <p>재료</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+
+
+
+    <script type="text/javascript" src="../static/js/eat.js"></script>
+
+{% endblock %}
