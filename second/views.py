@@ -1,13 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-
 from second.models import User
 from django.contrib import auth
-
 from second.services.join_service import create_user, check_blank
-from django.contrib import messages
+import json
 
 
 @csrf_exempt
@@ -23,17 +21,15 @@ def sign_up(request):
         msg = check_blank(username,password,nickname,gender,level) #빈칸확인함수
         if msg != '통과':
             print(msg)
-            messages.error(request, msg)
-            return redirect('sign_in')
+            return JsonResponse({'error': msg})
         else:#빈칸이 아니면
             founduser= User.objects.filter(username=username)
             if len(founduser) > 0: #같은아이디가 있을때.
-                messages.error(request, '해당아이디는 이미 존재합니다.')
-                return redirect('sign_in')
+                return JsonResponse({'error': '해당아이디는 이미 존재합니다.'}) #이거 표시할 곳 필요
             else: #중복아이디가 아니면
                 result = create_user(username,password,nickname,gender,level) #유저생성함수
                 auth.login(request, result)
-                return redirect('main')
+                return 0
 
 
 def sign_in(request):
@@ -63,4 +59,4 @@ def sign_in(request):
 @login_required #로그인해야 로그아웃 가능
 def logout(request):
     auth.logout(request)
-    return redirect('showloginpage')
+    return redirect('sign_in')
