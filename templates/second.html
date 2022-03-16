@@ -31,12 +31,15 @@
         <div class="loginbox">
             <div class="idcontain textbox">
                 <form>
-                    <input type="text" name="username" style="font-family: SB_L;" placeholder="ID 입력하세요">
+                    <input type="text" name="username" id="user_id2" style="font-family: SB_L;" placeholder="ID 입력하세요">
+
                 </form>
             </div>
             <div class="pwcontain textbox">
                 <form>
-                    <input type="password" name="password" style="font-family: SB_L;" placeholder="PW 입력하세요">
+
+                    <input type="password" name="password" id="login-user-password2" style="font-family: SB_L;" placeholder="PW 입력하세요">
+
                 </form>
             </div>
         </div>
@@ -93,7 +96,7 @@
     </form>
 
     <div>
-        <img src="../static/img/login.png" type="button" onclick="location.href='http://127.0.0.1:8000/main/'" class="btn-login loginbtn">
+        <img src="../static/img/login.png" type="button" id="btn-login" class="btn-login loginbtn">
     </div>
 
     <script type="text/javascript" src="../static/js/second.js"></script>
