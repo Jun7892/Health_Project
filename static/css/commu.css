@@ -13,13 +13,44 @@
     background-size: cover;
 }
 
+@font-face {
+    src: url("../font/SB_L.ttf");
+    font-family: "SB_L";
+}
+
+#SBL_font {
+    font-family: "SB_L";
+}
+
+.SBL_font {
+    font-family: "SB_L";
+}
+
 h1 {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 8%;
+    left: 8%;
     transform: translate(-50%, -50%);
-    font-size: 80px;
+    font-size: 20px;
     color: white;
+}
+
+h3 {
+    position: absolute;
+    left: 8%;
+}
+
+.base {
+    position: absolute;
+}
+
+.commuinput {
+    position: absolute;
+    top: 90%;
+    left: 30%;
+    width: 40%;
+    height: 5%;
+    border: none;
 }
 
 /*section {*/
