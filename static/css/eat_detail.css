@@ -22,6 +22,17 @@
     height: 50%;
 }
 
+.ingredients{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 5vh;
+}
+
+.step{
+    margin-top: 5vh;
+}
+
 
 
 
