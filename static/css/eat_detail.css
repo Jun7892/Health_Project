@@ -7,3 +7,21 @@
     background-color: black;
     cursor: url("/static/img/pointer.png") 2 6, default;
 }
+
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10vh auto;
+    width: 1000px;
+    height: 1000px;
+}
+
+#container img{
+    width: 80%;
+    height: 50%;
+}
+
+
+
+

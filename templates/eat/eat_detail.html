@@ -29,9 +29,16 @@ EAT_DETAIL
         <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;" onclick="location.href=/second/'">Logout</h3>
         <img src="{% static 'img/logo.png' %}" style="float: right; width: 25vw;">
     </div>
-
+    {# recipe #}
+    <div id="container">
         <img src="{{ recipe.image }}">
         <p>{{ recipe.title }}</p>
-        <p>{{ recipe.ingredients }}</p>
-        <p>{{ recipe.step }}</p>
+        {% for ingredient in recipe.ingredients %}
+        <p>{{ingredient}}</p>
+        {% endfor %}
+        {% for step in recipe.step %}
+        <p>{{ step }}</p>
+        {% endfor %}
+    </div>
+
 {% endblock %}

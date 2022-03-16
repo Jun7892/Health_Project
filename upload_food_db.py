@@ -18,6 +18,6 @@ with open(CSV_PATH_PRODUCTS, encoding='UTF8') as in_file:
         foodModel = FoodModel()
         foodModel.image = row[0]
         foodModel.title = row[1]
-        foodModel.ingredients = row[2]
-        foodModel.step = row[3]
+        foodModel.set_ingredients(row[2])
+        foodModel.set_step(row[3])
         foodModel.save()

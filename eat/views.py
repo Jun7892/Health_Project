@@ -17,6 +17,8 @@ def eat_view(request):
 
 
 def eat_detail(request, id):
-    recipe = FoodModel.objects.filter(id=id)
-    return render(request, 'eat/eat_detail.html', {'recipe': recipe[0]})
+    recipe = FoodModel.objects.get(id=id)
+    recipe.ingredients = recipe.get_ingredients()
+    recipe.step = recipe.get_step()
+    return render(request, 'eat/eat_detail.html', {'recipe': recipe})
 
