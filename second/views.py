@@ -6,6 +6,7 @@ from second.models import User
 from django.contrib import auth
 from second.services.join_service import create_user, check_blank
 import json
+from second.services.login_service import login_check_blank
 
 
 @csrf_exempt
@@ -42,25 +43,19 @@ def sign_in(request):
     if request.method == 'GET': #겟요청
         return render(request, 'second.html')  # second.html 렌더링해줌.
     else: # post로 들어왔을때
-        #장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
-        founduser = auth.authenticate(request,
-                                  username=request.POST['username'],
-                                  password=request.POST['password'])
-        if founduser is not None:
-            auth.login(request, founduser)
-            redirect('main')
-        else:#해당하는 유저정보없으면
-            return render(request, 'second.html', {'error':'id, pw를 확인하세요'})#이것도 표시할 곳 필요할듯
-        if request.method == 'POST':
-            #장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
-            founduser = auth.authenticate(request,
-                                          username=request.POST['username'],
-                                          password=request.POST['password'])
+        select = json.loads(request.body.decode('utf-8'))
+        username = select['username']
+        password = select['password']
+        msg = login_check_blank(username, password) # 빈칸체크함수
+        if msg != '통과':
+            return JsonResponse({'blank': True})
+        else:#장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
+            founduser = auth.authenticate(request, username=username, password=password)
             if founduser is not None:
                 auth.login(request, founduser)
-                return redirect('main')
+                return JsonResponse({'works':True})
             else:#해당하는 유저정보없으면
-                return render(request, 'second.html', {'error':'id, pw를 확인하세요'})#이것도 표시할 곳 필요할듯
+                return JsonResponse({'no_user': True})
 
 
 @login_required #로그인해야 로그아웃 가능
