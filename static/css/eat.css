@@ -27,9 +27,10 @@
 .recipe img{
     width: 400px;
     height: 300px;
+    cursor: pointer;
 }
 
 .recipe p{
-    width: 100%;
+    width: 400px;
     white-space: normal;
 }
