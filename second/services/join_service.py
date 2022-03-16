@@ -2,7 +2,7 @@ from second.models import User
 import bcrypt
 
 def create_user(username:str, password:str, nickname:str, gender:str, level:str):
-    hashed_password = password_hashing(password)
+    hashed_password = password_hashing(password)#저장시 패스워드 암호화
 
     if gender == "남자": #gender에 따라 기본 프로필 이미지 다르게 유저생성해주는것 추가
         new_user = User.objects.create(username=username,
@@ -42,6 +42,6 @@ def password_hashing(password):
     #DB저장위해 다시 str타입으로 decoding
         # DB에 비밀번호를 저장할 때 반드시 암호화한 형태를 저장해야 한다.
         # hased_password는 byte 타입으로 인코딩 되어있음,
-        # DB에 저장할 때는 다시 string 타입으로 디코딩 해줘야 한다.
+        # DB에 저장할 때는 다시 string 타입으로 디코딩 해줘야 한다. 안하면....비교할때 엄청 힘들어져요...ㅎㅎㅎ
     decoded_hashed_password = hashed_password.decode('utf-8')
     return decoded_hashed_password
