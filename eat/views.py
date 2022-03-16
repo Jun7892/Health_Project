@@ -1,15 +1,22 @@
 from django.shortcuts import render
 from eat.models import FoodModel
+from django.core.paginator import Paginator
 import random
 
 
 def eat_view(request):
     if request.method == 'GET':
         recipe = FoodModel.objects.all()
-        recipe = random.sample(list(recipe), 12)
-        return render(request, 'eat/eat.html', {'recipe': recipe})
+        page = request.GET.get('page')
+        paginator = Paginator(recipe, '12')
+        page_obj = paginator.get_page(page)
+        context = {
+            'page': page_obj,
+        }
+        return render(request, 'eat/eat.html', context)
 
 
 def eat_detail(request, id):
-    recipe = FoodModel.objects.fillter(id=id)
+    recipe = FoodModel.objects.filter(id=id)
+    return render(request, 'eat/eat_detail.html', {'recipe': recipe[0]})
 
