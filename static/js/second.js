@@ -1,15 +1,19 @@
 // 버튼 클릭시 display: flex 값 / 닫기 버튼 클릭시 modal display none 값
 const modal = document.getElementById("modal")
+
 function modalOn() {
     modal.style.display = "flex"
 }
+
 function modalOff() {
     const modal = document.getElementById("modal")
     console.log(modal)
     modal.style.display = "none"
 }
+
 let isPlaying = false;
 let audio = document.getElementById("myAudio");
+
 function charm(sound1) {
     // let audio = new Audio(sound1);
     audio.loop = true;
@@ -23,6 +27,7 @@ function charm(sound1) {
     };
     console.log('aaaa');
 }
+
 // $(function () {
 // // 회원가입, 로그인 창 닫기
 // $('.btn-close').click(function (e) {
@@ -63,47 +68,80 @@ $('#btn-signup').click(function () {
         type: "POST",
         datatype: 'json',
         // data로는 formData를 request로 보낸다.
-        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'gender': ge, 'level': le }),
-    }).done(function (data) {
-        // request 보낸 url에서 회원가입 정상 진행해도 무방하여 {'works':True}를 JsonResponse로 보낸 경우
-        if (data.works) { //통과했으면 로그인시켜서 데이터가 넘어왔기 때문에 메인페이지로 보냄
+        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'gender': ge, 'level': le}),
+        success: function (data) {
+            if (data.works) { //통과했으면 로그인시켜서 데이터가 넘어왔기 때문에 메인페이지로 보냄
             alert('회원가입이 성공적으로 완료되었습니다');
-            window.location.href='/main'
-            // request 보낸 url에서 사용자 이름이 없다고 {'noRealName':True}를 JsonResponse로 보낸 경우
-        } else if (data.existid) {
-            alert('이미 존재하는 아이디 입니다.');
-            window.location.reload();
-            // request 보낸 url에서 사용자 패스워드가 없다고 {'noPassword':True}를 JsonResponse로 보낸 경우
-        } else if (data.blank) {
-            alert('빈칸이 있는지 확인하세요!');
-            // 그 밖 모든 data를 JsonResponse로 보낸 경우
-        } else {
-            alert('정상 요청이 아닙니다');
+            window.location.href = '/main'
+                // request 보낸 url에서 사용자 이름이 없다고 {'noRealName':True}를 JsonResponse로 보낸 경우
+            } else if (data.existid) {
+                alert('이미 존재하는 아이디 입니다.');
+                window.location.reload();
+                // request 보낸 url에서 사용자 패스워드가 없다고 {'noPassword':True}를 JsonResponse로 보낸 경우
+            } else if (data.blank) {
+                alert('빈칸이 있는지 확인하세요!');
+                // 그 밖 모든 data를 JsonResponse로 보낸 경우
+            } else {
+                alert('정상 요청이 아닙니다');
+            }
         }
-    });
+    })
 });
+
+        // .done(function (data) {
+        // // request 보낸 url에서 회원가입 정상 진행해도 무방하여 {'works':True}를 JsonResponse로 보낸 경우
+        // if (data.works) { //통과했으면 로그인시켜서 데이터가 넘어왔기 때문에 메인페이지로 보냄
+        //     alert('회원가입이 성공적으로 완료되었습니다');
+        //     window.location.href = '/main'
+        //     // request 보낸 url에서 사용자 이름이 없다고 {'noRealName':True}를 JsonResponse로 보낸 경우
+        // } else if (data.existid) {
+        //     alert('이미 존재하는 아이디 입니다.');
+        //     window.location.reload();
+        //     // request 보낸 url에서 사용자 패스워드가 없다고 {'noPassword':True}를 JsonResponse로 보낸 경우
+        // } else if (data.blank) {
+        //     alert('빈칸이 있는지 확인하세요!');
+        //     // 그 밖 모든 data를 JsonResponse로 보낸 경우
+        // } else {
+        //     alert('정상 요청이 아닙니다');
+        // }
+
 // 로그인 진행
 $('.btn-login').click(function (e) {
     // e.preventDefault();
-    var form = $('#user-login')[0];
-    var formData = new FormData(form);
+    var id2 = $('#user_id2').val();
+    var pw2 = $('#login-user-password2').val();
+    console.log(id2)
+    console.log(pw2)
+
     $.ajax({
-        url: '/second/',
+        url: '/second/sign_in',
+        // form에 file type 이 있는 경우 enctype: 'multipart/form-data'를 설정해야 한다.
         enctype: 'multipart/form-data',
+        // formData를 이용하기 위해서 아래 processData, contentType을 반드시 false로 설정해줘야 한다.
         processData: false,
         contentType: false,
+        // ajax 통신 중, cache가 남아서 갱신 데이터를 받아오지 못하는 경우 사용한다.
         cache: false,
-        method: 'POST',
-        data: formData,
+        async: false,
+        type: "POST",
+        datatype: 'json',
+        // data로는 formData를 request로 보낸다.
+        data: JSON.stringify({'username': id2, 'password': pw2}),
     }).done(function (data) {
         if (data.works) {
             alert('로그인되었습니다')
+            window.location.href = '/main'
 
-        } else if (data.wrongInformation) {
+        } else if (data.no_user) {
             alert('입력된 정보와 일치하는 회원 정보가 없습니다');
             $('#login-user-password').val("");
-        } else if (data.noPassword) {
-            alert('비밀번호를 입력해주세요');
+
+        } else if (data.blank) {
+            alert('아이디와 패스워드를 모두 입력해주세요');
+
+        } else if (data.wrong_pw) {
+            alert('비밀번호가 일치하지 않습니다.');
+
         } else {
             alert('정상 요청이 아닙니다');
         }
