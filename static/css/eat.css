@@ -1,116 +1,35 @@
-html {
-    overflow: hidden;
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4vw;
+    background-color: black;
     cursor: url("/static/img/pointer.png") 2 6, default;
 }
 
-html, body {
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-
-}
-
-.section {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-#section1 {
-    background-color: aliceblue;
-}
-
-#section2 {
-    background-color: lightpink;
-}
-
-#section3 {
-    background-color: coral;
-}
-
-#section4 {
-    background-color: aqua;
-}
-
-.eatback {
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-}
-
-
-.eatcategory1 {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    font-size: 2vw;
-}
-
-.eatcategory2 {
-    position: absolute;
-    top: 20%;
-    left: 60%;
-    font-size: 2vw;
-}
-
-.modalcontain {
-    position: absolute;
-    top: 15%;
-    left: 35%;
-    width: 30%;
-    height: 70%;
-    background-color: gray;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
-.allmenu {
-    margin-left: 3vw;
-}
-
-.singlemenu {
-    margin-top: 5vw;
-    margin-left: 2vw;
-}
-
-.modalcontain::-webkit-scrollbar {
+#container{
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10vw;
+    flex-wrap: wrap;
 }
 
-.modalcontain::-webkit-scrollbar-thumb {
-    background-color: black;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
+.recipe{
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.modalcontain::-webkit-scrollbar-track {
-    background-color: darkslategrey;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px black;
+.recipe img{
+    width: 400px;
+    height: 300px;
 }
 
-.movemain {
-    position: absolute;
-    top: 1%;
-    left: 95%;
-    width: 5vw;
-    color: antiquewhite;
-    z-index: 2;
-    cursor: url("/static/img/press.png") 2 2, default;
-}
-
-.cursorclick {
-    cursor: url("/static/img/press.png") 2 2, default;
-}
-
-.logout {
-    position: absolute;
-    top: 93%;
-    left: 95%;
-    width: 5vw;
-    color: antiquewhite;
-    z-index: 2;
-    cursor: url("/static/img/press.png") 2 2, default;
+.recipe p{
+    width: 100%;
+    white-space: normal;
 }

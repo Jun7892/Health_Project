@@ -13,7 +13,7 @@ body {
 }
 
 .Todo-calendar {
-    width: 65%;
+    width: 100%;
 
 }
 
@@ -337,7 +337,7 @@ header > h1 > span {
 
 .right-side {
     float: right;
-    width: 40%;
+    width: 30%;
     height: 100vh;
     box-sizing: border-box;
     background: #34ac34;
@@ -347,14 +347,16 @@ header > h1 > span {
     height: 4%;
     color: white;
     font-weight: 500;
-    font-size: 3vw;
+    font-size: 1.5vw;
+    text-align: center;
     padding: 3% 10%;
 }
 
 .meal {
     width: 100%;
-    height: 60%;
-    background: #999999;
+    height: 40%;
+    background: #e7e7e7;
+    overflow-y: scroll;
 }
 
 .col-set {
@@ -376,14 +378,23 @@ header > h1 > span {
 }
 
 .active, .collapsible:hover {
-    background-color: #555;
+    background-color: #c1f1a5;
 }
 
 .meal-content {
     padding: 10px 18px;
     display: none;
     overflow: hidden;
-    background-color: #f1f1f1;
-    width: 86%;
+    background-color: #ffffff;
+    width: 82%;
     margin: -4% 10% 2% 10%;
+}
+.fa-solid::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+    font-style: normal;
+}
+.fa-plus{
+    float:right;
 }

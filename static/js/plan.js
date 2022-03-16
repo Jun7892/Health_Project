@@ -12,6 +12,11 @@ window.onload = function () {
     const createDate = document.querySelector('.createDate');
     const bgblack = document.querySelector('.bgblack');
     const closedBtn = document.querySelector('.closed');
+    const inputMeal = document.querySelector('.input-meal');
+    const mealBtn = document.querySelector('.meal-input-btn');
+    const brList = document.querySelector('#meal-bre')
+    const lnList = document.querySelector('#meal-lun')
+    const dnList = document.querySelector('#meal-din')
     let currentDate;
 
 
@@ -138,21 +143,21 @@ window.onload = function () {
         insertTodo(inputValue);
     });
     //
-    // function ajax() {
-    //     var xhr = new XMLHttpRequest();
-    //
-    //     xhr.onreadystatechange = function() {
-    //       if (xhr.readyState === 4) {
-    //         if (xhr.status === 200) {
-    //           console.log("작업내용 작성");
-    //         }
-    //       }
-    //     };
-    //
-    //     xhr.open("POST", "/todo/TodoTypeServlet", true);
-    //     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    //     xhr.send(null);
-    //   }
+    function ajax() {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              console.log("작업내용 작성");
+            }
+          }
+        };
+
+        xhr.open("POST", "/todo/TodoTypeServlet", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send(null);
+      }
 
     function insertTodo(text) {
         let todoObj = {
@@ -200,6 +205,7 @@ window.onload = function () {
                     liEl2.appendChild(spanEl2);
                     liEl2.appendChild(delBtn2);
                     inputList.appendChild(liEl2);
+                    brList.appendChild(liEl2);
                     liEl2.setAttribute('id', DATA[todoList][i].id);
                     delBtn2.addEventListener('click', delWork);
                     liEl2.addEventListener('dblclick', showTodo);
@@ -294,6 +300,43 @@ window.onload = function () {
 
     meal();
 
+    function insertMeal(text){
+        let mealObj = {
+            meal: text,
+        }
+        if (!DATA[currentDate]) {
+            DATA[currentDate] = [];
+            DATA[currentDate].push(mealObj);
+        } else {
+            DATA[currentDate].push(mealObj);
+        }
+        // li,span,button의 Element를 생성
+        const divEl = document.createElement('li');
+        const spanEl = document.createElement('span');
+        const delBtn = document.createElement('button');
+        // html에 읽히게 한다..
+
+        delBtn.innerText = "DEL";
+        delBtn.setAttribute('class', 'del-data');
+        spanEl.innerHTML = text;
+        divEl.appendChild(spanEl);
+        divEl.appendChild(delBtn);
+        brList.appendChild(divEl);
+        divEl.setAttribute('id', DATA[currentDate].length);
+        delBtn.addEventListener('click', delWork);
+        divEl.addEventListener('dblclick', showTodo);
+        // todoObj에 id값을 114번 줄에서 넣어주면 DATA[currentDate].length 값을 찾아올 수 없기 때문에 push해준 후 에 추가하여 local에 저장한다.
+        mealObj.id = DATA[currentDate].length;
+        save();
+        inputMeal.value = '';
+    }
+
+
+        mealBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        let inputValue = inputMeal.value;
+        insertMeal(inputValue);
+    });
     // function changeBorderRadius() {
     //     let coll = document.getElementsByClassName("collapsible");
     //     let i;
