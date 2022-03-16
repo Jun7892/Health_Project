@@ -136,6 +136,12 @@ $('.btn-login').click(function (e) {
             alert('입력된 정보와 일치하는 회원 정보가 없습니다');
             $('#login-user-password').val("");
 
+        } else if (data.blank) {
+            alert('아이디와 패스워드를 모두 입력해주세요');
+
+        } else if (data.wrong_pw) {
+            alert('비밀번호가 일치하지 않습니다.');
+
         } else {
             alert('정상 요청이 아닙니다');
         }

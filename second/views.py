@@ -6,7 +6,7 @@ from second.models import User
 from django.contrib import auth
 from second.services.join_service import create_user, check_blank
 import json
-from second.services.login_service import login_check_blank
+from second.services.login_service import login_check_blank, check_password_correct
 
 
 @csrf_exempt
@@ -15,7 +15,7 @@ def sign_up(request):
     print(select)
     if request.method == 'POST':
         username = select['username']
-        password = select['password']
+        password = str(select['password'])
         nickname = select['nickname']
         try:
             gender = select['gender']
@@ -51,12 +51,16 @@ def sign_in(request):
         msg = login_check_blank(username, password) # 빈칸체크함수
         if msg != '통과':
             return JsonResponse({'blank': True})
-        else:#장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
-            founduser = auth.authenticate(request, username=username, password=password)
-            print(founduser, username, password)
-            if founduser is not None:
-                auth.login(select, founduser)
-                return JsonResponse({'works':True})
+        else:
+            if User.objects.filter(username=username).exists(): #로그인하고자하는 아이디를 가진 유저가 있다면
+                user = User.objects.get(username=username)
+                result = check_password_correct(password,user.password)#패스워드일치여부 판별
+                if result == True:
+                    auth.login(request, user)
+                    return JsonResponse({'works':True})
+                else:
+                    print(result)
+                    return JsonResponse({'wrong_pw': True})
             else:#해당하는 유저정보없으면
                 return JsonResponse({'no_user': True})
 
