@@ -38,21 +38,24 @@ def sign_up(request):
                 print(msg)
                 return JsonResponse({'blank': True})
 
-
+@csrf_exempt
 def sign_in(request):
     if request.method == 'GET': #겟요청
         return render(request, 'second.html')  # second.html 렌더링해줌.
     else: # post로 들어왔을때
         select = json.loads(request.body.decode('utf-8'))
+        print(select, request)
         username = select['username']
-        password = select['password']
+        password = str(select['password'])
+        print(username,password)
         msg = login_check_blank(username, password) # 빈칸체크함수
         if msg != '통과':
             return JsonResponse({'blank': True})
         else:#장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
             founduser = auth.authenticate(request, username=username, password=password)
+            print(founduser, username, password)
             if founduser is not None:
-                auth.login(request, founduser)
+                auth.login(select, founduser)
                 return JsonResponse({'works':True})
             else:#해당하는 유저정보없으면
                 return JsonResponse({'no_user': True})
