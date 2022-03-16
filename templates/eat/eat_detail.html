@@ -3,18 +3,53 @@
 {% load static %}
 
 {% block title %}
-eat_detail
+EAT_DETAIL
 {% endblock %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static '/css/eat_detail.css' %}">
-{% endblock %}
-
-{% block js %}
-<script type="text/javascript" src="{% static '/js/eat_detail.js' %}"></script>
+{% block others %}
+    <meta charset="UTF-8">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/eat_detail.css' %}" rel="stylesheet" type="text/css"/>
+    {#    <script type="text/javascript" src="../../static/js/eat.js"></script>#}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="{% static 'js/eat_detail.js' %}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 {% endblock %}
 
 {#메인 컨텐츠 들어가는 곳#}
 {% block content %}
+    <div class="header">
+        <h2 class="movemain" STYLE="margin-left: 2vw; display: inline; color: white; font-size: 2.5vw;" onclick="location.href='/main/'">RECIPE</h2>
+        <h3 STYLE="margin-left: 10vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Recommendation</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Protein</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Supplements</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Equiment</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;" onclick="location.href=/second/'">Logout</h3>
+        <img src="{% static 'img/logo.png' %}" style="float: right; width: 25vw;">
+    </div>
+    {# recipe #}
+    <div id="container">
+        <img src="{{ recipe.image }}">
+        <div class="title">
+            <p>{{ recipe.title }}</p>
+        </div>
+
+        <div class="ingredients">
+            <p>재료:&nbsp;</p>
+            {% for ingredient in recipe.ingredients %}
+                <p>{{ingredient}}&nbsp;</p>
+            {% endfor %}
+        </div>
+
+        <div class="step">
+            <p>조리 순서</p>
+            {% for step in recipe.step %}
+                <p>{{ forloop.counter }}. {{ step }}</p>
+            {% endfor %}
+        </div>
+
+    </div>
 
 {% endblock %}

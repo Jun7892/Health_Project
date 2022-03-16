@@ -6,65 +6,63 @@ from second.models import User
 from django.contrib import auth
 from second.services.join_service import create_user, check_blank
 import json
+from second.services.login_service import login_check_blank, check_password_correct
 
 
 @csrf_exempt
 def sign_up(request):
     select = json.loads(request.body.decode('utf-8'))
     print(select)
+    if request.method == 'POST':
+        username = select['username']
+        password = str(select['password'])
+        nickname = select['nickname']
+        try:
+            gender = select['gender']
+            level = select['level']
+            print('빈칸통과!:',gender,level)
+            founduser= User.objects.filter(username=username)
+            if len(founduser) > 0: #같은아이디가 있을때.
+                print('여기서 걸리니?:','founduser')
+                return JsonResponse({'existid': True})
+            else: #중복아이디가 아니면
+                result = create_user(username,password,nickname,gender,level) #유저생성함수
+                auth.login(request, result)
+                return JsonResponse({'works':True})
+        except:
+            gender = None
+            level = None
+            print('빈칸일걸?:', gender, level)
+            msg = check_blank(username, password, nickname, gender, level)  # 빈칸확인함수
+            if msg != '통과':
+                print(msg)
+                return JsonResponse({'blank': True})
 
-    # if request.method == 'POST':
-    username = select['username']
-    print(username)
-    password = select['password']
-    print(password)
-    nickname = select['nickname']
-    print(nickname)
-    gender = select['gender']
-    print(gender)
-    level = select['level']
-    print(level)
-
-   
-    msg = check_blank(username,password,nickname,gender,level) #빈칸확인함수
-    if msg != '통과':
-        print(msg)
-        return JsonResponse({'blank':True})
-    else:#빈칸이 아니면
-        founduser= User.objects.filter(username=username)
-        if len(founduser) > 0: #같은아이디가 있을때.
-            print('여기서 걸리니?:','founduser')
-            return JsonResponse({'existid': True}) #이거 표시할 곳 필요
-        else: #중복아이디가 아니면
-            result = create_user(username,password,nickname,gender,level) #유저생성함수
-            auth.login(request, result)
-            return JsonResponse({'works':True})
-
-
-
+@csrf_exempt
 def sign_in(request):
     if request.method == 'GET': #겟요청
         return render(request, 'second.html')  # second.html 렌더링해줌.
     else: # post로 들어왔을때
-        #장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
-        founduser = auth.authenticate(request,
-                                  username=request.POST['username'],
-                                  password=request.POST['password'])
-        if founduser is not None:
-            auth.login(request, founduser)
-            redirect('main')
-        else:#해당하는 유저정보없으면
-            return render(request, 'second.html', {'error':'id, pw를 확인하세요'})#이것도 표시할 곳 필요할듯
-        if request.method == 'POST':
-            #장고의 자격증명을 통과하면 founduser생성되고 통과하지 못하면 None반환
-            founduser = auth.authenticate(request,
-                                          username=request.POST['username'],
-                                          password=request.POST['password'])
-            if founduser is not None:
-                auth.login(request, founduser)
-                return redirect('main')
+        select = json.loads(request.body.decode('utf-8'))
+        print(select, request)
+        username = select['username']
+        password = str(select['password'])
+        print(username,password)
+        msg = login_check_blank(username, password) # 빈칸체크함수
+        if msg != '통과':
+            return JsonResponse({'blank': True})
+        else:
+            if User.objects.filter(username=username).exists(): #로그인하고자하는 아이디를 가진 유저가 있다면
+                user = User.objects.get(username=username)
+                result = check_password_correct(password,user.password)#패스워드일치여부 판별
+                if result == True:
+                    auth.login(request, user)
+                    return JsonResponse({'works':True})
+                else:
+                    print(result)
+                    return JsonResponse({'wrong_pw': True})
             else:#해당하는 유저정보없으면
-                return render(request, 'second.html', {'error':'id, pw를 확인하세요'})#이것도 표시할 곳 필요할듯
+                return JsonResponse({'no_user': True})
 
 
 @login_required #로그인해야 로그아웃 가능
