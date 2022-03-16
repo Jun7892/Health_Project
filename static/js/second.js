@@ -31,14 +31,11 @@ function charm(sound1) {
 // });
 // 회원가입 진행
 $('#btn-signup').click(function () {
-
-
     var id = $('#user_id').val();
     var pw = $('#login-user-password').val();
     var nn = $('#user_nn').val();
     var ge = $("input[name='gender']:checked").val();
     var le = $("input[name='level']:checked").val();
-
 
     // let form_data = new FormData();
     //
@@ -54,7 +51,7 @@ $('#btn-signup').click(function () {
     console.log(ge)
     console.log(le)
     $.ajax({
-        url: '/second/sign_up/',
+        url: '/second/sign_up',
         // form에 file type 이 있는 경우 enctype: 'multipart/form-data'를 설정해야 한다.
         enctype: 'multipart/form-data',
         // formData를 이용하기 위해서 아래 processData, contentType을 반드시 false로 설정해줘야 한다.
@@ -69,14 +66,16 @@ $('#btn-signup').click(function () {
         data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'gender': ge, 'level': le }),
     }).done(function (data) {
         // request 보낸 url에서 회원가입 정상 진행해도 무방하여 {'works':True}를 JsonResponse로 보낸 경우
-        if (data.works) {
+        if (data.works) { //통과했으면 로그인시켜서 데이터가 넘어왔기 때문에 메인페이지로 보냄
             alert('회원가입이 성공적으로 완료되었습니다');
+            window.location.href='/main'
             // request 보낸 url에서 사용자 이름이 없다고 {'noRealName':True}를 JsonResponse로 보낸 경우
-        } else if (data.noRealName) {
-            alert('이름을 입력해주세요');
+        } else if (data.existid) {
+            alert('이미 존재하는 아이디 입니다.');
+            window.location.reload();
             // request 보낸 url에서 사용자 패스워드가 없다고 {'noPassword':True}를 JsonResponse로 보낸 경우
-        } else if (data.noPassword) {
-            alert('비밀번호를 입력해주세요');
+        } else if (data.blank) {
+            alert('빈칸이 있는지 확인하세요!');
             // 그 밖 모든 data를 JsonResponse로 보낸 경우
         } else {
             alert('정상 요청이 아닙니다');
