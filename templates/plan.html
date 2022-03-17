@@ -36,7 +36,7 @@
                         <div class="todo-title" style="color: white">TODO</div>
                         <form class="input-form">
                             <input type="text" placeholder="WRITE HERE!!" class="input-box"/>
-                            <button type="submit" class="input-btn clickBtn">입력</button>
+                            <button id="inputBtn" type="submit" class="input-btn clickBtn">입력</button>
                         </form>
                         <ul class="todoList"></ul>
                         <div class="showList">
@@ -64,7 +64,6 @@
             <section class="detail">
 
             </section>
-            <script type="text/javascript" src="../static/js/plan.js"></script>
 
         </div>
         <div class="right-side">
@@ -76,25 +75,25 @@
                         아침식사
                         <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div id="meal-bre" class="meal-content">
+                    <ul id="meal-bre" class="meal-content">
 
-                    </div>
+                    </ul>
                     <div id="lunch" class="collapsible">
                         <i class="fa-solid fa-cheese" style="font-style: normal;color: #ffc70d"></i>
                         점심식사
                         <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div id="meal-lun" class="meal-content">
+                    <ul id="meal-lun" class="meal-content">
 
-                    </div>
+                    </ul>
                     <div id="dinner" class="collapsible">
                         <i class="fa-solid fa-utensils" style="font-style: normal"></i>
                         저녁식사
                         <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div id="meal-din" class="meal-content">
+                    <ul id="meal-din" class="meal-content">
 
-                    </div>
+                    </ul>
                 </div>
             </div>
             <form class="meal-input">
@@ -110,10 +109,12 @@
                     <input type="radio" id="dinners" class="morning" name="meal-time">
                     " 저녁"
                 </label>
-                 <input type="text" placeholder="WRITE HERE!!" class="input-meal"/>
-                <button type="submit" class="input-btn clickBtn">입력</button>
+                <input type="text" placeholder="WRITE HERE!!" class="input-meal"/>
+                <button type="submit" class="meal-inputBtn clickBtn">입력</button>
             </form>
         </div>
     </div>
-
+    <script type="text/javascript" src="../static/js/plan.js"></script>
+    <script type="text/javascript" src="../static/js/data.js"></script>
+    <script type="text/javascript" src="../static/js/ajax.js"></script>
 {% endblock %}

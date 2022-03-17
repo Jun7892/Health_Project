@@ -12,11 +12,10 @@ window.onload = function () {
     const createDate = document.querySelector('.createDate');
     const bgblack = document.querySelector('.bgblack');
     const closedBtn = document.querySelector('.closed');
-    const inputMeal = document.querySelector('.input-meal');
-    const mealBtn = document.querySelector('.meal-input-btn');
-    const brList = document.querySelector('#meal-bre')
-    const lnList = document.querySelector('#meal-lun')
-    const dnList = document.querySelector('#meal-din')
+    const breakfastList = document.querySelector('#meal-bre')
+    const MealBtn = document.querySelector('.meal-inputBtn');
+    const MealBox = document.querySelector('.input-meal');
+
     let currentDate;
 
 
@@ -39,7 +38,9 @@ window.onload = function () {
         showMain();
         currentDateget();
         resetInsert();
-        showSide()
+        resetInsertMeal();
+        showSide();
+
     }
 
     function makeElement(firstDate) {
@@ -48,7 +49,7 @@ window.onload = function () {
         //Weekly 행
         for (let i = 0; i < 5; i++) {
             let weeklyEl = document.createElement('div');
-            weeklyEl.setAttribute('class', weekly);
+            weeklyEl.setAttribute('class', "weekly");
             weeklyEl.setAttribute('id', "weekly");
             for (let j = 0; j < 7; j++) {
                 // i === 0이여야 하는 이유는 첫 날짜를 찍고 그 다음 날짜가 0번째 칸부터 다시 그려져야 하기 때문
@@ -106,14 +107,18 @@ window.onload = function () {
         removeCalendar();
         buildCalendar();
         resetInsert();
-        redrawLi()
+        resetInsertMeal();
+        redrawLi();
+        redrawMeal();
     });
     nextEl.addEventListener('click', function () {
         today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
         removeCalendar();
         buildCalendar();
         resetInsert();
-        redrawLi()
+        resetInsertMeal();
+        redrawLi();
+        redrawMeal();
     });
 
     function currentDateget() {
@@ -134,7 +139,9 @@ window.onload = function () {
         currentDateget();
         redrawLi();
         resetInsert();
+        resetInsertMeal();
         showSide();
+        redrawMeal();
     });
 
     inputBtn.addEventListener('click', function (e) {
@@ -142,22 +149,7 @@ window.onload = function () {
         let inputValue = inputBox.value;
         insertTodo(inputValue);
     });
-    //
-    function ajax() {
-        var xhr = new XMLHttpRequest();
 
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-              console.log("작업내용 작성");
-            }
-          }
-        };
-
-        xhr.open("POST", "/todo/TodoTypeServlet", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send(null);
-      }
 
     function insertTodo(text) {
         let todoObj = {
@@ -205,7 +197,6 @@ window.onload = function () {
                     liEl2.appendChild(spanEl2);
                     liEl2.appendChild(delBtn2);
                     inputList.appendChild(liEl2);
-                    brList.appendChild(liEl2);
                     liEl2.setAttribute('id', DATA[todoList][i].id);
                     delBtn2.addEventListener('click', delWork);
                     liEl2.addEventListener('dblclick', showTodo);
@@ -214,8 +205,7 @@ window.onload = function () {
         }
     }
 
-// 다음달,이전달 다른날, 첫 로드 될 때 마다 todo 목록이 있으면(if로 조건문 처리) 다 지우고 다시 그려주는 함수
-    //쉽게 말하자면 클릭을 하면 왼쪽의 넘어가는 날짜랑 요일이 계속 바뀌게 된다.
+// 다음 달,이전 달 다른 날, 첫 로드 될 때 마다 할일 목록이 있으면 다 지우고 다시 그려주는 함수
     function resetInsert() {
         let storeObj = localStorage.getItem(currentDate);
         if (storeObj !== null) {
@@ -226,6 +216,7 @@ window.onload = function () {
             }
             // parse 해주기 전에는 localStorage는 string만 가져오니까 parse해준다.
             const parsed = JSON.parse(localStorage.getItem(currentDate));
+            // console.log(parsed);
             // forEach로 작성되있는 모든 todolist의 항목들을 돌면서 로컬에 저장되어 있는 목록을 화면에 만들어준다.
             parsed.forEach(function (todo) {
                 if (todo) {
@@ -277,6 +268,9 @@ window.onload = function () {
     function save() {
         localStorage.setItem(currentDate, JSON.stringify(DATA[currentDate]));
     }
+    function saveMeal(){
+        localStorage.setItem(currentDate, JSON.stringify(MEAL[currentDate]));
+    }
 
     function meal() {
         let coll = document.getElementsByClassName("collapsible");
@@ -292,51 +286,131 @@ window.onload = function () {
                 } else {
                     content.style.display = "block";
                 }
-
-
             });
         }
     }
 
     meal();
 
-    function insertMeal(text){
+    MealBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        let inputMeal = MealBox.value;
+        insertMeal(inputMeal);
+    });
+
+    function insertMeal(text) {
         let mealObj = {
             meal: text,
-        }
-        if (!DATA[currentDate]) {
-            DATA[currentDate] = [];
-            DATA[currentDate].push(mealObj);
+            // mealList 객체
+        };
+        if (!MEAL[currentDate]) {
+            MEAL[currentDate] = [];
+            MEAL[currentDate].push(mealObj);
+            //MEAL[currentDate] 없다면 빈 Array, 그리고 mealObj를 추가하고 이 값을 반환함.
         } else {
-            DATA[currentDate].push(mealObj);
+            MEAL[currentDate].push(mealObj);
+            //배열의 마지막 속성에 추가한다.
         }
-        // li,span,button의 Element를 생성
-        const divEl = document.createElement('li');
-        const spanEl = document.createElement('span');
-        const delBtn = document.createElement('button');
-        // html에 읽히게 한다..
 
-        delBtn.innerText = "DEL";
-        delBtn.setAttribute('class', 'del-data');
-        spanEl.innerHTML = text;
-        divEl.appendChild(spanEl);
-        divEl.appendChild(delBtn);
-        brList.appendChild(divEl);
-        divEl.setAttribute('id', DATA[currentDate].length);
-        delBtn.addEventListener('click', delWork);
-        divEl.addEventListener('dblclick', showTodo);
-        // todoObj에 id값을 114번 줄에서 넣어주면 DATA[currentDate].length 값을 찾아올 수 없기 때문에 push해준 후 에 추가하여 local에 저장한다.
-        mealObj.id = DATA[currentDate].length;
-        save();
-        inputMeal.value = '';
+        let liMeal = document.createElement("li");
+        let spanMeal = document.createElement("span");
+        let delMeal = document.createElement("button");
+        delMeal.innerText = "X";
+        delMeal.setAttribute('class', 'del-meal');
+        spanMeal.innerHTML = text;
+        // div 태그 안에 span,button태그 형성
+        liMeal.appendChild(spanMeal);
+        liMeal.appendChild(delMeal);
+        liMeal.setAttribute('id', "mealList");
+        breakfastList.appendChild(liMeal);
+        liMeal.setAttribute('id', MEAL[currentDate].length);//id는 1,2,3,4,5,....이런식으로 가게끔
+        delMeal.addEventListener('click', delMealList)
+        mealObj.id = MEAL[currentDate].length;
+        saveMeal();
+        MealBox.value = '';
+    };
+
+
+    function redrawMeal() {
+        // 다른 날짜를 클릭했을때 그 전에 작성한 Meallist목록을 먼저 다 지우기 위해 li와 span을 찾아와 for문으로 지워주고 다시 그려준다.
+        let liMeal = document.querySelectorAll('LI');
+        for (let i = 0; i < liMeal.length; i++) {
+            breakfastList.removeChild(liMeal[i]);
+        }
+        for (let breakfastList in MEAL) {
+            if (breakfastList === currentDate) {
+                for (let i = 0; i < MEAL[breakfastList].length; i++) {
+                    const liMeal2 = document.createElement('li');
+                    const spanMeal2 = document.createElement('span');
+                    const delMeal2 = document.createElement('button');
+                    delMeal2.innerText = "DEL";
+                    delMeal2.setAttribute('class', 'del-Meal');
+                    spanMeal2.innerHTML = MEAL[breakfastList][i].meal;
+                    liMeal2.appendChild(spanMeal2);
+                    liMeal2.appendChild(delMeal2);
+                    breakfastList.appendChild(liMeal2);
+                    liMeal2.setAttribute('id', MEAL[breakfastList][i].id);
+                    delMeal2.addEventListener('click', delMealList);
+                }
+            }
+        }
+    }
+
+// 다음 달,이전 달 다른 날, 첫 로드 될 때 마다 할일 목록이 있으면 다 지우고 다시 그려주는 함수
+    function resetInsertMeal() {
+        let StoreObj = localStorage.getItem(currentDate);
+        if (StoreObj !== null) {
+            // liEl
+            let liMeal = document.querySelectorAll('LI');
+            for (let i = 0; i < liMeal.length; i++) {
+                breakfastList.removeChild(liMeal[i]);
+            }
+            // parse 해주기 전에는 localStorage는 string만 가져오니까 parse해준다.
+            const parsed = JSON.parse(localStorage.getItem(currentDate));
+            // console.log(parsed)
+
+            parsed.forEach(function (meal) {
+                if (meal) {
+                    let lili2 = document.createElement('li');
+                    let spanspan2 = document.createElement('span');
+                    let deldel2 = document.createElement('button');
+                    deldel2.setAttribute('class', 'del-meal');
+                    deldel2.innerText = "DEL";
+                    lili2.setAttribute('id', meal.id);
+                    spanspan2.innerHTML = meal.meal;
+                    lili2.appendChild(spanspan2);
+                    lili2.appendChild(deldel2);
+                    breakfastList.appendChild(lili2);
+                    deldel2.addEventListener('click', delMealList);
+
+                }
+            });
+        }
+    }
+
+    resetInsertMeal();
+
+    function delMealList(e) {
+        e.preventDefault();
+        let delParentLi = e.target.parentNode;
+        breakfastList.removeChild(delParentLi);
+        // DATA[currentDate]를 filter함수를 이용해 todo로 돌면서 todo의 아이디값과 현재 내가 누른 아이디값이 같지 않은 것을 배열에 담아 리턴해주어서
+        // 내가 지우고자 하는 요소를 뺀 나머지 요소를 배열에 담아 리턴해준다.
+        // 그 배열을 다시 DATA[currentDate]에 할당하여 save();를 통해 localStorage에 넣어준다.
+        const cleanMeals = MEAL[currentDate].filter(function (meal) {
+            return meal.id !== parseInt(delParentLi.id);
+        });
+        MEAL[currentDate] = cleanMeals;
+        saveMeal();
     }
 
 
-        mealBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        let inputValue = inputMeal.value;
-        insertMeal(inputValue);
-    });
+
+    // mealBtn.addEventListener('click', function (e) {
+    //     e.preventDefault();
+    //     let inputValue = inputMeal.value;
+    //     insertMeal(inputValue);
+    // });
     // function changeBorderRadius() {
     //     let coll = document.getElementsByClassName("collapsible");
     //     let i;
@@ -360,22 +434,3 @@ window.onload = function () {
     // changeBorderRadius();
 }
 
-
-let DATA = {
-    // todolist 목록
-};
-
-Date.prototype.format = function () {  // 현재 날짜 보기좋게 출력 / 사용방법: newDate().format() 으로 사용가능
-    var yyyy = this.getFullYear();
-    var month = (this.getMonth() + 1);
-    var dd = this.getDate();
-    var format = [yyyy, month, dd].join('-');
-    return format;
-}
-
-Date.prototype.format2 = function () {  // 현재 날짜 보기좋게 출력 / 사용방법: newDate().format() 으로 사용가능
-    var yyyy = this.getFullYear();
-    var month = (this.getMonth() + 1);
-    var format = [yyyy, month].join('-');
-    return format;
-}
