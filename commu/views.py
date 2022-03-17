@@ -11,7 +11,9 @@ def commu_view(request):
 
 
 def delete_an_article(request, id): # 글 삭제
-    pass
+    my_article = Article.objects.get(id=id)
+    my_article.delete()
+    return redirect('/commu')
 
 
 def article_detail(request, id):
@@ -19,11 +21,13 @@ def article_detail(request, id):
     return render(request, 'commu/commu_detail.html', {'article': get_article})
 
 
-def article_create(request, id):
-    if request.method == 'POST':
+def article_create(request):
+    if request.method == 'GET':
+        return render(request, 'commu/commu_create_article.html')
+    elif request.method == 'POST':
         author = request.user
-        title = request.POST.get()
-        content = request.POST.get()
+        title = request.POST.get('title', '')
+        content = request.POST.get('content', '')
         my_article = Article.objects.create(author=author, title=title, content=content)
         my_article.save()
-        return render(request, 'commu/commu.html')
+        return redirect("/commu")
