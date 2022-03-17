@@ -7,23 +7,14 @@ from commu.services.article_service import create_an_article, get_article_list
 from commu.services.comment_service import create_an_comment, delete_an_comment, update_an_comment
 
 
+
+
 # @login_required(login_url:'sign_in')
 def commu_view(request):
     if request.method == 'GET':
-        #글들 좌라락 불러오기
-        page = request.GET.get("page")
-        comments = get_article_list(page)
-        return render(request, 'commu.html')
-    else: #post요청이면
-        user = request.user # 지금 접속해있는 user정보
-        title=request.POST['title']
-        content=request.POST['content']
-        create_an_article(user, title, content) #게시글 생성함수
-        return redirect()
+       article = Article.objects.all().order_by('-created_at')
+       return render(request, 'commu/commu.html', {'article': article})
 
-
-def delete_an_article(request): # 글 삭제
-    pass
 
 # @login_required(login_url:'sign_in')
 def write_comment(request, id): #해당게시글의 id
@@ -34,6 +25,7 @@ def write_comment(request, id): #해당게시글의 id
         comment = create_an_comment(article, user, comment)
         return redirect() #해당게시글 페이지로
 
+      
 # @login_required(login_url:'sign_in')
 def update_comment(request, id): #해당댓글의 id
     if request.method == 'POST':
@@ -46,7 +38,31 @@ def update_comment(request, id): #해당댓글의 id
         else:
             return JsonResponse({'msg':'잘못된 접근입니다.'})#어떤 방식으로 프론트에서 보여주냐에 따라 바뀔수 있음
 
+          
 # @login_required(login_url:'sign_in')
 def delete_comment(request, id):# 해당댓글 id
     delete_an_comment(id)
     return redirect()#해당 게시글 페이지로
+
+
+def delete_an_article(request, id): # 글 삭제
+    my_article = Article.objects.get(id=id)
+    my_article.delete()
+    return redirect('/commu')
+
+
+def article_detail(request, id):
+    get_article = Article.objects.get(id=id)
+    return render(request, 'commu/commu_detail.html', {'article': get_article})
+
+
+def article_create(request):
+    if request.method == 'GET':
+        return render(request, 'commu/commu_create_article.html')
+    elif request.method == 'POST':
+        author = request.user
+        title = request.POST.get('title', '')
+        content = request.POST.get('content', '')
+        my_article = Article.objects.create(author=author, title=title, content=content)
+        my_article.save()
+        return redirect("/commu")
