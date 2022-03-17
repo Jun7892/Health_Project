@@ -46,7 +46,7 @@
     {# pagination #}
     <nav aria-label="Page navigation example">
         <ul class="pagination" style="justify-content: center;">
-            <li class="page-item"><a class="page-link" href="?page=1" class="first">처음 페이지 </a></li>
+            <li class="page-item"><a class="page-link" href="?page=1" class="first">First Page </a></li>
     {#        {% if page.has_previous %}#}
     {#            <li class="page-item"><a class="page-link" href="?page={{ page.previous_page_number }}">이전</a></li>#}
     {#        {% endif %}#}
@@ -57,7 +57,7 @@
     {#            ...#}
                 {% endif %}
             {% endfor %}
-            <li class="page-item"><a class="page-link" href="?page={{ page.paginator.num_pages }}">마지막페이지</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page.paginator.num_pages }}">Last Page</a></li>
     {#        {% if page.has_next %}#}
     {#            <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}">다음</a></li>#}
     {#        {% endif %}#}
