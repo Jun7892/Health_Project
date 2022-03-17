@@ -13,9 +13,9 @@
 
 {% block content %}
     <div id="particles-js">
-    <p>title: {{ article.title }}</p>
-    <p>content: {{ article.content }}</p>
-    <p>author: {{ article.author }}</p>
+    {{ article.title }}
+    {{ article.content }}
+    {{ article.author }}
     </div>
 
     <script src="../../static/js/particles.js"></script>
