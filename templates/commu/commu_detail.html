@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="../../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/commu.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../static/js/commu.js"></script>
+{% endblock %}
+
+{% block title %}COMMU{% endblock %}
+
+{% block content %}
+    <div id="particles-js">
+    <p>title: {{ article.title }}</p>
+    <p>content: {{ article.content }}</p>
+    <p>author: {{ article.author }}</p>
+    <a href="delete/{{ article.id }}">삭제</a>
+
+    <script src="../../static/js/particles.js"></script>
+    <script src="../../static/js/app.js"></script>
+
+{% endblock %}

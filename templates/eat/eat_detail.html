@@ -21,12 +21,12 @@ EAT_DETAIL
 {#메인 컨텐츠 들어가는 곳#}
 {% block content %}
     <div class="header">
-        <h2 class="movemain" STYLE="margin-left: 2vw; display: inline; color: white; font-size: 2.5vw;" onclick="location.href='/main/'">RECIPE</h2>
-        <h3 STYLE="margin-left: 10vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Recommendation</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Protein</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Supplements</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Equiment</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;" onclick="location.href=/second/'">Logout</h3>
+        <h2 id="SBL_font" class="movemain" STYLE="margin-left: 2vw; display: inline; color: white; font-size: 4vw;" onclick="location.href='/main/'">RECIPE</h2>
+        <h3 STYLE="margin-left: 6vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Recommendation</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Protein</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Supplements</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Equiment</h3>
+        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;" onclick="location.href=/second/'">Logout</h3>
         <img src="{% static 'img/logo.png' %}" style="float: right; width: 25vw;">
     </div>
     {# recipe #}
@@ -51,5 +51,6 @@ EAT_DETAIL
         </div>
 
     </div>
+
 
 {% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="../../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/commu.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../static/js/commu.js"></script>
+{% endblock %}
+
+{% block title %}COMMU{% endblock %}
+
+{% block content %}
+    <div id="particles-js">
+    <form action="" method="post">
+        {% csrf_token %}
+        <textarea class="article_title" name="title"></textarea>
+        <textarea class="article_content" name="content"></textarea>
+        <button type="submit" class="submit_button">작성하기</button>
+    </form>
+    </div>
+
+    <script src="../../static/js/particles.js"></script>
+    <script src="../../static/js/app.js"></script>
+
+{% endblock %}
