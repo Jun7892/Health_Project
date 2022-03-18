@@ -45,17 +45,6 @@ def delete_comment(request, id):# 해당댓글 id
     return redirect()#해당 게시글 페이지로
 
 
-def delete_an_article(request, id): # 글 삭제
-    my_article = Article.objects.get(id=id)
-    my_article.delete()
-    return redirect('/commu')
-
-
-def article_detail(request, id):
-    get_article = Article.objects.get(id=id)
-    return render(request, 'commu/commu_detail.html', {'article': get_article})
-
-
 def article_create(request):
     if request.method == 'GET':
         return render(request, 'commu/commu_create_article.html')
@@ -69,3 +58,29 @@ def article_create(request):
             my_article = Article.objects.create(author=user, title=title, content=content)
             my_article.save()
             return redirect("/commu")
+
+
+def article_detail(request, id):
+    get_article = Article.objects.get(id=id)
+    return render(request, 'commu/commu_detail.html', {'article': get_article})
+
+
+def delete_an_article(request, id): # 글 삭제
+    my_article = Article.objects.get(id=id)
+    my_article.delete()
+    return redirect('/commu')
+
+
+def article_update(request, id):
+    article = Article.objects.get(id=id)
+    print(article)
+    if request.method == 'POST':
+        article.title = request.POST['title']
+        article.content = request.POST['content']
+        if article.content == '' or article.title == '':
+            return render(request, 'commu/commu_update_article.html', {'error': '내용에 빈칸이 있습니다'})
+        else:
+            article.save()
+            return redirect('/commu', article.id)
+    else:
+        return render(request, 'commu/commu_update_article.html', {'article':article})
