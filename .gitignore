@@ -22,3 +22,5 @@ venv/
 0006_initial.py
 
 recipe_data.csv
+
+secret.json
