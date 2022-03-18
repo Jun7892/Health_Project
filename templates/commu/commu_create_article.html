@@ -18,6 +18,9 @@
         <textarea class="article_title" name="title"></textarea>
         <textarea class="article_content" name="content"></textarea>
         <button type="submit" class="submit_button">작성하기</button>
+        {% if error %}
+            <p style="color: red">{{ error }}</p>
+        {% endif %}
     </form>
     </div>
 

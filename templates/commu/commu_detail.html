@@ -16,7 +16,9 @@
     <p>title: {{ article.title }}</p>
     <p>content: {{ article.content }}</p>
     <p>author: {{ article.author }}</p>
-    <a href="delete/{{ article.id }}">삭제</a>
+        {% if article.author == user %}
+            <a href="/commu/delete/{{ article.id }}">삭제</a>
+        {% endif %}
 
     <script src="../../static/js/particles.js"></script>
     <script src="../../static/js/app.js"></script>
