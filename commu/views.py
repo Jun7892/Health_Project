@@ -12,7 +12,7 @@ from commu.services.comment_service import create_an_comment, delete_an_comment,
 # @login_required(login_url:'sign_in')
 def commu_view(request):
     if request.method == 'GET':
-       article = Article.objects.all().order_by('-created_at')
+       article = Article.objects.all().order_by('-id')
        return render(request, 'commu/commu.html', {'article': article})
 
 
@@ -45,10 +45,19 @@ def delete_comment(request, id):# 해당댓글 id
     return redirect()#해당 게시글 페이지로
 
 
-def delete_an_article(request, id): # 글 삭제
-    my_article = Article.objects.get(id=id)
-    my_article.delete()
-    return redirect('/commu')
+def article_create(request):
+    if request.method == 'GET':
+        return render(request, 'commu/commu_create_article.html')
+    elif request.method == 'POST':
+        user = request.user
+        title = request.POST.get('title', '')
+        content = request.POST.get('content', '')
+        if content == '' or title == '':
+            return render(request, 'commu/commu_create_article.html', {'error': '내용에 빈칸이 있습니다'})
+        else:
+            my_article = Article.objects.create(author=user, title=title, content=content)
+            my_article.save()
+            return redirect("/commu")
 
 
 def article_detail(request, id):
@@ -56,13 +65,22 @@ def article_detail(request, id):
     return render(request, 'commu/commu_detail.html', {'article': get_article})
 
 
-def article_create(request):
-    if request.method == 'GET':
-        return render(request, 'commu/commu_create_article.html')
-    elif request.method == 'POST':
-        author = request.user
-        title = request.POST.get('title', '')
-        content = request.POST.get('content', '')
-        my_article = Article.objects.create(author=author, title=title, content=content)
-        my_article.save()
-        return redirect("/commu")
+def delete_an_article(request, id): # 글 삭제
+    my_article = Article.objects.get(id=id)
+    my_article.delete()
+    return redirect('/commu')
+
+
+def article_update(request, id):
+    article = Article.objects.get(id=id)
+    print(article)
+    if request.method == 'POST':
+        article.title = request.POST['title']
+        article.content = request.POST['content']
+        if article.content == '' or article.title == '':
+            return render(request, 'commu/commu_update_article.html', {'error': '내용에 빈칸이 있습니다'})
+        else:
+            article.save()
+            return redirect('/commu', article.id)
+    else:
+        return render(request, 'commu/commu_update_article.html', {'article':article})

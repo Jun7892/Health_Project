@@ -9,17 +9,20 @@
     <script type="text/javascript" src="../../static/js/commu.js"></script>
 {% endblock %}
 
-{% block title %}COMMU{% endblock %}
+{% block title %}COMMU UPDATE{% endblock %}
 
 {% block content %}
     <div id="particles-js">
-    <p>title: {{ article.title }}</p>
-    <p>content: {{ article.content }}</p>
-    <p>author: {{ article.author }}</p>
-        {% if article.author == user %}
-            <a href="/commu/delete/{{ article.id }}">삭제</a>
-            <a href="/commu/update/{{ article.id }}">수정</a>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input class="article_title" name="title" value="{{ article.title }}">
+        <input class="article_content" name="content" value="{{ article.content }}">
+        <button type="submit" class="submit_button">수정하기</button>
+        {% if error %}
+            <p style="color: red">{{ error }}</p>
         {% endif %}
+    </form>
+    </div>
 
     <script src="../../static/js/particles.js"></script>
     <script src="../../static/js/app.js"></script>
