@@ -21,7 +21,7 @@ EAT_DETAIL
 {#메인 컨텐츠 들어가는 곳#}
 {% block content %}
     <div class="header">
-        <h2 id="SBL_font" class="movemain" STYLE="margin-left: 2vw; display: inline; color: white; font-size: 4vw;" onclick="location.href='/main/'">RECIPE</h2>
+        <h2 id="SBL_font" class="movemain" STYLE="margin-left: 2vw; display: inline; color: white; font-size: 4vw; color: orangered" onclick="location.href='/main/'">RECIPE</h2>
         <h3 STYLE="margin-left: 6vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Recommendation</h3>
         <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Protein</h3>
         <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Supplements</h3>
@@ -31,7 +31,10 @@ EAT_DETAIL
     </div>
     {# recipe #}
     <div id="container">
-        <img src="{{ recipe.image }}">
+        <a>&nbsp;</a>
+        <a>&nbsp;</a>
+        <img src="{{ recipe.image }}" class="foodimg">
+        <a>&nbsp;</a>
         <div class="title">
             <p>{{ recipe.title }}</p>
         </div>
@@ -49,8 +52,17 @@ EAT_DETAIL
                 <p>{{ forloop.counter }}. {{ step }}</p>
             {% endfor %}
         </div>
-
     </div>
 
+    <div class="animation-area">
+        <ui class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ui>
+    </div>
 
 {% endblock %}
