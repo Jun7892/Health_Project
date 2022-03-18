@@ -7,8 +7,6 @@ from commu.services.article_service import create_an_article, get_article_list
 from commu.services.comment_service import create_an_comment, delete_an_comment, update_an_comment
 
 
-
-
 # @login_required(login_url:'sign_in')
 def commu_view(request):
     if request.method == 'GET':
@@ -73,7 +71,6 @@ def delete_an_article(request, id): # 글 삭제
 
 def article_update(request, id):
     article = Article.objects.get(id=id)
-    print(article)
     if request.method == 'POST':
         article.title = request.POST['title']
         article.content = request.POST['content']
@@ -83,4 +80,4 @@ def article_update(request, id):
             article.save()
             return redirect('/commu', article.id)
     else:
-        return render(request, 'commu/commu_update_article.html', {'article':article})
+        return render(request, 'commu/commu_update_article.html', {'article': article})
