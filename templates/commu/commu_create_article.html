@@ -15,9 +15,12 @@
     <div id="particles-js">
     <form action="" method="post">
         {% csrf_token %}
-        <textarea class="article_title" name="title"></textarea>
-        <textarea class="article_content" name="content"></textarea>
+        <input class="article_title" name="title">
+        <input class="article_content" name="content">
         <button type="submit" class="submit_button">작성하기</button>
+        {% if error %}
+            <p style="color: red">{{ error }}</p>
+        {% endif %}
     </form>
     </div>
 
