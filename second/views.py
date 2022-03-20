@@ -7,6 +7,7 @@ from django.contrib import auth
 from second.services.join_service import create_user, check_blank
 import json
 from second.services.login_service import login_check_blank, check_password_correct
+# from second.services.profile_service import get_profile_img_src, profile_update
 
 
 @csrf_exempt
@@ -69,3 +70,23 @@ def sign_in(request):
 def logout(request):
     auth.logout(request)
     return redirect('sign_in')
+
+# @login_required(login_url:'sign_in')
+def testmypage(request):
+    if request.method == 'GET':
+        user = request.user#접속한 유저의 정보들고있음
+        return render(request, 'commu/testmypage.html', {'user':user})
+    else:
+        user = request.user  # 접속한 유저의 정보들고있음
+        nickname= request.POST['nickname']
+        img_file = request.FILES['file']
+        print(nickname, img_file)
+        #닉네임만 변경시 혹은 프로필사진만 변경시를 따로 나눠줘야함 - 아직작업안함
+        try:
+            filepath = get_profile_img_src(user, img_file)
+            print(filepath)
+            profile_update(user, nickname, filepath)
+            return redirect('test')#마이페이지로
+        except:
+            print('오류?')
+            return redirect('test')

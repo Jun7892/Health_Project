@@ -9,15 +9,15 @@
     <script type="text/javascript" src="../../static/js/commu.js"></script>
 {% endblock %}
 
-{% block title %}COMMU{% endblock %}
+{% block title %}COMMU UPDATE{% endblock %}
 
 {% block content %}
     <div id="particles-js">
     <form action="" method="post">
         {% csrf_token %}
-        <input class="article_title" name="title">
-        <input class="article_content" name="content">
-        <button type="submit" class="submit_button">작성하기</button>
+        <input class="article_title" name="title" value="{{ article.title }}">
+        <input class="article_content" name="content" value="{{ article.content }}">
+        <button type="submit" class="submit_button">수정하기</button>
         {% if error %}
             <p style="color: red">{{ error }}</p>
         {% endif %}
