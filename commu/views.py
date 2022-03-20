@@ -102,3 +102,15 @@ def article_update(request, id):
     else:
         return render(request, 'commu/commu_update_article.html', {'article':article})
 
+
+def like(request, id):
+    if request.method == 'POST':
+        user = request.user
+        article = Article.objects.get(id=id)
+        if user in article.like_user.all():
+            article.like_user.remove(user)
+        else:
+            article.like_user.add(user)
+    return redirect(f'/commu/{id}')
+
+
