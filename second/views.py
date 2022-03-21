@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_exempt
 from second.models import User
 from django.contrib import auth
 from second.services.join_service import create_user, check_blank
@@ -72,6 +71,7 @@ def logout(request):
     auth.logout(request)
     return redirect('sign_in')
 
+
 # @login_required(login_url:'sign_in')
 def testmypage(request,id):
     login_user = request.user  # 접속한 유저의 정보들고있음
@@ -94,6 +94,7 @@ def testmypage(request,id):
             print('오류?')#메세지
             return redirect('test', login_user.id) #나중에 마이페이지에 해당하는것으로 변경하기
 
+
 # @login_required(login_url:'sign_in')
 def user_follow(request, id):
     user = request.user#지금 접속한 사용자
@@ -103,6 +104,7 @@ def user_follow(request, id):
     else: #팔로우하고 있지 않았다면
         click_user.followee.add(user)#클릭한 유저의 followee에 user추가~!
     return redirect('test', user.id)
+
 
 # @login_required(login_url:'sign_in')
 def show_follow(request, id):
