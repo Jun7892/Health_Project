@@ -7,7 +7,8 @@ from django.contrib import auth
 from second.services.join_service import create_user, check_blank
 import json
 from second.services.login_service import login_check_blank, check_password_correct
-# from second.services.profile_service import get_profile_img_src, profile_update
+from second.services.profile_service import get_profile_img_src, profile_update
+
 
 
 @csrf_exempt
