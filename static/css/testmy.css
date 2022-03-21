@@ -1,0 +1,150 @@
+body{
+    font-family: Cafe24SsurroundAir;
+    overflow-y: scroll;
+}
+.modal_wrap{
+        display: none;
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        margin: -250px 0 0 -250px;
+        background:#eee;
+        z-index: 2;
+}
+.black_bg{
+    display: none;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0,0, 0.5);
+    top:0;
+    left: 0;
+    z-index: 1;
+}
+.modal_close{
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+.modal_close> a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background:url(https://img.icons8.com/metro/26/000000/close-window.png);
+    text-indent: -9999px;
+}
+
+#main_container{
+    width:1260px;
+    margin:20px auto;
+}
+#user_wrapper{
+    display: flex;
+    justify-content: start;
+    width:1260px;
+    background-color: #f6f6f6;
+}
+.edit_profile{
+
+}
+#profile{
+    width: 220px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+#image{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid peru;
+}
+.user_desc{
+    width: 700px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.counts{
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+.count{
+    font-size: 22px;
+}
+
+#recommend_container{
+    width:1260px;
+    background-color: whitesmoke;
+    border: 1px double #F39C1B;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    }
+.upper_box{
+    width:1100px;
+    height: 250px;
+}
+.box{
+    margin: 30px 0 0 10px;
+    position: relative;
+}
+
+.recommend_img_box{
+    width:300px;
+    height:200px;
+    margin:20px;
+}
+
+#recommend_img{
+    width:280px;
+    height:180px;
+    margin:10px;
+    position: relative;
+    z-index: 4;
+}
+#recommend_img:hover{
+    z-index: 1;
+}
+.recommend_descbox{
+    width:280px;
+    height:180px;
+    margin:20px;
+    top:-10px;
+    left:-10px;
+    position: absolute;
+    z-index: 3;
+    background-color: white;
+    opacity: 80%;
+    cursor:pointer;
+}
+.recommend_descbox:hover{
+    z-index: 7;
+}
+.s_descs{
+    font-size: 15px;
+    margin:15px 0 0 10px;
+    font-weight: 600;
+    color: black;
+}
+.go{
+    font-size: 18px;
+    color: orangered;
+    margin:15px 0;
+    font-weight: 600;
+    text-align: center;
+}
