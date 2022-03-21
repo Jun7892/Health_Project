@@ -20,7 +20,7 @@
             </div>
             <div class="user_desc">
                 <p>{{ user.nickname }}님</p>
-                <a href="/second/test/follow" >
+                <a href="/second/test/follow/{{ user.id }}" >
                     <div class="counts">
                     <p class="count"> 팔로우: {{ user.follow.count }}명</p>
                     <p class="count"> 팔로워: {{ user.followee.count }}명</p>
@@ -58,7 +58,7 @@
                     <p class="s_descs">운동레벨: {{ another.level }}</p>
                     <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>
                     <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>
-                    <a href="/second/test/follow/{{ another.id }}">[팔로우]</a>
+                    <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>
                     <p class="go"> 이 사람이 궁금하다면 클릭! </p>
                 </div>
             </div>

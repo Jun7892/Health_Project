@@ -105,8 +105,9 @@ def user_follow(request, id):
     return redirect('show_follow')
 
 # @login_required(login_url:'sign_in')
-def show_follow(request):
-    user = request.user
+def show_follow(request, id):
+    login_user = request.user
+    user = User.objects.get(id=id)
     follow_list = User.objects.get(id=user.id).follow.all()
     followee_list = User.objects.get(id=user.id).followee.all()
-    return render(request, 'commu/follow_detail.html', {'user':user,'follow_list':follow_list, 'followee_list':followee_list})
+    return render(request, 'commu/follow_detail.html', {'user':user,'follow_list':follow_list, 'followee_list':followee_list, 'login_user':login_user})

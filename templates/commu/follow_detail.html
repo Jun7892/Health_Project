@@ -15,9 +15,11 @@
         {% for follow in follow_list %}
             <p style="color: #1b1b1b">{{ follow.username }}
              {% if follow in follow_list %}
-                <a href="/second/test/follow/{{ follow.id }}" class="card-link">[팔로우 취소]</a>
+                {% if login_user == user %}
+                <a href="/second/test/update/follow/{{ follow.id }}" class="card-link">[팔로우 취소]</a>
              {% else %}
-                <a href="/second/test/follow/{{ follow.id }}" class="card-link">[팔로우]</a>
+                <a href="/second/test/update/follow/{{ follow.id }}" class="card-link">[팔로우]</a>
+                {% endif %}
              {% endif %}
             </p>
         {% endfor %}
