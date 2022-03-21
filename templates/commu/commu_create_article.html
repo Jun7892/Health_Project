@@ -4,27 +4,33 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="../../static/css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../../static/css/commu.css" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/commu_create.css' %}" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../../static/js/commu.js"></script>
+    <script src="../../static/js/particles.js"></script>
+    <script src="../../static/js/app.js"></script>
 {% endblock %}
 
 {% block title %}COMMU{% endblock %}
 
 {% block content %}
     <div id="particles-js">
-    <form action="" method="post">
-        {% csrf_token %}
-        <input class="article_title" name="title">
-        <input class="article_content" name="content">
-        <button type="submit" class="submit_button">작성하기</button>
-        {% if error %}
-            <p style="color: red">{{ error }}</p>
-        {% endif %}
-    </form>
+        <div id="container">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div>
+                    <textarea class="article_title" name="title" rows="3" cols="70" placeholder="제목"></textarea>
+                </div>
+                <div>
+                    <textarea class="article_content" name="content" rows="50" cols="70" placeholder="내용"></textarea>
+                </div>
+                <button type="submit" class="submit_button">작성하기</button>
+                {% if error %}
+                    <p style="color: red">{{ error }}</p>
+                {% endif %}
+            </form>
+        </div>
     </div>
 
-    <script src="../../static/js/particles.js"></script>
-    <script src="../../static/js/app.js"></script>
 
 {% endblock %}

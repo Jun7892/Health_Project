@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <link href="../../static/css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../../static/css/commu.css" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/commu_detail.css' %}" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../../static/js/commu.js"></script>
     <script>
         function show_edit(){
@@ -23,13 +23,13 @@
 
 {% block content %}
     <div id="particles-js" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
-    <a href="/commu" style="color: black">게시판으로</a>
+    <a href="/commu" style="color: black; text-decoration-line: none; color: #2208e7">게시판으로</a>
     <form action="/commu/like/{{ article.id }}" method="POST">
         {% csrf_token %}
         {% if user in article.like_user.all %}
-        <input type="submit" value="좋아요 취소"><p>like:{{ article.like_user.count }}</p>
+            <input type="submit" value="좋아요 취소"><p>like:{{ article.like_user.count }}</p>
         {% else %}
-        <input type="submit" value="좋아요"> <p>like:{{ article.like_user.count }}</p>
+            <input type="submit" value="좋아요"> <p>like:{{ article.like_user.count }}</p>
         {% endif %}
     </form>
     <p>title: {{ article.title }}</p>

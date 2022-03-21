@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: SB_L, sans-serif;
+}
+
+#particles-js {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/commu.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.article_title{
+    margin-top: 3%;
+    resize: none;
+    border-color: black;
+}
+
+.article_content{
+    margin-top: 2%;
+    resize: none;
+    border-color: black;
+}
+
+.submit_button{
+    margin-left: 80%;
+    width: 20%;
+    height: 4vh;
+    cursor: pointer;
+    border-color: black;
+}
+
+.base {
+    position: absolute;
+}
