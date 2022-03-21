@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.utils.datastructures import MultiValueDictKeyError
+
 from second.models import User
 from django.contrib import auth
 from second.services.join_service import create_user, check_blank
@@ -81,18 +83,16 @@ def testmypage(request,id):
     another_user_list = user_list.difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
     if request.method == 'GET':
         return render(request, 'commu/testmypage.html', {'user':user, 'login_user':login_user ,'another_user_list':another_user_list})
-    else:
+    else:# 프로필 변경요청
         nickname= request.POST['nickname']
-        img_file = request.FILES['file']
-        print(nickname, img_file)
-        #닉네임만 변경시 혹은 프로필사진만 변경시를 따로 나눠줘야함 - 아직작업안함
-        try:
-            filepath = get_profile_img_src(login_user, img_file)
-            profile_update(login_user, nickname, filepath)
-            return redirect('test', login_user.id)#마이페이지로
-        except:
-            print('오류?')#메세지
-            return redirect('test', login_user.id) #나중에 마이페이지에 해당하는것으로 변경하기
+        if nickname == "" or MultiValueDictKeyError(KeyError): #닉네임 공백이면
+            try:#사진 선택한걸로 바꿔주거나
+                img_file = request.FILES['file']
+                filepath = get_profile_img_src(login_user, img_file)
+                profile_update(login_user, nickname, filepath)
+                return redirect('test', login_user.id)#마이페이지로
+            except: #사진도 선택안했으면 그냥 유지
+                return redirect('test', login_user.id) #나중에 마이페이지에 해당하는것으로 변경하기
 
 
 # @login_required(login_url:'sign_in')
