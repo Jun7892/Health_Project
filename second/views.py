@@ -48,10 +48,8 @@ def sign_in(request):
         return render(request, 'second.html')  # second.html 렌더링해줌.
     else: # post로 들어왔을때
         select = json.loads(request.body.decode('utf-8'))
-        print(select, request)
         username = select['username']
         password = str(select['password'])
-        print(username,password)
         msg = login_check_blank(username, password) # 빈칸체크함수
         if msg != '통과':
             return JsonResponse({'blank': True})
@@ -75,25 +73,26 @@ def logout(request):
     return redirect('sign_in')
 
 # @login_required(login_url:'sign_in')
-def testmypage(request):
-    user = request.user  # 접속한 유저의 정보들고있음
+def testmypage(request,id):
+    login_user = request.user  # 접속한 유저의 정보들고있음
+    user = User.objects.get(id=id) #마이페이지의 유저
+    user_list = User.objects.all().exclude(username=user.username)  # 로그인한 사용자 제외한 유저리스트
+    follow_list = User.objects.get(id=user.id).follow.all()
+    another_user_list = User.objects.exclude(username=user.username).difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
     if request.method == 'GET':
-        user_list = User.objects.all().exclude(username=user.username) #로그인한 사용자 제외한 유저리스트
-        follow_list = User.objects.get(id=user.id).follow.all()
-        another_user_list= User.objects.exclude(username=user.username).difference(follow_list)#나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
-        return render(request, 'commu/testmypage.html', {'user':user, 'user_list':user_list,'another_user_list':another_user_list})
+        return render(request, 'commu/testmypage.html', {'user':user, 'user_list':user_list, 'login_user':login_user ,'another_user_list':another_user_list})
     else:
         nickname= request.POST['nickname']
         img_file = request.FILES['file']
         print(nickname, img_file)
         #닉네임만 변경시 혹은 프로필사진만 변경시를 따로 나눠줘야함 - 아직작업안함
         try:
-            filepath = get_profile_img_src(user, img_file)
-            profile_update(user, nickname, filepath)
-            return redirect('test')#마이페이지로
+            filepath = get_profile_img_src(login_user, img_file)
+            profile_update(login_user, nickname, filepath)
+            return redirect('test', login_user.id)#마이페이지로
         except:
             print('오류?')#메세지
-            return redirect('test') #나중에 마이페이지에 해당하는것으로 변경하기
+            return redirect('test', login_user.id) #나중에 마이페이지에 해당하는것으로 변경하기
 
 # @login_required(login_url:'sign_in')
 def user_follow(request, id):
