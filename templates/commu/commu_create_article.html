@@ -14,14 +14,14 @@
 {% block title %}COMMU{% endblock %}
 
 {% block content %}
-    <div id="particles-js">
+    <div id="particles-js" class="particles">
         <div id="container">
             <form action="" method="post">
                 {% csrf_token %}
                 <div>
                     <textarea class="article_title" name="title" rows="3" cols="70" placeholder="제목"></textarea>
                 </div>
-                <div>
+                <div class="contentbox">
                     <textarea class="article_content" name="content" rows="50" cols="70" placeholder="내용"></textarea>
                 </div>
                 <button type="submit" class="submit_button">작성하기</button>
