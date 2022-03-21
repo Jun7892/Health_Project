@@ -16,7 +16,19 @@ function getCookie(name) {
 }
 var csrftoken = getCookie('csrftoken');
 
-출처: https://thalals.tistory.com/116 [힘차게, 열심히 공대생]
+function csrfSafeMethod(method) {
+  // these HTTP methods do not require CSRF protection
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+  beforeSend: function(xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+  },
+  headers: { "X-CSRFToken": '{{csrf_token}}' },
+});
+
 // 버튼 클릭시 display: flex 값 / 닫기 버튼 클릭시 modal display none 값
 const modal = document.getElementById("modal")
 

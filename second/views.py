@@ -11,7 +11,6 @@ from second.services.profile_service import get_profile_img_src, profile_update
 
 
 
-@csrf_exempt
 def sign_up(request):
     select = json.loads(request.body.decode('utf-8'))
     print(select)
