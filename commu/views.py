@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from commu.models import Article
 from commu.models import Comment
 from commu.services.comment_service import create_an_comment, delete_an_comment, update_an_comment, get_comment_page
-
+from django.contrib import messages
 
 
 # @login_required(login_url:'sign_in')
@@ -37,17 +37,16 @@ def update_comment(request, id): #해당댓글의 id
             if edit_comment != "":
                 # 댓글id와, 바꿀 해당쿼리셋객체, 수정할 댓글내용을 넘겨줌
                 update_an_comment(comment, edit_comment) #댓글 수정함수 #메세지 넘길거면 return값 넘기기
-                print('성공')
                 return redirect('/commu/' + str(article_id))#해당게시글 페이지로
             else:#빈칸이면
-                print('빈칸')
-                from django.contrib import messages
                 message = messages.info(request, '내용을 입력하세요.')
                 return redirect('/commu/' + str(article_id),messages=message)#해당게시글 페이지로
         else:#메세지 띄우기
-            return redirect('/commu/' + str(article_id))#해당게시글 페이지로
+            message = messages.error(request, '작성자만 수정할 수 있어요~.')
+            return redirect('/commu/' + str(article_id),messages=message)#해당게시글 페이지로
     else:
-        return redirect('/commu/' + str(article_id))
+        message = messages.warning(request, '잘못된 접근입니다.')
+        return redirect('/commu/' + str(article_id),messages=message)
 
           
 # @login_required(login_url:'sign_in')
@@ -58,7 +57,8 @@ def delete_comment(request, id):# 해당댓글 id
         delete_an_comment(id)
         return redirect('/commu/' + str(article_id))#해당 게시글 페이지로
     else:
-        return redirect('commu/' + str(article_id))
+        message = messages.warning(request, '잘못된 접근입니다.')
+        return redirect('/commu/' + str(article_id),messages=message)
 
 
 def article_create(request):
