@@ -115,6 +115,19 @@ button {
     width: 60%;
     height: 50%;
     background-color: white;
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .modalbox {
+        position: absolute;
+        top: 30%;
+        left: 5%;
+        width: 90%;
+        height: 25%;
+        background-color: white;
+        border-radius: 18%;
+    }
 }
 
 .recom1 {
@@ -211,6 +224,19 @@ button {
     cursor: url("/static/img/press.png") 2 2, default;
 }
 
+@media (max-width: 1000px) {
+    .movemain {
+        position: absolute;
+        top: 1%;
+        left: 85%;
+        width: 5vw;
+        color: antiquewhite;
+        z-index: 2;
+        cursor: url(/static/img/press.png) 2 2, default;
+        font-size: 4vw;
+    }
+}
+
 .logout {
     position: absolute;
     top: 93%;
@@ -219,4 +245,17 @@ button {
     color: antiquewhite;
     z-index: 2;
     cursor: url("/static/img/press.png") 2 2, default;
+}
+
+@media (max-width: 1000px) {
+    .logout {
+        position: absolute;
+        top: 93%;
+        left: 81%;
+        width: 5vw;
+        color: antiquewhite;
+        z-index: 2;
+        cursor: url(/static/img/press.png) 2 2, default;
+        font-size: 4vw;
+    }
 }
