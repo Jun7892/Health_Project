@@ -13,18 +13,18 @@
 {% block content %}
 
 <div class="header">
-    <h2 class="movemain" STYLE="margin-left: 2vw; display: inline; color: white; font-size: 2.5vw;" onclick="location.href='http://127.0.0.1:8000/main/'">ITEM</h2>
-    <h3 STYLE="margin-left: 10vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Recommendation</h3>
-    <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Protein</h3>
-    <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Supplements</h3>
-    <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;">Equiment</h3>
-    <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</h3>
-    <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1.3vw; font-weight: lighter;" onclick="location.href='/second/test/{{ user.id }}'">My page</h3
-    <img src="../static/img/logo.png" style="float: right; width: 25vw;">
+    <h2 class="movemain" onclick="location.href='http://127.0.0.1:8000/main/'">ITEM</h2>
+    <h3 class="itemtext1">Recommendation</h3>
+    <h3 class="itemtext2">Protein</h3>
+    <h3 class="itemtext3">Supplements</h3>
+    <h3 class="itemtext4">Equiment</h3>
+    <h3 class="itemtext5" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</h3>
+    <h3 class="itemtext6" onclick="location.href='/second/test/{{ user.id }}'">My page</h3
+    <img src="../static/img/logo.png" class="itemlogo">
 </div>
 
 <div class="fullcontain">
-    <video muted autoplay loop style="position: absolute; top: 0; left: 0; width: 100%;z-index: -1;">
+    <video muted autoplay loop class="eatvideo">
         <source src="../static/video/itemback.mp4" type="video/mp4">
         <strong>Your browser does not support the video tag.</strong>
     </video>
@@ -32,7 +32,7 @@
     <div class="itemlist">
         <h1 id="SBL_font" class="item-category">요즘뜨는 아이템</h1>
         <div style="padding-left: 1vw;">
-            <figure class="snip1273" style="float: left; width: 18vw;">
+            <figure class="snip1273 hum">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample72.jpg" alt="sample72"/>
                 <figcaption>
                     <h3>Fletch Skinner</h3>
@@ -82,7 +82,7 @@
         <h1>&nabla;</h1>
         <h1 id="SBL_font" class="item-category">프로틴</h1>
         <div style="padding-left: 1vw;">
-            <figure class="snip1273" style="float: left; width: 18vw;">
+            <figure class="snip1273 hum">
                 <img src="../static/img/protein1.jpg" alt="sample72" style="width: 20vw; height: 13vw;"/>
                 <figcaption>
                     <h3>NEWYORK WHEY</h3>
@@ -128,7 +128,7 @@
         <h1>&nabla;</h1>
         <h1 id="SBL_font" class="item-category">영양제</h1>
         <div style="padding-left: 1vw;">
-            <figure class="snip1273" style="float: left; width: 18vw;">
+            <figure class="snip1273 hum">
                 <img src="../static/img/nutritional1.jpg" alt="sample72" style="width: 20vw; height: 13vw;"/>
                 <figcaption>
                     <h3>Multi_Strain Probiotic</h3>
@@ -173,7 +173,7 @@
         <h1>&nabla;</h1>
         <h1 id="SBL_font" class="item-category">장비</h1>
         <div style="padding-left: 1vw;">
-            <figure class="snip1273" style="float: left; width: 18vw;">
+            <figure class="snip1273 hum">
                 <img src="../static/img/equi1.jpeg" alt="sample72" style="width: 20vw; height: 13vw;"/>
                 <figcaption>
                     <h3>테라건 프라임</h3>
