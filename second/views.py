@@ -76,11 +76,11 @@ def logout(request):
 def testmypage(request,id):
     login_user = request.user  # 접속한 유저의 정보들고있음
     user = User.objects.get(id=id) #마이페이지의 유저
-    user_list = User.objects.all().exclude(username=user.username)  # 로그인한 사용자 제외한 유저리스트
+    user_list = User.objects.filter(is_superuser=0).all().exclude(username=user.username)  # 로그인한 사용자와 admin계정 제외한 유저리스트
     follow_list = User.objects.get(id=user.id).follow.all()
-    another_user_list = User.objects.exclude(username=user.username).difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
+    another_user_list = user_list.difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
     if request.method == 'GET':
-        return render(request, 'commu/testmypage.html', {'user':user, 'user_list':user_list, 'login_user':login_user ,'another_user_list':another_user_list})
+        return render(request, 'commu/testmypage.html', {'user':user, 'login_user':login_user ,'another_user_list':another_user_list})
     else:
         nickname= request.POST['nickname']
         img_file = request.FILES['file']
