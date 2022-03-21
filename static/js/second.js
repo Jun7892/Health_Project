@@ -99,7 +99,7 @@ $('#btn-signup').click(function () {
         type: "POST",
         datatype: 'json',
         // data로는 formData를 request로 보낸다.
-        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'gender': ge, 'level': le, 'csrfmiddlewaretoken': csrftoken,}),
+        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'gender': ge, 'level': le}),
         success: function (data) {
             if (data.works) { //통과했으면 로그인시켜서 데이터가 넘어왔기 때문에 메인페이지로 보냄
             alert('회원가입이 성공적으로 완료되었습니다');
