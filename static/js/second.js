@@ -1,3 +1,22 @@
+//csrf token
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++){
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+출처: https://thalals.tistory.com/116 [힘차게, 열심히 공대생]
 // 버튼 클릭시 display: flex 값 / 닫기 버튼 클릭시 modal display none 값
 const modal = document.getElementById("modal")
 
@@ -68,7 +87,7 @@ $('#btn-signup').click(function () {
         type: "POST",
         datatype: 'json',
         // data로는 formData를 request로 보낸다.
-        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'gender': ge, 'level': le}),
+        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'gender': ge, 'level': le, 'csrfmiddlewaretoken': csrftoken,}),
         success: function (data) {
             if (data.works) { //통과했으면 로그인시켜서 데이터가 넘어왔기 때문에 메인페이지로 보냄
             alert('회원가입이 성공적으로 완료되었습니다');
