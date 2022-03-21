@@ -26,7 +26,6 @@
 
         <div style="position: absolute; top: 25%; left: 5%; width: 90%; height: 50%;">
             <div style="position: absolute; top: 0; left: 0; width: 45%; height: 100%;">
-            <a href="create/">작성하기</a>
             {% for i in article %}
                 <div style="position: relative; top: 0%; left: 0%; width: 100%; height: 10%;">
                         <p style="float: left; width: 10%;">{{ forloop.counter }}</p>
@@ -128,9 +127,9 @@
 {#        <input value="아무말이나 적어라" class="commuinput"#}
 {#               style="font-family: SB_L; text-align: center; font-size: 1vw; color: white; background-color: cornflowerblue;"#}
 {#               id="btn-signup">#}
-            <input href="" value="아무말이나 적어라" class="commuinput"
-               style="font-family: SB_L; text-align: center; font-size: 1vw; color: white; background-color: cornflowerblue;"
-               id="btn-signup">
+            <a href="create/" value="아무말이나 적어라" class="commuinput"
+               style="display: flex; justify-content:center; text-decoration-line: none; align-items: center; font-family: SB_L; text-align: center; font-size: 1vw; color: white; background-color: cornflowerblue;"
+               id="btn-signup">작성하기</a>
     </div>
 
     {#<script type="text/javascript" src="../static/js/commu.js"></script>#}

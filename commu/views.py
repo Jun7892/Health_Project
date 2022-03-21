@@ -69,7 +69,7 @@ def article_create(request):
         title = request.POST.get('title', '')
         content = request.POST.get('content', '')
         if content == '' or title == '':
-            return render(request, 'commu/commu_create_article.html', {'error': '내용에 빈칸이 있습니다'})
+            return render(request, 'commu/commu_create_article.html', {'error': '제목, 내용은 공백으로 작성 될 수 없습니다.'})
         else:
             my_article = Article.objects.create(author=user, title=title, content=content)
             my_article.save()
