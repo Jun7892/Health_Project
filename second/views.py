@@ -102,7 +102,7 @@ def user_follow(request, id):
         click_user.followee.remove(user)#클릭한 유저의 followee에서 user 제거
     else: #팔로우하고 있지 않았다면
         click_user.followee.add(user)#클릭한 유저의 followee에 user추가~!
-    return redirect('show_follow')
+    return redirect('test', user.id)
 
 # @login_required(login_url:'sign_in')
 def show_follow(request, id):
