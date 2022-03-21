@@ -74,19 +74,20 @@ def logout(request):
 
 # @login_required(login_url:'sign_in')
 def testmypage(request):
-    login_user = request.user  # 접속한 유저의 정보들고있음
-    print(login_user)
+    user = request.user  # 접속한 유저의 정보들고있음
     if request.method == 'GET':
-        user_list = User.objects.all().exclude(username=login_user.username) #로그인한 사용자 제외한 유저리스트
-        return render(request, 'commu/testmypage.html', {'login_user':login_user, 'user_list':user_list})
+        user_list = User.objects.all().exclude(username=user.username) #로그인한 사용자 제외한 유저리스트
+        follow_list = User.objects.get(id=user.id).follow.all()
+        another_user_list= User.objects.exclude(username=user.username).difference(follow_list)#나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
+        return render(request, 'commu/testmypage.html', {'user':user, 'user_list':user_list,'another_user_list':another_user_list})
     else:
         nickname= request.POST['nickname']
         img_file = request.FILES['file']
         print(nickname, img_file)
         #닉네임만 변경시 혹은 프로필사진만 변경시를 따로 나눠줘야함 - 아직작업안함
         try:
-            filepath = get_profile_img_src(login_user, img_file)
-            profile_update(login_user, nickname, filepath)
+            filepath = get_profile_img_src(user, img_file)
+            profile_update(user, nickname, filepath)
             return redirect('test')#마이페이지로
         except:
             print('오류?')#메세지
@@ -94,16 +95,17 @@ def testmypage(request):
 
 # @login_required(login_url:'sign_in')
 def user_follow(request, id):
-    login_user = request.user#지금 접속한 사용자
+    user = request.user#지금 접속한 사용자
     click_user = User.objects.get(id=id) #클릭한 유저
-    if login_user in click_user.followee.all(): #접속한 유저가 클릭한 유저를 팔로우 하고있었다면
-        click_user.followee.remove(login_user)#클릭한 유저의 followee에서 login_user 제거
+    if user in click_user.followee.all(): #접속한 유저가 클릭한 유저를 팔로우 하고있었다면
+        click_user.followee.remove(user)#클릭한 유저의 followee에서 user 제거
     else: #팔로우하고 있지 않았다면
-        click_user.followee.add(login_user)#클릭한 유저의 followee에 login_user추가~!
-    return redirect('test')
+        click_user.followee.add(user)#클릭한 유저의 followee에 user추가~!
+    return redirect('show_follow')
 
+# @login_required(login_url:'sign_in')
 def show_follow(request):
     user = request.user
     follow_list = User.objects.get(id=user.id).follow.all()
     followee_list = User.objects.get(id=user.id).followee.all()
-    return render(request, 'commu/follow_detail.html', {'follow_list':follow_list, 'followee_list':followee_list})
+    return render(request, 'commu/follow_detail.html', {'user':user,'follow_list':follow_list, 'followee_list':followee_list})
