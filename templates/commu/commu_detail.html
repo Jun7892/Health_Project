@@ -27,9 +27,9 @@
     <form action="/commu/like/{{ article.id }}" method="POST">
         {% csrf_token %}
         {% if user in article.like_user.all %}
-        <input type="submit" value="좋아요 취소"><p>like:{{ article.like_user.count }}</p>
+            <input type="submit" value="좋아요 취소"><p>like:{{ article.like_user.count }}</p>
         {% else %}
-        <input type="submit" value="좋아요"> <p>like:{{ article.like_user.count }}</p>
+            <input type="submit" value="좋아요"> <p>like:{{ article.like_user.count }}</p>
         {% endif %}
     </form>
     <p>title: {{ article.title }}</p>
