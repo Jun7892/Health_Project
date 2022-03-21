@@ -39,3 +39,7 @@
     cursor: pointer;
     border-color: black;
 }
+
+.base {
+    position: absolute;
+}
