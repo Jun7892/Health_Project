@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
-
+from django.core.exceptions import ValidationError
 from second.models import User
 from django.contrib import auth
 from second.services.join_service import create_user, check_blank
@@ -19,29 +19,27 @@ def sign_up(request):
         username = select['username']
         password = str(select['password'])
         nickname = select['nickname']
-        if username == '' or password =='' or nickname == '':
+        email = select['email']
+        if username == '' or password =='' or nickname == '' or email == '' or not select['gender'] or not select['level']: #or
             return JsonResponse({'blank': True})
         else:
-            try:
-                gender = select['gender']
-                level = select['level']
-                print('빈칸통과!:',gender,level)
-                founduser= User.objects.filter(username=username)
-                if len(founduser) > 0: #같은아이디가 있을때.
-                    print('여기서 걸리니?:','founduser')
-                    return JsonResponse({'existid': True})
-                else: #중복아이디가 아니면
-                    result = create_user(username,password,nickname,gender,level) #유저생성함수
+            gender = select['gender']
+            level = select['level']
+            print('빈칸통과!:', gender, level)
+            founduser = User.objects.filter(username=username)
+            if len(founduser) > 0:  # 같은아이디가 있을때.
+                print('여기서 걸리니?:', 'founduser')
+                return JsonResponse({'existid': True})
+            else:  # 중복아이디가 아니면
+                try:
+                    result = create_user(username, password, nickname, email, gender, level) # 유저생성함수
+                    result.full_clean() # 유효성 검사해줌
                     auth.login(request, result)
-                    return JsonResponse({'works':True})
-            except:
-                gender = None
-                level = None
-                print('빈칸일걸?:', gender, level)
-                msg = check_blank(username, password, nickname, gender, level)  # 빈칸확인함수
-                if msg != '통과':
-                    print(msg)
-                    return JsonResponse({'blank': True})
+                    return JsonResponse({'works': True})
+                except ValidationError: #이메일 유효성 검사 통과못했을때
+                    user=User.objects.get(username=username)
+                    user.delete() #생성했던 유저 다시 삭제
+                    return JsonResponse({'invalid_email': True})
 
 
 def sign_in(request):

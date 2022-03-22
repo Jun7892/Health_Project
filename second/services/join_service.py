@@ -1,23 +1,25 @@
 from second.models import User
 import bcrypt
 
-def create_user(username:str, password:str, nickname:str, gender:str, level:str):
+def create_user(username:str, password:str, nickname:str, email:str, gender:str, level:str):
     hashed_password = password_hashing(password)#저장시 패스워드 암호화
 
     if gender == "남자": #gender에 따라 기본 프로필 이미지 다르게 유저생성해주는것 추가
-        new_user = User.objects.create(username=username,
-                                    password=hashed_password,
-                                    nickname=nickname,
-                                    gender=gender,
-                                    level=level,
-                                    profile_img='/static/img/male.png')
+        new_user = User.objects.create(username= username,
+                                    password= hashed_password,
+                                    nickname= nickname,
+                                    email= email,
+                                    gender= gender,
+                                    level= level,
+                                    profile_img= '/static/img/male.png')
         return new_user
     else:#여자라면
-        new_user = User.objects.create(username=username,
-                                       password=hashed_password,
-                                       nickname=nickname,
-                                       gender=gender,
-                                       level=level,
+        new_user = User.objects.create(username= username,
+                                       password= hashed_password,
+                                       nickname= nickname,
+                                       # email=email,
+                                       gender= gender,
+                                       level= level,
                                        profile_img='/static/img/female.png')
         return new_user
 
