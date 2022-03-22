@@ -17,20 +17,11 @@ def create_user(username:str, password:str, nickname:str, email:str, gender:str,
         new_user = User.objects.create(username= username,
                                        password= hashed_password,
                                        nickname= nickname,
-                                       # email=email,
+                                       email=email,
                                        gender= gender,
                                        level= level,
                                        profile_img='/static/img/female.png')
         return new_user
-
-
-def check_blank(username, password, nickname, gender, level):
-    if username == "" or password == "" or nickname == "" or gender == None or level == None:
-        msg = '빈칸인 항목이 있는지 확인하세요'
-        return msg
-    else:
-        msg = '통과'
-        return msg
 
 
 def password_hashing(password):

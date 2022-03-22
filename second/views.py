@@ -5,7 +5,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from django.core.exceptions import ValidationError
 from second.models import User
 from django.contrib import auth
-from second.services.join_service import create_user, check_blank
+from second.services.join_service import create_user
 import json
 from second.services.login_service import login_check_blank, check_password_correct
 from second.services.profile_service import get_profile_img_src, profile_update
@@ -20,7 +20,7 @@ def sign_up(request):
         password = str(select['password'])
         nickname = select['nickname']
         email = select['email']
-        if username == '' or password =='' or nickname == '' or email == '' or not select['gender'] or not select['level']: #or
+        if username == '' or password =='' or nickname == '' or email == '' or not select['gender'] or not select['level']:
             return JsonResponse({'blank': True})
         else:
             gender = select['gender']
