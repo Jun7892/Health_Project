@@ -23,13 +23,13 @@
 
     {# header #}
     <div class="header">
-        <h2 id="SBL_font" class="movemain" STYLE="margin-left: 2vw; display: inline; color: orangered; font-size: 4vw;" onclick="window.location.reload()">RECIPE</h2>
-        <h3 STYLE="margin-left: 5vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Recommendation</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Meat</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Vegetable</h3>
-        <h3 STYLE="margin-left: 20vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;" onclick="location.href='/main/'">Main</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;" onclick="location.href='/second/sign_in'">Logout</h3>
-        <img src="../static/img/logo.png" style="float: right; width: 25vw;">
+        <h2 id="SBL_font" class="movemain" onclick="window.location.reload()">RECIPE</h2>
+        <h3 class="eattext1">Recommendation</h3>
+        <h3 class="eattext2">Meat</h3>
+        <h3 class="eattext3">Vegetable</h3>
+        <h3 class="eattext4" onclick="location.href='/main/'">Main</h3>
+        <h3 class="eattext5" onclick="location.href='/second/sign_in'">Logout</h3>
+        <img src="../static/img/logo.png" class="eatlogo">
     </div>
 
 
@@ -39,7 +39,7 @@
         <div class="recipe">
             <a href="/eat/detail/{{ i.id }}"> <img class="foodimg" src="{{ i.image }}"> </a>
             <a>&nbsp;</a>
-            <p style="color: white">{{ i.title }}</p>
+            <p class="foodname">{{ i.title }}</p>
         </div>
         {% endfor %}
     </div>

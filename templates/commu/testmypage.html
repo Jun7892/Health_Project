@@ -1,0 +1,69 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block others %}
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/testmy.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/static/js/testmy.js"></script>
+{% endblock %}
+
+{% block content%}
+    <div id="main_container">
+        <div id="user_wrapper">
+            <div id="profile">
+                <img id="image" src="{{ user.profile_img }}">
+                <br>
+                {% if login_user == user %}
+                <button type='button' id="modal_btn">모달창아 나와랏</button><!--프로필변경부분 연구후 수정할것-->
+                {% endif %}
+            </div>
+            <div class="user_desc">
+                <p>{{ user.nickname }}님</p>
+                <a href="/second/test/follow/{{ user.id }}" >
+                    <div class="counts">
+                    <p class="count"> 팔로우: {{ user.follow.count }}명</p>
+                    <p class="count"> 팔로워: {{ user.followee.count }}명</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="black_bg"></div>
+        <div class="modal_wrap">
+            <div class="modal_close"><a href="#">close</a></div>
+            <div class="edit_profile">
+                <form method="POST" enctype="multipart/form-data" action="">
+                {% csrf_token %}
+                    닉네임 : <input type="text" name="nickname">
+                    <br>
+                    <input type="file" name="file" id="profile_img_file">
+                    <br>
+                    <label class="custom-file-label" for="profile_img_file">프로필로 지정할 사진을 선택해주세요.</label>
+                    <br>
+                    <button type="submit">프로필 수정하기</button>
+                </form>
+            </div>
+        </div>
+
+        <p class="box_title">다른 사용자들 알아보기</p>
+        <div id="recommend_container"><!--추천박스-->
+            {% for another in another_user_list %}
+            <div class="box">
+                <div class="recommend_imgbox"  ><!--추천맛집 div가 두개 하나는 사진 하나는 가게정보-->
+                    <img id="recommend_img"  class="rcm_img" src="{{ another.profile_img }}"> <!--사진url앞에것만 잘라보기-->
+                </div>
+                <div class="recommend_descbox" onclick="location.href='/second/test/{{ another.id }}'">
+                    <p class="s_descs">닉네임: {{ another.nickname }}</p>
+                    <p class="s_descs">운동레벨: {{ another.level }}</p>
+                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>
+                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>
+                    <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>
+                    <p class="go"> 이 사람이 궁금하다면 클릭! </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
