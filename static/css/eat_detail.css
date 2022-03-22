@@ -20,6 +20,15 @@
     }
 }
 
+
+
+
+@media (max-width: 1000px) {
+    p {
+        font-size: 1vw;
+    }
+}
+
 .movemain {
     margin-left: 2vw;
     display: inline;
@@ -96,7 +105,7 @@
 
 @media (max-width: 1000px) {
     .eattext4 {
-        margin-left: 20vw;
+        margin-left: 10vw;
         display: inline;
         color: white;
         font-size: 1vw;
@@ -114,7 +123,7 @@
 
 @media (max-width: 1000px) {
     .eattext5 {
-        margin-left: 2vw;
+        margin-left: 0vw;
         display: inline;
         color: white;
         font-size: 1vw;
@@ -143,9 +152,27 @@
     height: 1000px;
 }
 
+@media (max-width: 1000px) {
+    #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 8vh auto;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 #container img {
     width: 80%;
     height: 50%;
+}
+
+@media (max-width: 1000px) {
+    #container img {
+        width: 70%;
+        height: 50%;
+    }
 }
 
 .ingredients {
@@ -160,6 +187,14 @@
     margin-top: 5vh;
 }
 
+@media (max-width: 1000px) {
+    .step {
+        margin-top: 5vh;
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+}
+
 .animation-area {
     position: absolute;
     top: 0;
@@ -168,6 +203,18 @@
     width: 100%;
     height: 200vh;
     z-index: -1;
+}
+
+@media (max-width: 1000px) {
+    .animation-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to left, #8942a8, #ba382f);
+        width: 100%;
+        height: 200vh;
+        z-index: -1;
+    }
 }
 
 .box-area {
