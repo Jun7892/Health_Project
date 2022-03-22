@@ -30,3 +30,5 @@ secret.json
 !.elasticbeanstalk/*.global.yml
 
 .ebextensions
+
+requirements.txt
