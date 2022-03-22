@@ -238,8 +238,8 @@ input[type="text"], input[type="password"] {
     position: absolute;
     top: 8%;
     left: 47%;
-    width: 32vw;
-    height: 39vw;
+    width: 42vw;
+    height: 42vw;
     background-image: url("../img/signupbackgorund.jpg");
     background-size: cover;
     /*background-color: cornflowerblue;*/
@@ -271,7 +271,7 @@ input[type="text"], input[type="password"] {
 
 .checkboxman {
     cursor: url("/static/img/press.png") 2 2, default;
-    padding-left: 6vw;
+    padding-left: 9vw;
 }
 
 @media (max-width: 1000px) {
@@ -283,7 +283,7 @@ input[type="text"], input[type="password"] {
 
 .checkboxwoman {
     cursor: url("/static/img/press.png") 2 2, default;
-    padding-left: 6.5vw;
+    padding-left: 10.5vw;
 }
 
 @media (max-width: 1000px) {
@@ -294,7 +294,7 @@ input[type="text"], input[type="password"] {
 }
 
 .menimg {
-    padding-left: 5vw;
+    padding-left: 8vw;
 }
 
 @media (max-width: 1000px) {
@@ -304,7 +304,7 @@ input[type="text"], input[type="password"] {
 }
 
 .womenimg {
-    padding-left: 4vw;
+    padding-left: 8vw;
 }
 
 @media (max-width: 1000px) {
@@ -464,7 +464,7 @@ input[type="text"], input[type="password"] {
 }
 
 .locationlevel {
-    margin-left: 5vw;
+    margin-left: 10vw;
 }
 
 @media (max-width: 1000px) {
@@ -535,6 +535,7 @@ input[type="password"] {
 
 .backgroundimg {
     /*background-image: url("../img/signback.jpg");*/
+    width: 100%;
 }
 
 .loginbtn {

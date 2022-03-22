@@ -39,6 +39,7 @@ $('#btn-signup').click(function () {
     var id = $('#user_id').val();
     var pw = $('#login-user-password').val();
     var nn = $('#user_nn').val();
+    var em = $('#user_em').val();
     var ge = $("input[name='gender']:checked").val();
     var le = $("input[name='level']:checked").val();
 
@@ -55,6 +56,7 @@ $('#btn-signup').click(function () {
     console.log(nn)
     console.log(ge)
     console.log(le)
+    console.log(em)
     $.ajax({
         url: '/second/sign_up',
         // form에 file type 이 있는 경우 enctype: 'multipart/form-data'를 설정해야 한다.
@@ -68,7 +70,7 @@ $('#btn-signup').click(function () {
         type: "POST",
         datatype: 'json',
         // data로는 formData를 request로 보낸다.
-        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'gender': ge, 'level': le}),
+        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'email': em, 'gender': ge, 'level': le}),
         success: function (data) {
             if (data.works) { //통과했으면 로그인시켜서 데이터가 넘어왔기 때문에 메인페이지로 보냄
             alert('회원가입이 성공적으로 완료되었습니다');
@@ -77,6 +79,9 @@ $('#btn-signup').click(function () {
             } else if (data.existid) {
                 alert('이미 존재하는 아이디 입니다.');
                 window.location.reload();
+                //이메일 유효성 검사 통과 못했을때
+            } else if (data.invalid_email) {
+                alert('유효한 이메일을 입력하세요');
                 // request 보낸 url에서 사용자 패스워드가 없다고 {'noPassword':True}를 JsonResponse로 보낸 경우
             } else if (data.blank) {
                 alert('빈칸이 있는지 확인하세요!');
