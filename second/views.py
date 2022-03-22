@@ -9,7 +9,7 @@ from second.services.join_service import create_user
 import json
 from second.services.login_service import login_check_blank, check_password_correct
 from second.services.profile_service import get_profile_img_src, profile_update
-
+from django.contrib import messages
 
 
 def sign_up(request):
@@ -27,10 +27,13 @@ def sign_up(request):
             level = select['level']
             print('빈칸통과!:', gender, level)
             founduser = User.objects.filter(username=username)
+            existemail = User.objects.filter(email=email)
             if len(founduser) > 0:  # 같은아이디가 있을때.
                 print('여기서 걸리니?:', 'founduser')
                 return JsonResponse({'existid': True})
-            else:  # 중복아이디가 아니면
+            elif existemail: #같은 이메일로 가입하면 에러메세지
+                return JsonResponse({'existemail': True})
+            else:  # 중복아이디/이메일이 아니면
                 try:
                     result = create_user(username, password, nickname, email, gender, level) # 유저생성함수
                     result.full_clean() # 유효성 검사해줌
@@ -70,6 +73,23 @@ def sign_in(request):
 def logout(request):
     auth.logout(request)
     return redirect('sign_in')
+
+def find_id(request):
+    if request.method == 'GET':
+        return render(request, 'login/find_id.html')
+    if request.method == "POST":
+        email = request.POST['email']
+        try:
+            user = User.objects.get(email=email)
+            if user is not None:
+                message = messages.info(request, f'당신의 아이디는 {user.username} 입니다.')
+                return redirect('/second/find_id', messages=message)
+        except User.DoesNotExist:
+                print('여기')
+                message = messages.warning(request, '해당 이메일로 가입한 아이디가 없습니다.')
+                return redirect('/second/find_id', messages=message)
+
+# def find_pw(request):
 
 
 # @login_required(login_url:'sign_in')
