@@ -1,13 +1,15 @@
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.utils.datastructures import MultiValueDictKeyError
+from django.core.exceptions import ValidationError
 from second.models import User
 from django.contrib import auth
-from second.services.join_service import create_user, check_blank
+from second.services.join_service import create_user
 import json
 from second.services.login_service import login_check_blank, check_password_correct
 from second.services.profile_service import get_profile_img_src, profile_update
-
+from django.contrib import messages
 
 
 def sign_up(request):
@@ -17,29 +19,30 @@ def sign_up(request):
         username = select['username']
         password = str(select['password'])
         nickname = select['nickname']
-        if username == '' or password =='' or nickname == '':
+        email = select['email']
+        if username == '' or password =='' or nickname == '' or email == '' or not select['gender'] or not select['level']:
             return JsonResponse({'blank': True})
         else:
-            try:
-                gender = select['gender']
-                level = select['level']
-                print('빈칸통과!:',gender,level)
-                founduser= User.objects.filter(username=username)
-                if len(founduser) > 0: #같은아이디가 있을때.
-                    print('여기서 걸리니?:','founduser')
-                    return JsonResponse({'existid': True})
-                else: #중복아이디가 아니면
-                    result = create_user(username,password,nickname,gender,level) #유저생성함수
+            gender = select['gender']
+            level = select['level']
+            print('빈칸통과!:', gender, level)
+            founduser = User.objects.filter(username=username)
+            existemail = User.objects.filter(email=email)
+            if len(founduser) > 0:  # 같은아이디가 있을때.
+                print('여기서 걸리니?:', 'founduser')
+                return JsonResponse({'existid': True})
+            elif existemail: #같은 이메일로 가입하면 에러메세지
+                return JsonResponse({'existemail': True})
+            else:  # 중복아이디/이메일이 아니면
+                try:
+                    result = create_user(username, password, nickname, email, gender, level) # 유저생성함수
+                    result.full_clean() # 유효성 검사해줌
                     auth.login(request, result)
-                    return JsonResponse({'works':True})
-            except:
-                gender = None
-                level = None
-                print('빈칸일걸?:', gender, level)
-                msg = check_blank(username, password, nickname, gender, level)  # 빈칸확인함수
-                if msg != '통과':
-                    print(msg)
-                    return JsonResponse({'blank': True})
+                    return JsonResponse({'works': True})
+                except ValidationError: #이메일 유효성 검사 통과못했을때
+                    user=User.objects.get(username=username)
+                    user.delete() #생성했던 유저 다시 삭제
+                    return JsonResponse({'invalid_email': True})
 
 
 def sign_in(request):
@@ -71,28 +74,43 @@ def logout(request):
     auth.logout(request)
     return redirect('sign_in')
 
+def find_id(request):
+    if request.method == 'GET':
+        return render(request, 'login/find_id.html')
+    if request.method == "POST":
+        email = request.POST['email']
+        try:
+            user = User.objects.get(email=email)
+            if user is not None:
+                message = messages.info(request, f'당신의 아이디는 {user.username} 입니다.')
+                return redirect('/second/find_id', messages=message)
+        except User.DoesNotExist:
+                print('여기')
+                message = messages.warning(request, '해당 이메일로 가입한 아이디가 없습니다.')
+                return redirect('/second/find_id', messages=message)
+
+# def find_pw(request):
+
 
 # @login_required(login_url:'sign_in')
 def testmypage(request,id):
     login_user = request.user  # 접속한 유저의 정보들고있음
     user = User.objects.get(id=id) #마이페이지의 유저
-    user_list = User.objects.all().exclude(username=user.username)  # 로그인한 사용자 제외한 유저리스트
+    user_list = User.objects.filter(is_superuser=0).all().exclude(username=user.username)  # 로그인한 사용자와 admin계정 제외한 유저리스트
     follow_list = User.objects.get(id=user.id).follow.all()
-    another_user_list = User.objects.exclude(username=user.username).difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
+    another_user_list = user_list.difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
     if request.method == 'GET':
-        return render(request, 'commu/testmypage.html', {'user':user, 'user_list':user_list, 'login_user':login_user ,'another_user_list':another_user_list})
-    else:
+        return render(request, 'commu/testmypage.html', {'user':user, 'login_user':login_user ,'another_user_list':another_user_list})
+    else:# 프로필 변경요청
         nickname= request.POST['nickname']
-        img_file = request.FILES['file']
-        print(nickname, img_file)
-        #닉네임만 변경시 혹은 프로필사진만 변경시를 따로 나눠줘야함 - 아직작업안함
-        try:
-            filepath = get_profile_img_src(login_user, img_file)
-            profile_update(login_user, nickname, filepath)
-            return redirect('test', login_user.id)#마이페이지로
-        except:
-            print('오류?')#메세지
-            return redirect('test', login_user.id) #나중에 마이페이지에 해당하는것으로 변경하기
+        if nickname == "" or MultiValueDictKeyError(KeyError): #닉네임 공백이면
+            try:#사진 선택한걸로 바꿔주거나
+                img_file = request.FILES['file']
+                filepath = get_profile_img_src(login_user, img_file)
+                profile_update(login_user, nickname, filepath)
+                return redirect('test', login_user.id)#마이페이지로
+            except: #사진도 선택안했으면 그냥 유지
+                return redirect('test', login_user.id) #나중에 마이페이지에 해당하는것으로 변경하기
 
 
 # @login_required(login_url:'sign_in')

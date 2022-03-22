@@ -35,9 +35,9 @@
             <div class="edit_profile">
                 <form method="POST" enctype="multipart/form-data" action="">
                 {% csrf_token %}
-                    닉네임 : <input type="text" name="nickname">
+                    닉네임 : <input type="text" name="nickname" value="{{ user.nickname }}">
                     <br>
-                    <input type="file" name="file" id="profile_img_file">
+                    <input type="file" name="file" id="profile_img_file" value="{{ user.profile_img }}">
                     <br>
                     <label class="custom-file-label" for="profile_img_file">프로필로 지정할 사진을 선택해주세요.</label>
                     <br>
@@ -58,7 +58,11 @@
                     <p class="s_descs">운동레벨: {{ another.level }}</p>
                     <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>
                     <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>
-                    <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>
+                    {% if login_user.id == another.id %}
+                        <a href="/second/test/{{ another.id }}">[마이페이지로]</a>
+                    {% else %}
+                        <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>
+                    {% endif %}
                     <p class="go"> 이 사람이 궁금하다면 클릭! </p>
                 </div>
             </div>

@@ -80,7 +80,11 @@ $('#btn-signup').click(function () {
                 alert('이미 존재하는 아이디 입니다.');
                 window.location.reload();
                 //이메일 유효성 검사 통과 못했을때
-            } else if (data.invalid_email) {
+            } else if (data.existemail) {
+                alert('이미 존재하는 이메일입니다.');
+                window.location.reload();
+                // 같은이메일로 가입했을때
+            }else if (data.invalid_email) {
                 alert('유효한 이메일을 입력하세요');
                 // request 보낸 url에서 사용자 패스워드가 없다고 {'noPassword':True}를 JsonResponse로 보낸 경우
             } else if (data.blank) {
