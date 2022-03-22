@@ -19,12 +19,10 @@
 
     <img src="../static/img/music.png" onclick="charm(sound1)" class="music">
     <audio id="myAudio" src="{% static "music/bgm.m4a" %}" preload="auto"></audio>
-    <img src="../static/img/logo_red.png"
-         style="position: absolute; top: 0.5vw; left: 77%; width: 23vw; height: 4vw; border-radius: 5%;">
-    <div class="modalonbox" onclick="modalOn()"><img src="../static/img/talkgroomm.png"
-                                                     style="position: absolute; top: -10%; left: -60%; width: 15vw;">
-        <div><p style="position: absolute; left: -40%; top: 5.5%; color: white;">회원가입을 하려면</p></div>
-        <div><p style="position: absolute; left: -40%; top: 15.5%; color: white;">캐릭터를 클릭하세요</p></div></div>
+    <img src="../static/img/logo_red.png" class="teamlogo">
+    <div class="modalonbox" onclick="modalOn()"><img src="../static/img/talkgroomm.png" class="hoverimg">
+        <div><p class="hovertext1">회원가입을 하려면</p></div>
+        <div><p class="hovertext2">캐릭터를 클릭하세요</p></div></div>
 
 
     <div class="maincontain">
@@ -58,20 +56,21 @@
                 </div>
                 <div style="margin-top: 2vw;">
                     NickName : <input type="text" id="user_nn" name="nickname" placeholder="사용할 닉네임">
+                    E-mail : <input type="text" id="user_em" name="email" placeholder="사용할 E-mail">
                 </div>
             </div>
             <div class="genderbox" style="color: white;">
-                <p style="float:left; font-weight: bolder; margin-left: 0.5vw;">성별</p>
+                <p class="gendertext">성별</p>
                 <label for="man" class="checkboxman"><input type="radio" class="gender" id="man" name="gender" value="남자"/> 남자</label>
                 <label for="woman" class="checkboxwoman"><input type="radio" class="gender" id="woman" name="gender"
                                                                 value="여자"/> 여자</label>
                 <div class="genderpic">
-                    <img src="../static/img/male.png" style="padding-left: 5vw;">
-                    <img src="../static/img/female.png" style="padding-left: 4vw;">
+                    <img src="../static/img/male.png" class="menimg">
+                    <img src="../static/img/female.png" class="womenimg">
                 </div>
             </div>
             <div class="workoutlevel" style="color: white;">
-                <label for="low" class="levelbox" style="margin-left: 5.5vw;"><input type="radio" class="level" id="low"
+                <label for="low" class="levelbox" style="margin-left: 10.5vw;"><input type="radio" class="level" id="low"
                                                                                      name="level" value="초심자"/>
                     초심자</label>
                 <label for="middle" class="levelbox" style="margin-left: 3vw;"><input type="radio" class="level" id="middle"
@@ -81,11 +80,11 @@
                                                                                      name="level" value="상급자"/>
                     상급자</label>
                 <div class="levelpic">
-                    <p style="float:left; font-weight: bolder; margin-left: 0.5vw;">Level</p>
+                    <p class="leveltext">Level</p>
                     <div class="locationlevel">
-                        <img src="../static/img/lowlevel.png" style="opacity: 0.6;">
-                        <img src="../static/img/middlelevel.png" style="margin-left: 1.5vw; opacity: 0.6;">
-                        <img src="../static/img/highlevel.png" style="margin-left: 1.5vw; opacity: 0.6;">
+                        <img src="../static/img/lowlevel.png" class="levelimg1">
+                        <img src="../static/img/middlelevel.png" class="levelimg2">
+                        <img src="../static/img/highlevel.png" class="levelimg3">
                     </div>
                 </div>
             </div>
