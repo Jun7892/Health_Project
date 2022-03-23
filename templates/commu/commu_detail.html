@@ -24,7 +24,7 @@
 {% block content %}
     <div id="particles-js" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
         <div class="contain">
-            <a href="/commu" style="color: white; text-decoration-line: none;">게시판으로</a>
+            <a href="/commu" class="text1">게시판으로</a>
             <p>&nbsp;</p>
             <form action="/commu/like/{{ article.id }}" method="POST">
                 {% csrf_token %}
@@ -35,19 +35,19 @@
                 {% endif %}
             </form>
             <br>
-            <p>title: {{ article.title }}</p>
-            <p>author: {{ article.author }}</p>
+            <p class="text2">title: {{ article.title }}</p>
+            <p class="text2">author: {{ article.author }}</p>
             <br>
-            <p>content: {{ article.content }}</p>
+            <p class="text2">content: {{ article.content }}</p>
             <br>
             {% if article.author == user %}
-                <a href="/commu/delete/{{ article.id }}">삭제</a>
-                <a href="/commu/update/{{ article.id }}">수정</a>
+                <a class="text2" href="/commu/delete/{{ article.id }}">삭제</a>
+                <a class="text2" href="/commu/update/{{ article.id }}">수정</a>
             {% endif %}
 
-            <form method="POST" action="/commu/comment/{{ article.id }}" style="color: white;">
+            <form method="POST" action="/commu/comment/{{ article.id }}" class="text3">
                 {% csrf_token %}
-                댓글 : <input type="text" name="comment">
+                댓글 : <input class="text2" type="text" name="comment">
                 <button type="submit" class="submit_button">작성하기</button>
             </form>
         </div>

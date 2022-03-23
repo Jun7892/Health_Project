@@ -11,13 +11,18 @@
     font-family: "SB_L";
 }
 
+@media (max-width: 1000px) {
+    body {
+        height: 100vh;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: SB_L, sans-serif;
 }
-
 
 
 #particles-js {
@@ -35,6 +40,16 @@
     left: 10%;
 }
 
+@media (max-width: 1000px) {
+    .contain {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        height: 80%;
+    }
+}
+
 a {
     color: white;
 }
@@ -43,4 +58,39 @@ p {
     color: white;
 }
 
+.text1 {
+    color: white;
+    text-decoration-line: none;
+}
 
+@media (max-width: 1000px) {
+    .text1 {
+        color: white;
+        text-decoration-line: none;
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    .text2 {
+        font-size: 3vw;
+    }
+}
+
+.text3 {
+    color: white;
+}
+
+@media (max-width: 1000px) {
+    .text3 {
+        font-size: 3vw;
+        color: white;
+    }
+}
+
+@media (max-width: 1000px) {
+    .submit_button {
+        font-size: 3vw;
+        color: white;
+    }
+}
