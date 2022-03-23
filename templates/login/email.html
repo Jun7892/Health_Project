@@ -1,0 +1,8 @@
+안녕하세요 :) {{ site_name }}홈페이지에서 보낸 메일입니다.
+
+다음 링크를 누르시면 비밀번호를 재설정 할 수 있는 화면으로 이동합니다.
+
+{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+
+비밀번호 재설정을 요청하지 않았다면 이 이메일을 무시하셔도 됩니다.
+항상 건강하세요~!:)
