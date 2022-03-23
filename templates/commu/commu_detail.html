@@ -24,13 +24,13 @@
 {% block content %}
     <div id="particles-js" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
     <a href="/commu" style="color: black; text-decoration-line: none; color: #2208e7">게시판으로</a>
-    <form action="/commu/like/{{ article.id }}" method="POST">
-        {% csrf_token %}
-        {% if user in article.like_user.all %}
-            <input type="submit" value="좋아요 취소"><p>like:{{ article.like_user.count }}</p>
-        {% else %}
-            <input type="submit" value="좋아요"> <p>like:{{ article.like_user.count }}</p>
-        {% endif %}
+   <form action="/commu/like/{{ article.id }}" method="POST">
+    {% csrf_token %}
+    {% if user in article.like_user.all %}
+        <input type="submit" value="좋아요 취소"><p>like:{{ article.like_user.count }}</p>
+    {% else %}
+        <input type="submit" value="좋아요"> <p>like:{{ article.like_user.count }}</p>
+    {% endif %}
     </form>
     <p>title: {{ article.title }}</p>
     <p>content: {{ article.content }}</p>
