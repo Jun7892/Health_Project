@@ -87,3 +87,5 @@ def make_food_data(urllist):
 
 df = make_food_data(make_urllist(200))
 df.to_csv('recipe_data.csv', index=False)
+
+
