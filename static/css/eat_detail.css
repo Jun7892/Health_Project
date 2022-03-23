@@ -33,7 +33,7 @@
     margin-left: 2vw;
     display: inline;
     font-size: 4vw;
-    color: orangered
+    color: white;
 }
 
 @media (max-width: 1000px) {
@@ -41,7 +41,7 @@
         margin-left: 1vw;
         display: inline;
         font-size: 8vw;
-        color: orangered;
+        color: white;
     }
 }
 

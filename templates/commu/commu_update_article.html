@@ -13,22 +13,20 @@
 {% block content %}
 
     <div id="particles-js">
-        <div class="fullcontain">
-            <div class="contain">
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <input class="article_title" name="title" value="{{ article.title }}">
-                    <input class="article_content" name="content" value="{{ article.content }}">
-                    <button type="submit" class="submit_button">수정하기</button>
-                    {% if error %}
-                        <p style="color: red">{{ error }}</p>
-                    {% endif %}
-                </form>
-            </div>
+        <div class="contain">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input class="article_title" name="title" value="{{ article.title }}">
+                <input class="article_content" name="content" value="{{ article.content }}">
+                <button type="submit" class="submit_button">수정하기</button>
+                {% if error %}
+                    <p style="color: red">{{ error }}</p>
+                {% endif %}
+            </form>
         </div>
     </div>
 
-<script type="text/javascript" src="{% static 'js/particles.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/particles.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 
 {% endblock %}
