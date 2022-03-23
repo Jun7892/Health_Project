@@ -8,4 +8,5 @@ urlpatterns = [
     path('test/<int:id>', views.testmypage, name='test'),#프로필사진 변경확인용 임시 url
     path('test/update/follow/<int:id>', views.user_follow, name='user_follow'),#임시 url
     path('test/follow/<int:id>', views.show_follow, name='show_follow'), #임시 url
+    path('find_id', views.find_id, name='find_id')
 ]

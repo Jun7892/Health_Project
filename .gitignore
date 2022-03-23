@@ -24,3 +24,9 @@ venv/
 recipe_data.csv
 
 secret.json
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+.ebextensions
