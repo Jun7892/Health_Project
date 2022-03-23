@@ -11,6 +11,8 @@ from django.utils.http import urlsafe_base64_encode
 from second.models import User
 from django.contrib import auth
 import json
+
+from second.services.join_service import create_user
 from second.services.login_service import login_check_blank
 from second.services.profile_service import get_profile_img_src, profile_update
 from django.contrib import messages
@@ -41,12 +43,14 @@ def sign_up(request):
                 return JsonResponse({'existemail': True})
             else:  # 중복아이디/이메일이 아니면
                 try:
-                    result =User.objects.create_user(username=username, password=password, nickname=nickname, email=email, gender=gender,level=level)
-                    # result = create_user(username, password, nickname, email, gender, level) # 유저생성함수
-                    # result.full_clean() # 유효성 검사해줌
+                    print('?')
+                    result =create_user(username=username, password=password, nickname=nickname, email=email, gender=gender,level=level)
+                    result.full_clean() #얘가 이메일 유효성검사해줌
                     auth.login(request, result)
                     return JsonResponse({'works': True})
+
                 except ValidationError: #이메일 유효성 검사 통과못했을때
+                    print('갑자기?')
                     user=User.objects.get(username=username)
                     user.delete() #생성했던 유저 다시 삭제
                     return JsonResponse({'invalid_email': True})
