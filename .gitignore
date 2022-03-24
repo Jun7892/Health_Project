@@ -30,3 +30,7 @@ secret.json
 !.elasticbeanstalk/*.global.yml
 
 .ebextensions
+
+local_settings.py
+
+commu/tests/
