@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth.tokens import default_token_generator, PasswordResetTokenGenerator
+from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -13,12 +13,10 @@ from second.models import User
 from django.contrib import auth
 import json
 
-from second.services.join_service import create_user
-from second.services.login_service import login_check_blank
-from second.services.profile_service import get_profile_img_src, profile_update
 from django.contrib import messages
-from django.contrib.auth import views as auth_views, authenticate
+from django.contrib.auth import authenticate
 from plz import settings
+from second.services import login_check_blank, create_user, get_profile_img_src, profile_update
 
 
 def sign_up(request):
