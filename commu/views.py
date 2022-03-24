@@ -1,19 +1,26 @@
 import json
 
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from commu.models import Article
 from commu.models import Comment
 from commu.services.comment_service import create_an_comment, delete_an_comment, update_an_comment, get_comment_page
 from django.contrib import messages
+from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 # @login_required(login_url:'sign_in')
 def commu_view(request):
     if request.method == 'GET':
        article = Article.objects.all().order_by('-id')
-       return render(request, 'commu/commu.html', {'article': article})
+       # page = request.GET.get('page')
+       # paginator = Paginator(article, '20')
+       # page_obj = paginator.get_page(page)
+       # context = {
+       #     'page': page_obj,
+       # }
+       return render(request, 'commu/commu.html', {'article':article})
 
 
 # @login_required(login_url:'sign_in')
@@ -27,7 +34,8 @@ def write_comment(request, id): #해당게시글의 id
             create_an_comment(article, user, comment)
             return redirect('/commu/' + str(id)) #해당게시글 페이지로
         else: #빈칸이면
-            return render(request,'commu/commu.html', {'article': article} )
+            messages.error(request, '내용을 입력하세요')
+            return redirect(f'/commu/{id}')
 
 # @login_required(login_url:'sign_in')
 def update_comment(request, id): #해당댓글의 id
@@ -42,14 +50,14 @@ def update_comment(request, id): #해당댓글의 id
                 update_an_comment(comment, edit_comment) #댓글 수정함수 #메세지 넘길거면 return값 넘기기
                 return redirect('/commu/' + str(article_id))#해당게시글 페이지로
             else:#빈칸이면
-                message = messages.info(request, '내용을 입력하세요.')
-                return redirect('/commu/' + str(article_id),messages=message)#해당게시글 페이지로
+                messages.info(request, '내용을 입력하세요.')
+                return redirect('/commu/' + str(article_id))#해당게시글 페이지로
         else:#메세지 띄우기
-            message = messages.error(request, '작성자만 수정할 수 있어요~.')
-            return redirect('/commu/' + str(article_id),messages=message)#해당게시글 페이지로
+            messages.info(request, '작성자만 수정할 수 있어요~.')
+            return redirect('/commu/' + str(article_id))#해당게시글 페이지로
     else:
-        message = messages.warning(request, '잘못된 접근입니다.')
-        return redirect('/commu/' + str(article_id),messages=message)
+        messages.info(request, '잘못된 접근입니다.')
+        return redirect('/commu/' + str(article_id))
 
           
 # @login_required(login_url:'sign_in')
@@ -80,10 +88,13 @@ def article_create(request):
 
 
 def article_detail(request, id):
-    get_article = Article.objects.get(id=id)
-    page = request.GET.get("page")
-    comments = get_comment_page(page, id)
-    return render(request, 'commu/commu_detail.html', {'article': get_article, 'comments': comments})
+    try:
+        get_article = Article.objects.get(id=id)
+        page = request.GET.get("page")
+        comments = get_comment_page(page, id)
+        return render(request, 'commu/commu_detail.html', {'article': get_article, 'comments': comments})
+    except Article.DoesNotExist: #없는 게시물에 접근할때
+        return redirect('/commu')
 
 
 def delete_an_article(request, id): # 글 삭제
@@ -117,3 +128,11 @@ def like(request, id):
     return redirect(f'/commu/{id}')
 
 
+def search_article(request):
+    article_list = Article.objects.all()
+    search = request.GET.get('search_article', '')
+    if search:
+        search_list = article_list.filter(Q(title__icontains=search) | Q(content__icontains=search))
+        return render(request, 'commu/commu_search.html', {'search_list': search_list})
+    else:
+        return render(request, 'commu/commu_search.html')

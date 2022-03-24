@@ -22,7 +22,6 @@ def plan_view2(request, id):
 #     if request.method == 'POST':
 #         user = request.user
 #         to_do = request.POST.get('to_do', '')
-#         my_plan = Plan.objects.create(user=user,to_do=to_do)
+#         my_plan = Plan.objects.create(user=user, to_do=to_do)
 #         my_plan.save()
 #         return render(request, 'plan.html')
-#

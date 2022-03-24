@@ -13,6 +13,7 @@ body{
         background:#eee;
         z-index: 2;
 }
+
 .black_bg{
     display: none;
     position: absolute;
