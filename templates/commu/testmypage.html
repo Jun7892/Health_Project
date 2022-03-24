@@ -16,9 +16,9 @@
                 <br>
                 {% if login_user == user %}
                     <button type='button' id="modal_btn">모달창아 나와랏</button><!--프로필변경부분 연구후 수정할것-->
-                {% elif login_user != user and user != login_user.follow %}
+                {% elif login_user not in user.followee.all %}
                     <a href="/second/test/update/follow/{{ user.id }}">[팔로우]</a>
-                {% elif login_user != user and user == login_user.follow %}
+                {% elif login_user in user.followee.all %}
                     <a href="/second/test/update/follow/{{ user.id }}">[팔로우취소]</a>
                 {% endif %}
             </div>
@@ -77,8 +77,10 @@
 {#                    <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>#}
                     {% if login_user.id == another.id %}
                         <a href="/second/test/{{ another.id }}">[마이페이지로]</a>
-                    {% else %}
+                    {% elif login_user not in another.followee.all %}
                         <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>
+                    {% else %}
+                        <a href="/second/test/update/follow/{{ another.id }}">[팔로우 취소]</a>
                     {% endif %}
                     <p class="go"> 이 사람이 궁금하다면 클릭! </p>
                 </div>
