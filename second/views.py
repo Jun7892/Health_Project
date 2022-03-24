@@ -97,7 +97,7 @@ def find_id(request):
             messages.warning(request, '해당 이메일로 가입한 아이디가 없습니다.')
             return redirect('/second/find_id')
 
-def send_email(request):
+def send_email(request): #이메일 서비스 점검용
     from django.core.mail import EmailMessage
     email = EmailMessage()
     email.subject = 'test'
