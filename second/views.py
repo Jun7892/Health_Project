@@ -1,13 +1,14 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.tokens import default_token_generator, PasswordResetTokenGenerator
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils.datastructures import MultiValueDictKeyError
 from django.core.exceptions import ValidationError
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from second.models import User
 from django.contrib import auth
 import json
@@ -43,14 +44,11 @@ def sign_up(request):
                 return JsonResponse({'existemail': True})
             else:  # 중복아이디/이메일이 아니면
                 try:
-                    print('?')
-                    result =create_user(username=username, password=password, nickname=nickname, email=email, gender=gender,level=level)
+                    result =create_user(username, password, nickname, email, gender, level)
                     result.full_clean() #얘가 이메일 유효성검사해줌
                     auth.login(request, result)
                     return JsonResponse({'works': True})
-
                 except ValidationError: #이메일 유효성 검사 통과못했을때
-                    print('갑자기?')
                     user=User.objects.get(username=username)
                     user.delete() #생성했던 유저 다시 삭제
                     return JsonResponse({'invalid_email': True})
@@ -62,27 +60,24 @@ def sign_in(request):
     else: # post로 들어왔을때
         select = json.loads(request.body.decode('utf-8'))
         username = select['username']
-        password = select['password']
+        password = str(select['password'])
         msg = login_check_blank(username, password) # 빈칸체크함수
         if msg != '통과':
             return JsonResponse({'blank': True})
         else:
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                auth.login(request, user)
-                return JsonResponse({'works': True})
-            # if User.objects.filter(username=username).exists(): #로그인하고자하는 아이디를 가진 유저가 있다면
-            #     user = User.objects.get(username=username)
-            #     result = authenticate(request, username=username, password=password)
-            #     # result = check_password_correct(password,user.password)#패스워드일치여부 판별
-            #     if result == True:
-            #         auth.login(request, user)
-            #         return JsonResponse({'works':True})
-            #     else:
-            #         print(result)
-            #         return JsonResponse({'wrong_pw': True})
-            # else:#해당하는 유저정보없으면
-            #     return JsonResponse({'no_user': True})
+            try:
+                founduser = User.objects.get(username=username)
+                if founduser is not None:
+                    user = authenticate(request, username=username, password=password)
+                    if user is not None: #패스워드까지 맞으면
+                        auth.login(request, user) #로그인하겠지
+                        return JsonResponse({'works': True})
+                    else: #패스워드가 틀리면
+                        raise ValueError
+            except User.DoesNotExist: # founduser가 없으면 이리로옴
+                return JsonResponse({'no_user':True})
+            except ValueError:
+                return JsonResponse({'wrong_pw':True})
 
 
 @login_required #로그인해야 로그아웃 가능
@@ -98,12 +93,11 @@ def find_id(request):
         try:
             user = User.objects.get(email=email)
             if user is not None:
-                message = messages.info(request, f'당신의 아이디는 {user.username} 입니다.')
-                return redirect('/second/find_id', messages=message)
+                messages.info(request, f'당신의 아이디는 {user.username} 입니다.')
+                return redirect('/second/find_id')
         except User.DoesNotExist:
-                print('여기')
-                message = messages.warning(request, '해당 이메일로 가입한 아이디가 없습니다.')
-                return redirect('/second/find_id', messages=message)
+            messages.warning(request, '해당 이메일로 가입한 아이디가 없습니다.')
+            return redirect('/second/find_id')
 
 def send_email(request):
     from django.core.mail import EmailMessage
@@ -114,15 +108,15 @@ def send_email(request):
     email.to = ['']
     email.send()
 
-def password_reset(request):
+def password_reset_mailing(request):
     if request.method == 'GET':
-        return render(request, 'login/reset_pw.html')
+        return render(request, "login/check_ones_email.html")
     else:#post요청일때
         username = request.POST['username']
         email = request.POST['email']
         if username == '' or email == '':
-            message = messages.warning(request, '빈칸을 입력했는지 확인하세요')
-            return redirect('/second/password_reset/', messages=message)
+            messages.warning(request, '빈칸을 입력했는지 확인하세요')
+            return redirect('/second/password_reset/')
         else:#빈칸아닐때
             try:
                 user = User.objects.get(username=username)
@@ -144,27 +138,62 @@ def password_reset(request):
                     try:
                         print('오긴왔니?')
                         send_mail(title, template ,settings.EMAIL_HOST_USER, [user.email])
-                        print('잘됐니?')
-                        message = messages.info(request, 'ok')
                         return redirect('/second/password_reset/done/')
                     except:
                         print('안됐니?')
-                        message = messages.debug(request, '잘못된 요청입니다.')
-                        return redirect('/second/password_reset/', messages=message)
+                        messages.debug(request, '잘못된 요청입니다.')
+                        return redirect('/second/password_reset/')
 
                 else: #id에 입력된 이메일과 입력한 이메일이 같지 않으면 ValueError일으킴
                     raise ValueError
             except User.DoesNotExist:
                 print('어디있니?')
-                message = messages.error(request, '해당 아이디로 가입한 유저가 존재하지 않습니다.')
-                return redirect('/second/password_reset/', messages=message)
+                messages.error(request, '해당 아이디로 가입한 유저가 존재하지 않습니다.')
+                return redirect('/second/password_reset/')
             except ValueError:
                 print('여기니?')
-                message = messages.info(request, '아이디의 이메일정보와 입력한 이메일이 일치하지 않습니다.')
-                return redirect('/second/password_reset/', messages=message)
+                messages.info(request, '아이디의 이메일정보와 입력한 이메일이 일치하지 않습니다.')
+                return redirect('/second/password_reset/')
 
 def email_send_success(request):
-    return render(request, 'login/password_reset_email.html')
+    return render(request, 'login/success_mailing.html')
+
+def reset_password(request, uidb64, token):
+    if request.method =='GET':
+        pk = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=pk)
+        result = default_token_generator.check_token(user, token)
+        print(result)
+        if result == True:
+            return render(request, 'login/reset_password.html', {'ok':'ok'})
+        else:
+            messages.info(request, '이미 비밀번호변경이 이루어졌습니다. 이 메일은 유효하지 않습니다')
+            return render(request, 'login/reset_password.html')
+    else:#post요청
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        print(password1,password2)
+        if password1 and password2:
+            if password1 != password2:
+                messages.error(request, '입력한 비밀번호가 일치하지 않습니다.')
+                return redirect(request.path)
+            else:#패스워드 같다면
+                print('어디로?')
+                try:
+                    pk = force_str(urlsafe_base64_decode(uidb64))
+                    user = User.objects.get(pk=pk)
+                    result = default_token_generator.check_token(user, token)
+                    print(result)
+                    if result == True: #유효한 유저/토큰이면 True반환
+                        user.password = make_password(password2) #create_user할때 장고자체에서 제공하는 패스워드 해시화함수
+                        user.save()
+                        return render(request, 'login/password_reset_complete.html')
+                except:
+                    message = messages.warning(request, '뭔가 잘못되었군요! situm26@gmail.com 여기로 메일을 보내주세요!')
+                    return redirect(request.path, messages=message)
+        else: #비밀번호 하나라도 빈칸이면
+            messages.info(request, '빈칸을 입력했어요! 다시입력해주세요')
+            return redirect(request.path)
 
 
 # @login_required(login_url:'sign_in')
