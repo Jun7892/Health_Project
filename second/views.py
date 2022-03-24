@@ -214,7 +214,13 @@ def testmypage(request,id):
     }
     if request.method == 'GET':
         return render(request, 'commu/testmypage.html', doc)
-    else:# 프로필 변경요청
+    else:
+        return redirect('test', login_user.id)
+
+def editprofile(request, id):
+    login_user = request.user  # 접속한 유저의 정보들고있음
+    user = User.objects.get(id=id)  # 프로필변경페이지 유저
+    if login_user.id == user.id: #프로필변경하기
         nickname= request.POST['nickname']
         if nickname == "" or MultiValueDictKeyError(KeyError): #닉네임 공백이면
             try:#사진 선택한걸로 바꿔주거나
@@ -224,6 +230,10 @@ def testmypage(request,id):
                 return redirect('test', login_user.id)#마이페이지로
             except: #사진도 선택안했으면 그냥 유지
                 return redirect('test', login_user.id) #나중에 마이페이지에 해당하는것으로 변경하기
+    else: #응 돌아가
+        return redirect('test', login_user.id)
+
+
 
 
 # @login_required(login_url:'sign_in')
