@@ -7,13 +7,21 @@ from commu.models import Article
 from commu.models import Comment
 from commu.services.comment_service import create_an_comment, delete_an_comment, update_an_comment, get_comment_page
 from django.contrib import messages
+from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 # @login_required(login_url:'sign_in')
 def commu_view(request):
     if request.method == 'GET':
        article = Article.objects.all().order_by('-id')
-       return render(request, 'commu/commu.html', {'article': article})
+       # page = request.GET.get('page')
+       # paginator = Paginator(article, '20')
+       # page_obj = paginator.get_page(page)
+       # context = {
+       #     'page': page_obj,
+       # }
+       return render(request, 'commu/commu.html', {'article':article})
 
 
 # @login_required(login_url:'sign_in')
@@ -117,3 +125,11 @@ def like(request, id):
     return redirect(f'/commu/{id}')
 
 
+def search_article(request):
+    article_list = Article.objects.all()
+    search = request.GET.get('search_article', '')
+    if search:
+        search_list = article_list.filter(Q(title__icontains=search) | Q(content__icontains=search))
+        return render(request, 'commu/commu_search.html', {'search_list': search_list})
+    else:
+        return render(request, 'commu/commu_search.html')

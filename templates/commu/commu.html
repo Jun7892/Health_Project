@@ -14,8 +14,13 @@
 {% block content %}
 
     <div id="particles-js">
-        <h1>Community</h1>
-
+        <a class="h1" href="/commu/">Community</a>
+        <div class="search_input">
+            <form action="/commu/search/" method="GET">
+                <input type="text" name="search_article" >
+                <input type="submit" value="검색">
+            </form>
+        </div>
         <div class="textbox">
             <a class="mainmove" href="{% url 'main' %}">main</a>
             <p class="base" style="top: 25%; left: 5%; color: white">1 /</p>
