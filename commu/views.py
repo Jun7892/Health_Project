@@ -1,7 +1,6 @@
 import json
 
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from commu.models import Article
 from commu.models import Comment
@@ -27,7 +26,8 @@ def write_comment(request, id): #해당게시글의 id
             create_an_comment(article, user, comment)
             return redirect('/commu/' + str(id)) #해당게시글 페이지로
         else: #빈칸이면
-            return render(request,'commu/commu.html', {'article': article} )
+            messages.error(request, '내용을 입력하세요')
+            return redirect(f'/commu/{id}')
 
 # @login_required(login_url:'sign_in')
 def update_comment(request, id): #해당댓글의 id
@@ -42,14 +42,14 @@ def update_comment(request, id): #해당댓글의 id
                 update_an_comment(comment, edit_comment) #댓글 수정함수 #메세지 넘길거면 return값 넘기기
                 return redirect('/commu/' + str(article_id))#해당게시글 페이지로
             else:#빈칸이면
-                message = messages.info(request, '내용을 입력하세요.')
-                return redirect('/commu/' + str(article_id),messages=message)#해당게시글 페이지로
+                messages.info(request, '내용을 입력하세요.')
+                return redirect('/commu/' + str(article_id))#해당게시글 페이지로
         else:#메세지 띄우기
-            message = messages.error(request, '작성자만 수정할 수 있어요~.')
-            return redirect('/commu/' + str(article_id),messages=message)#해당게시글 페이지로
+            messages.info(request, '작성자만 수정할 수 있어요~.')
+            return redirect('/commu/' + str(article_id))#해당게시글 페이지로
     else:
-        message = messages.warning(request, '잘못된 접근입니다.')
-        return redirect('/commu/' + str(article_id),messages=message)
+        messages.info(request, '잘못된 접근입니다.')
+        return redirect('/commu/' + str(article_id))
 
           
 # @login_required(login_url:'sign_in')
@@ -80,10 +80,13 @@ def article_create(request):
 
 
 def article_detail(request, id):
-    get_article = Article.objects.get(id=id)
-    page = request.GET.get("page")
-    comments = get_comment_page(page, id)
-    return render(request, 'commu/commu_detail.html', {'article': get_article, 'comments': comments})
+    try:
+        get_article = Article.objects.get(id=id)
+        page = request.GET.get("page")
+        comments = get_comment_page(page, id)
+        return render(request, 'commu/commu_detail.html', {'article': get_article, 'comments': comments})
+    except Article.DoesNotExist: #없는 게시물에 접근할때
+        return redirect('/commu')
 
 
 def delete_an_article(request, id): # 글 삭제
