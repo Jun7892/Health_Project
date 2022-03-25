@@ -36,7 +36,7 @@
                         <p style="float: left; width: 10%;">{{ forloop.counter }}</p>
                         <a href="{{ i.id }}" style="float: left; width: 55%; text-decoration-line: none; color: white">{{ i.title }} </a>
                         <p style="float: left; width: 27%;">{{ i.created_at }}</p>
-                        <p style="float: left; width: 4%;">{{ i.author }}</p>
+                        <a href="/mypage/{{ i.author.id }}" style="float: left; width: 4%; text-decoration-line: none;">{{ i.author }}</a>
 {#                        <p style="float: left; width: 4%;">x</p>#}
                 </div>
             {% endfor %}

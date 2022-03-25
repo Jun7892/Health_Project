@@ -36,7 +36,7 @@
             </form>
             <br>
             <p>title: {{ article.title }}</p>
-            <p>author: {{ article.author }}</p>
+            <a href="/mypage/{{ article.author.id }}" style="text-decoration-line: none;">author: {{ article.author }}</a>
             <br>
             <p>content: {{ article.content }}</p>
             <br>
@@ -59,13 +59,13 @@
         {% for comment in comments %}
             <div>
                 <div class='comment' style="display:flex">
-                    <h5 style="color: white">{{ comment.author }}님</h5><span style="color: white">: </span>
-                    <h6 style="color: white">{{ comment.comment }}</h6>
+                    <a href="/mypage/{{ comment.author.id }}" style="text-decoration-line: none; color: black;">{{ comment.author }}:</a>
+                    <h6 style="">{{ comment.comment }}</h6>
 
                     {% if comment.author == user %}
-                        <a style="color: white; text-decoration-line : none;"
+                        <a style="color: black; text-decoration-line : none;"
                            href="/commu/delete/comment/{{ comment.id }}">삭제</a>
-                        <a id="edit_comment" style="color: white; text-decoration-line : none;"
+                        <a id="edit_comment" style="color: black; text-decoration-line : none;"
                            onclick="show_edit()">수정</a>
                         <div id='edit_comment_box' style="display: none">
                             <form method="post" action="/commu/update/comment/{{ comment.id }}">
