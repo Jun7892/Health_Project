@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from django.utils.datastructures import MultiValueDictKeyError
-
+from django.core.exceptions import ValidationError
+from django.contrib import messages
 from commu.models import Article
 from mypage.services.profile_service import get_profile_img_src, profile_update
 from second.models import User
@@ -55,9 +56,42 @@ def editprofile(request, id):
 def reset_email(request,id):
     login_user = request.user
     user = User.objects.get(id=id)  # 마이페이지의 유저
-    if login_user != user: #자기이메일은 자기만 바꿀수 있어야함
-        return redirect()
-
+    doc={
+        'login_user':login_user,
+        'user':user,
+    }
+    if request.method == "GET":
+        if login_user != user: #다른사람 pk값입력해서 들어가면 본인 이메일 변경페이지로 던져줌
+            messages.error(request, '잘못된 요청입니다.')
+            return redirect('reset_email', login_user.id)
+        else:
+            return render(request, 'mypage/reset_email.html', doc)
+    else: #post요청
+        if login_user != user: #자기이메일은 자기만 바꿀수 있어야함
+            messages.error(request, '잘못된 요청입니다.')
+            return redirect('reset_email', login_user.id)
+        else:
+            try:
+                email = request.POST['email']
+                if email == "":
+                    messages.error(request, '이메일을 입력해주세요.')
+                    return redirect('reset_email', login_user.id)
+                else:
+                    login_user.email = email
+                    login_user.full_clean() #여기서 한번더 검사? 통과못하면 except로 빠짐
+                    #중복되지 않은 이메일인지도 확인해야해!!
+                    same_email_user = User.objects.filter(email=email).exclude(username=login_user.username)
+                    if len(same_email_user) == 0:
+                        login_user.save()
+                        return redirect('mypage', login_user.id)
+                    # else:
+                    #     raise
+            except ValidationError:
+                messages.error(request, '유효한 이메일형식으로 입력해주세요.')
+                return redirect('reset_email', login_user.id)
+            # except MultiValueDictKeyError:
+            #     messages.error(request, '이미 해당이메일로 가입한 유저가있습니다. 다른이메일로 입력해주세요.')
+            #     return redirect('reset_email', login_user.id)
 
 # @login_required(login_url='sign_in')
 def user_follow(request, id): #팔로우할 사람의 id

@@ -55,7 +55,7 @@
                             <input type="radio" class="level" name="level" value="상급자"/>상급자
                             <p> 이메일 : {{ user.email }}</p>
                             <p> 이메일주소는 아이디찾기/비밀번호 변경에 사용됩니다.</p>
-                            <a>이메일변경하기</a> <a href="/second/password_reset/">비밀번호 변경</a>
+                            <a href="/mypage/update/email/{{ user.id }}">이메일변경하기</a> <a href="/second/password_reset/">비밀번호 변경</a>
                         </div>
                     </div>
                     <button type="submit">프로필 수정하기</button>

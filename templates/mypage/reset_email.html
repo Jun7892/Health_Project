@@ -12,9 +12,9 @@
 <h3>이메일 재설정</h3>
 {% block content %}
      <p>새로 사용할 이메일을 정확하게 입력해 주세요.</p>
-        <form method="POST" action="">
+        <form method="POST" action="/mypage/update/email/{{ user.id }}">
             {% csrf_token %}
-            새로 사용할 이메일: <input type="email" name="email">
+            새로 사용할 이메일: <input type="text" name="email">
             <button>저장</button>
         </form>
 
