@@ -37,16 +37,26 @@ def editprofile(request, id):
         login_user = request.user  # 접속한 유저의 정보들고있음
         user = User.objects.get(id=id)  # 프로필변경페이지 유저
         if login_user.id == user.id: #프로필변경하기
-            nickname= request.POST['nickname']
-            if nickname == "" or MultiValueDictKeyError(KeyError): #닉네임 공백이면
-                try:#사진 선택한걸로 바꿔주거나
+            try:
+                nickname= request.POST['nickname']
+                level= request.POST['level'] #얘는 다행히 선택 안할 수가 없다.
+                print(level)
+                if nickname == '':
+                    messages.info(request, '닉네임은 빈칸으로 입력할 수 없어요')
+                    return redirect('mypage', login_user.id)
+                elif nickname != '':
+                    user.nickname = nickname
+                    user.level = level
+                    user.save()
                     img_file = request.FILES['file']
                     filepath = get_profile_img_src(login_user, img_file)
-                    profile_update(login_user, nickname, filepath)
+                    profile_update(login_user, filepath)
                     return redirect('mypage', login_user.id)#마이페이지로
-                except: #사진도 선택안했으면 그냥 유지
-                    return redirect('mypage', login_user.id)
+            except: #사진도 선택안했으면 그냥 유지
+                   print('여기아닐껄?')
+                   return redirect('mypage', login_user.id)
         else: #응 돌아가
+            print('여기?')
             return redirect('mypage', login_user.id)
     else:#겟요청이면 그냥 메인으로 돌려보냄
         return redirect('/main/')
@@ -84,14 +94,12 @@ def reset_email(request,id):
                     if len(same_email_user) == 0:
                         login_user.save()
                         return redirect('mypage', login_user.id)
-                    # else:
-                    #     raise
+                    else:
+                        messages.error(request, '이미 해당이메일로 가입한 유저가있습니다. 다른이메일로 입력해주세요.')
+                        return redirect('reset_email', login_user.id)
             except ValidationError:
                 messages.error(request, '유효한 이메일형식으로 입력해주세요.')
                 return redirect('reset_email', login_user.id)
-            # except MultiValueDictKeyError:
-            #     messages.error(request, '이미 해당이메일로 가입한 유저가있습니다. 다른이메일로 입력해주세요.')
-            #     return redirect('reset_email', login_user.id)
 
 # @login_required(login_url='sign_in')
 def user_follow(request, id): #팔로우할 사람의 id
