@@ -24,6 +24,6 @@ urlpatterns = [
     path('eat/', include('eat.urls')),
     path('workout/', include('workout.urls')),
     path('plan/', include('plan.urls')),
-    path('item/', include('item.urls')),
+    path('mypage/', include('mypage.urls')),
     path('commu/', include('commu.urls')),
 ]
