@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'eat',
     'workout',
     'plan',
-    'item',
+    'mypage',
     'commu',
     # 'storages', #깃헙에 올릴때 주석처리
 ]
@@ -94,6 +94,9 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
+# The number of seconds a password reset link is valid for (default: 3 days). 장고에서 토큰유효 기본값이 3일
+PASSWORD_RESET_TIMEOUT = 60*30 #토큰 유효한 시간은 30분으로 지정
 
 AUTH_PASSWORD_VALIDATORS = [
     {

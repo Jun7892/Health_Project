@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% load static %}
 {% block others %}
     <meta charset="UTF-8">
@@ -17,14 +17,14 @@
                 {% if login_user == user %}
                     <button type='button' id="modal_btn">모달창아 나와랏</button><!--프로필변경부분 연구후 수정할것-->
                 {% elif login_user not in user.followee.all %}
-                    <a href="/second/test/update/follow/{{ user.id }}">[팔로우]</a>
+                    <a href="/mypage/update/follow/{{ user.id }}">[팔로우]</a>
                 {% elif login_user in user.followee.all %}
-                    <a href="/second/test/update/follow/{{ user.id }}">[팔로우취소]</a>
+                    <a href="/mypage/update/follow/{{ user.id }}">[팔로우취소]</a>
                 {% endif %}
             </div>
             <div class="user_desc">
                 <p>{{ user.nickname }}님</p>
-                <a href="/second/test/follow/{{ user.id }}" >
+                <a href="/mypage/get/follow/{{ user.id }}" >
                     <div class="counts">
                     <p class="count"> 팔로우: {{ user.follow.count }}명</p>
                     <p class="count"> 팔로워: {{ user.followee.count }}명</p>
@@ -37,7 +37,7 @@
         <div class="modal_wrap">
             <div class="modal_close"><a href="#">close</a></div>
             <div class="edit_profile">
-                <form method="POST" enctype="multipart/form-data" action="/second/update/{{ user.id }}">
+                <form method="POST" enctype="multipart/form-data" action="/mypage/update/profile/{{ user.id }}">
                 {% csrf_token %}
                     <div style="display: flex">
                         <div style="width:300px; height: 300px; background-color: white;">
@@ -82,18 +82,18 @@
                 <div class="recommend_imgbox"  ><!--추천맛집 div가 두개 하나는 사진 하나는 가게정보-->
                     <img id="recommend_img"  class="rcm_img" src="{{ another.profile_img }}"> <!--사진url앞에것만 잘라보기-->
                 </div>
-                <div class="recommend_descbox" onclick="location.href='/second/test/{{ another.id }}'">
+                <div class="recommend_descbox" onclick="location.href='/mypage/{{ another.id }}'">
                     <p class="s_descs">닉네임: {{ another.nickname }}</p>
                     <p class="s_descs">운동레벨: {{ another.level }}</p>
                     <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>
                     <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>
-{#                    <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>#}
+{#                    <a href="/mypage/update/follow/{{ another.id }}">[팔로우]</a>#}
                     {% if login_user.id == another.id %}
-                        <a href="/second/test/{{ another.id }}">[마이페이지로]</a>
+                        <a href="/mypage/{{ another.id }}">[마이페이지로]</a>
                     {% elif login_user not in another.followee.all %}
-                        <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>
+                        <a href="/mypage/update/follow/{{ another.id }}">[팔로우]</a>
                     {% else %}
-                        <a href="/second/test/update/follow/{{ another.id }}">[팔로우 취소]</a>
+                        <a href="/mypage/update/follow/{{ another.id }}">[팔로우 취소]</a>
                     {% endif %}
                     <p class="go"> 이 사람이 궁금하다면 클릭! </p>
                 </div>

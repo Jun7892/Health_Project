@@ -16,11 +16,11 @@
         {% for follow in follow_list %}
             <p style="color: #1b1b1b">{{ follow.username }}
             {% if login_user.id == follow.id %}
-                <a href="/second/test/{{ follow.id }}">[마이페이지로]</a>
+                <a href="/mypage/{{ follow.id }}">[마이페이지로]</a>
             {% elif login_user not in follow.followee.all %}
-                <a href="/second/test/update/follow/{{ follow.id }}">[팔로우]</a>
+                <a href="/mypage/update/follow/{{ follow.id }}">[팔로우]</a>
             {% else %}
-                <a href="/second/test/update/follow/{{ follow.id }}">[팔로우 취소]</a>
+                <a href="/mypage/update/follow/{{ follow.id }}">[팔로우 취소]</a>
             {% endif %}
             </p>
         {% endfor %}
@@ -31,16 +31,16 @@
         {% for followee in followee_list %}
             <p style="color: #1b1b1b">{{ followee.username }}
             {% if login_user.id == followee.id %}
-                <a href="/second/test/{{ followee.id }}">[마이페이지로]</a>
+                <a href="/mypage/{{ followee.id }}">[마이페이지로]</a>
             {% elif login_user not in followee.followee.all %}
-                <a href="/second/test/update/follow/{{ followee.id }}">[팔로우]</a>
+                <a href="/mypage/update/follow/{{ followee.id }}">[팔로우]</a>
             {% else %}
-                <a href="/second/test/update/follow/{{ followee.id }}">[팔로우 취소]</a>
+                <a href="/mypage/update/follow/{{ followee.id }}">[팔로우 취소]</a>
             {% endif %}
             </p>
         {% endfor %}
         </div>
     </div>
-    <a href="/second/test/{{ user.id }}">마이페이지로</a>
+    <a href="/mypage/{{ user.id }}">마이페이지로</a>
 
 {% endblock %}
