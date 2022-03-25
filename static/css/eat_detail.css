@@ -7,6 +7,11 @@
     background-color: black;
     cursor: url("/static/img/pointer.png") 2 6, default;
 }
+.recommend{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
 
 @media (max-width: 1000px) {
     .header {

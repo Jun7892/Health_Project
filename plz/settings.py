@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u6-u2goiyr%8ulp2wrec93gg=+2b(rx@=y_*ym9!eqya@7w#bj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # 배포할 것
+DEBUG = True # 배포할 것
 
 ALLOWED_HOSTS = ['*'] # 모두 허용
 
@@ -85,12 +85,8 @@ WSGI_APPLICATION = 'plz.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sys',
-        'USER': 'tenjangsaeng',
-        'PASSWORD': '$sparta10',
-        'HOST': 'sparta-10team-database.cnwk3pjbkgr6.ap-northeast-2.rds.amazonaws.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
