@@ -5,17 +5,23 @@
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/find_id.css" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block title %}FIND ID{% endblock %}
 
 {% block content %}
-    <p>회원가입시 입력한 이메일을 입력하세요</p>
-    <form method="post" action="/second/find_id">
-        {% csrf_token %}
-        Email : <input type="email", name="email", placeholder="회원가입시 사용한 이메일">
-        <button>제출</button>
-    </form>
+
+    <div class="fullcontain">
+        <div class="findbox">
+            <p>회원가입시 입력한 이메일을 입력하세요</p>
+            <form method="post" action="/second/find_id">
+                {% csrf_token %}
+                Email : <input type="email", name="email", placeholder="회원가입시 사용한 이메일">
+                <button>제출</button>
+            </form>
+        </div>
+    </div>
 
     {% if messages %}
         {% for msg in messages %}
