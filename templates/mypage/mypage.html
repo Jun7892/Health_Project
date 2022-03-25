@@ -15,7 +15,7 @@
                 <img id="image" src="{{ user.profile_img }}">
                 <br>
                 {% if login_user == user %}
-                    <button type='button' id="modal_btn">모달창아 나와랏</button><!--프로필변경부분 연구후 수정할것-->
+                    <button type='button' id="modal_btn">모달창아 나와랏</button>
                 {% elif login_user not in user.followee.all %}
                     <a href="/mypage/update/follow/{{ user.id }}">[팔로우]</a>
                 {% elif login_user in user.followee.all %}
@@ -24,6 +24,11 @@
             </div>
             <div class="user_desc">
                 <p>{{ user.nickname }}님</p>
+                 {% if messages %}
+                    {% for msg in messages %}
+                        {{ msg.message }}
+                    {% endfor %}
+                 {% endif %}
                 <a href="/mypage/get/follow/{{ user.id }}" >
                     <div class="counts">
                     <p class="count"> 팔로우: {{ user.follow.count }}명</p>
@@ -50,9 +55,19 @@
                             <p> 성별: {{ user.gender }}</p>
                             <p> 닉네임 : <input style="width: 150px;" type="text" name="nickname" value="{{ user.nickname }}"></p>
                             <p> 운동 level: {{ user.level }}</p>
-                            <input type="radio" class="level" name="level" value="초심자"/>초급자
-                            <input type="radio" class="level" name="level" value="중급자"/>중급자
-                            <input type="radio" class="level" name="level" value="상급자"/>상급자
+                            {% if user.level == '초심자' %}
+                                <input type="radio" class="level" name="level" value="초심자" checked/>초심자
+                                <input type="radio" class="level" name="level" value="중급자" />중급자
+                                <input type="radio" class="level" name="level" value="상급자"/>상급자
+                            {% elif user.level == '중급자' %}
+                                <input type="radio" class="level" name="level" value="초심자" />초심자
+                                <input type="radio" class="level" name="level" value="중급자" checked/>중급자
+                                <input type="radio" class="level" name="level" value="상급자"/>상급자
+                            {% else %}
+                                <input type="radio" class="level" name="level" value="초심자" />초심자
+                                <input type="radio" class="level" name="level" value="중급자" />중급자
+                                <input type="radio" class="level" name="level" value="상급자" checked/>상급자
+                            {% endif %}
                             <p> 이메일 : {{ user.email }}</p>
                             <p> 이메일주소는 아이디찾기/비밀번호 변경에 사용됩니다.</p>
                             <a href="/mypage/update/email/{{ user.id }}">이메일변경하기</a> <a href="/second/password_reset/">비밀번호 변경</a>
