@@ -24,7 +24,7 @@
 {% block content %}
     <div id="particles-js" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
         <div class="contain">
-            <a href="/commu" style="color: white; text-decoration-line: none;">게시판으로</a>
+            <a href="/commu" class="text1">게시판으로</a>
             <p>&nbsp;</p>
             <form action="/commu/like/{{ article.id }}" method="POST">
                 {% csrf_token %}
@@ -35,69 +35,74 @@
                 {% endif %}
             </form>
             <br>
-            <p>title: {{ article.title }}</p>
-            <a href="/mypage/{{ article.author.id }}" style="text-decoration-line: none;">author: {{ article.author }}</a>
+
+            <p class="text2">title: {{ article.title }}</p>
+            <a class="text2" href="/mypage/{{ article.author.id }}" style="text-decoration-line: none;">author: {{ article.author }}</a>
+
             <br>
-            <p>content: {{ article.content }}</p>
+            <p class="text2">content: {{ article.content }}</p>
             <br>
             {% if article.author == user %}
-                <a href="/commu/delete/{{ article.id }}">삭제</a>
-                <a href="/commu/update/{{ article.id }}">수정</a>
+                <a class="text2" href="/commu/delete/{{ article.id }}">삭제</a>
+                <a class="text2" href="/commu/update/{{ article.id }}">수정</a>
             {% endif %}
 
-            <form method="POST" action="/commu/comment/{{ article.id }}" style="color: white;">
+            <form method="POST" action="/commu/comment/{{ article.id }}" class="text3">
                 {% csrf_token %}
-                댓글 : <input type="text" name="comment">
+                댓글 : <input class="text2" type="text" name="comment">
                 <button type="submit" class="submit_button">작성하기</button>
                 {% if error %}
                     {{ error }}
                 {% endif %}
             </form>
+
+            {% for comment in comments %}
+                <div>
+                    <div class='comment' style="display:flex">
+                        <a href="/mypage/{{ comment.author.id }}" style="text-decoration-line: none; color: white">{{ comment.author }}님</a><span style="color: white">: </span>
+                        <h6 style="color: white">{{ comment.comment }}</h6>
+
+                        {% if comment.author == user %}
+                            <a style="color: white; text-decoration-line : none;"
+                               href="/commu/delete/comment/{{ comment.id }}">삭제</a>
+                            <a id="edit_comment" style="color: white; text-decoration-line : none;"
+                               onclick="show_edit()">수정</a>
+                            <div id='edit_comment_box' style="display: none">
+                                <form method="post" action="/commu/update/comment/{{ comment.id }}">
+                                    {% csrf_token %}
+                                    수정할 댓글 내용을 입력하세요: <input type="text" name="update_comment">
+                                    <input type="submit">
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            {% endfor %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class="alert_{{ msg.tags }}"><!--css에서 alert_info 는 댓글수정,삭제 관련 에러메세지-->
+                        <p style="color: red">{{ msg.message }}</p>
+                        <!--css에서 alert_error는 댓글 작성시 에러메세지로 위치바꾸고, css다르게 줄 수 있음-->
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if comments.has_previous %}
+                <a href="?page=1" style="color: white">맨 앞으로</a>
+                <a href="?page={{ comments.precious_page_number }}"style="color: white">이전으로</a>
+            {% endif %}
+            <span style="color: white">{{ comments.number }}</span><!--comments가 맞음 이건 blog오타!-->
+            <span style="color: white">/</span>
+            <span style="color: white">{{ comments.paginator.num_pages }}</span>
+            {% if comments.has_next %}
+                <a href="?page={{ comments.next_page_number }}" style="color: white">다음으로</a>
+                <a href="?page={{ comments.paginator.num_pages }}" style="color: white">맨 뒤로</a>
+            {% endif %}
         </div>
     </div>
 
-        {% for comment in comments %}
-            <div>
-                <div class='comment' style="display:flex">
-                    <a href="/mypage/{{ comment.author.id }}" style="text-decoration-line: none; color: black;">{{ comment.author }}:</a>
-                    <h6 style="">{{ comment.comment }}</h6>
 
-                    {% if comment.author == user %}
-                        <a style="color: black; text-decoration-line : none;"
-                           href="/commu/delete/comment/{{ comment.id }}">삭제</a>
-                        <a id="edit_comment" style="color: black; text-decoration-line : none;"
-                           onclick="show_edit()">수정</a>
-                        <div id='edit_comment_box' style="display: none">
-                            <form method="post" action="/commu/update/comment/{{ comment.id }}">
-                                {% csrf_token %}
-                                수정할 댓글 내용을 입력하세요: <input type="text" name="update_comment">
-                                <input type="submit">
-                            </form>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-        {% endfor %}
-        {% if messages %}
-            {% for msg in messages %}
-                <div class ="alert_{{ msg.tags }}"><!--css에서 alert_info 는 댓글수정,삭제 관련 에러메세지-->
-                    <p style="color: red">{{ msg.message }}</p><!--css에서 alert_error는 댓글 작성시 에러메세지로 위치바꾸고, css다르게 줄 수 있음-->
-                </div>
-            {% endfor %}
-        {% endif %}
-        {% if comments.has_previous %}
-            <a href="?page=1">맨 앞으로</a>
-            <a href="?page={{ comments.precious_page_number }}">이전으로</a>
-        {% endif %}
-        <span>{{ comments.number }}</span><!--comments가 맞음 이건 blog오타!-->
-        <span>/</span>
-        <span>{{ comments.paginator.num_pages }}</span>
-        {% if comments.has_next %}
-            <a href="?page={{ comments.next_page_number }}">다음으로</a>
-            <a href="?page={{ comments.paginator.num_pages }}">맨 뒤로</a>
-        {% endif %}
-
-        <script src="../../static/js/particles.js"></script>
-<script src="../../static/js/app.js"></script>
+    <script src="../../static/js/particles.js"></script>
+    <script src="../../static/js/app.js"></script>
 
 {% endblock %}
