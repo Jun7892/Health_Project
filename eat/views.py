@@ -52,3 +52,10 @@ def eat_detail(request, id):
     
     return render(request, 'eat/eat_detail.html', {'recipe': recipe, 'recommend': recommend})
 
+
+def ai_detail(request):
+    bookmark="북마크를 담은 데이터베이스가져오기"
+    
+
+
+    return render(request, 'eat/eat_detail.html')
