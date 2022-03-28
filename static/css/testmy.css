@@ -209,6 +209,20 @@ body {
     z-index: 4;
 }
 
+@media (max-width: 1000px) {
+    .black_bg {
+        display: none;
+        position: absolute;
+        content: "";
+        width: 130%;
+        height: 130vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        top: 0;
+        left: 0;
+        z-index: 4;
+    }
+}
+
 .modal_close {
     width: 26px;
     height: 26px;
@@ -216,6 +230,19 @@ body {
     top: -30px;
     right: 0;
     border: 1px solid white;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+@media (max-width: 1000px) {
+    .modal_close {
+        width: 8vw;
+        height: 8vw;
+        position: absolute;
+        top: -8vw;
+        right: 0;
+        border: 1px solid white;
+        cursor: url("/static/img/press.png") 2 2, default;
+    }
 }
 
 .modal_close > a {
@@ -224,6 +251,22 @@ body {
     height: 100%;
     background: url(https://img.icons8.com/metro/26/000000/close-window.png);
     text-indent: -9999px;
+    background-color: white;
+    background-size: cover;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+@media (max-width: 1000px) {
+    .modal_close > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: url(https://img.icons8.com/metro/26/000000/close-window.png);
+        text-indent: -9999px;
+        background-color: white;
+        background-size: cover;
+        cursor: url("/static/img/press.png") 2 2, default;
+    }
 }
 
 #main_container {
@@ -471,6 +514,15 @@ button:active {
     left: 0;
 }
 
+@media (max-width: 1000px) {
+    .user_id_form {
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 45vh;
+    }
+}
+
 .img_box {
     width: 20vw;
     height: 21vw;
@@ -479,10 +531,28 @@ button:active {
     border: 1px solid;
 }
 
+@media (max-width: 1000px) {
+    .img_box {
+        width: 45vw;
+        height: 60vw;
+        background-color: black;
+        color: white;
+        border: 1px solid;
+    }
+}
+
 .img_box2 {
     position: relative;
     top: 5%;
     left: 19%;
+}
+
+@media (max-width: 1000px) {
+    .img_box2 {
+        position: relative;
+        top: 10%;
+        left: 19%;
+    }
 }
 
 .change_img {
@@ -492,6 +562,16 @@ button:active {
     cursor: url("/static/img/press.png") 2 2, default;
 }
 
+@media (max-width: 1000px) {
+    .change_img {
+        position: relative;
+        top: 25%;
+        left: 15%;
+        cursor: url(/static/img/press.png) 2 2, default;
+        font-size: 2.5vw;
+    }
+}
+
 .custom-file-label {
     text-align: center;
     position: relative;
@@ -499,10 +579,29 @@ button:active {
     cursor: url("/static/img/press.png") 2 2, default;
 }
 
+@media (max-width: 1000px) {
+    .custom-file-label {
+        text-align: center;
+        position: relative;
+        top: 30%;
+        cursor: url(/static/img/press.png) 2 2, default;
+        font-size: 2.5vw;
+    }
+}
+
 .submit_btn {
     position: relative;
     left: 40%;
     margin-top: 2vw;
+}
+
+@media (max-width: 1000px) {
+    .submit_btn {
+        position: relative;
+        left: 34%;
+        margin-top: 4vw;
+        font-size: 5vw;
+    }
 }
 
 .tmpimg {
@@ -543,10 +642,27 @@ button:active {
     cursor: url("/static/img/press.png") 2 2, default;
 }
 
+@media (max-width: 1000px) {
+    .change_email {
+        color: white;
+        cursor: url("/static/img/press.png") 2 2, default;
+        font-size: 4vw;
+    }
+}
+
 .change_pw {
     color: white;
     margin-left: 1vw;
     cursor: url("/static/img/press.png") 2 2, default;
+}
+
+@media (max-width: 1000px) {
+    .change_pw {
+        color: white;
+        margin-left: 1vw;
+        cursor: url("/static/img/press.png") 2 2, default;
+        font-size: 4vw;
+    }
 }
 
 .first_id {
@@ -591,5 +707,32 @@ button:active {
     .third_post {
         color: white;
         font-size: 3vw;
+    }
+}
+
+
+@media (max-width: 1000px) {
+    .t1 {
+        font-size: 5vw;
+    }
+
+    .t2 {
+        font-size: 3vw;
+    }
+
+    .t3 {
+        font-size: 3vw;
+    }
+
+    .t4 {
+        font-size: 3vw;
+    }
+
+    .t5 {
+        font-size: 3vw;
+    }
+
+    .t6 {
+        font-size: 2.5vw;
     }
 }
