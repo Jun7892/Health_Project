@@ -21,3 +21,4 @@ with open(CSV_PATH_PRODUCTS, encoding='UTF8') as in_file:
         foodModel.set_ingredients(row[2])
         foodModel.set_step(row[3])
         foodModel.save()
+   
