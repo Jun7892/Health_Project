@@ -12,27 +12,28 @@
     <div id="main_container">
         <div id="user_wrapper">
             <div id="profile">
+                <p class="movemain" onclick="location.href='/main/'">Main</p>
                 <img id="image" src="{{ user.profile_img }}">
                 <br>
                 {% if login_user == user %}
-                    <button type='button' id="modal_btn">모달창아 나와랏</button>
+                    <button type='button' id="modal_btn" class="profileedit_btn">Profile Edit</button>
                 {% elif login_user not in user.followee.all %}
-                    <a href="/mypage/update/follow/{{ user.id }}">[팔로우]</a>
+                    <a class="follow" href="/mypage/update/follow/{{ user.id }}">[Follow]</a>
                 {% elif login_user in user.followee.all %}
-                    <a href="/mypage/update/follow/{{ user.id }}">[팔로우취소]</a>
+                    <a class="follow" href="/mypage/update/follow/{{ user.id }}">[Unfollow]</a>
                 {% endif %}
             </div>
             <div class="user_desc">
-                <p>{{ user.nickname }}님</p>
+                <p style="color: white; font-size: 2vw;">{{ user.nickname }}님</p>
                  {% if messages %}
                     {% for msg in messages %}
                         {{ msg.message }}
                     {% endfor %}
                  {% endif %}
-                <a href="/mypage/get/follow/{{ user.id }}" >
+                <a style="color: white" href="/mypage/get/follow/{{ user.id }}" >
                     <div class="counts">
-                    <p class="count"> 팔로우: {{ user.follow.count }}명</p>
-                    <p class="count"> 팔로워: {{ user.followee.count }}명</p>
+                    <p class="count" style="text-decoration-line : none;"> Following: {{ user.follow.count }}명</p>
+                    <p class="count"> Follower: {{ user.followee.count }}명</p>
                     </div>
                 </a>
             </div>
@@ -42,15 +43,15 @@
         <div class="modal_wrap">
             <div class="modal_close"><a href="#">close</a></div>
             <div class="edit_profile">
-                <form method="POST" enctype="multipart/form-data" action="/mypage/update/profile/{{ user.id }}">
+                <form class="user_id_form" method="POST" enctype="multipart/form-data" action="/mypage/update/profile/{{ user.id }}">
                 {% csrf_token %}
                     <div style="display: flex">
-                        <div style="width:300px; height: 300px; background-color: white;">
-                            <img id="image" src="{{ user.profile_img }}">
-                            <input type="file" name="file" id="profile_img_file" value="{{ user.profile_img }}">
+                        <div class="img_box">
+                            <img id="image" class="img_box2" src="{{ user.profile_img }}">
+                            <input class="change_img" type="file" name="file" id="profile_img_file" value="{{ user.profile_img }}">
                             <p class="custom-file-label" for="profile_img_file">프로필로 지정할 사진을 선택해주세요.</p>
                         </div>
-                        <div>
+                        <div style="margin-left: 1vw;">
                             <p> ID : {{ user.username }}</p>
                             <p> 성별: {{ user.gender }}</p>
                             <p> 닉네임 : <input style="width: 150px;" type="text" name="nickname" value="{{ user.nickname }}"></p>
@@ -70,23 +71,24 @@
                             {% endif %}
                             <p> 이메일 : {{ user.email }}</p>
                             <p> 이메일주소는 아이디찾기/비밀번호 변경에 사용됩니다.</p>
-                            <a href="/mypage/update/email/{{ user.id }}">이메일변경하기</a> <a href="/second/password_reset/">비밀번호 변경</a>
+                            <a class="change_email" href="/mypage/update/email/{{ user.id }}">이메일변경하기</a> <a class="change_pw" href="/second/password_reset/">비밀번호 변경</a>
                         </div>
                     </div>
-                    <button type="submit">프로필 수정하기</button>
+                    <button class="submit_btn" type="submit">프로필 수정하기</button>
                 </form>
             </div>
         </div>
         <div>
-            <p>{{ user }}님이 작성한 게시글</p>
+            <img src="/static/img/backtmp2.jpeg" class="tmpimg">
+            <p style="color: white">{{ user }}님이 작성한 게시글</p>
             {% for i in articles %}
                 <div style="display: flex">
-                    <a href="/commu/{{ i.id }}/"> {{ i.title }} </a>
+                    <a style="color: white" href="/commu/{{ i.id }}/"> {{ i.title }} </a>
 
                 </div>
             {% endfor %}
             {% if articles.count == 0 %}
-            <p> 아직 작성한 게시글이 없어요 :)</p>
+            <p style="color: white"> 아직 작성한 게시글이 없어요 :)</p>
             {% endif %}
         </div>
 
@@ -100,15 +102,15 @@
                 <div class="recommend_descbox" onclick="location.href='/mypage/{{ another.id }}'">
                     <p class="s_descs">닉네임: {{ another.nickname }}</p>
                     <p class="s_descs">운동레벨: {{ another.level }}</p>
-                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>
-                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>
+                    <p class="s_descs">Following : {{ another.follow.count }}명</p>
+                    <p class="s_descs">Follower : {{ another.followee.count }}명</p>
 {#                    <a href="/mypage/update/follow/{{ another.id }}">[팔로우]</a>#}
                     {% if login_user.id == another.id %}
-                        <a href="/mypage/{{ another.id }}">[마이페이지로]</a>
+                        <a style="color: white" href="/mypage/{{ another.id }}">[Mypage]</a>
                     {% elif login_user not in another.followee.all %}
-                        <a href="/mypage/update/follow/{{ another.id }}">[팔로우]</a>
+                        <a style="color: white" href="/mypage/update/follow/{{ another.id }}">[Follow]</a>
                     {% else %}
-                        <a href="/mypage/update/follow/{{ another.id }}">[팔로우 취소]</a>
+                        <a style="color: white" href="/mypage/update/follow/{{ another.id }}">[Unfollow]</a>
                     {% endif %}
                     <p class="go"> 이 사람이 궁금하다면 클릭! </p>
                 </div>

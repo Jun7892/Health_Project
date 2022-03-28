@@ -1,0 +1,51 @@
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("/static/img/backtmp.png");
+    background-size: cover;
+    z-index: -1;
+    cursor: url("/static/img/pointer.png") 2 6, default;
+}
+
+#SBL_font {
+    font-family: "SB_L";
+}
+
+.SBL_font {
+    font-family: "SB_L";
+}
+
+a {
+    color: white;
+    font-family: SB_L;
+}
+
+p {
+    color: white;
+    font-family: SB_L;
+}
+
+.movemypage {
+    margin-left: 5vw;
+    font-size: 1.5vw;
+    text-decoration: none;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+.box {
+    display: flex;
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    color: white;
+}
+
+.follow {
+    color: white;
+    margin-left: 1vw;
+    text-decoration: none;
+    cursor: url("/static/img/press.png") 2 2, default;
+}

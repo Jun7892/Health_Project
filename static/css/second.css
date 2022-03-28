@@ -602,3 +602,15 @@ button.red:active {
     background: -moz-linear-gradient(top, #D74736, #AD2719);
     background: -ms-linear-gradient(top, #D74736, #AD2719);
 }
+
+.find_id {
+    position: absolute;
+    top: 62%;
+    left: 5%;
+}
+
+.find_pw {
+    position: absolute;
+    top: 62%;
+    left: 12.6%;
+}
