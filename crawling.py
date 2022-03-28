@@ -52,9 +52,11 @@ def make_food_data(urllist):
 
         print(f'{num}: {src}')
         num += 1
-
-        title = soup.select('#contents_area > div.view2_summary.st3 > h3')[0]  # h3 태그 가져오기 리스트제거
-        title = re.sub('[-=+,#/\?:^.@*\"※~ㆍ!』‘|\(\)\[\]`\'…》\”\“\’·]', '', title.get_text())  # 텍스트만 추출 특수문자 제거
+        try:
+            title = soup.select('#contents_area > div.view2_summary.st3 > h3')[0]  # h3 태그 가져오기 리스트제거
+            title = re.sub('[-=+,#/\?:^.@*\"※~ㆍ!』‘|\(\)\[\]`\'…》\”\“\’·]', '', title.get_text())  # 텍스트만 추출 특수문자 제거
+        except:
+            continue
 
         li_list = soup.select('#divConfirmedMaterialArea > ul > a > li')  # li 태그 리스트로 만들어주기
         if li_list == []:
@@ -85,7 +87,7 @@ def make_food_data(urllist):
     return df
 
 
-df = make_food_data(make_urllist(200))
+df = make_food_data(make_urllist(600))
 df.to_csv('recipe_data.csv', index=False)
 
 
