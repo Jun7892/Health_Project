@@ -1,6 +1,7 @@
 from django.db import models
 import json
 import ast
+from second.models import User
 
 
 class FoodModel(models.Model):
@@ -11,6 +12,7 @@ class FoodModel(models.Model):
     title = models.CharField(max_length=256)
 
     ingredients = models.CharField(max_length=256)
+    bookmark = models.ManyToManyField(User, related_name='bookmark', blank=True)
 
     def set_ingredients(self, x):
         self.ingredients = json.dumps(x) # 객체를 json 문자열로 변환
