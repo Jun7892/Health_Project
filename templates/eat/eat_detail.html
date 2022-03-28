@@ -21,27 +21,32 @@ EAT_DETAIL
 {#메인 컨텐츠 들어가는 곳#}
 {% block content %}
     <div class="header">
-        <h2 id="SBL_font" class="movemain" STYLE="margin-left: 2vw; display: inline; color: white; font-size: 4vw;" onclick="location.href='/main/'">RECIPE</h2>
-        <h3 STYLE="margin-left: 6vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Recommendation</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Protein</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Supplements</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;">Equiment</h3>
-        <h3 STYLE="margin-left: 2vw; display: inline; color: white; font-size: 1vw; font-weight: lighter;" onclick="location.href=/second/'">Logout</h3>
-        <img src="{% static 'img/logo.png' %}" style="float: right; width: 25vw;">
+        <h2 id="SBL_font" class="movemain" onclick="location.href='/eat/'">RECIPE</h2>
+        <h3 class="eattext1">Recommendation</h3>
+        <h3 class="eattext2">Meat</h3>
+        <h3 class="eattext3">Vegetable</h3>
+        <h3 class="eattext4" onclick="location.href=/main/'">Main</h3>
+        <h3 class="eattext5" onclick="location.href=/second/'">Logout</h3>
+        <img src="{% static 'img/logo.png' %}" class="eatlogo" style="float: right; width: 25vw;">
     </div>
     {# recipe #}
     <div id="container">
-        <img src="{{ recipe.image }}">
+        <a>&nbsp;</a>
+        <a>&nbsp;</a>
+        <img src="{{ recipe.image }}" class="foodimg">
+        <a>&nbsp;</a>
         <div class="title">
-            <p>{{ recipe.title }}</p>
+            <p class="shadow">{{ recipe.title }}</p>
         </div>
 
         <div class="ingredients">
-            <p>재료:&nbsp;</p>
+            <p class="shadow">재료:&nbsp;</p>
             {% for ingredient in recipe.ingredients %}
-                <p>{{ingredient}}&nbsp;</p>
+                <p class="shadow">{{ingredient}}&nbsp;</p>
             {% endfor %}
         </div>
+
+
 
         <div class="step">
             <p>조리 순서</p>
@@ -49,8 +54,24 @@ EAT_DETAIL
                 <p>{{ forloop.counter }}. {{ step }}</p>
             {% endfor %}
         </div>
-
     </div>
 
+    <div class="recommend">추천
+        {% for i in similar %}
+        <div class="recommend_list">
+            추천 리스트
+        </div>
+        {% endfor %}
+    </div>
+    <div class="animation-area">
+        <ui class="box-area">
+            <li>리스트</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ui>
+    </div>
 
 {% endblock %}

@@ -62,6 +62,7 @@
     text-align: center;
 }
 
+
 .music {
     z-index: 2;
     position: absolute;
@@ -72,6 +73,35 @@
     border-radius: 30%;
     cursor: url("/static/img/press.png") 2 2, default;
 }
+
+@media (max-width: 1000px) {
+    .music {
+        z-index: 2;
+        position: absolute;
+        top: 1vw;
+        left: 1vw;
+        width: 10vw;
+        background-color: lightblue;
+        border-radius: 30%;
+        cursor: url("/static/img/press.png") 2 2, default;
+    }
+}
+
+
+/*!* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*!*/
+/*@media all and (max-width: 767px) {*/
+/*    .music {*/
+/*        z-index: 2;*/
+/*        position: absolute;*/
+/*        top: 1vw;*/
+/*        left: 1vw;*/
+/*        width: 20vw;*/
+/*        background-color: lightblue;*/
+/*        border-radius: 30%;*/
+/*        cursor: url("/static/img/press.png") 2 2, default;*/
+/*    }*/
+/*}*/
+
 
 @font-face {
     src: url("../font/SB_L.ttf");
@@ -202,16 +232,99 @@
 /*    pointer-events: none;*/
 /*}*/
 
+/* PC (해상도 1024px)*/
 
-.fill {
-    width: 100%;
-    height: 15vw;
-    /*background-color: gray;*/
+.teamlogo {
+    position: absolute;
+    top: 0.5vw;
+    left: 77%;
+    width: 23vw;
+    height: 4vw;
+    border-radius: 5%;
 }
+
+@media (max-width: 1000px) {
+    .teamlogo {
+        position: absolute;
+        top: 0.5vw;
+        left: 60%;
+        width: 40vw;
+        height: 12vw;
+        border-radius: 5%;
+    }
+}
+
+.introbox {
+    font-style: oblique;
+    padding-left: 10vw;
+    margin-top: -3vw;
+    /*font-style: oblique;*/
+    /*padding-left: 8vw;*/
+    /*margin-top: -3vw;*/
+    /*font-size: 5vw;*/
+}
+
+@media (max-width: 1000px) {
+    .introbox {
+        font-style: oblique;
+        padding-left: 8vw;
+        margin-top: -9vw;
+        font-size: 5vw;
+    }
+}
+
+
+.intro1 {
+    padding-left: 12vw;
+    color: lightgreen;
+}
+
+@media (max-width: 1000px) {
+    .intro1 {
+        padding-left: 20vw;
+        color: lightgreen;
+    }
+}
+
+.intro2 {
+    padding-left: 11.6vw;
+    color: lightgreen;
+    margin-top: -0.3vw;
+}
+
+@media (max-width: 1000px) {
+    .intro2 {
+        padding-left: 19.6vw;
+        color: lightgreen;
+        margin-top: -0.3vw;
+    }
+}
+
+.intro3 {
+    padding-left: 4vw;
+    color: lightgreen;
+    margin-top: -0.3vw;
+}
+
+.intro4 {
+    padding-left: 12.5vw;
+    color: lightgreen;
+    margin-top: -0.3vw;
+}
+
+@media (max-width: 1000px) {
+    .intro4 {
+        padding-left: 10vw;
+        color: lightgreen;
+        margin-top: 4.7vw;
+        font-size: 10vw;
+    }
+}
+
 
 .btn1 {
     position: absolute;
-    top: 65%;
+    top: 75%;
     left: 22%;
     width: 15vw;
     height: 3vw;
@@ -222,6 +335,47 @@
     cursor: url("/static/img/press.png") 2 2, default;
 }
 
+@media (max-width: 1000px) {
+    .btn1 {
+        position: absolute;
+        top: 48%;
+        left: 16%;
+        width: 25vw;
+        height: 9vw;
+        font-weight: bolder;
+        font-size: 3.5vw;
+        border-radius: 8%;
+        background-color: lightgreen;
+        cursor: url(/static/img/press.png) 2 2, default;
+    }
+}
+
+
+.fill {
+    width: 100%;
+    height: 10vw;
+    /*background-color: gray;*/
+}
+
+
 #page-structure {
     height: 100%;
+}
+
+.mo_intro2 {
+    font-style: oblique;
+    color: white;
+    padding-left: 20vw;
+    margin-top: -0.5vw;
+}
+
+
+@media (max-width: 1000px) {
+    .mo_intro2 {
+        font-style: oblique;
+        color: white;
+        padding-left: 14vw;
+        margin-top: 100vw;
+        font-size: 4vw;
+    }
 }

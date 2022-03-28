@@ -1,0 +1,101 @@
+@font-face {
+    src: url("../font/SB_L.ttf");
+    font-family: "SB_L";
+}
+
+#SBL_font {
+    font-family: "SB_L";
+}
+
+.SBL_font {
+    font-family: "SB_L";
+}
+
+boby {
+    height: 100%;
+}
+
+@media (max-width: 1000px) {
+    body {
+        height: 100vh;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: SB_L, sans-serif;
+}
+
+
+#particles-js {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/commu.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: url("/static/img/pointer.png") 2 6, default;
+}
+
+.contain {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+@media (max-width: 1000px) {
+    .contain {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        height: 80%;
+    }
+}
+
+a {
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+.text1 {
+    color: white;
+    text-decoration-line: none;
+}
+
+@media (max-width: 1000px) {
+    .text1 {
+        color: white;
+        text-decoration-line: none;
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    .text2 {
+        font-size: 3vw;
+    }
+}
+
+.text3 {
+    color: white;
+}
+
+@media (max-width: 1000px) {
+    .text3 {
+        font-size: 3vw;
+        color: white;
+    }
+}
+
+@media (max-width: 1000px) {
+    .submit_button {
+        font-size: 3vw;
+        color: white;
+    }
+}
+

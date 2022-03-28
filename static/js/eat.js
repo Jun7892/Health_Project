@@ -4,18 +4,18 @@
 // passive 함수는 이 함수가 작동하는지에 대해 능동적 감시를 수행하는데,
 // passive : false로 두면 감시가 일어나지 않기 때문에 당연히 그냥 원천 차단해버린다.
 
-window.addEventListener("wheel", function(e){
-    e.preventDefault();
-},{passive : false});
+// window.addEventListener("wheel", function(e){
+//     e.preventDefault();
+// },{passive : false});
 
 
 // js에서는 html을 변수로 두고 scrollTop을 통해 js 로드 시 혹시라도
 // 만약에 뷰의 Yposition이 0이 아닐 경우를 대비해 다음과 같은 값을 추가
 
-var mHtml = $("html");
-var page = 1;
-
-mHtml.animate({scrollTop : 0},10);
+// var mHtml = $("html");
+// var page = 1;
+//
+// mHtml.animate({scrollTop : 0},10);
 // page는 나중에 쓰는 변수
 
 
@@ -26,19 +26,19 @@ mHtml.animate({scrollTop : 0},10);
 //
 // delta<0일때도 마찬가지다. deltaY가 음수라면 당연히 휠을 위로 올리는 모션을 의미한다.
 // 처음으로 끝까지 올렸을때는, return을 통해 휠이동 모션을 방지
-
-$(window).on("wheel", function(e) {
-    if(mHtml.is(":animated")) return;
-    if(e.originalEvent.deltaY > 0) {
-        if(page == 4) return;
-        page++;
-    } else if(e.originalEvent.deltaY < 0) {
-        if(page == 1) return;
-        page--;
-    }
-    var posTop =(page-1) * $(window).height();
-    mHtml.animate({scrollTop : posTop});
-})
+//
+// $(window).on("wheel", function(e) {
+//     if(mHtml.is(":animated")) return;
+//     if(e.originalEvent.deltaY > 0) {
+//         if(page == 4) return;
+//         page++;
+//     } else if(e.originalEvent.deltaY < 0) {
+//         if(page == 1) return;
+//         page--;
+//     }
+//     var posTop =(page-1) * $(window).height();
+//     mHtml.animate({scrollTop : posTop});
+// })
 
 const modal = document.getElementById("modal")
 
@@ -329,3 +329,4 @@ function modalOff4() {
 //
 // 	render();
 // };
+
