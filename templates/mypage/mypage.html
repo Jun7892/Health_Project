@@ -9,6 +9,21 @@
 {% endblock %}
 
 {% block content%}
+    <div class="header" style="display: flex">
+        <h2 class="movemain" onclick="location.href='http://127.0.0.1:8000/main/'">main</h2>
+        <p class="itemtext1">User searching </p>
+            <form action="/mypage/search/users" method="POST" class="search_form">
+                {% csrf_token %}
+                <input class="search_box" type="text" name="user_search" placeholder="사용자를 검색하세요">
+                <button class="" type="submit">search</button>
+            </form>
+        <h3 class="itemtext2" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</h3>
+        <h3 class="itemtext3" onclick="location.href='/mypage/{{ login_user.id }}'">My page</h3>
+        <img src="/static/img/logo.png" class="itemlogo">
+    </div>
+    {% if login_user != user %}
+    <a href="/mypage/{{ login_user.id }}">마이페이지로</a>
+    {% endif %}
     <div id="main_container">
         <div id="user_wrapper">
             <div id="profile">
@@ -31,8 +46,8 @@
                  {% endif %}
                 <a href="/mypage/get/follow/{{ user.id }}" >
                     <div class="counts">
-                    <p class="count"> 팔로우: {{ user.follow.count }}명</p>
-                    <p class="count"> 팔로워: {{ user.followee.count }}명</p>
+                        <p class="count"> 팔로우: {{ user.follow.count }}명</p>
+                        <p class="count"> 팔로워: {{ user.followee.count }}명</p>
                     </div>
                 </a>
             </div>
@@ -42,24 +57,24 @@
         <div class="modal_wrap">
             <div class="modal_close"><a href="#">close</a></div>
             <div class="edit_profile">
-                <form method="POST" enctype="multipart/form-data" action="/mypage/update/profile/{{ user.id }}">
+                <form method="POST" enctype="multipart/form-data" action="/mypage/update/profile/{{ login_user.id }}">
                 {% csrf_token %}
                     <div style="display: flex">
                         <div style="width:300px; height: 300px; background-color: white;">
-                            <img id="image" src="{{ user.profile_img }}">
-                            <input type="file" name="file" id="profile_img_file" value="{{ user.profile_img }}">
+                            <img id="image" src="{{ login_user.profile_img }}">
+                            <input type="file" name="file" id="profile_img_file" value="{{ login_user.profile_img }}">
                             <p class="custom-file-label" for="profile_img_file">프로필로 지정할 사진을 선택해주세요.</p>
                         </div>
                         <div>
-                            <p> ID : {{ user.username }}</p>
-                            <p> 성별: {{ user.gender }}</p>
-                            <p> 닉네임 : <input style="width: 150px;" type="text" name="nickname" value="{{ user.nickname }}"></p>
-                            <p> 운동 level: {{ user.level }}</p>
-                            {% if user.level == '초심자' %}
+                            <p> ID : {{ login_user.username }}</p>
+                            <p> 성별: {{ login_user.gender }}</p>
+                            <p> 닉네임 : <input style="width: 150px;" type="text" name="nickname" value="{{ login_user.nickname }}"></p>
+                            <p> 운동 level: {{ login_user.level }}</p>
+                            {% if login_user.level == '초심자' %}
                                 <input type="radio" class="level" name="level" value="초심자" checked/>초심자
                                 <input type="radio" class="level" name="level" value="중급자" />중급자
                                 <input type="radio" class="level" name="level" value="상급자"/>상급자
-                            {% elif user.level == '중급자' %}
+                            {% elif login_user.level == '중급자' %}
                                 <input type="radio" class="level" name="level" value="초심자" />초심자
                                 <input type="radio" class="level" name="level" value="중급자" checked/>중급자
                                 <input type="radio" class="level" name="level" value="상급자"/>상급자
@@ -68,9 +83,10 @@
                                 <input type="radio" class="level" name="level" value="중급자" />중급자
                                 <input type="radio" class="level" name="level" value="상급자" checked/>상급자
                             {% endif %}
-                            <p> 이메일 : {{ user.email }}</p>
+                            <p> 이메일 : {{ login_user.email }}</p>
                             <p> 이메일주소는 아이디찾기/비밀번호 변경에 사용됩니다.</p>
-                            <a href="/mypage/update/email/{{ user.id }}">이메일변경하기</a> <a href="/second/password_reset/">비밀번호 변경</a>
+                            <a href="/mypage/update/email/{{ login_user.id }}">이메일변경하기</a> <a href="/second/password_reset/">비밀번호 변경</a>
+                            <a href="/second/delete/{{ login_user.id }}"> 회원탈퇴하기 </a>
                         </div>
                     </div>
                     <button type="submit">프로필 수정하기</button>
@@ -82,7 +98,6 @@
             {% for i in articles %}
                 <div style="display: flex">
                     <a href="/commu/{{ i.id }}/"> {{ i.title }} </a>
-
                 </div>
             {% endfor %}
             {% if articles.count == 0 %}
@@ -90,30 +105,21 @@
             {% endif %}
         </div>
 
-        <p class="box_title">다른 사용자들 알아보기</p>
+        <p class="box_title">북마크한 레시피</p>
         <div id="recommend_container"><!--추천박스-->
-            {% for another in another_user_list %}
+
             <div class="box">
-                <div class="recommend_imgbox"  ><!--추천맛집 div가 두개 하나는 사진 하나는 가게정보-->
-                    <img id="recommend_img"  class="rcm_img" src="{{ another.profile_img }}"> <!--사진url앞에것만 잘라보기-->
-                </div>
-                <div class="recommend_descbox" onclick="location.href='/mypage/{{ another.id }}'">
-                    <p class="s_descs">닉네임: {{ another.nickname }}</p>
-                    <p class="s_descs">운동레벨: {{ another.level }}</p>
-                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>
-                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>
-{#                    <a href="/mypage/update/follow/{{ another.id }}">[팔로우]</a>#}
-                    {% if login_user.id == another.id %}
-                        <a href="/mypage/{{ another.id }}">[마이페이지로]</a>
-                    {% elif login_user not in another.followee.all %}
-                        <a href="/mypage/update/follow/{{ another.id }}">[팔로우]</a>
-                    {% else %}
-                        <a href="/mypage/update/follow/{{ another.id }}">[팔로우 취소]</a>
-                    {% endif %}
-                    <p class="go"> 이 사람이 궁금하다면 클릭! </p>
-                </div>
+{#                <div class="recommend_imgbox"  ><!--추천맛집 div가 두개 하나는 사진 하나는 가게정보-->#}
+{#                    <img id="recommend_img"  class="rcm_img" src="{{ another.profile_img }}"> <!--사진url앞에것만 잘라보기-->#}
+{#                </div>#}
+{#                <div class="recommend_descbox" onclick="location.href='/mypage/{{ another.id }}'">#}
+{#                    <p class="s_descs">닉네임: {{ another.nickname }}</p>#}
+{#                    <p class="s_descs">운동레벨: {{ another.level }}</p>#}
+{#                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>#}
+{#                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>#}
+{#                </div>#}
             </div>
-            {% endfor %}
+
         </div>
     </div>
 {% endblock %}
