@@ -10,6 +10,20 @@
     cursor: url("/static/img/pointer.png") 2 6, default;
 }
 
+@media (max-width: 1000px) {
+    .background {
+        position: absolute;
+        top: 0;
+        left: -170%;
+        width: 300%;
+        height: 130vh;
+        background: url(/static/img/backtmp.png);
+        background-size: cover;
+        z-index: -1;
+        cursor: url(/static/img/pointer.png) 2 6, default;
+    }
+}
+
 #SBL_font {
     font-family: "SB_L";
 }
@@ -60,9 +74,45 @@ button:active {
     left: 37%;
 }
 
+@media (max-width: 1000px) {
+    .box {
+        position: absolute;
+        top: 30%;
+        left: 60%;
+        font-size: 5vw;
+    }
+}
+
+.form_css {
+    color: white
+}
+
+@media (max-width: 1000px) {
+    .form_css {
+        color: white;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1000px) {
+    .input_css {
+        font-size: 4vw;
+    }
+    .btn
+}
+
 .movemypage {
     margin-left: 3vw;
     font-size: 1.5vw;
     text-decoration: none;
     cursor: url("/static/img/press.png") 2 2, default;
+}
+
+@media (max-width: 1000px) {
+    .movemypage {
+        margin-left: 3vw;
+        font-size: 5vw;
+        text-decoration: none;
+        cursor: url(/static/img/press.png) 2 2, default;
+    }
 }
