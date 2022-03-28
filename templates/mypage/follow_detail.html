@@ -29,16 +29,16 @@
                 </a>
             </div>
             {#        {% block content %}#}
-            <div style="display:flex">
-                <div style="width:300px">
+            <div class="contain">
+                <div class="contain2">
                     <h3 style="color: white">{{ user.nickname }} Following {{ user.follow.count }}명</h3>
                     {% for follow in follow_list %}
-                        <div style="display: flex;">
+                        <div class="contain3">
                             <a href="/mypage/{{ follow.id }}" style="text-decoration-line: none">
-                                <div style="display: flex;">
+                                <div class="contain4">
                                     <img class="profile_img" src="{{ follow.profile_img }}">
                                     <div>
-                                        <p style="margin: 5px 5px 0 0;">{{ follow.username }}</p>
+                                        <p class="first_p">{{ follow.username }}</p>
                                         <p style="margin: 0; color: gray">{{ follow.nickname }}</p>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                     {% endfor %}
                 </div>
 
-                <div style="width:300px">
+                <div class="ccontain">
                     <h3 style="color:white;">{{ user.nickname }} Follower {{ user.followee.count }}명 </h3>
                     {% for followee in followee_list %}
                         <div style="display: flex;">
@@ -62,7 +62,7 @@
                                 <div style="display: flex;">
                                     <img class="profile_img" src="{{ followee.profile_img }}">
                                     <div>
-                                        <p style="margin: 5px 5px 0 0;">{{ followee.username }}</p>
+                                        <p class="first_p">{{ followee.username }}</p>
                                         <p style="margin: 0; color: gray">{{ followee.nickname }}</p>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                     <div class="box2">
                         <div class="recommend_descbox" style="display: flex">
                             <a href="/mypage/{{ another.id }}">
-                                <img style="width:50px; height: 50px; border-radius: 50%;" id="recommend_img"
+                                <img id="recommend_img"
                                      class="rcm_img"
                                      src="{{ another.profile_img }}">
                             </a>

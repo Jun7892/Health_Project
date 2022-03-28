@@ -14,10 +14,10 @@
     <div class="background">
         <div class="box">
             <p style="text-align: center">새로 사용할 이메일을 정확하게 입력해 주세요.</p>
-            <form method="POST" style="color: white" action="/mypage/update/email/{{ user.id }}">
+            <form method="POST" class="form_css" action="/mypage/update/email/{{ user.id }}">
                 {% csrf_token %}
-                새로 사용할 이메일: <input type="text" name="email">
-                <button>저장</button>
+                새로 사용할 이메일: <input class="input_css" type="text" name="email">
+                <button class="btn">저장</button>
             </form>
 
             {% if messages %}

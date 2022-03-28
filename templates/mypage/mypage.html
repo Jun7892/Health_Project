@@ -14,10 +14,10 @@
         <form action="/mypage/search/users" method="POST" class="search_form">
             {% csrf_token %}
             <input class="search_box" type="text" name="user_search" placeholder="사용자를 검색하세요">
-            <button class="" type="submit">search</button>
+            <button class="search_btn" type="submit">search</button>
         </form>
         <h3 class="itemtext2" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</h3>
-        <h3 class="itemtext3" onclick="location.href='/mypage/{{ login_user.id }}'">My page</h3>
+        <h3 class="itemtext3" onclick="location.href='/mypage/{{ login_user.id }}'">Mypage</h3>
         <h3 class="itemtext4" onclick="location.href='http://127.0.0.1:8000/main/'">Main</h3>
     </div>
     {% if login_user != user %}
@@ -38,7 +38,7 @@
                 {% endif %}
             </div>
             <div class="user_desc">
-                <p style="color: white; font-size: 2vw;">{{ user.nickname }}님</p>
+                <p class="first_id">{{ user.nickname }}님</p>
                 {% if messages %}
                     {% for msg in messages %}
                         {{ msg.message }}
@@ -67,12 +67,12 @@
                                    value="{{ user.profile_img }}">
                             <p class="custom-file-label" for="profile_img_file">프로필로 지정할 사진을 선택해주세요.</p>
                         </div>
-                        <div style="margin-left: 1vw;">
-                            <p> ID : {{ user.username }}</p>
-                            <p> 성별: {{ user.gender }}</p>
-                            <p> 닉네임 : <input style="width: 150px;" type="text" name="nickname"
+                        <div style="margin-left: 1vw; width: 100%;">
+                            <p class="t1"> ID : {{ user.username }}</p>
+                            <p class="t2"> 성별: {{ user.gender }}</p>
+                            <p class="t3"> 닉네임 : <input style="width: 150px;" type="text" name="nickname"
                                              value="{{ user.nickname }}"></p>
-                            <p> 운동 level: {{ user.level }}</p>
+                            <p class="t4"> 운동 level: {{ user.level }}</p>
                             {% if user.level == '초심자' %}
                                 <input type="radio" class="level" name="level" value="초심자" checked/>초심자
                                 <input type="radio" class="level" name="level" value="중급자"/>중급자
@@ -86,8 +86,8 @@
                                 <input type="radio" class="level" name="level" value="중급자"/>중급자
                                 <input type="radio" class="level" name="level" value="상급자" checked/>상급자
                             {% endif %}
-                            <p> 이메일 : {{ user.email }}</p>
-                            <p> 이메일주소는 아이디찾기/비밀번호 변경에 사용됩니다.</p>
+                            <p class="t5"> 이메일 : {{ user.email }}</p>
+                            <p class="t6"> 이메일주소는 아이디찾기/비밀번호 변경에 사용됩니다.</p>
                             <a class="change_email" href="/mypage/update/email/{{ user.id }}">이메일변경하기</a> <a
                                 class="change_pw" href="/second/password_reset/">비밀번호 변경</a>
                         </div>
@@ -98,14 +98,14 @@
         </div>
         <div>
             <img src="/static/img/backtmp2.jpeg" class="tmpimg">
-            <p style="color: white">{{ user }}님이 작성한 게시글</p>
+            <p class="first_post">{{ user }}님이 작성한 게시글</p>
             {% for i in articles %}
                 <div style="display: flex">
-                    <a href="/commu/{{ i.id }}/"> {{ i.title }} </a>
+                    <a class="second_post" href="/commu/{{ i.id }}/"> {{ i.title }} </a>
                 </div>
             {% endfor %}
             {% if articles.count == 0 %}
-                <p style="color: white"> 아직 작성한 게시글이 없어요 :)</p>
+                <p class="third_post"> 아직 작성한 게시글이 없어요 :)</p>
             {% endif %}
         </div>
 
