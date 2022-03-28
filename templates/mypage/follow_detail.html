@@ -9,96 +9,106 @@
 {% endblock %}
 
 {% block title %}COMMU{% endblock %}
- <div>
-            <a href="/mypage/{{ member.id }}" style="text-decoration-line: none;" >
-            <div class='member' style="display:flex">
-                <div>
-                    <img style="width: 50px; height: 50px; border-radius: 50%" src="{{ member.profile_img }}">
-                </div>
-                <div style="height: 50px; text-align-all: center">
-                    <p style="margin: 0;">{{ member.username }}</p>
-                    <p style="margin: 0; color:gray">{{ member.nickname }}</p>
-                </div>
-            </div>
-            </a>
-        </div>
-{% block content %}
-    <div style="display:flex">
-        <div style="width:300px">
-            <h3>{{ user.nickname }}의 팔로우 {{ user.follow.count }}명</h3>
-            {% for follow in follow_list %}
-                <div style="display: flex;">
-                    <a href="/mypage/{{ follow.id }}" style="text-decoration-line: none">
-                        <div style="display: flex;">
-                            <img class="profile_img" src="{{ follow.profile_img }}">
-                            <div>
-                                 <p style="margin: 0;">{{ follow.username }}</p>
-                                 <p style="margin: 0; color: gray">{{ follow.nickname }}</p>
-                            </div>
-                        </div>
-                    </a>
-                {% if login_user.id == follow.id %}
-                    <a class="mypage" href="/mypage/{{ follow.id }}">마이페이지로</a>
-                {% elif login_user not in follow.followee.all %}
-                    <a class="follow" href="/mypage/update/follow/{{ follow.id }}">팔로우</a>
-                {% else %}
-                    <a class="followee" href="/mypage/update/follow/{{ follow.id }}">팔로우 취소</a>
-                {% endif %}
-                </div>
-            {% endfor %}
-        </div>
 
-        <div style="width:300px">
-            <h3>{{ user.nickname }}의 팔로워 {{ user.followee.count }}명 </h3>
-            {% for followee in followee_list %}
-                <div style="display: flex;">
-                     <a href="/mypage/{{ followee.id }}" style="text-decoration-line: none">
-                        <div style="display: flex;">
-                            <img class="profile_img" src="{{ followee.profile_img }}">
-                            <div>
-                                 <p style="margin: 0;">{{ followee.username }}</p>
-                                 <p style="margin: 0; color: gray">{{ followee.nickname }}</p>
-                            </div>
+
+{% block content %}
+
+    <div class="background">
+        <div class="box">
+            <div>
+                <a href="/mypage/{{ member.id }}" style="text-decoration-line: none;">
+                    <div class='member' style="display:flex">
+{#                        <div>#}
+{#                            <img style="width: 50px; height: 50px; border-radius: 50%" src="{{ member.profile_img }}">#}
+{#                        </div>#}
+                        <div style="height: 50px; text-align-all: center">
+                            <p style="margin: 0;">{{ member.username }}</p>
+                            <p style="margin: 0; color:gray">{{ member.nickname }}</p>
                         </div>
-                    </a>
-                    {% if login_user.id == followee.id %}
-                        <a class="mypage" href="/mypage/{{ followee.id }}">마이페이지로</a>
-                    {% elif login_user not in followee.followee.all %}
-                        <a class="follow" href="/mypage/update/follow/{{ followee.id }}">팔로우</a>
-                    {% else %}
-                        <a class="followee" href="/mypage/update/follow/{{ followee.id }}">팔로우 취소</a>
-                    {% endif %}
+                    </div>
+                </a>
+            </div>
+            {#        {% block content %}#}
+            <div style="display:flex">
+                <div style="width:300px">
+                    <h3 style="color: white">{{ user.nickname }} Following {{ user.follow.count }}명</h3>
+                    {% for follow in follow_list %}
+                        <div style="display: flex;">
+                            <a href="/mypage/{{ follow.id }}" style="text-decoration-line: none">
+                                <div style="display: flex;">
+                                    <img class="profile_img" src="{{ follow.profile_img }}">
+                                    <div>
+                                        <p style="margin: 5px 5px 0 0;">{{ follow.username }}</p>
+                                        <p style="margin: 0; color: gray">{{ follow.nickname }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                            {% if login_user.id == follow.id %}
+                                <button class="mypage" onclick="location.href='/mypage/{{ follow.id }}'">마이페이지로</button>
+                            {% elif login_user not in follow.followee.all %}
+                                <button class="follow" onclick="location.href='/mypage/update/follow/{{ follow.id }}'">Follow</button>
+                            {% else %}
+                                <button class="followee" onclick="location.href='/mypage/update/follow/{{ follow.id }}'">Unfollow</button>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+
+                <div style="width:300px">
+                    <h3 style="color:white;">{{ user.nickname }} Follower {{ user.followee.count }}명 </h3>
+                    {% for followee in followee_list %}
+                        <div style="display: flex;">
+                            <a href="/mypage/{{ followee.id }}" style="text-decoration-line: none">
+                                <div style="display: flex;">
+                                    <img class="profile_img" src="{{ followee.profile_img }}">
+                                    <div>
+                                        <p style="margin: 5px 5px 0 0;">{{ followee.username }}</p>
+                                        <p style="margin: 0; color: gray">{{ followee.nickname }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                            {% if login_user.id == followee.id %}
+                                <button class="mypage" onclick="location.href='/mypage/{{ followee.id }}'">마이페이지로</button>
+                            {% elif login_user not in followee.followee.all %}
+                                <button class="follow" onclick="location.href='/mypage/update/follow/{{ followee.id }}'">Follow</button>
+                            {% else %}
+                                <button class="followee" onclick="location.href='/mypage/update/follow/{{ followee.id }}'">Unfollow</button>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <br>
+                <a class="movemypage" href="/mypage/{{ user.id }}">Mypage</a>
+            </div>
+
+
+            <p class="box_title">다른 사용자들 알아보기</p>
+            <div id="recommend_container"><!--추천박스-->
+                {% for another in another_user_list %}
+                    <div class="box2">
+                        <div class="recommend_descbox" style="display: flex">
+                            <a href="/mypage/{{ another.id }}">
+                                <img style="width:50px; height: 50px; border-radius: 50%;" id="recommend_img"
+                                     class="rcm_img"
+                                     src="{{ another.profile_img }}">
+                            </a>
+                            <p class="s_descs">닉네임: {{ another.nickname }}</p>
+                            <p class="s_descs">&nbsp;&nbsp;&nbsp;운동레벨: {{ another.level }}</p>
+                            <p class="s_descs">&nbsp;&nbsp;&nbsp;Following: {{ another.follow.count }}</p>
+                            <p class="s_descs">&nbsp;&nbsp;&nbsp;Follower: {{ another.followee.count }}&nbsp;&nbsp;&nbsp;</p>
+                            {#                    <a href="/mypage/update/follow/{{ another.id }}">[팔로우]</a>#}
+                            {% if login_user.id == another.id %}
+                                <button class="mypage" onclick="location.href='/mypage/{{ another.id }}'">마이페이지로</button>
+                            {% elif login_user not in another.followee.all %}
+                                <button class="follow" onclick="location.href='/mypage/update/follow/{{ another.id }}'">Follow</button>
+                            {% else %}
+                                <button class="followee" onclick="location.href='/mypage/update/follow/{{ another.id }}'">Unfollow</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-        <br>
-        <a class="movemypage" href="/mypage/{{ user.id }}">Mypage</a>
     </div>
 
-
-    <p class="box_title">다른 사용자들 알아보기</p>
-        <div id="recommend_container"><!--추천박스-->
-            {% for another in another_user_list %}
-            <div class="box">
-                <div class="recommend_descbox" style="display: flex">
-                    <a href="/mypage/{{ another.id }}">
-                        <img style="width:50px; height: 50px; border-radius: 50%;"  id="recommend_img"  class="rcm_img" src="{{ another.profile_img }}">
-                    </a>
-                    <p class="s_descs">닉네임: {{ another.nickname }}</p>
-                    <p class="s_descs">운동레벨: {{ another.level }}</p>
-                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>
-                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>
-{#                    <a href="/mypage/update/follow/{{ another.id }}">[팔로우]</a>#}
-                    {% if login_user.id == another.id %}
-                        <button class="mypage" onclick="locaion.href=/mypage/{{ another.id }}">마이페이지로</button>
-                    {% elif login_user not in another.followee.all %}
-                        <a class="follow" href="/mypage/update/follow/{{ another.id }}">팔로우</a>
-                    {% else %}
-                        <a class="followee" href="/mypage/update/follow/{{ another.id }}">팔로우 취소</a>
-                    {% endif %}
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    <a href="/mypage/{{ login_user.id }}">마이페이지로</a>
 {% endblock %}
