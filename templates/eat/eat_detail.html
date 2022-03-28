@@ -10,6 +10,7 @@ EAT_DETAIL
     <meta charset="UTF-8">
     <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'css/eat_detail.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/eat_detail_AI.css' %}" rel="stylesheet" type="text/css"/>
     {#    <script type="text/javascript" src="../../static/js/eat.js"></script>#}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,13 +37,13 @@ EAT_DETAIL
         <img src="{{ recipe.image }}" class="foodimg">
         <a>&nbsp;</a>
         <div class="title">
-            <p>{{ recipe.title }}</p>
+            <p class="shadow">{{ recipe.title }}</p>
         </div>
 
         <div class="ingredients">
-            <p>재료:&nbsp;</p>
+            <p class="shadow">재료:&nbsp;</p>
             {% for ingredient in recipe.ingredients %}
-                <p>{{ingredient}}&nbsp;</p>
+                <p class="shadow">{{ingredient}}&nbsp;</p>
             {% endfor %}
         </div>
 
@@ -55,17 +56,30 @@ EAT_DETAIL
             {% endfor %}
         </div>
     </div>
-
-    <div class="recommend">추천
-        {% for i in similar %}
-        <div class="recommend_list">
-            추천 리스트
-        </div>
-        {% endfor %}
+    <div>
+    {% comment %} 추천시스템 리스트  {% endcomment %}
+      <section class="hero-section">
+        <div class="card-grid">
+          {% for rec_list in recommend %}
+            {% for rec in rec_list %}
+              <a class="card" href="/eat/detail/{{ rec.id }}">
+                <div class="card__background" style="background-image: url({{rec.image}})"></div>
+                <div class="card__content">
+                  <p class="card__category">Recipe</p>
+                  <h3 class="card__heading">{{rec.title}}</h3>
+                </div>
+              </a>
+            {% endfor %}
+          {% endfor %}
+        <div>
+      </section>
+    {% comment %} 추천시스템 리스트  {% endcomment %}
     </div>
+
+
     <div class="animation-area">
         <ui class="box-area">
-            <li>리스트</li>
+            <li></li>
             <li></li>
             <li></li>
             <li></li>

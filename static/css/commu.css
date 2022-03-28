@@ -39,13 +39,19 @@ a {
     font-family: "SB_L";
 }
 
-h1 {
+.h1 {
     position: absolute;
     top: 8%;
     left: 8%;
     transform: translate(-50%, -50%);
     font-size: 20px;
     color: white;
+    text-decoration-line: none;
+}
+
+.search_input {
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 1000px) {

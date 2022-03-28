@@ -14,10 +14,15 @@
 {% block content %}
 
     <div id="particles-js">
-        <h1>Community</h1>
-
+        <a class="h1" href="/commu/">Community</a>
+        <div class="search_input">
+            <form action="/commu/search/" method="GET">
+                <input type="text" name="search_article" >
+                    <butten style = "width:30px; height:30px"><img style = "width:30px; height:30px"src="https://cdn-icons-png.flaticon.com/128/49/49116.png" alt="img"></butten> 
+            </form>
+        </div>
         <div class="textbox">
-            <p class="mainmove" href="{% url 'main' %}">main</p>
+            <a class="mainmove" href="{% url 'main' %}">main</a>
             <p class="base" style="top: 25%; left: 5%; color: white">1 /</p>
             <p class="base" style="top: 25%; left: 20%; color: white">2 /</p>
             <p class="base" style="top: 25%; left: 35%; color: white">3 /</p>

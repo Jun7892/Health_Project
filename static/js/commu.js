@@ -702,3 +702,30 @@ function makeReReply(user, rid) {
 </table>';
     return commentTable;
 }
+
+
+// // 좋아요 버튼 처리
+// // 버튼 클릭 > ajax통신 (like url로 전달) > views의 like 메소드에서 리턴하는 값 전달받기 > 성공시 콜백 호출
+// $('.like').click(function() {
+//     var pk = $(this).attr('name') // 클릭한 요소의 attribute 중 name의 값을 가져온다.
+//     console.log(pk)
+//     $.ajax({
+//         type: "POST", // 데이터를 전송하는 방법을 지정한다.
+//         url: "/commu/like", // 통신할 url을 지정한다.
+//         data: {'pk': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터를 전송할 때 이 옵션을 사용한다.
+//         dataType: "json", // 서버측에서 전송한 데이터를 어떤 형식의 데이터로서 해석할 것인가를 지정한다. 없으면 알아서 판단한다.
+//         // 서버측에서 전송한 데이터 views.py like 메소드
+//         // context = {'likes_count' : memo.total_likes, 'message' : message}
+//         // json.dump(context)를 통해서 json 형식으로 전달된다.
+//
+//         success: function (response) { // 성공했을 때 호출할 콜백을 지정한다.
+//             id = $(this).attr('name')
+//             $('#count' + pk).html("count : " + response.likes_count);
+//             alert(response.message);
+//             alert("좋아요수 :" + response.likes_count);
+//         },
+//         error: function (request, status, error) {
+//             alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+//         }
+//     });
+// })

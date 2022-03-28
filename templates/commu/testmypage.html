@@ -15,7 +15,11 @@
                 <img id="image" src="{{ user.profile_img }}">
                 <br>
                 {% if login_user == user %}
-                <button type='button' id="modal_btn">모달창아 나와랏</button><!--프로필변경부분 연구후 수정할것-->
+                    <button type='button' id="modal_btn">모달창아 나와랏</button><!--프로필변경부분 연구후 수정할것-->
+                {% elif login_user not in user.followee.all %}
+                    <a href="/second/test/update/follow/{{ user.id }}">[팔로우]</a>
+                {% elif login_user in user.followee.all %}
+                    <a href="/second/test/update/follow/{{ user.id }}">[팔로우취소]</a>
                 {% endif %}
             </div>
             <div class="user_desc">
@@ -45,6 +49,18 @@
                 </form>
             </div>
         </div>
+        <div>
+            <p>{{ user }}님이 작성한 게시글</p>
+            {% for i in articles %}
+                <div style="display: flex">
+                    <a href="/commu/{{ i.id }}/"> {{ i.title }} </a>
+
+                </div>
+            {% endfor %}
+            {% if articles.count == 0 %}
+            <p> 아직 작성한 게시글이 없어요 :)</p>
+            {% endif %}
+        </div>
 
         <p class="box_title">다른 사용자들 알아보기</p>
         <div id="recommend_container"><!--추천박스-->
@@ -58,10 +74,13 @@
                     <p class="s_descs">운동레벨: {{ another.level }}</p>
                     <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>
                     <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>
+{#                    <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>#}
                     {% if login_user.id == another.id %}
                         <a href="/second/test/{{ another.id }}">[마이페이지로]</a>
-                    {% else %}
+                    {% elif login_user not in another.followee.all %}
                         <a href="/second/test/update/follow/{{ another.id }}">[팔로우]</a>
+                    {% else %}
+                        <a href="/second/test/update/follow/{{ another.id }}">[팔로우 취소]</a>
                     {% endif %}
                     <p class="go"> 이 사람이 궁금하다면 클릭! </p>
                 </div>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/check_ones_email.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block title %}RESET PASSWORD{% endblock %}
+
+{% block content %}
+
+    <div class="fullcontain">
+        <div class="box">
+            <h2>비밀번호 재설정</h2>
+
+            <p>회원가입시 입력한 이메일로 비밀번호 재설정 메일이 갑니다.</p>
+            <form method="post" action="/second/password_reset/">
+                {% csrf_token %}
+                ID : <input type="text" , name="username" , placeholder="아이디를 입력하세요">
+                Email : <input type="email" , name="email" , placeholder="Email을 입력하세요">
+                <button type="submit">이메일 전송</button>
+            </form>
+
+            {% if messages %}
+                {% for msg in messages %}
+                    <h3>{{ msg.message }}</h3>
+                {% endfor %}
+            {% endif %}
+            <br>
+            <a href="/second/sign_in">회원가입/로그인 하러 가기</a>
+            <a href="/second/find_id">아이디 찾기</a>
+        </div>
+    </div>
+
+{% endblock %}
