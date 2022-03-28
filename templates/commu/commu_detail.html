@@ -59,14 +59,13 @@
             {% for comment in comments %}
                 <div>
                     <div class='comment' style="display:flex">
-                        <a href="/mypage/{{ comment.author.id }}" style="text-decoration-line: none; color: white">{{ comment.author }}님</a><span style="color: white">: </span>
+                        <a href="/mypage/{{ comment.author.id }}" style="text-decoration-line: none; color: white">{{ comment.author }}({{ comment.author.nickname }})님</a><span style="color: white">: </span>
                         <h6 style="color: white">{{ comment.comment }}</h6>
 
                         {% if comment.author == user %}
                             <a style="color: white; text-decoration-line : none;"
                                href="/commu/delete/comment/{{ comment.id }}">삭제</a>
-                            <a id="edit_comment" style="color: white; text-decoration-line : none;"
-                               onclick="show_edit()">수정</a>
+                            <a id="edit_comment" style="color: white; text-decoration-line : none;" onclick="show_edit()">수정</a>
                             <div id='edit_comment_box' style="display: none">
                                 <form method="post" action="/commu/update/comment/{{ comment.id }}">
                                     {% csrf_token %}
@@ -76,7 +75,6 @@
                             </div>
                         {% endif %}
                     </div>
-
                 </div>
             {% endfor %}
             {% if messages %}
@@ -91,9 +89,11 @@
                 <a href="?page=1" style="color: white">맨 앞으로</a>
                 <a href="?page={{ comments.precious_page_number }}"style="color: white">이전으로</a>
             {% endif %}
-            <span style="color: white">{{ comments.number }}</span><!--comments가 맞음 이건 blog오타!-->
+            {% if comments %}
+            <span style="color: white">{{ comments.number }}</span>
             <span style="color: white">/</span>
             <span style="color: white">{{ comments.paginator.num_pages }}</span>
+            {% endif %}
             {% if comments.has_next %}
                 <a href="?page={{ comments.next_page_number }}" style="color: white">다음으로</a>
                 <a href="?page={{ comments.paginator.num_pages }}" style="color: white">맨 뒤로</a>
