@@ -44,7 +44,7 @@ body {
 }
 
 .itemtext1 {
-    margin-left: 10vw;
+    margin-left: 5vw;
     display: inline;
     color: white;
     font-size: 1.3vw;
@@ -62,13 +62,14 @@ body {
 }
 .search_form{
     margin: auto 0;
+    margin-left: 1vw;
 }
 
 .itemtext2 {
-    margin-left: 2vw;
+    margin-left: 50vw;
     display: inline;
     color: white;
-    font-size: 1.3vw;
+    font-size: 1vw;
     font-weight: lighter;
 }
 
@@ -86,7 +87,7 @@ body {
     margin-left: 2vw;
     display: inline;
     color: white;
-    font-size: 1.3vw;
+    font-size: 1vw;
     font-weight: lighter;
 }
 
@@ -101,23 +102,23 @@ body {
 }
 
 
-/*.itemtext4 {*/
-/*    margin-left: 2vw;*/
-/*    display: inline;*/
-/*    color: white;*/
-/*    font-size: 1.3vw;*/
-/*    font-weight: lighter;*/
-/*}*/
+.itemtext4 {
+    margin-left: 2vw;
+    display: inline;
+    color: white;
+    font-size: 1vw;
+    font-weight: lighter;
+}
 
-/*@media (max-width: 1000px) {*/
-/*    .itemtext4 {*/
-/*        margin-left: 2vw;*/
-/*        display: inline;*/
-/*        color: white;*/
-/*        font-size: 2vw;*/
-/*        font-weight: lighter;*/
-/*    }*/
-/*}*/
+@media (max-width: 1000px) {
+    .itemtext4 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 2vw;
+        font-weight: lighter;
+    }
+}
 
 /*.itemtext5 {*/
 /*    margin-left: 2vw;*/
@@ -165,16 +166,20 @@ body {
         display: none;
     }
 }
-.modal_wrap{
-        display: none;
-        width: 650px;
-        height: 500px;
-        position: absolute;
-        top:50%;
-        left: 50%;
-        margin: -250px 0 0 -250px;
-        background:#eee;
-        z-index: 2;
+
+.modal_wrap {
+    display: none;
+    width: 48vw;
+    height: 27vw;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    margin: -250px 0 0 -250px;
+    background: black;
+    z-index: 5;
+    color: white;
+    border: 1px solid;
+}
 
 
 .black_bg {
@@ -186,7 +191,7 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     top: 0;
     left: 0;
-    z-index: 5;
+    z-index: 4;
 }
 
 .modal_close {
@@ -414,7 +419,7 @@ button:active {
 
 .tmpimg {
     position: absolute;
-    top: 40%;
+    top: 43%;
     left: 75%;
     width: 20vw;
 }
@@ -437,7 +442,7 @@ button:active {
 }
 
 .change_email {
-    color: white
+    color: white;
     cursor: url("/static/img/press.png") 2 2, default;
 }
 
