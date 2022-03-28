@@ -3,19 +3,21 @@
 {% load static %}
 
 {% block title %}
-EAT_DETAIL
+    EAT_DETAIL
 {% endblock %}
 
 {% block others %}
     <meta charset="UTF-8">
     <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'css/eat_detail.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/eat_detail_AI.css' %}" rel="stylesheet" type="text/css"/>
     {#    <script type="text/javascript" src="../../static/js/eat.js"></script>#}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="{% static 'js/eat_detail.js' %}"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 {% endblock %}
 
 {#메인 컨텐츠 들어가는 곳#}
@@ -38,13 +40,23 @@ EAT_DETAIL
         <div class="title">
             <p class="shadow">{{ recipe.title }}</p>
         </div>
+        <form action="{% url 'bookmark' recipe.id %}" method="POST">
+            {% csrf_token %}
+            {% if user in recipe.bookmark.all %}
+                <button type="submit" class="btn btn-outline-dark">저장됨</button>
+            {% else %}
+                <button type="submit" class="btn btn-outline-dark">저장</button>
+            {% endif %}
+        </form>
 
         <div class="ingredients">
             <p class="shadow">재료:&nbsp;</p>
             {% for ingredient in recipe.ingredients %}
-                <p class="shadow">{{ingredient}}&nbsp;</p>
+                <p class="shadow">{{ ingredient }}&nbsp;</p>
             {% endfor %}
         </div>
+
+
 
         <div class="step">
             <p>조리 순서</p>
@@ -53,16 +65,40 @@ EAT_DETAIL
             {% endfor %}
         </div>
     </div>
-
-    <div class="animation-area">
-        <ui class="box-area">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ui>
+    <div>
+    {% comment %} 추천시스템 리스트  {% endcomment %}
+        <h1 class="AI_main_title">
+          추천리스트
+        </h1>
+    <section class="hero-section">
+        <div class="card-grid">
+          {% for rec_list in recommend %}
+            {% for rec in rec_list %}
+              <a class="card" href="/eat/detail/{{ rec.id }}">
+                <div class="card__background" style="background-image: url({{rec.image}})"></div>
+                <div class="card__content">
+                  <p class="card__category">Recipe</p>
+                  <h3 class="card__heading">{{rec.title}}</h3>
+                </div>
+              </a>
+            {% endfor %}
+          {% endfor %}
+        <div>
+      </section>
+    {% comment %} 추천시스템 리스트  {% endcomment %}
     </div>
+
+
+<div class="animation-area">
+  als;hgklahslkdjf
+    <ui class="box-area">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ui>
+</div>
 
 {% endblock %}

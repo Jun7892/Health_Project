@@ -51,7 +51,7 @@ a {
 
 .search_input {
     position: absolute;
-    right: 43%;
+    right: 47%;
     top: 6.5%;
 }
 
@@ -62,9 +62,23 @@ a {
 
 .search_button{
     border: none;
+    display: none;
 }
 
+input[type=text] {
+  width: 60%;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
 
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+  width: 100%;
+}
 
 @media (max-width: 1000px) {
     h1 {

@@ -4,7 +4,7 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="../../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
     <link href="/static/css/follow_detail.css" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
@@ -71,6 +71,8 @@
                 </div>
             {% endfor %}
         </div>
+        <br>
+        <a class="movemypage" href="/mypage/{{ user.id }}">Mypage</a>
     </div>
 
 

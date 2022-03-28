@@ -27,24 +27,25 @@
     <div id="main_container">
         <div id="user_wrapper">
             <div id="profile">
+                <p class="movemain" onclick="location.href='/main/'">Main</p>
                 <img id="image" src="{{ user.profile_img }}">
                 <br>
                 {% if login_user == user %}
-                    <button type='button' id="modal_btn">모달창아 나와랏</button>
+                    <button type='button' id="modal_btn" class="profileedit_btn">Profile Edit</button>
                 {% elif login_user not in user.followee.all %}
-                    <a href="/mypage/update/follow/{{ user.id }}">[팔로우]</a>
+                    <a class="follow" href="/mypage/update/follow/{{ user.id }}">[Follow]</a>
                 {% elif login_user in user.followee.all %}
-                    <a href="/mypage/update/follow/{{ user.id }}">[팔로우취소]</a>
+                    <a class="follow" href="/mypage/update/follow/{{ user.id }}">[Unfollow]</a>
                 {% endif %}
             </div>
             <div class="user_desc">
-                <p>{{ user.nickname }}님</p>
+                <p style="color: white; font-size: 2vw;">{{ user.nickname }}님</p>
                  {% if messages %}
                     {% for msg in messages %}
                         {{ msg.message }}
                     {% endfor %}
                  {% endif %}
-                <a href="/mypage/get/follow/{{ user.id }}" >
+                <a style="color: white" href="/mypage/get/follow/{{ user.id }}" >
                     <div class="counts">
                         <p class="count"> 팔로우: {{ user.follow.count }}명</p>
                         <p class="count"> 팔로워: {{ user.followee.count }}명</p>
@@ -89,19 +90,20 @@
                             <a href="/second/delete/{{ login_user.id }}"> 회원탈퇴하기 </a>
                         </div>
                     </div>
-                    <button type="submit">프로필 수정하기</button>
+                    <button class="submit_btn" type="submit">프로필 수정하기</button>
                 </form>
             </div>
         </div>
         <div>
-            <p>{{ user }}님이 작성한 게시글</p>
+            <img src="/static/img/backtmp2.jpeg" class="tmpimg">
+            <p style="color: white">{{ user }}님이 작성한 게시글</p>
             {% for i in articles %}
                 <div style="display: flex">
                     <a href="/commu/{{ i.id }}/"> {{ i.title }} </a>
                 </div>
             {% endfor %}
             {% if articles.count == 0 %}
-            <p> 아직 작성한 게시글이 없어요 :)</p>
+            <p style="color: white"> 아직 작성한 게시글이 없어요 :)</p>
             {% endif %}
         </div>
 
@@ -109,6 +111,7 @@
         <div id="recommend_container"><!--추천박스-->
 
             <div class="box">
+
 {#                <div class="recommend_imgbox"  ><!--추천맛집 div가 두개 하나는 사진 하나는 가게정보-->#}
 {#                    <img id="recommend_img"  class="rcm_img" src="{{ another.profile_img }}"> <!--사진url앞에것만 잘라보기-->#}
 {#                </div>#}
@@ -118,6 +121,7 @@
 {#                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>#}
 {#                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>#}
 {#                </div>#}
+
             </div>
 
         </div>
