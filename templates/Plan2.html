@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/plan.css" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/f3d5717210.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block title %}PLAN{% endblock %}
+
+{% block content %}
+
+    <div class="fullContain">
+        <div class="Todo-calendar">
+            <header>
+                <h1>
+                    <i class="far fa-calendar-check"></i>
+                    <span>캘린더</span>
+                </h1>
+                <div class="calendar_title">
+                    <button class="prev">&#60;</button>
+                    <span class="current-year-month"></span>
+                    <button class="next">&#62;</button>
+                </div>
+            </header>
+            <section class="content-left">
+                <div class="left-main">
+                    <div class="main-wrap">
+                        <div class="main-date"></div>
+                        <div class="main-day"></div>
+                    </div>
+                    <div class="todo-wrap">
+                        <div class="todo-title" style="color: white">TODO</div>
+                        <form class="input-form">
+                            <input type="text" placeholder="WRITE HERE!!" class="input-box"/>
+                            <button id="inputBtn" type="submit" class="input-btn clickBtn">입력</button>
+                        </form>
+                        <ul class="todoList"></ul>
+                        <div class="showList">
+                            <span class="listText"></span>
+                            <span class="createDate"></span>
+                            <button class="closed">close</button>
+                        </div>
+                        <div class="bgblack"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="content-right">
+                <div class="day-of-week">
+                    <div class="dayHeader sun">SUN</div>
+                    <div class="dayHeader">MON</div>
+                    <div class="dayHeader">TUE</div>
+                    <div class="dayHeader">WED</div>
+                    <div class="dayHeader">THU</div>
+                    <div class="dayHeader">FRI</div>
+                    <div class="dayHeader sat">SAT</div>
+                </div>
+                <div class="calendar-body"></div>
+            </section>
+
+            <section class="detail">
+
+            </section>
+
+        </div>
+        <div class="right-side">
+            <div class="right-date"></div>
+            <div class="meal">
+                <div class="col-set">
+                    <div id="breakfast" class="collapsible">
+                        <i class="fa-solid fa-sun" style="font-style: normal; color: #ff5151"></i>
+                        아침식사
+                    </div>
+                    <div id="meal-bre" class="meal-content">
+                    <div class="append"><input class="mealInput" type="text" placeholder="Add Meal"/>
+                        <button type="submit" id="appendBreak" ><i class="fa-solid fa-plus"></i></button></div>
+                    </div>
+                    <div id="lunch" class="collapsible">
+                        <i class="fa-solid fa-cheese" style="font-style: normal;color: #ffc70d"></i>
+                        점심식사
+                        <i id="appendLunch" class="fa-solid fa-plus"></i>
+                    </div>
+                    <ul id="meal-lun" class="meal-content">
+                    <input type="text" placeholder="Add new item"/>
+                    </ul>
+                    <div id="dinner" class="collapsible">
+                        <i class="fa-solid fa-utensils" style="font-style: normal"></i>
+                        저녁식사
+                        <i id="appendDinner" class="fa-solid fa-plus"></i>
+                    </div>
+                    <ul id="meal-din" class="meal-content">
+                    <input type="text" placeholder="Add new item"/>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../static/js/plan/plan.js"></script>
+    <script type="text/javascript" src="../static/js/plan/data.js"></script>
+    <script type="text/javascript" src="../static/js/ajax.js"></script>
+{% endblock %}

@@ -12,10 +12,13 @@ window.onload = function () {
     const createDate = document.querySelector('.createDate');
     const bgblack = document.querySelector('.bgblack');
     const closedBtn = document.querySelector('.closed');
-    const breakfastList = document.querySelector('#meal-bre')
-    const MealBtn = document.querySelector('.meal-inputBtn');
-    const MealBox = document.querySelector('.input-meal');
-
+    const mealList = document.querySelector('#meal-content');
+    const lunchList = document.querySelector('#meal-lun');
+    const dinnerList = document.querySelector('#meal-din');
+    const appendBreak = document.querySelector('#appendBreak');
+    const appendLunch = document.querySelector('#appendLunch');
+    const appendDinner = document.querySelector('#appendDinner');
+    const addMeal = document.querySelector('.mealInput');
     let currentDate;
 
 
@@ -38,7 +41,7 @@ window.onload = function () {
         showMain();
         currentDateget();
         resetInsert();
-        resetInsertMeal();
+        // resetInsertMeal();
         showSide();
 
     }
@@ -107,18 +110,18 @@ window.onload = function () {
         removeCalendar();
         buildCalendar();
         resetInsert();
-        resetInsertMeal();
+        // resetInsertMeal();
         redrawLi();
-        redrawMeal();
+        // redrawMeal();
     });
     nextEl.addEventListener('click', function () {
         today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
         removeCalendar();
         buildCalendar();
         resetInsert();
-        resetInsertMeal();
+        // resetInsertMeal();
         redrawLi();
-        redrawMeal();
+        // redrawMeal();
     });
 
     function currentDateget() {
@@ -139,9 +142,9 @@ window.onload = function () {
         currentDateget();
         redrawLi();
         resetInsert();
-        resetInsertMeal();
+        // resetInsertMeal();
         showSide();
-        redrawMeal();
+        // redrawMeal();
     });
 
     inputBtn.addEventListener('click', function (e) {
@@ -268,7 +271,8 @@ window.onload = function () {
     function save() {
         localStorage.setItem(currentDate, JSON.stringify(DATA[currentDate]));
     }
-    function saveMeal(){
+
+    function saveMeal() {
         localStorage.setItem(currentDate, JSON.stringify(MEAL[currentDate]));
     }
 
@@ -291,10 +295,12 @@ window.onload = function () {
     }
 
     meal();
+//////////////////////////////// 식단 리스트 추가 /////////////////////////
 
-    MealBtn.addEventListener('click', function (e) {
+    ////////아침////////////
+    appendBreak.addEventListener('click', function (e) {
         e.preventDefault();
-        let inputMeal = MealBox.value;
+        let inputMeal = addMeal.value;
         insertMeal(inputMeal);
     });
 
@@ -322,78 +328,78 @@ window.onload = function () {
         liMeal.appendChild(spanMeal);
         liMeal.appendChild(delMeal);
         liMeal.setAttribute('id', "mealList");
-        breakfastList.appendChild(liMeal);
+        mealList.appendChild(liMeal);
         liMeal.setAttribute('id', MEAL[currentDate].length);//id는 1,2,3,4,5,....이런식으로 가게끔
         delMeal.addEventListener('click', delMealList)
         mealObj.id = MEAL[currentDate].length;
         saveMeal();
-        MealBox.value = '';
+        addMeal.value = '';
     };
 
-
+//
     function redrawMeal() {
         // 다른 날짜를 클릭했을때 그 전에 작성한 Meallist목록을 먼저 다 지우기 위해 li와 span을 찾아와 for문으로 지워주고 다시 그려준다.
-        let liMeal = document.querySelectorAll('LI');
-        for (let i = 0; i < liMeal.length; i++) {
-            breakfastList.removeChild(liMeal[i]);
+        let liEl = document.querySelectorAll('LI');
+        for (let i = 0; i < liEl.length; i++) {
+            mealList.removeChild(liEl[i]);
         }
-        for (let breakfastList in MEAL) {
-            if (breakfastList === currentDate) {
-                for (let i = 0; i < MEAL[breakfastList].length; i++) {
+        for (let mealList in MEAL) {
+            if (mealList === currentDate) {
+                for (let i = 0; i < MEAL[mealList].length; i++) {
                     const liMeal2 = document.createElement('li');
                     const spanMeal2 = document.createElement('span');
                     const delMeal2 = document.createElement('button');
                     delMeal2.innerText = "DEL";
                     delMeal2.setAttribute('class', 'del-Meal');
-                    spanMeal2.innerHTML = MEAL[breakfastList][i].meal;
+                    spanMeal2.innerHTML = MEAL[mealList][i].meal;
                     liMeal2.appendChild(spanMeal2);
                     liMeal2.appendChild(delMeal2);
-                    breakfastList.appendChild(liMeal2);
-                    liMeal2.setAttribute('id', MEAL[breakfastList][i].id);
+                    mealList.appendChild(liMeal2);
+                    liMeal2.setAttribute('id', MEAL[mealList][i].id);
                     delMeal2.addEventListener('click', delMealList);
                 }
             }
         }
     }
-
-// 다음 달,이전 달 다른 날, 첫 로드 될 때 마다 할일 목록이 있으면 다 지우고 다시 그려주는 함수
-    function resetInsertMeal() {
-        let StoreObj = localStorage.getItem(currentDate);
-        if (StoreObj !== null) {
-            // liEl
-            let liMeal = document.querySelectorAll('LI');
-            for (let i = 0; i < liMeal.length; i++) {
-                breakfastList.removeChild(liMeal[i]);
-            }
-            // parse 해주기 전에는 localStorage는 string만 가져오니까 parse해준다.
-            const parsed = JSON.parse(localStorage.getItem(currentDate));
-            // console.log(parsed)
-
-            parsed.forEach(function (meal) {
-                if (meal) {
-                    let lili2 = document.createElement('li');
-                    let spanspan2 = document.createElement('span');
-                    let deldel2 = document.createElement('button');
-                    deldel2.setAttribute('class', 'del-meal');
-                    deldel2.innerText = "DEL";
-                    lili2.setAttribute('id', meal.id);
-                    spanspan2.innerHTML = meal.meal;
-                    lili2.appendChild(spanspan2);
-                    lili2.appendChild(deldel2);
-                    breakfastList.appendChild(lili2);
-                    deldel2.addEventListener('click', delMealList);
-
-                }
-            });
-        }
-    }
-
-    resetInsertMeal();
+//
+// // 다음 달,이전 달 다른 날, 첫 로드 될 때 마다 할일 목록이 있으면 다 지우고 다시 그려주는 함수
+//     function resetInsertMeal() {
+//         let StoreObj = localStorage.getItem(currentDate);
+//         if (StoreObj !== null) {
+//             // liEl
+//             let liEl = document.querySelectorAll('LI');
+//             for (let i = 0; i < liMeal.length; i++) {
+//                 breakfastList.removeChild(liEl[i]);
+//             }
+//             // parse 해주기 전에는 localStorage는 string만 가져오니까 parse해준다.
+//             const parsed = JSON.parse(localStorage.getItem(currentDate));
+//             // console.log(parsed)
+//
+//             parsed.forEach(function (meal) {
+//                 if (meal) {
+//                     let lili2 = document.createElement('li');
+//                     let spanspan2 = document.createElement('span');
+//                     let deldel2 = document.createElement('button');
+//                     deldel2.setAttribute('class', 'del-meal');
+//                     deldel2.innerText = "DEL";
+//                     lili2.setAttribute('id', meal.id);
+//                     spanspan2.innerHTML = meal.meal;
+//                     lili2.appendChild(spanspan2);
+//                     lili2.appendChild(deldel2);
+//                     breakfastList.appendChild(lili2);
+//                     deldel2.addEventListener('click', delMealList);
+//
+//                 }
+//             });
+//         }
+//     }
+//
+//     resetInsertMeal();
 
     function delMealList(e) {
         e.preventDefault();
         let delParentLi = e.target.parentNode;
-        breakfastList.removeChild(delParentLi);
+        mealList.removeChild(delParentLi);
         // DATA[currentDate]를 filter함수를 이용해 todo로 돌면서 todo의 아이디값과 현재 내가 누른 아이디값이 같지 않은 것을 배열에 담아 리턴해주어서
         // 내가 지우고자 하는 요소를 뺀 나머지 요소를 배열에 담아 리턴해준다.
         // 그 배열을 다시 DATA[currentDate]에 할당하여 save();를 통해 localStorage에 넣어준다.
@@ -403,7 +409,6 @@ window.onload = function () {
         MEAL[currentDate] = cleanMeals;
         saveMeal();
     }
-
 
 
     // mealBtn.addEventListener('click', function (e) {
