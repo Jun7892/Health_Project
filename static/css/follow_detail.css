@@ -1,51 +1,45 @@
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: url("/static/img/backtmp.png");
-    background-size: cover;
-    z-index: -1;
-    cursor: url("/static/img/pointer.png") 2 6, default;
-}
 
-#SBL_font {
-    font-family: "SB_L";
-}
-
-.SBL_font {
-    font-family: "SB_L";
-}
-
-a {
+.mypage{
+    width:100px;
+    margin: auto 0px;
+    height: 25px;
+    background-color: #e1c1a1;
+    border-style: solid;
+    border-color: #cfd1ce;
+    border-radius: 15%;
     color: white;
-    font-family: SB_L;
+    text-decoration-line: none;
+    text-align: center;
+    font-size: 14px;
 }
-
-p {
+.profile_img{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.follow{
+    width:60px;
+    margin: auto 0px;
+    height: 25px;
+    background-color: #5eb6dc;
+    border-style: solid;
+    border-color: #cfd1ce;
+    border-radius: 15%;
     color: white;
-    font-family: SB_L;
+    text-decoration-line: none;
+    text-align: center;
+    font-size: 14px;
 }
-
-.movemypage {
-    margin-left: 5vw;
-    font-size: 1.5vw;
-    text-decoration: none;
-    cursor: url("/static/img/press.png") 2 2, default;
-}
-
-.box {
-    display: flex;
-    position: absolute;
-    top: 10%;
-    left: 40%;
+.followee{
+    width:80px;
+    margin: auto 0px;
+    height: 25px;
+    background-color: #7e858a;
+    border-style: solid;
+    border-color: #cfd1ce;
+    border-radius: 15%;
     color: white;
-}
-
-.follow {
-    color: white;
-    margin-left: 1vw;
-    text-decoration: none;
-    cursor: url("/static/img/press.png") 2 2, default;
+    text-decoration-line: none;
+    text-align: center;
+    font-size: 14px;
 }

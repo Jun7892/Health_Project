@@ -135,6 +135,12 @@ def search_article(request):
     search = request.GET.get('search_article', '')
     if search:
         search_list = article_list.filter(Q(title__icontains=search) | Q(content__icontains=search))
-        return render(request, 'commu/commu_search.html', {'search_list': search_list})
+        page = request.GET.get('page')
+        paginator = Paginator(search_list, '20')
+        page_obj = paginator.get_page(page)
+        context = {
+            'page': page_obj,
+        }
+        return render(request, 'commu/commu_search.html', context)
     else:
         return render(request, 'commu/commu_search.html')
