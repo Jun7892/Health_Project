@@ -1,0 +1,46 @@
+
+
+.mypage{
+    width:100px;
+    margin: auto 0px;
+    height: 25px;
+    background-color: #e1c1a1;
+    border-style: solid;
+    border-color: #cfd1ce;
+    border-radius: 15%;
+    color: white;
+    text-decoration-line: none;
+    text-align: center;
+    font-size: 14px;
+}
+.profile_img{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.follow{
+    width:60px;
+    margin: auto 0px;
+    height: 25px;
+    background-color: #5eb6dc;
+    border-style: solid;
+    border-color: #cfd1ce;
+    border-radius: 15%;
+    color: white;
+    text-decoration-line: none;
+    text-align: center;
+    font-size: 14px;
+}
+.followee{
+    width:80px;
+    margin: auto 0px;
+    height: 25px;
+    background-color: #7e858a;
+    border-style: solid;
+    border-color: #cfd1ce;
+    border-radius: 15%;
+    color: white;
+    text-decoration-line: none;
+    text-align: center;
+    font-size: 14px;
+}
