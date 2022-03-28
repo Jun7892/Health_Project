@@ -1,0 +1,68 @@
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background : url("/static/img/backtmp.png");
+    background-size: cover;
+    z-index: -1;
+    cursor: url("/static/img/pointer.png") 2 6, default;
+}
+
+#SBL_font {
+    font-family: "SB_L";
+}
+
+.SBL_font {
+    font-family: "SB_L";
+}
+
+a {
+    color: white;
+    font-family: SB_L;
+    font-weight: bolder;
+}
+
+p {
+    color: white;
+    font-family: SB_L;
+    font-weight: bolder;
+}
+
+button {
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+    color: gray;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+button:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+button:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;
+}
+
+.box {
+    position: absolute;
+    top: 37%;
+    left: 37%;
+}
+
+.movemypage {
+    margin-left: 3vw;
+    font-size: 1.5vw;
+    text-decoration: none;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
