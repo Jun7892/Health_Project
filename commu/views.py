@@ -14,13 +14,15 @@ from django.core.paginator import Paginator
 def commu_view(request):
     if request.method == 'GET':
        article = Article.objects.all().order_by('-id')
-       # page = request.GET.get('page')
-       # paginator = Paginator(article, '20')
-       # page_obj = paginator.get_page(page)
-       # context = {
-       #     'page': page_obj,
-       # }
-       return render(request, 'commu/commu.html', {'article':article})
+       page = request.GET.get('page')
+       paginator = Paginator(article, '20')
+       page_obj = paginator.get_page(page)
+       article_created_at = str(Article.created_at)
+       context = {
+           'page': page_obj,
+           'article_created_at':article_created_at
+       }
+       return render(request, 'commu/commu.html', context)
 
 
 # @login_required(login_url:'sign_in')
@@ -133,6 +135,12 @@ def search_article(request):
     search = request.GET.get('search_article', '')
     if search:
         search_list = article_list.filter(Q(title__icontains=search) | Q(content__icontains=search))
-        return render(request, 'commu/commu_search.html', {'search_list': search_list})
+        page = request.GET.get('page')
+        paginator = Paginator(search_list, '20')
+        page_obj = paginator.get_page(page)
+        context = {
+            'page': page_obj,
+        }
+        return render(request, 'commu/commu_search.html', context)
     else:
         return render(request, 'commu/commu_search.html')

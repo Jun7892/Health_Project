@@ -5,21 +5,16 @@ from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
-from django.utils.datastructures import MultiValueDictKeyError
 from django.core.exceptions import ValidationError
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-
-from commu.models import Article
 from second.models import User
 from django.contrib import auth
-from django.db.models import Q
 import json
-
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from plz import settings
-from second.services import login_check_blank, create_user, get_profile_img_src, profile_update
+from second.services import login_check_blank, create_user
 
 
 def sign_up(request):
@@ -168,7 +163,7 @@ def reset_password(request, uidb64, token):
         if result == True:
             return render(request, 'login/reset_password.html', {'ok':'ok'})
         else:
-            messages.info(request, '이미 비밀번호변경이 이루어졌습니다. 이 메일은 유효하지 않습니다')
+            messages.info(request, '비밀번호 재설정 유효시간이 지났네요!. 이 메일은 유효하지 않습니다')
             return render(request, 'login/reset_password.html')
     else:#post요청
         password1 = request.POST['password1']
@@ -187,6 +182,7 @@ def reset_password(request, uidb64, token):
                     print(result)
                     if result == True: #유효한 유저/토큰이면 True반환
                         user.password = make_password(password2) #create_user할때 장고자체에서 제공하는 패스워드 해시화함수
+                        auth.logout(request) # 마이페이지에서도 비밀번호재설정 던져주니까 로그아웃시킴
                         user.save()
                         return render(request, 'login/password_reset_complete.html')
                 except:
@@ -195,61 +191,3 @@ def reset_password(request, uidb64, token):
         else: #비밀번호 하나라도 빈칸이면
             messages.info(request, '빈칸을 입력했어요! 다시입력해주세요')
             return redirect(request.path)
-
-
-# @login_required(login_url:'sign_in')
-def testmypage(request,id):
-    login_user = request.user  # 접속한 유저의 정보들고있음
-    user = User.objects.get(id=id) #마이페이지의 유저
-    articles = Article.objects.filter(author_id=id)
-    user_list = User.objects.filter(is_superuser=0).all().exclude(username=user.username)  # 로그인한 사용자와 admin계정 제외한 유저리스트
-    follow_list = User.objects.get(id=user.id).follow.all()
-    another_user_list = user_list.difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
-    doc ={
-        'user': user,
-        'login_user': login_user,
-        'another_user_list': another_user_list,
-        'follow' : follow_list,
-        'articles' : articles
-    }
-    if request.method == 'GET':
-        return render(request, 'commu/testmypage.html', doc)
-    else:# 프로필 변경요청
-        nickname= request.POST['nickname']
-        if nickname == "" or MultiValueDictKeyError(KeyError): #닉네임 공백이면
-            try:#사진 선택한걸로 바꿔주거나
-                img_file = request.FILES['file']
-                filepath = get_profile_img_src(login_user, img_file)
-                profile_update(login_user, nickname, filepath)
-                return redirect('test', login_user.id)#마이페이지로
-            except: #사진도 선택안했으면 그냥 유지
-                return redirect('test', login_user.id) #나중에 마이페이지에 해당하는것으로 변경하기
-
-
-# @login_required(login_url:'sign_in')
-def user_follow(request, id): #팔로우할 사람의 id
-    user = request.user  # 지금 접속한 사용자
-    click_user = User.objects.get(id=id)  # 클릭한 유저
-    if user != click_user: #내가 나를 팔로우하지 않도록
-        url = request.META['HTTP_REFERER'] #와 이거 대박
-        print(url)
-        if user in click_user.followee.all(): #접속한 유저가 클릭한 유저를 팔로우 하고있었다면
-            click_user.followee.remove(user)#클릭한 유저의 followee에서 user 제거
-        else: #팔로우하고 있지 않았다면
-            click_user.followee.add(user)#클릭한 유저의 followee에 user추가~!
-        return redirect(url)
-
-
-# @login_required(login_url:'sign_in')
-def show_follow(request, id):
-    login_user = request.user #접속한 유저
-    user = User.objects.get(id=id) #마이페이지의 유저
-    follow_list = User.objects.get(id=user.id).follow.all()
-    followee_list = User.objects.get(id=user.id).followee.all()
-    doc = {
-        'user': user,
-        'login_user': login_user,
-        'follow_list':follow_list,
-        'followee_list':followee_list,
-    }
-    return render(request, 'commu/follow_detail.html', doc)

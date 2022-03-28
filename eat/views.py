@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from eat.models import FoodModel
 from django.core.paginator import Paginator
 import random
@@ -26,7 +26,6 @@ def eat_detail(request, id):
     print(recipe)
     recipe.ingredients = recipe.get_ingredients()
     recipe.step = recipe.get_step()
-    
     # --------------------추천시스템--------------------------------
  
     print(recipe.title)
@@ -53,9 +52,15 @@ def eat_detail(request, id):
     return render(request, 'eat/eat_detail.html', {'recipe': recipe, 'recommend': recommend})
 
 
-def ai_detail(request):
-    bookmark="북마크를 담은 데이터베이스가져오기"
-    
 
 
-    return render(request, 'eat/eat_detail.html')
+def bookmark(request,id):
+    if request.method == 'POST':
+        user = request.user
+        recipe = FoodModel.objects.get(id=id)
+        if user in recipe.bookmark.all():
+            recipe.bookmark.remove(user)
+        else:
+            recipe.bookmark.add(user)
+    return redirect(f'/eat/detail/{id}')
+

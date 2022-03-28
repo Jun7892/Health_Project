@@ -35,8 +35,10 @@
                 {% endif %}
             </form>
             <br>
+
             <p class="text2">title: {{ article.title }}</p>
-            <p class="text2">author: {{ article.author }}</p>
+            <a class="text2" href="/mypage/{{ article.author.id }}" style="text-decoration-line: none;">author: {{ article.author }}</a>
+
             <br>
             <p class="text2">content: {{ article.content }}</p>
             <br>
@@ -57,7 +59,7 @@
             {% for comment in comments %}
                 <div>
                     <div class='comment' style="display:flex">
-                        <h5 style="color: white">{{ comment.author }}님</h5><span style="color: white">: </span>
+                        <a href="/mypage/{{ comment.author.id }}" style="text-decoration-line: none; color: white">{{ comment.author }}님</a><span style="color: white">: </span>
                         <h6 style="color: white">{{ comment.comment }}</h6>
 
                         {% if comment.author == user %}
@@ -74,6 +76,7 @@
                             </div>
                         {% endif %}
                     </div>
+
                 </div>
             {% endfor %}
             {% if messages %}

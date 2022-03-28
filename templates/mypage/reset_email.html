@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="/static/css/reset_email.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block title %}EMAIL RESET{% endblock %}
+
+<h3>이메일 재설정</h3>
+{% block content %}
+    <div class="background">
+        <div class="box">
+            <p style="text-align: center">새로 사용할 이메일을 정확하게 입력해 주세요.</p>
+            <form method="POST" style="color: white" action="/mypage/update/email/{{ user.id }}">
+                {% csrf_token %}
+                새로 사용할 이메일: <input type="text" name="email">
+                <button>저장</button>
+            </form>
+
+            {% if messages %}
+                {% for msg in messages %}
+                    <h3 style="color: white">{{ msg.message }}</h3>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <a class="movemypage" href="/mypage/{{ user.id }}">Mypage</a>
+{% endblock %}
