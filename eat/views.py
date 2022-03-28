@@ -28,7 +28,7 @@ def eat_detail(request, id):
     print(recipe)
     recipe.ingredients = recipe.get_ingredients()
     recipe.step = recipe.get_step()
-    
+
     # --------------------추천시스템--------------------------------
  
     print(recipe.title)
@@ -53,4 +53,5 @@ def eat_detail(request, id):
     print(recommend)
 
     return render(request, 'eat/eat_detail.html', {'recipe': recipe, 'similar': most_similar_docs})
+
 

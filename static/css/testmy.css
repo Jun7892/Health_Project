@@ -4,15 +4,16 @@ body{
 }
 .modal_wrap{
         display: none;
-        width: 500px;
+        width: 650px;
         height: 500px;
         position: absolute;
-        top:50%;
+        top:35%;
         left: 50%;
         margin: -250px 0 0 -250px;
         background:#eee;
         z-index: 2;
 }
+
 .black_bg{
     display: none;
     position: absolute;

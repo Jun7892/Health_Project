@@ -429,8 +429,22 @@ window.onload = function () {
     //
     //         });
     //     }
-    //
+
     // }
     // changeBorderRadius();
 }
 
+// function todobtn(){
+//     var to_do = document.querySelector('input[name="to_do"]');
+//     console.log(to_do);
+//
+//     $.ajax({
+// 			type: "POST",
+// 			url: '/plan/create',	// form을 전송할 실제 파일경로
+// 			data: {'to_do':to_do},
+//             datatype:'json',
+//             success: function (data){
+//                 console.log('받았다')
+//             }
+// 		});
+// }

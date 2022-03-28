@@ -16,9 +16,8 @@ def get_profile_img_src(user, img_file):
     return profile_img_url
 
 
-def profile_update(user, nickname, img_file):
+def profile_update(user, img_file):
     edit_user = User.objects.get(username=user.username)
-    edit_user.nickname = nickname
     edit_user.profile_img = img_file
     edit_user.save()
     return edit_user

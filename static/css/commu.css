@@ -39,13 +39,45 @@ a {
     font-family: "SB_L";
 }
 
-h1 {
+.h1 {
     position: absolute;
     top: 8%;
     left: 8%;
     transform: translate(-50%, -50%);
     font-size: 20px;
     color: white;
+    text-decoration-line: none;
+}
+
+.search_input {
+    position: absolute;
+    right: 47%;
+    top: 6.5%;
+}
+
+.search_box{
+    border: none;
+    height: 30px;
+}
+
+.search_button{
+    border: none;
+    display: none;
+}
+
+input[type=text] {
+  width: 60%;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+  width: 100%;
 }
 
 @media (max-width: 1000px) {
@@ -64,8 +96,8 @@ h3 {
     left: 8%;
 }
 
-.base {
-    position: absolute;
+.commu_pagination {
+    text-decoration-line: none;
 }
 
 .commuinput {
@@ -112,6 +144,7 @@ p {
     color: white;
     margin-left: 50%;
     margin-top: -25%;
+    text-decoration-line: none;
 }
 
 @media (max-width: 1000px) {
@@ -125,10 +158,8 @@ p {
 
 .textbox {
     position: absolute;
-    top: 15%;
-    left: 85%;
-    width: 15%;
-    height: 20%;
+    top: 19%;
+    right: 8%;
 }
 
 

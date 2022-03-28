@@ -7,6 +7,7 @@
     <link href="../../static/css/base.css" rel="stylesheet" type="text/css"/>
     <link href="../../static/css/commu.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../../static/js/commu.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 {% endblock %}
 
 {% block title %}COMMU{% endblock %}
@@ -14,119 +15,56 @@
 {% block content %}
 
     <div id="particles-js">
-        <h1>Community</h1>
+        <a class="h1" href="/commu/">Community</a>
+        <div class="search_input">
+            <form action="/commu/search/" method="GET">
+                <p>
+                <input class="search_box" type="text" name="search_article" placeholder="search..." >
+                <button class="search_button" type="submit" value="검색"><img style="width: 30px; height: 30px;" src="{% static 'img/검색.jpeg' %}"></button>
+                </p>
+            </form>
+        </div>
 
         <div class="textbox">
-            <p class="mainmove" href="{% url 'main' %}">main</p>
-            <p class="base" style="top: 25%; left: 5%; color: white">1 /</p>
-            <p class="base" style="top: 25%; left: 20%; color: white">2 /</p>
-            <p class="base" style="top: 25%; left: 35%; color: white">3 /</p>
-            <p class="base" style="top: 25%; left: 50%; color: white">...</p>
+            <a class="mainmove" href="{% url 'main' %}">main</a>
+            {% for page_num in page.paginator.page_range %}
+                {% if page_num > page.number|add:-2 and page_num <= page.number|add:3 %}
+                    <a class="commu_pagination" href="?page={{ page_num }}">{{ page_num }}</a>
+                    {% endif %}
+            {% endfor %}
         </div>
 
         <div style="position: absolute; top: 25%; left: 5%; width: 90%; height: 50%;">
             <div style="position: absolute; top: 0; left: 0; width: 45%; height: 100%;">
-            {% for i in article %}
-                <div style="position: relative; top: 0%; left: 0%; width: 100%; height: 10%;">
-                        <p style="float: left; width: 10%;">{{ forloop.counter }}</p>
-                        <a href="{{ i.id }}" style="float: left; width: 55%; text-decoration-line: none; color: white">{{ i.title }} </a>
-                        <p style="float: left; width: 27%;">{{ i.created_at }}</p>
-                        <p style="float: left; width: 4%;">{{ i.author }}</p>
-{#                        <p style="float: left; width: 4%;">x</p>#}
-                </div>
+
+            {% for i in page.object_list %}
+                {% if forloop.counter <= 10 %}
+                    <div style="position: relative; top: 0%; left: 0%; width: 100%; height: 10%;">
+                            <p style="float: left; width: 10%;">{{ forloop.counter }}</p>
+                            <a href="{{ i.id }}" style="float: left; width: 55%; text-decoration-line: none; color: white">{{ i.title }} </a>
+                            <p style="float: left; width: 27%;">{{ i.get_created_at }}</p>
+                            <a href="/mypage/{{ i.author.id }}" style="text-decoration-line:none; float: left; width: 4%; color: white;">{{ i.author }}</a>
+                    </div>
+                {% endif %}
+
             {% endfor %}
             </div>
 
 
             {#        오른쪽#}
 
-{#            <div style="position: absolute; top: 0%; left: 52.5%; width: 47.5%; height: 100%;">#}
-{#                <div style="position: relative; top: 0%; left: 0%; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">11</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{##}
-{##}
-{#                <div style="position: relative; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">12</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{##}
-{#                <div style="position: relative; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">13</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{##}
-{#                <div style="position: relative; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">14</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{##}
-{#                <div style="position: relative; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">15</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{##}
-{#                <div style="position: relative; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">16</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{##}
-{#                <div style="position: relative; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">17</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{##}
-{#                <div style="position: relative; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">18</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{##}
-{#                <div style="position: relative; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">19</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{##}
-{#                <div style="position: relative; width: 100%; height: 10%;">#}
-{#                    <p style="float: left; width: 10%;">20</p>#}
-{#                    <p style="float: left; width: 55%;">오늘의 운동</p>#}
-{#                    <p style="float: left; width: 27%;">04:00 / 3. 17. 2022</p>#}
-{#                    <p style="float: left; width: 4%;">ㅇ</p>#}
-{#                    <p style="float: left; width: 4%;">x</p>#}
-{#                </div>#}
-{#        </div>#}
-
-
-{#        <input value="아무말이나 적어라" class="commuinput"#}
-{#               style="font-family: SB_L; text-align: center; font-size: 1vw; color: white; background-color: cornflowerblue;"#}
-{#               id="btn-signup">#}
+            <div style="position: absolute; top: 0%; left: 52.5%; width: 47.5%; height: 100%;">
+                {% for i in page.object_list %}
+                    {% if forloop.counter > 10 %}
+                        <div style="position: relative; top: 0%; left: 0%; width: 100%; height: 10%;">
+                            <p style="float: left; width: 10%;">{{ forloop.counter }}</p>
+                            <a href="{{ i.id }}" style="color:white; text-decoration-line:none;float: left; width: 55%;">{{ i.title }}</a>
+                            <p style="float: left; width: 27%;">{{ i.get_created_at }}</p>
+                            <a href="/mypage/{{ i.author.id }}" style="color:white; text-decoration-line:none; float: left; width: 4%;">{{ i.author }}</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
             <a href="create/" value="아무말이나 적어라" class="commuinput" id="btn-signup">작성하기</a>
     </div>
 

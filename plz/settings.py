@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u6-u2goiyr%8ulp2wrec93gg=+2b(rx@=y_*ym9!eqya@7w#bj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # 배포할 것
+DEBUG = True
 
-ALLOWED_HOSTS = ['*'] # 모두 허용
+ALLOWED_HOSTS = [] # 모두 허용
 
 
 # Application definition
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'eat',
     'workout',
     'plan',
-    'item',
+    'mypage',
     'commu',
     # 'storages', #깃헙에 올릴때 주석처리
 ]
@@ -94,6 +94,9 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
+# The number of seconds a password reset link is valid for (default: 3 days). 장고에서 토큰유효 기본값이 3일
+PASSWORD_RESET_TIMEOUT = 60*30 #토큰 유효한 시간은 30분으로 지정
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -109,11 +112,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'Asia/Seoul'
 
@@ -122,7 +124,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -144,8 +145,8 @@ AUTH_USER_MODEL = 'second.User' # Auth_user_model second앱의 user모델로 바
 #
 # # 미디어 파일을 위한 스토리지 설정
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#
+# # # # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# # #
 # with open(os.path.join(BASE_DIR, 'plz/secret.json')) as f:
 #     secrets = json.loads(f.read())
 #
@@ -160,3 +161,17 @@ AUTH_USER_MODEL = 'second.User' # Auth_user_model second앱의 user모델로 바
 #
 # # Media Setting
 # MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+#
+# #email #전송용
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = secrets['MAIL']["Email_host_user"]
+# EMAIL_PORT = 587
+# EMAIL_HOST_PASSWORD = secrets['MAIL']["Email_host_password"]
+# EMAIL_USE_TLS = True # 이거말고 일단 SSL로 시도
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# # SECURE_SSL_REDIRECT = True #reset_link 를 https로 보내주기위한 설정
+#
+# SECURE_SSL_REDIRECT=False
+# SESSION_COOKIE_SECURE=False
+# CSRF_COOKIE_SECURE=False

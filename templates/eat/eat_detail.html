@@ -36,13 +36,13 @@ EAT_DETAIL
         <img src="{{ recipe.image }}" class="foodimg">
         <a>&nbsp;</a>
         <div class="title">
-            <p>{{ recipe.title }}</p>
+            <p class="shadow">{{ recipe.title }}</p>
         </div>
 
         <div class="ingredients">
-            <p>재료:&nbsp;</p>
+            <p class="shadow">재료:&nbsp;</p>
             {% for ingredient in recipe.ingredients %}
-                <p>{{ingredient}}&nbsp;</p>
+                <p class="shadow">{{ingredient}}&nbsp;</p>
             {% endfor %}
         </div>
 
