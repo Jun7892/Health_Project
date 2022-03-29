@@ -40,32 +40,35 @@ $(document).ready(function () {
 
     calendar.render();
 });
-$(document).ready(function () {
+$(document).ready(function() {
     var calendarEl = document.getElementById('calendar');
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        // dateClick:function (info){
-        //     alert('Clicked on: ' + info.dateStr);
-        // }
-        events: [
-            {
-                id: 1,
-                title: 'Test1',
-                start: '2022-03-22',
-                end: '2022-03-24'
-            },
-            {
-                id: 2,
-                title: 'Test2',
-                start: '2022-03-12',
-                end: '2022-03-13'
+      initialView: 'dayGridMonth',
+      headerToolbar: {
+        center: 'addEventButton'
+      },
+      customButtons: {
+        addEventButton: {
+          text: 'add event...',
+          click: function() {
+            var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+            var date = new Date(dateStr + 'T00:00:00'); // will be in local time
+
+            if (!isNaN(date.valueOf())) { // valid?
+              calendar.addEvent({
+                title: 'dynamic event',
+                start: date,
+                allDay: true
+              });
+              alert('Great. Now, update your database...');
+            } else {
+              alert('Invalid date.');
             }
-        ]
+          }
+        }
+      }
+    });
 
-
-
-});
-
-calendar.render();
-})
-;
+    calendar.render();
+  });
