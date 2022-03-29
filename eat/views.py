@@ -8,6 +8,7 @@ from gensim.test.utils import common_texts
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 import requests
 import json
+from django.db.models import Q
 
 
 def eat_view(request):
@@ -95,6 +96,58 @@ def bookmark(request,id):
             recipe.bookmark.add(user)
     return redirect(f'/eat/detail/{id}')
 
+
+def eat_search(request):
+    if request.method == 'GET':
+        recipe = FoodModel.objects.all().order_by('id')
+        search_recipe = request.GET.get('search_recipe', ' ')
+        code = ['서울', '부산', '대구', '인천', '광주', '대전', '울산', '수원', '춘천', '청주', '전주', '포항', '제주', '순천', '안동', '창원']
+        seoul = ProductModel.objects.filter(country_name='서울')
+        busan = ProductModel.objects.filter(country_name='부산')
+        daegu = ProductModel.objects.filter(country_name='대구')
+        incheon = ProductModel.objects.filter(country_name='인천')
+        gwangju = ProductModel.objects.filter(country_name='광주')
+        daejeon = ProductModel.objects.filter(country_name='대전')
+        ulsan = ProductModel.objects.filter(country_name='울산')
+        suwon = ProductModel.objects.filter(country_name='수원')
+        chuncheon = ProductModel.objects.filter(country_name='춘천')
+        chungju = ProductModel.objects.filter(country_name='청주')
+        jeonju = ProductModel.objects.filter(country_name='전주')
+        pohang = ProductModel.objects.filter(country_name='포항')
+        jeju = ProductModel.objects.filter(country_name='제주')
+        suncheon = ProductModel.objects.filter(country_name='순천')
+        andong = ProductModel.objects.filter(country_name='안동')
+        changwon = ProductModel.objects.filter(country_name='창원')
+        if search_recipe:
+            search_list = recipe.filter(Q(title__icontains=search_recipe) | Q(ingredients__icontains=search_recipe))
+            page = request.GET.get('page')
+            paginator = Paginator(search_list, '12')
+            page_obj = paginator.get_page(page)
+            context = {
+                'page': page_obj,
+                'search':search_recipe,
+                'seoul': seoul,
+                'busan': busan,
+                'daegu': daegu,
+                'incheon': incheon,
+                'gwangju': gwangju,
+                'daejeon': daejeon,
+                'ulsan': ulsan,
+                'suwon': suwon,
+                'chuncheon': chuncheon,
+                'chungju': chungju,
+                'jeonju': jeonju,
+                'pohang': pohang,
+                'jeju': jeju,
+                'suncheon': suncheon,
+                'andong': andong,
+                'changwon': changwon,
+                'code': code
+
+            }
+            return render(request, 'eat/eat.html', context)
+        else:
+            return redirect('/eat')
 
 # def city_select():
 #     code = {

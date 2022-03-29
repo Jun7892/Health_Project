@@ -33,9 +33,11 @@
         <img src="../static/img/logo.png" class="eatlogo">
     </div>
     <form action="/eat/search/" method="GET">
-            <input class="recipe_search" type="text" name="search_recipe">
-        </form>
+            <input class="recipe_search" type="text" name="search_recipe"">
+    </form>
 
+
+    {#city_product_price#}
     <div class="product_price_taps">
 
         <ul class="tabs">
@@ -61,7 +63,12 @@
         </ul>
         <div id="tab-1" class="tab-content current">
             {% for i in seoul %}
-                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }}(원) {{ i.day2 }}:{{ i.dpr2 }}(원) {{ i.value }}% {{ i.unit }}</p>
+                <tr>
+                    <td>{{ i.item_name }}</td>
+                    <td>{{ i.day1 }}:{{ i.dpr1 }}(원)</td>
+                    <td>{{ i.day2 }}:{{ i.dpr2 }}(원)</td>
+                    <td>{{ i.value }}% {{ i.unit }}</td>
+                </tr>
             {% endfor %}
         </div>
         <div id="tab-2" class="tab-content">
@@ -142,16 +149,21 @@
 
 
     </div>
-    {#recipe#}
-    <div id="container">
-        {% for i in page.object_list %}
-            <div class="recipe">
-                <a href="/eat/detail/{{ i.id }}"> <img class="foodimg" src="{{ i.image }}"> </a>
-                <a>&nbsp;</a>
-                <p class="foodname shadow">{{ i.title }}</p>
-            </div>
-        {% endfor %}
-    </div>
+
+    {% if error %}
+        <h1>{{ error }}</h1>
+    {% else %}
+        {#recipe#}
+        <div id="container">
+            {% for i in page.object_list %}
+                <div class="recipe">
+                    <a href="/eat/detail/{{ i.id }}"> <img class="foodimg" src="{{ i.image }}"> </a>
+                    <a>&nbsp;</a>
+                    <p class="foodname shadow">{{ i.title }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {# pagination #}
     <nav aria-label="Page navigation example">
