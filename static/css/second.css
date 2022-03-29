@@ -127,7 +127,7 @@ input[type="text"], input[type="password"] {
     z-index: 2;
     position: absolute;
     top: 1vw;
-    left: 1vw;
+    left: 1.5vw;
     width: 4vw;
     background-color: orangered;
     border-radius: 30%;
