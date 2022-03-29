@@ -14,19 +14,19 @@
 
     <div class="fullcontain">
         <div class="findbox">
-            <p>회원가입시 입력한 이메일을 입력하세요</p>
-            <form method="post" action="/second/find_id">
+            <p class="p_text">회원가입시 입력한 이메일을 입력하세요</p>
+            <form class="form_css" method="post" action="/second/find_id">
                 {% csrf_token %}
-                Email : <input type="email", name="email", placeholder="회원가입시 사용한 이메일">
-                <button>제출</button>
+                Email : <input class="input_em" type="email" name="email" placeholder="회원가입시 사용한 이메일">
+                <button class="btn">제출</button>
             </form>
         </div>
     </div>
 
     {% if messages %}
         {% for msg in messages %}
-            <h3>{{ msg.message }}</h3>
+            <h3 class="find_id">{{ msg.message }}</h3>
         {% endfor %}
     {% endif %}
-    <a href="/second/sign_in">회원가입/로그인 하러 가기</a>
+    <a class="movesignup" href="/second/sign_in">LOGIN</a>
 {% endblock %}

@@ -14,14 +14,14 @@
 
     <div class="fullcontain">
         <div class="box">
-            <h2>비밀번호 재설정</h2>
+            <h2 class="reset_pw">비밀번호 재설정</h2>
 
-            <p>회원가입시 입력한 이메일로 비밀번호 재설정 메일이 갑니다.</p>
-            <form method="post" action="/second/password_reset/">
+            <p class="text">회원가입시 입력한 이메일로 비밀번호 재설정 메일이 갑니다.</p>
+            <form method="post" action="/second/password_reset/" class="form_css">
                 {% csrf_token %}
-                ID : <input type="text" , name="username" , placeholder="아이디를 입력하세요">
-                Email : <input type="email" , name="email" , placeholder="Email을 입력하세요">
-                <button type="submit">이메일 전송</button>
+                ID : <input class="id_text" type="text" name="username" placeholder="아이디를 입력하세요">
+                Email : <input class="pw_text" type="email" name="email" placeholder="Email을 입력하세요">
+                <button class="btn" type="submit">이메일 전송</button>
             </form>
 
             {% if messages %}
@@ -30,8 +30,8 @@
                 {% endfor %}
             {% endif %}
             <br>
-            <a href="/second/sign_in">회원가입/로그인 하러 가기</a>
-            <a href="/second/find_id">아이디 찾기</a>
+            <a class="move1" href="/second/sign_in">Login</a>
+            <a class="move2" href="/second/find_id">Find_PW</a>
         </div>
     </div>
 

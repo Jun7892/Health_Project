@@ -16,35 +16,31 @@
 {% block content %}
 
     <div id="particles-js">
-        <a class="h1" href="/commu/">Community</a>
+        <a class="mainh1" href="/commu/">Community</a>
+        <a class="mainmove" onclick="location.href='/main/'">Main</a>
         <div class="search_input">
             <form action="/commu/search/" method="GET">
-<<<<<<< HEAD
-                <input type="text" name="search_article" >
-                    <butten style = "width:30px; height:30px"><img style = "width:30px; height:30px"src="https://cdn-icons-png.flaticon.com/128/49/49116.png" alt="img"></butten> 
-=======
+                {#<img style = "width:30px; height:30px"src="https://cdn-icons-png.flaticon.com/128/49/49116.png" alt="img">#}
                 <p>
                     <input class="search_box" type="text" name="search_article" placeholder="search...">
-                    <button class="search_button" type="submit" value="검색"><img style="width: 30px; height: 30px;"
-                                                                                src="{% static 'img/검색.jpeg' %}">
+                    <button class="search_button" type="submit" value="검색"><img class="searchimg"
+                                                                                src="{% static 'img/searchicon.png' %}">
+{#                        <img style = "width:30px; height:30px"src="https://cdn-icons-png.flaticon.com/128/49/49116.png" alt="img">#}
                     </button>
                 </p>
->>>>>>> a1be8787033e1e85744d8e62a41a7432cca44f64
             </form>
         </div>
 
         <div class="textbox">
-            <a class="mainmove" href="{% url 'main' %}">main</a>
-                    <nav aria-label="...">
-                        <ul class="pagination pagination-sm">
-                            {% for page_num in page.paginator.page_range %}
-                                {% if page_num > page.number|add:-2 and page_num <= page.number|add:3 %}
-                                    <li><a href="?page={{ page_num }}" class="page-link" style="padding: 0.05rem 0.5rem;">{{ page_num }}</a></li>
-                                {% endif %}
-                        {% endfor %}
-                        </ul>
-                    </nav>
-        <nav aria-label="...">
+            <nav aria-label="...">
+                <ul class="pagination pagination-sm">
+                    {% for page_num in page.paginator.page_range %}
+                        {% if page_num > page.number|add:-2 and page_num <= page.number|add:3 %}
+                            <li><a href="?page={{ page_num }}" class="page-link">{{ page_num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
         </div>
 
         <div style="position: absolute; top: 25%; left: 5%; width: 90%; height: 50%;">
@@ -55,8 +51,8 @@
                         <div style="position: relative; top: 0%; left: 0%; width: 100%; height: 10%;">
                             <p style="float: left; width: 10%;">{{ forloop.counter }}</p>
                             <a href="{{ i.id }}"
-                               style="float: left; width: 55%; text-decoration-line: none; color: white">{{ i.title }} </a>
-                            <p style="float: left; width: 27%;">{{ i.get_created_at }}</p>
+                               style="float: left; width: 54%; text-decoration-line: none; color: white">{{ i.title }} </a>
+                            <p style="float: left; width: 28%;">{{ i.get_created_at }}</p>
                             <a href="/mypage/{{ i.author.id }}"
                                style="text-decoration-line:none; float: left; width: 4%; color: white;">{{ i.author }}</a>
                         </div>
@@ -88,5 +84,6 @@
         {#<script type="text/javascript" src="../static/js/commu.js"></script>#}
         <script src="../../static/js/particles.js"></script>
         <script src="../../static/js/app.js"></script>
+    </div>
 
 {% endblock %}
