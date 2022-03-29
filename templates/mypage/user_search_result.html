@@ -10,7 +10,18 @@
 {% block title %}User search result{% endblock %}
 
 {% block content %}
+    <form action="" method="POST" class="search_form">
+        {% csrf_token %}
+        <input class="search_box" type="text" name="user_search" placeholder="사용자를 검색하세요">
+        <button class="search_btn" type="submit">search</button>
+    </form>
+
     <p> 사용자 검색 결과입니다. </p>
+    {% if messages %}
+        {% for msg in messages %}
+            <h3>{{ msg.message }}</h3>
+        {% endfor %}
+    {% endif %}
     {% for member in members %}
         <div>
             <a href="/mypage/{{ member.id }}" style="text-decoration-line: none;" >
