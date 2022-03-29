@@ -12,14 +12,15 @@
     <script type="text/javascript" src="../../static/js/eat.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 {% endblock %}
 
 {% block title %}EAT{% endblock %}
 
 {% block content %}
     {# header #}
-{#    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; background-color: #000f1d;"></div>#}
+    {#    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; background-color: #000f1d;"></div>#}
 
     {# header #}
     <div class="header">
@@ -35,73 +36,140 @@
     <div class="product_price_taps">
 
         <ul class="tabs">
-            <li class="tab-link current" data-tab="tab-1">Tab One</li>
-            <li class="tab-link" data-tab="tab-2">Tab one</li>
-            <li class="tab-link" data-tab="tab-3">Tab Three</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            <li class="tab-link" data-tab="tab-4">Tab Four</li>
+            {% for i in code %}
+                <li class="tab-link current" data-tab="tab-{{ forloop.counter }}">{{ i }}</>
+            {% endfor %}
+            {#            <li class="tab-link" data-tab="tab-2">{{ code }}</li>#}
+            {#            <li class="tab-link" data-tab="tab-3">Tab Three</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
+            {#            <li class="tab-link" data-tab="tab-4">Tab Four</li>#}
         </ul>
-
         <div id="tab-1" class="tab-content current">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
+            {% for i in seoul %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
         </div>
         <div id="tab-2" class="tab-content">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
+            {% for i in busan %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
         </div>
         <div id="tab-3" class="tab-content">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            {% for i in daegu %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</pr>
+            {% endfor %}
         </div>
         <div id="tab-4" class="tab-content">
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            {% for i in incheon %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
         </div>
+        <div id="tab-5" class="tab-content">
+            {% for i in gwangju %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-6" class="tab-content">
+            {% for i in daejeon %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-7" class="tab-content">
+            {% for i in ulsan %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-8" class="tab-content">
+            {% for i in suwon %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-9" class="tab-content">
+            {% for i in chuncheon %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-10" class="tab-content">
+            {% for i in chungju %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-11" class="tab-content">
+            {% for i in jeonju %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-12" class="tab-content">
+            {% for i in pohang %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-13" class="tab-content">
+            {% for i in jeju %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-14" class="tab-content">
+            {% for i in suncheon %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-15" class="tab-content">
+            {% for i in andong %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+        <div id="tab-16" class="tab-content">
+            {% for i in changwon %}
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }} {{ i.day2 }}:{{ i.dpr2 }} {{ i.value }}% {{ i.unit }}</p>
+            {% endfor %}
+        </div>
+
+
     </div>
     {#recipe#}
     <div id="container">
         {% for i in page.object_list %}
-        <div class="recipe">
-            <a href="/eat/detail/{{ i.id }}"> <img class="foodimg" src="{{ i.image }}"> </a>
-            <a>&nbsp;</a>
-            <p class="foodname shadow">{{ i.title }}</p>
-        </div>
+            <div class="recipe">
+                <a href="/eat/detail/{{ i.id }}"> <img class="foodimg" src="{{ i.image }}"> </a>
+                <a>&nbsp;</a>
+                <p class="foodname shadow">{{ i.title }}</p>
+            </div>
         {% endfor %}
     </div>
 
     {# pagination #}
     <nav aria-label="Page navigation example">
         <ul class="pagination" style="justify-content: center;">
-            <li class="page-item"><a class="page-link" href="?page=1" class="first" style="color: orangered">First Page </a></li>
-    {#        {% if page.has_previous %}#}
-    {#            <li class="page-item"><a class="page-link" href="?page={{ page.previous_page_number }}">이전</a></li>#}
-    {#        {% endif %}#}
+            <li class="page-item"><a class="page-link" href="?page=1" class="first" style="color: orangered">First
+                Page </a></li>
+            {#        {% if page.has_previous %}#}
+            {#            <li class="page-item"><a class="page-link" href="?page={{ page.previous_page_number }}">이전</a></li>#}
+            {#        {% endif %}#}
             {% for page_num in page.paginator.page_range %}
                 {% if page_num > page.number|add:-2 and page_num <= page.number|add:3 %}
-                    <li><a style="color: mediumpurple;" class="page-link" href="?page={{ page_num }}">{{ page_num }} </a></li>
-    {#            {% elif page_num > page.number|add:-3 and page_num <= page.number|add:3 %}#}
-    {#            ...#}
+                    <li><a style="color: mediumpurple;" class="page-link"
+                           href="?page={{ page_num }}">{{ page_num }} </a></li>
+                    {#            {% elif page_num > page.number|add:-3 and page_num <= page.number|add:3 %}#}
+                    {#            ...#}
                 {% endif %}
             {% endfor %}
             <li class="page-item"><a class="page-link" href="?page={{ page.paginator.num_pages }}">Last Page</a></li>
-    {#        {% if page.has_next %}#}
-    {#            <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}">다음</a></li>#}
-    {#        {% endif %}#}
+            {#        {% if page.has_next %}#}
+            {#            <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}">다음</a></li>#}
+            {#        {% endif %}#}
         </ul>
     </nav>
 
@@ -116,7 +184,7 @@
         </ui>
     </div>
 
-{#<script src="../static/js/particles2.js"></script>#}
-{#<script src="../static/js/app2.js"></script>#}
+    {#<script src="../static/js/particles2.js"></script>#}
+    {#<script src="../static/js/app2.js"></script>#}
 
 {% endblock %}
