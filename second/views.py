@@ -196,15 +196,16 @@ def reset_password(request, uidb64, token):
 # @login_required(login_url='sign_in')
 def user_delete(request, id):
     login_user = request.user
-    user = User.objects.get(id=id)
-    print('이건pk:',id)
-    print('이건 아이디:',user.username)
-    print(login_user)
     if request.method == "GET":
-        if login_user == user:
-            return render(request, 'login/user_delete.html')
-        else:
-            messages.error(request, '회원탈퇴는 본인만 가능합니다.')
+        try:
+            user = User.objects.get(id=id)
+            if login_user == user:
+                return render(request, 'login/user_delete.html')
+            else:
+                messages.error(request, '회원탈퇴는 본인만 가능합니다.')
+                return redirect('mypage', login_user.id)
+        except User.DoesNotExist:
+            messages.error(request, '잘못된 접근입니다.')
             return redirect('mypage', login_user.id)
     else: #post요청
         password = str(request.POST['password'])
@@ -212,6 +213,7 @@ def user_delete(request, id):
             messages.info(request, '비밀번호를 입력해주세요')
             return redirect('user_delete', login_user.id)
         else:
+            user = User.objects.get(id=id)
             result = authenticate(request, username=user.username, password=password)
             if result is None:
                 messages.error(request, '비밀번호를 정확하게 입력했는지 확인하세요!')

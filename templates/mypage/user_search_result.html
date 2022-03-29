@@ -11,6 +11,11 @@
 
 {% block content %}
     <p> 사용자 검색 결과입니다. </p>
+    {% if messages %}
+        {% for msg in messages %}
+            <h3>{{ msg.message }}</h3>
+        {% endfor %}
+    {% endif %}
     {% for member in members %}
         <div>
             <a href="/mypage/{{ member.id }}" style="text-decoration-line: none;" >
