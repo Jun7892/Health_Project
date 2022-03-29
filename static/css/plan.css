@@ -1,190 +1,245 @@
 
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    font-family: 'SB_B', sans-serif;
-    background: #999999;
-}
+/*body {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    width: 100%;*/
+/*    font-family: 'SB_B', sans-serif;*/
+/*    background: #999999;*/
+/*}*/
 
-.wrap {
-    width: 100%;
-    height: 100%;
-}
+/*.wrap {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
 
-.container {
-    background: white;
-    width: 70%;
-    height: 70vh;
-    border-radius: 20px;
-    /*position: absolute;*/
-    margin: 10% auto;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-}
+/*.container {*/
+/*    background: white;*/
+/*    width: 75%;*/
+/*    height: 78vh;*/
+/*    border-radius: 20px;*/
+/*    !*position: absolute;*!*/
+/*    margin: 10% auto;*/
+/*    !*display: flex;*!*/
+/*    !*flex-direction: column;*!*/
+/*}*/
 
-.main {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-}
+/*.header {*/
+/*    background: #54c447;*/
+/*    height: 8%;*/
+/*    border-top-left-radius: 20px;*/
+/*    border-top-right-radius: 20px;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: space-around;*/
+/*    align-items: center;*/
+/*}*/
 
-.calendar {
-    width: 40%;
-    height: 100%;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    background: #ffffff;
-}
+/*.empty {*/
+/*    white-space: nowrap;*/
+/*}*/
+
+/*.header i {*/
+/*    color: white;*/
+/*    font-weight: 900;*/
+/*    font-size: 2rem;*/
+/*}*/
+
+/*.head-name {*/
+/*    font-size: 2.5rem;*/
+/*    text-align: center;*/
+/*    font-weight: 800;*/
+/*    color: white;*/
+/*    font-family: 'SB_B', sans-serif;*/
+/*}*/
+
+/*.main {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    margin: 1% 0;*/
+/*}*/
+
+/*.calendar {*/
+/*    width: 80%;*/
+/*    height: 88%;*/
+/*    border-top-left-radius: 20px;*/
+/*    border-bottom-left-radius: 20px;*/
+/*    background: #ffffff;*/
+/*}*/
+
+/*.calendar table {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+
+/*.btnWrap {*/
+/*    margin-top: 5%;*/
+/*}*/
+
+/*label {*/
+/*    font-size: 30px;*/
+/*}*/
+
+/*#calender_table thead {*/
+/*    font-size: 30px;*/
+/*}*/
+
+/*#calender_table thead .days {*/
+/*    border-bottom: 1px solid rgba(170, 162, 162, 0.6);*/
+/*    border-top: 1px solid rgba(200, 200, 200, 0.8);*/
+/*}*/
+
+/*.day {*/
+/*    color: #999999;*/
+/*    margin-bottom: 0;*/
+/*    font-size: 0.5em;*/
+/*}*/
+
+/*.calendar-body .active {*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    background: #72e598;*/
+/*    border-radius: 10%;*/
+/*    color: #ffffff;*/
+/*}*/
+
+/*#yearMonth {*/
+/*    font-size: 30px;*/
+/*}*/
+
+/*tbody tr td {*/
+/*    width: 5vw;*/
+/*    height: 9vh;*/
+/*    text-align: center;*/
+/*    font-size: 10px;*/
+/*    font-weight: bold;*/
+/*    top: 0;*/
+/*    vertical-align: top;*/
+/*    border: 1px solid rgba(200, 200, 200, 0.8);*/
+/*}*/
+
+/*!*Exercise Plan*!*/
+/*.content {*/
+/*    width: 40%;*/
+/*    height: 40%;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    position: absolute;*/
+/*    background: #6fec6f;*/
+/*}*/
+
+/*.main-wrap {*/
+/*    margin-top: 10%;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.main-day {*/
+/*    color: #ffffff;*/
+/*    font-size: 50px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.main-date {*/
+/*    color: #ffffff;*/
+/*    font-size: 8em;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.todo-wrap {*/
+/*    text-align: center;*/
+/*}*/
+
+/*.todo-title {*/
+/*    color: #ffffff;*/
+/*}*/
+
+/*.input-wrap {*/
+/*    margin-top: 10%;*/
+/*    width: 100%;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.input-wrap input {*/
+/*    width: 80%;*/
+/*    margin-right: 20px;*/
+/*    height: auto;*/
+/*    background: #6fec6f;*/
+/*    color: #ffffff;*/
+/*    line-height: normal;*/
+/*    padding: .8em .5em 0 0;*/
+/*    font-family: inherit;*/
+/*    border: 0;*/
+/*    border-bottom: 1px dashed #ffffff;;*/
+/*    border-radius: 0;*/
+/*    outline-style: none;*/
+/*    -webkit-appearance: none;*/
+/*    -moz-appearance: none;*/
+/*    appearance: none;*/
+/*}*/
 
 
-.days {
-    border-bottom: 1px solid rgba(200, 200, 200, 0.6);
-    height: 5%;
-}
+/*.input-wrap button {*/
+/*    border-radius: 50%;*/
+/*    font-weight: 800;*/
+/*    font-size: 1em;*/
+/*    border: none;*/
+/*}*/
 
-.days td {
-    color: #999999;
-    margin-bottom: 0;
-}
+/*.noCheck {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    justify-content: space-around;*/
+/*}*/
 
-.active {
-    width: 0.2vw;
-    height: 0.2vh;
-    background: #0b0809;
-    border-radius: 50%;
-    color: #ffffff;
-}
+/*.checked {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    justify-content: space-around;*/
+/*}*/
 
-#yearMonth {
-    font-size: 30px;
-}
+/*.meal-contain {*/
 
-table tr td {
-    width: 5vw;
-    height: 8vh;
-    text-align: center;
-    font-size: 5px;
-    font-weight: bold;
-    top: 0;
-}
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    width: 30%;*/
+/*}*/
 
-/*Exercise Plan*/
-.content {
-    width: 30%;
-    height: 100%;
-    background: #6fec6f;
-}
+/*.list {*/
+/*    display: none;*/
+/*    padding-bottom: 30px;*/
+/*}*/
 
-.main-wrap {
-    margin-top: 10%;
-    text-align: center;
-}
+/*#meal-title {*/
+/*    font-size: 25px;*/
+/*}*/
 
-.main-day {
-    color: #ffffff;
-    font-size: 50px;
-    text-align: center;
-}
+/*.meal-content {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
-.main-date {
-    color: #ffffff;
-    font-size: 8em;
-    text-align: center;
-}
+/*.meal-collapse {*/
+/*    border-bottom: 1px solid #e0e0e0;*/
+/*}*/
 
-.todo-wrap {
-    text-align: center;
-}
+/*.meal {*/
+/*    font-size: 19px;*/
+/*    padding: 30px 0;*/
+/*    cursor: pointer;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    background: none;*/
+/*    width: 100%;*/
+/*    text-align: left;*/
+/*}*/
 
-.todo-title {
-    color: #ffffff;
-}
+/*.meal:hover {*/
+/*    color: #2962ff;*/
+/*}*/
 
-.input-wrap {
-    margin-top: 10%;
-    width: 100%;
-    align-items: center;
-}
-
-.input-wrap input {
-    width: 80%;
-    margin-right: 20px;
-    height: auto;
-    background: #6fec6f;
-    color: #ffffff;
-    line-height: normal;
-    padding: .8em .5em 0 0;
-    font-family: inherit;
-    border: 0;
-    border-bottom: 1px dashed #ffffff;;
-    border-radius: 0;
-    outline-style: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-
-.input-wrap button {
-    border-radius: 50%;
-    font-weight: 800;
-    font-size: 1em;
-    border: none;
-}
-
-.noCheck {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.checked {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.meal-contain{
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-}
-.list {
-    display: none;
-    padding-bottom: 30px;
-}
-
-#meal-title {
-    font-size: 25px;
-}
-
-.meal-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.meal-collapse{
-     border-bottom: 1px solid #e0e0e0;
-}
-.meal {
-    font-size: 19px;
-    padding: 30px 0;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-}
-
-.meal:hover {
-    color: #2962ff;
-}
-
-[id$="-toggle"] {
-    margin-right: 15px;
-}
+/*[id$="-toggle"] {*/
+/*    margin-right: 15px;*/
+/*}*/

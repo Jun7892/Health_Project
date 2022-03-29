@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
     <link href="../static/css/plan.css" rel="stylesheet" type="text/css"/>
-    <script src="https://kit.fontawesome.com/f3d5717210.js" crossorigin="anonymous"></script>
+    <link href="../static/css/plan/fullcalender.min.css" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/7348b434cd.js" crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+            crossorigin="anonymous"></script>
 {% endblock %}
 
 
@@ -13,84 +18,45 @@
 
 {% block content %}
     <div class="wrap">
-        <div class="container">
-            <div class="main">
-                <div class="calendar">
-                    <table id="calender_table" align="center">
-                        <thead>
-                        <tr class="btnWrap clearfix">
-                            <td><label id="prev"> &#60;</label></td>
-                            <td align="center" id="yearMonth" colspan="5"></td>
-                            <td><label id="next"> &#62;</label></td>
-                        </tr>
-                        <tr class="days">
-                            <td class="sun" align="center">일</td>
-                            <td align="center">월</td>
-                            <td align="center">화</td>
-                            <td align="center">수</td>
-                            <td align="center">목</td>
-                            <td align="center">금</td>
-                            <td class="sat" align="center">토</td>
-                        </tr>
-                        </thead>
-                        <tbody id="calendar-body" class="calendar-body"></tbody>
-                    </table>
-                </div>
-                <div class="content">
-                    <div class="todo">
-                        <div class="main-wrap">
-                            <div id="main-day" class="main-day"></div>
-                            <div id="main-date" class="main-date"></div>
-                        </div>
-                        <div class="todo-wrap">
-                            <div class="todo-title">WorkOutPlan</div>
-                            <div class="input-wrap">
-                                <input type="text" placeholder="add to your exercise" id="input-box" class="input-box">
-                                <button type="button" id="input-data" class="input-data">+</button>
-                                <div id="input-list" class="input-list"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="meal-contain">
-                    <span id="meal-title">MEAL</span>
 
-                    <div class="meal-content">
-                        <div class="meal-collapse">
-                            <button class="meal" id="meal-1"><span id="meal-1-toggle">+</span><span>아침</span>
-                            </button>
-                            <div class="list" id="list-1">
-                                <form class="meal-input">
-                                    <input type="text" id="mealInput-1" placeholder="add to your meal"
-                                           class="mealInput">
-                                    <button type="submit"><span id="meal-add">+</span></button>
-                                </form>
-                                <table class="list-head">
-                                    <thead>식단</thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="mealItem">오곡밥</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="meal-collapse">
-                            <button class="meal" id="meal-2"><span id="meal-2-toggle">+</span><span>점심</span>
-                            </button>
-                            <div class="list" id="list-2">d</div>
-                        </div>
-                        <div class="meal-collapse">
-                            <button class="meal" id="meal-3"><span id="meal-3-toggle">+</span><span>저녁</span>
-                            </button>
-                            <div class="list" id="list-3">d</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="content">
+            <div class="header">PLAN</div>
+            <div id="calendar"></div>
         </div>
     </div>
-        <script type="text/javascript" src="../static/js/plan/plan.js"></script>
-        {#    <script type="text/javascript" src="../static/js/plan/data.js"></script>#}
-        <script type="text/javascript" src="../static/js/ajax.js"></script>
+    <div id='external-events'>
+        <p>
+            <strong>Draggable Events</strong>
+        </p>
+
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 1</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 2</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 3</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 4</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+            <div class='fc-event-main'>My Event 5</div>
+        </div>
+
+        <p>
+            <input type='checkbox' id='drop-remove'/>
+            <label for='drop-remove'>remove after drop</label>
+        </p>
+    </div>
+
+    <script>
+
+    </script>
+    <script src="../static/js/plan/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="../static/js/plan/plan.js"></script>
+    <script type="text/javascript" src="../static/js/plan/addEvent.js"></script>
+    {#    <script type="text/javascript" src="../static/js/plan/data.js"></script>#}
+    <script type="text/javascript" src="../static/js/plan/maincalender.js"></script>
 {% endblock %}
