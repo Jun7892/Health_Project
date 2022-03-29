@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q, QuerySet
 from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.contrib import messages
 from commu.models import Article
 from mypage.services.profile_service import get_profile_img_src, profile_update
@@ -143,12 +143,12 @@ def user_search(request):
         login_user = request.user
         user_list = User.objects.order_by("nickname").all()
         try:
-            print('여기?')
             keyword = request.POST['user_search']
             search_result_list = user_list.filter(Q(username__icontains=keyword) | Q(nickname__icontains=keyword))
-            print(keyword)
-            print(search_result_list)
-            if keyword:
+            if keyword == "":
+                messages.error(request, '검색어를 입력하세요')
+                return render(request, 'mypage/user_search_result.html')
+            elif search_result_list.exists():
                 paginator = Paginator(search_result_list, 10)  # 유저 한 페이지에 10명씩 불러오는 페이지네이터 정의
                 page = request.GET.get('page')
                 members = paginator.get_page(page)
@@ -157,12 +157,7 @@ def user_search(request):
                     'members': members
                 }
                 return render(request, 'mypage/user_search_result.html', doc)
-            elif QuerySet.count == 0 :#여기처리하기
-                print('오옹?')
-                messages.info(request, '일치하는 유저가 없습니다.')
-                return render(request, 'mypage/user_search_result.html')
             else: #키워드 없을때
-                print('오옹?')
                 raise ValueError
         except ValueError:
             messages.info(request, '일치하는 유저가 없습니다.')
