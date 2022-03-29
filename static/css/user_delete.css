@@ -1,8 +1,3 @@
-@font-face {
-    src: url("../font/SB_L.ttf");
-    font-family: "SB_L";
-}
-
 .fullcontain {
     position: absolute;
     top: 0;
@@ -11,7 +6,6 @@
     height: 100%;
     background-image: url("../img/arcedeback.png");
     background-size: cover;
-    cursor: url("/static/img/pointer.png") 2 6, default;
 }
 
 @media (max-width: 1000px) {
@@ -33,25 +27,4 @@
     width: 30%;
     height: 30%;
     color: white;
-    font-weight: bolder;
-    font-family: SB_L;
-}
-
-@media (max-width: 1000px) {
-    .box {
-        position: relative;
-        top: 5%;
-        left: 64%;
-        width: 31%;
-        height: 30%;
-        color: white;
-        text-align: center;
-        font-size: 3.5vw;
-    }
-}
-
-.movesignup {
-    color: white;
-    cursor: url("/static/img/press.png") 2 2, default;
-
 }

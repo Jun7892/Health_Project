@@ -49,35 +49,93 @@ a {
     text-decoration-line: none;
 }
 
+.mainh1 {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    font-size: 3vw;
+    color: white;
+    text-decoration-line: none;
+}
+
+@media (max-width: 1000px) {
+    .mainh1 {
+        position: absolute;
+        top: 5%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        font-size: 5vw;
+        color: white;
+        text-decoration-line: none;
+    }
+}
+
+.mainh1:hover {
+    color: gray;
+}
+
 .search_input {
     position: absolute;
     right: 47%;
     top: 6.5%;
 }
 
-.search_box{
+@media (max-width: 1000px) {
+    .search_input {
+        position: absolute;
+        right: 45%;
+        top: 10%;
+        width: 50vw;
+        height: 5vh;
+    }
+}
+
+.search_box {
     border: none;
     height: 30px;
 }
 
-.search_button{
-    border: none;
-    display: none;
+.search_button {
+    border-radius: 50%;
+    display: inline;
+    width: 2vw;
+    height: 4vh;
+}
+
+@media (max-width: 1000px) {
+    .search_button {
+        border-radius: 50%;
+        width: 4vw;
+        height: 2vh;
+    }
 }
 
 input[type=text] {
-  width: 60%;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+    width: 60%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+@media (max-width: 1000px) {
+    input[type=text] {
+        width: 60%;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 3vw;
+    }
 }
 
 /* When the input field gets focus, change its width to 100% */
 input[type=text]:focus {
-  width: 100%;
+    width: 100%;
 }
 
 @media (max-width: 1000px) {
@@ -141,18 +199,20 @@ p {
 }
 
 .mainmove {
+    position: absolute;
+    top: 3%;
+    left: 95%;
     color: white;
-    margin-left: 50%;
-    margin-top: -25%;
     text-decoration-line: none;
 }
 
 @media (max-width: 1000px) {
     .mainmove {
         color: white;
-        margin-left: 20%;
-        margin-top: -150%;
         font-size: 3vw;
+        position: absolute;
+        top: 2%;
+        left: 88%;
     }
 }
 
@@ -162,6 +222,32 @@ p {
     right: 8%;
 }
 
+.searchimg {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%
+}
+
+@media (max-width: 1000px) {
+    .searchimg {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%
+    }
+}
+
+.page-link {
+    padding: 0.05rem 0.5rem;
+}
+
+.
+
+@media (max-width: 1000px) {
+    .page-link {
+        padding: 0.05rem 0.5rem;
+        font-size: 3vw;
+    }
+}
 
 /*section {*/
 /*    position: relative;*/
