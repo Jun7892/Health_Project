@@ -9,6 +9,7 @@ from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 import requests
 import json
 from django.db.models import Q
+from second.models import *
 
 
 def eat_view(request):
