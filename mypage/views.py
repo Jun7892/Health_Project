@@ -33,7 +33,7 @@ def mypage(request, id):
         'another_user_list': another_user_list,
         'follow': follow_list,
         'articles':articles,
-        'article_list':article_list
+        'article_list': len(article_list)
     }
     if request.method == 'GET':
         return render(request, 'mypage/mypage.html', doc)
