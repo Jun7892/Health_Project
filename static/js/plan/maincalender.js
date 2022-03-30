@@ -66,9 +66,13 @@ $(document).ready(function () {
                 start: '2022-03-31',
                 end: '2022-04-01'
             },
+            {
+                id: 4,
+                title: 'Camp Finish',
+                start: '2022-04-13',
+                end: '2022-04-14'
+            },
         ]
-
-
     });
 
     calendar.render();
