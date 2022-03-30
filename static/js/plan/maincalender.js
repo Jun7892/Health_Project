@@ -50,22 +50,31 @@ $(document).ready(function () {
         events: [
             {
                 id: 1,
-                title: 'Test1',
-                start: '2022-03-22',
-                end: '2022-03-24'
+                title: 'Project Start',
+                start: '2022-03-04',
+                end: '2022-03-04'
             },
             {
                 id: 2,
-                title: 'Test2',
-                start: '2022-03-12',
+                title: 'SA submit',
+                start: '2022-03-11',
                 end: '2022-03-13'
-            }
+            },
+            {
+                id: 3,
+                title: 'Presentation',
+                start: '2022-03-31',
+                end: '2022-04-01'
+            },
+            {
+                id: 4,
+                title: 'Camp Finish',
+                start: '2022-04-13',
+                end: '2022-04-14'
+            },
         ]
+    });
 
-
-
-});
-
-calendar.render();
+    calendar.render();
 })
 ;
