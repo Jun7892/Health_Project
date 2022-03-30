@@ -196,6 +196,22 @@ body {
     border: 1px solid;
 }
 
+@media (max-width: 1000px) {
+    .modal_wrap {
+        display: none;
+        width: 100vw;
+        height: 85vw;
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        margin: -250px 0 0 -250px;
+        background: black;
+        z-index: 5;
+        color: white;
+        border: 1px solid;
+    }
+}
+
 
 .black_bg {
     display: none;
@@ -599,7 +615,7 @@ button:active {
     .submit_btn {
         position: relative;
         left: 34%;
-        margin-top: 4vw;
+        margin-top: 5vw;
         font-size: 5vw;
     }
 }
@@ -646,7 +662,7 @@ button:active {
     .change_email {
         color: white;
         cursor: url("/static/img/press.png") 2 2, default;
-        font-size: 4vw;
+        font-size: 3vw;
     }
 }
 
@@ -658,6 +674,21 @@ button:active {
 
 @media (max-width: 1000px) {
     .change_pw {
+        color: white;
+        margin-left: 1vw;
+        cursor: url("/static/img/press.png") 2 2, default;
+        font-size: 3vw;
+    }
+}
+
+.delete_id {
+    color: white;
+    margin-left: 1vw;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+@media (max-width: 1000px) {
+    .delete_id {
         color: white;
         margin-left: 1vw;
         cursor: url("/static/img/press.png") 2 2, default;

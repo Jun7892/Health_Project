@@ -19,8 +19,9 @@ def eat_view(request):
         context = {
             'page': page_obj,
         }
-        product = get_city_product_price()
-        return render(request, 'eat/eat.html', {'context':context,'product':product})
+        # product = get_city_product_price()
+        return render(request, 'eat/eat.html', context)
+
 
 def eat_detail(request, id):
     recipe = FoodModel.objects.get(id=id)
