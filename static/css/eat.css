@@ -200,11 +200,11 @@
 .shadow{
   font-family:Mr Dafoe, sans-serif;
   text-align:center;
-  text-shadow: 0 -1.5px 0 #333,
-    0 3px 4px rgba(0,0,0,.4),
-    0 4.5px 5px rgba(0,0,0,.15),
-    0 15px 5px rgba(0,0,0,.18),
-    0 7.5px 5px rgba(0,0,0,.21);
+  /*text-shadow: 0 -1.5px 0 #333,*/
+  /*  0 3px 4px rgba(0,0,0,.4),*/
+  /*  0 4.5px 5px rgba(0,0,0,.15),*/
+  /*  0 15px 5px rgba(0,0,0,.18),*/
+  /*  0 7.5px 5px rgba(0,0,0,.21);*/
 }
 
 .animation-area {

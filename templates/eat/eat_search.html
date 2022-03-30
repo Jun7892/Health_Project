@@ -63,12 +63,7 @@
         </ul>
         <div id="tab-1" class="tab-content current">
             {% for i in seoul %}
-                <tr>
-                    <td>{{ i.item_name }}</td>
-                    <td>{{ i.day1 }}:{{ i.dpr1 }}(원)</td>
-                    <td>{{ i.day2 }}:{{ i.dpr2 }}(원)</td>
-                    <td>{{ i.value }}% {{ i.unit }}</td>
-                </tr>
+                <p>{{ i.item_name }} {{ i.day1 }}:{{ i.dpr1 }}(원) {{ i.day2 }}:{{ i.dpr2 }}(원) {{ i.value }}% {{ i.unit }}</p>
             {% endfor %}
         </div>
         <div id="tab-2" class="tab-content">
@@ -176,12 +171,12 @@
             {% for page_num in page.paginator.page_range %}
                 {% if page_num > page.number|add:-2 and page_num <= page.number|add:3 %}
                     <li><a style="color: mediumpurple;" class="page-link"
-                           href="?page={{ page_num }}">{{ page_num }} </a></li>
+                           href="?page={{ page_num }}&search_recipe={{ search }}">{{ page_num }} </a></li>
                     {#            {% elif page_num > page.number|add:-3 and page_num <= page.number|add:3 %}#}
                     {#            ...#}
                 {% endif %}
             {% endfor %}
-            <li class="page-item"><a class="page-link" href="?page={{ page.paginator.num_pages }}">Last Page</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page.paginator.num_pages }}&search_recipe={{ search }}">Last Page</a></li>
             {#        {% if page.has_next %}#}
             {#            <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}">다음</a></li>#}
             {#        {% endif %}#}

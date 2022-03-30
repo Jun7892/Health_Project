@@ -31,7 +31,7 @@
                         <ul class="pagination pagination-sm">
                             {% for page_num in page.paginator.page_range %}
                                 {% if page_num > page.number|add:-2 and page_num <= page.number|add:3 %}
-                                    <li><a href="?search_article={{ page_num }}" class="page-link" style="padding: 0.05rem 0.5rem;">{{ page_num }}</a></li>
+                                    <li><a href="?page={{ page_num }}&?search_article={{ search }}" class="page-link" style="padding: 0.05rem 0.5rem;">{{ page_num }}</a></li>
                                 {% endif %}
                         {% endfor %}
                         </ul>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from eat.models import FoodModel, ProductModel
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import random
 import pandas as pd
 from konlpy.tag import Mecab
@@ -145,7 +145,7 @@ def eat_search(request):
                 'code': code
 
             }
-            return render(request, 'eat/eat.html', context)
+            return render(request, 'eat/eat_search.html', context)
         else:
             return redirect('/eat')
 

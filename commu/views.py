@@ -143,4 +143,4 @@ def search_article(request):
         }
         return render(request, 'commu/commu_search.html', context)
     else:
-        return render(request, 'commu/commu_search.html')
+        return redirect('/commu')
