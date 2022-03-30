@@ -41,7 +41,7 @@ $('#btn-signup').click(function () {
     var nn = $('#user_nn').val();
     var em = $('#user_em').val();
     var ge = $("input[name='gender']:checked").val();
-    var le = $("input[name='level']:checked").val();
+    var age = $('#user_age').val();
 
     // let form_data = new FormData();
     //
@@ -55,7 +55,7 @@ $('#btn-signup').click(function () {
     console.log(pw)
     console.log(nn)
     console.log(ge)
-    console.log(le)
+    console.log(age)
     console.log(em)
     $.ajax({
         url: '/second/sign_up',
@@ -70,26 +70,32 @@ $('#btn-signup').click(function () {
         type: "POST",
         datatype: 'json',
         // data로는 formData를 request로 보낸다.
-        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'email': em, 'gender': ge, 'level': le}),
+        data: JSON.stringify({'username': id, 'password': pw, 'nickname': nn, 'email': em, 'gender': ge, 'age': age}),
         success: function (data) {
             if (data.works) { //통과했으면 로그인시켜서 데이터가 넘어왔기 때문에 메인페이지로 보냄
             alert('회원가입이 성공적으로 완료되었습니다');
             window.location.href = '/main'
-                // request 보낸 url에서 사용자 이름이 없다고 {'noRealName':True}를 JsonResponse로 보낸 경우
+                // 이미 존재하는 아이디가 있을때
             } else if (data.existid) {
                 alert('이미 존재하는 아이디 입니다.');
                 window.location.reload();
-                //이메일 유효성 검사 통과 못했을때
+                // 존재하는 이메일로 가입했을때
             } else if (data.existemail) {
                 alert('이미 존재하는 이메일입니다.');
                 window.location.reload();
-                // 같은이메일로 가입했을때
+                //이메일 유효성 검사 통과 못했을때
             }else if (data.invalid_email) {
                 alert('유효한 이메일을 입력하세요');
-                // request 보낸 url에서 사용자 패스워드가 없다고 {'noPassword':True}를 JsonResponse로 보낸 경우
+                //빈칸통과 못했을때
             } else if (data.blank) {
                 alert('빈칸이 있는지 확인하세요!');
-                // 그 밖 모든 data를 JsonResponse로 보낸 경우
+                // 나이가 6~99살안에 존재하지 않을때
+            } else if (data.noway) {
+                alert('6세이상~99세이하의 나이로 입력해주세요');
+                 // 나이가 6세미만
+            } else if (data.baby) {
+                alert('6세이상부터 가입이 가능합니다.');
+            // 그 밖 모든 data를 JsonResponse로 보낸 경우
             } else {
                 alert('정상 요청이 아닙니다');
             }

@@ -37,7 +37,7 @@
             <br>
 
             <p class="text2">title: {{ article.title }}</p>
-            <a class="text2" href="/mypage/{{ article.author.id }}" style="text-decoration-line: none;">author: {{ article.author }}</a>
+            <a class="text2" href="/mypage/{{ article.author.id }}" style="text-decoration-line: none;">author: {{ article.author.nickname }}</a>
 
             <br>
             <p class="text2">content: {{ article.content }}</p>
@@ -59,7 +59,7 @@
             {% for comment in comments %}
                 <div>
                     <div class='comment' style="display:flex">
-                        <a href="/mypage/{{ comment.author.id }}" style="text-decoration-line: none; color: white">{{ comment.author }}({{ comment.author.nickname }})님</a><span style="color: white">: </span>
+                        <a href="/mypage/{{ comment.author.id }}" style="text-decoration-line: none; color: white">{{ comment.author.nickname }})님</a><span style="color: white">: </span>
                         <h6 style="color: white">{{ comment.comment }}</h6>
 
                         {% if comment.author == user %}
