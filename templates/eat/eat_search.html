@@ -26,14 +26,14 @@
     <div class="header">
         <h2 id="SBL_font" class="movemain" onclick="location.href='/eat/'">RECIPE</h2>
         <h3 class="eattext1">Recommendation</h3>
-        <h3 class="eattext2">Meat</h3>
-        <h3 class="eattext3">Vegetable</h3>
+        <h3 class="eattext2">Item</h3>
+{#        <h3 class="eattext3">Vegetable</h3>#}
         <h3 class="eattext4" onclick="location.href='/main/'">Main</h3>
         <h3 class="eattext5" onclick="location.href='/second/sign_in'">Logout</h3>
-        <img src="../static/img/logo.png" class="eatlogo">
+        <img src="/static/img/logo.png" class="eatlogo">
     </div>
     <form action="/eat/search/" method="GET">
-            <input class="recipe_search" type="text" name="search_recipe"">
+            <input class="recipe_search" type="text" name="search_recipe">
     </form>
 
 
@@ -42,7 +42,7 @@
 
         <ul class="tabs">
             {% for i in code %}
-                <li class="tab-link current" data-tab="tab-{{ forloop.counter }}">{{ i }}</>
+                <li class="tab-link current" data-tab="tab-{{ forloop.counter }}">{{ i }}</li>
             {% endfor %}
             {#            <li class="tab-link" data-tab="tab-2">{{ code }}</li>#}
             {#            <li class="tab-link" data-tab="tab-3">Tab Three</li>#}
