@@ -18,16 +18,22 @@ def item_view(request):
 def mypage(request, id):
     login_user = request.user  # 접속한 유저의 정보들고있음
     user = User.objects.get(id=id)  # 마이페이지의 유저
-    articles = Article.objects.filter(author_id=id)
     user_list = User.objects.filter(is_superuser=0).all().exclude(username=user.username)  # 로그인한 사용자와 admin계정 제외한 유저리스트
     follow_list = User.objects.get(id=user.id).follow.all()
     another_user_list = user_list.difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
+
+    page = request.GET.get("page")
+    article_list = Article.objects.filter(author_id=user.id).order_by("-created_at")  # 생성시간 역순으로 모두불러오기
+    paginator = Paginator(article_list, 10)  # 게시글리스트를 한 페이지에 10개씩 불러오는 페이지네이터 정의
+    articles = paginator.get_page(page)  # 현재 페이지에 표시될 댓글들을 넘겨줌
+    print(articles, article_list)
     doc = {
         'user': user,
         'login_user': login_user,
         'another_user_list': another_user_list,
         'follow': follow_list,
-        'articles': articles
+        'articles':articles,
+        'article_list':article_list
     }
     if request.method == 'GET':
         return render(request, 'mypage/mypage.html', doc)
@@ -69,7 +75,10 @@ def editprofile(request, id):
 # @login_required(login_url='sign_in')
 def reset_email(request, id):
     login_user = request.user
-    user = User.objects.get(id=id)  # 마이페이지의 유저
+    try:
+        user = User.objects.get(id=id)  # 마이페이지의 유저
+    except User.DoesNotExist:
+        return redirect('reset_email', login_user.id)
     doc = {
         'login_user': login_user,
         'user': user,
@@ -80,6 +89,7 @@ def reset_email(request, id):
             return redirect('reset_email', login_user.id)
         else:
             return render(request, 'mypage/reset_email.html', doc)
+
     else:  # post요청
         if login_user != user:  # 자기이메일은 자기만 바꿀수 있어야함
             messages.error(request, '잘못된 요청입니다.')
