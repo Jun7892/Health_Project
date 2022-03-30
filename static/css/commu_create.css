@@ -7,7 +7,7 @@
 
 #particles-js {
     width: 100%;
-    height: 145vh;
+    height: 100vh;
     background-image: url("../img/commu.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -33,6 +33,18 @@
     left: 28%;
 }
 
+@media (max-width: 1000px) {
+    #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 12%;
+        left: 15%;
+    }
+}
+
+
 .particles {
 
 }
@@ -57,7 +69,17 @@
     margin-top: 3%;
     resize: none;
     border-color: black;
-    line-height: ;
+    /*line-height: ;*/
+}
+
+@media (max-width: 1000px) {
+    .article_title {
+        margin-top: 3%;
+        resize: none;
+        border-color: black;
+        font-size: 1.5vw;
+        /*line-height: ;*/
+    }
 }
 
 .article_content{
@@ -66,12 +88,22 @@
     border-color: black;
 }
 
+@media (max-width: 1000px) {
+    .article_content{
+        margin-top: 2%;
+        resize: none;
+        border-color: black;
+        font-size: 1.5vw;
+    }
+}
+
 .submit_button{
     margin-left: 40%;
     width: 20%;
     height: 4vh;
     cursor: pointer;
     border-color: black;
+    margin-top: 1.5vw;
 }
 
 @media (max-width: 1000px) {

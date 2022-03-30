@@ -243,3 +243,16 @@
 /*[id$="-toggle"] {*/
 /*    margin-right: 15px;*/
 /*}*/
+
+.event {
+    text-align: center;
+}
+
+.DraggableEvent {
+    color: white;
+    text-align: center;
+}
+
+.remove_box {
+    text-align: center;
+}

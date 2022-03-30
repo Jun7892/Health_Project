@@ -138,7 +138,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 10vw;
     flex-wrap: wrap;
 }
 
@@ -201,11 +200,11 @@
 .shadow{
   font-family:Mr Dafoe, sans-serif;
   text-align:center;
-  text-shadow: 0 -1.5px 0 #333,
-    0 3px 4px rgba(0,0,0,.4),
-    0 4.5px 5px rgba(0,0,0,.15),
-    0 15px 5px rgba(0,0,0,.18),
-    0 7.5px 5px rgba(0,0,0,.21);
+  /*text-shadow: 0 -1.5px 0 #333,*/
+  /*  0 3px 4px rgba(0,0,0,.4),*/
+  /*  0 4.5px 5px rgba(0,0,0,.15),*/
+  /*  0 15px 5px rgba(0,0,0,.18),*/
+  /*  0 7.5px 5px rgba(0,0,0,.21);*/
 }
 
 .animation-area {
@@ -330,8 +329,8 @@
 /*}*/
 
 .product_price_taps {
-    width: 90%;
-    margin: 100px auto;
+    width: 70%;
+    margin: 100px auto 10px auto;
 }
 
 
@@ -358,8 +357,28 @@ ul.tabs li.current {
     display: none;
     background: #ededed;
     padding: 15px;
+    height: 300px;
+    overflow: scroll;
+    overscroll-behavior-y: auto;
+    overflow-x: hidden;
+}
+
+.tab-content table{
+    border-collapse: separate;
+    border-spacing: 100px 0;
+}
+
+.tab-content p{
+    /*word-spacing: 30px;*/
 }
 
 .tab-content.current {
     display: inherit;
 }
+
+.recipe_search{
+    position: absolute;
+    top: 4%;
+    left: 45%;
+}
+
