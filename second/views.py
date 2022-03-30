@@ -15,35 +15,42 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from plz import settings
 from second.services import login_check_blank, create_user
+from second.services.join_service import change_age
 
 
 def sign_up(request):
     select = json.loads(request.body.decode('utf-8'))
-    print(select)
+    # print(select)
     if request.method == 'POST':
         username = select['username']
         password = str(select['password'])
         nickname = select['nickname']
         email = select['email']
-        if username == '' or password =='' or nickname == '' or email == '' or not select['gender'] or not select['level']:
+        age = select['age']
+        if username == '' or password =='' or nickname == '' or email == '' or not select['gender'] or age == '':
             return JsonResponse({'blank': True})
         else:
             gender = select['gender']
-            level = select['level']
-            print('빈칸통과!:', gender, level)
+            # print('빈칸통과!:', gender, age)
             founduser = User.objects.filter(username=username)
             existemail = User.objects.filter(email=email)
             if len(founduser) > 0:  # 같은아이디가 있을때.
-                print('여기서 걸리니?:', 'founduser')
+                # print('여기서 걸리니?:', 'founduser')
                 return JsonResponse({'existid': True})
             elif existemail: #같은 이메일로 가입하면 에러메세지
                 return JsonResponse({'existemail': True})
             else:  # 중복아이디/이메일이 아니면
                 try:
-                    result =create_user(username, password, nickname, email, gender, level)
-                    result.full_clean() #얘가 이메일 유효성검사해줌
-                    auth.login(request, result)
-                    return JsonResponse({'works': True})
+                    changed_age = change_age(age) # 나이 '유소년/청소년/성인/노인'으로 변환
+                    if changed_age == 'error':
+                        return JsonResponse({'noway':True})
+                    elif changed_age == 'baby':
+                        return JsonResponse({'baby': True})
+                    else:
+                        result =create_user(username, password, nickname, email, gender, changed_age)
+                        result.full_clean() #얘가 이메일 유효성검사해줌
+                        auth.login(request, result)
+                        return JsonResponse({'works': True})
                 except ValidationError: #이메일 유효성 검사 통과못했을때
                     user=User.objects.get(username=username)
                     user.delete() #생성했던 유저 다시 삭제
@@ -159,6 +166,7 @@ def reset_password(request, uidb64, token):
         pk = force_str(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=pk)
         result = default_token_generator.check_token(user, token)
+        print(pk,user)
         print(result)
         if result == True:
             return render(request, 'login/reset_password.html', {'ok':'ok'})
@@ -185,6 +193,9 @@ def reset_password(request, uidb64, token):
                         auth.logout(request) # 마이페이지에서도 비밀번호재설정 던져주니까 로그아웃시킴
                         user.save()
                         return render(request, 'login/password_reset_complete.html')
+                    else: #유효하지 않으면
+                        messages.info(request, '비밀번호변경이 완료되어 이 주소는 유효하지 않습니다.')
+                        return render(request, 'login/reset_password.html')
                 except:
                     message = messages.warning(request, '뭔가 잘못되었군요! situm26@gmail.com 여기로 메일을 보내주세요!')
                     return redirect(request.path, messages=message)

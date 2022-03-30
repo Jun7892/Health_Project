@@ -90,9 +90,8 @@
                             <p class="t6"> 이메일주소는 아이디찾기/비밀번호 변경에 사용됩니다.</p>
                             <a class="change_email" href="/mypage/update/email/{{ user.id }}">이메일변경하기</a>
                             <a class="change_pw" href="/second/password_reset/">비밀번호 변경</a>
-                            <a class="change_pw" href="/second/password_reset/">회원탈퇴</a>
-{#                            <a#}
-{#                                class="delete_id" href="/second/password_reset/">회원 탈퇴</a>#}
+                            <a class="delete_id" href="/second/delete/{{ login_user.id }}">회원 탈퇴</a>
+
                         </div>
                     </div>
                     <button class="submit_btn" type="submit">프로필 수정하기</button>
@@ -102,14 +101,45 @@
         <div>
             <img src="/static/img/backtmp2.jpeg" class="tmpimg">
             <p class="first_post">{{ user }}님이 작성한 게시글</p>
-            {% for i in articles %}
-                <div style="display: flex">
-                    <a class="second_post" href="/commu/{{ i.id }}/"> {{ i.title }} </a>
+            <div style="display: flex;">
+                {% if articles_list == 0 %}
+                    <p class="third_post"> 아직 작성한 게시글이 없어요 :)</p>
+                {% endif %}
+                <div>
+                    {% for article in articles %}
+
+                        {% if forloop.counter <= 5 %}
+                            <div>
+                                <a href=""><h6 style="color: white">{{ article.title }}</h6></a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-            {% endfor %}
-            {% if articles.count == 0 %}
-                <p class="third_post"> 아직 작성한 게시글이 없어요 :)</p>
-            {% endif %}
+                <div>
+                    {% for article in articles %}
+                        {% if forloop.counter > 5 %}
+                            <div>
+                                <h6 style="color: white">{{ article.title }}</h6>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div>
+                {% if articles.has_previous %}
+                    <a href="?page=1" style="color: white">맨 앞으로</a>
+                    <a href="?page={{ articles.precious_page_number }}"style="color: white">이전으로</a>
+                {% endif %}
+                {% if articles %}
+                <span style="color: white">{{ articles.number }}</span>
+                <span style="color: white">/</span>
+                <span style="color: white">{{ articles.paginator.num_pages }}</span>
+                {% endif %}
+                {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}" style="color: white">다음으로</a>
+                    <a href="?page={{ articles.paginator.num_pages }}" style="color: white">맨 뒤로</a>
+                {% endif %}
+            </div>
         </div>
 
         <p class="box_title">북마크한 레시피</p>
