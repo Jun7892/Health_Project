@@ -3,8 +3,6 @@ import django
 import csv
 
 # 프로젝트 이름.settings
-
-
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "plz.settings")
 django.setup()
 
