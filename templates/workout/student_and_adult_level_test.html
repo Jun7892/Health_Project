@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <script>
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            videoId: 'xFtWEPFp5wM'
+        });
+    }
+
+     var tag2 = document.createElement('script1');
+
+    tag2.src = "https://www.youtube.com/iframe_api";
+    var secondScriptTag = document.getElementsByTagName('script1')[0];
+    secondScriptTag.parentNode.insertBefore(tag2, secondScriptTag);
+
+    var player2;
+    function onYouTubeIfram(){
+         player2 = new YT.Player('player2', {videoId: 'kxAMpRgX1Qk' });
+    }
+    </script>
+{% endblock %}
+
+{% block title %}LEVEL TEST{% endblock %}
+
+{% block content %}
+    <p>당신의 운동능력을 알아봅시다.</p>
+    <div>
+        <h1>스텝검사</h1>
+        <div>
+            <div id="player"></div>
+            <p>준비물 : 스텝박스(없으면 계단 혹은 낮은의자), 스마트폰 </p>
+            {% if user.age == '청소년' %}
+                <p> 청소년도 해당 동영상에 맞게 체력측정을 실시합니다.</p>
+            {% endif %}
+            <p> 1. 동영상을 보며 체력측정 방법과 주의사항을 확인합니다.</p>
+            <p> 2. 다치지 않도록 <button id="stretching" onclick="onYouTubeIfram()"> 스트레칭(클릭)</button>으로 몸을 풀어준뒤 실시합니다.</p>
+            <p> 3. 스텝박스가 있다면, 스텝박스에서 동영상처럼 3분동안 검사를 실시합니다.</p>
+            <p> 4. 스텝박스가 없다면, 계단이나 낮고 안전한 의자 등을 이용해 3분동안 검사를 실시합니다.</p>
+            <p> 5. 1분간 휴식한 뒤 동영상의 설명대로 10초간의 맥박을 체크해서 아래 입력창에 입력합니다.</p>
+            <p> 6. 자신의 체중도 아래 입력창에 정확히 입력합니다. 체중정보는 저장되지 않으니 않심하세요!.</p>
+        </div>
+    </div>
+
+    <div id ="stretching_box" style="">
+        <div id="player2"></div>
+    </div>
+
+    <form method="post" action="{% url 'youth_and_old_level_confirm' user.id %}">
+    {% csrf_token %}
+        3분간 스텝검사를 실시하고, 1분간 휴식후 10초동안 잰 심박수를 입력하세요: <input name="weight" placeholder="심박수를 숫자만 입력하세요">회<br>
+        자신의 체중을 입력하세요 :<input name="weight" placeholder="체중을 숫자만 입력하세요">kg
+        <button>제출하기</button>
+    </form>
+
+
+
+
+    <p>더 정확한 체력등급을 알아보고 싶다면</p>
+    <button>체력인증센터 알아보기</button>
+    <!--나중에 체력인증센터에서 받은 등급 입력하는 페이지도 만들어야함.-->
+
+
+
+
+{% endblock %}

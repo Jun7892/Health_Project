@@ -19,8 +19,8 @@ def age_different_show_page(request):
         return render(request, 'workout/youth_level_test.html')
     elif age_range == '노인':
         return render(request, 'workout/senior_level_test.html')
-    elif age_range == '청소년':
-        return render(request, 'workout/senior_level_test.html')
+    else:
+        return render(request, 'workout/student_and_adult_level_test.html')
 
 
 def youth_and_old_level_confirm(request, id):
