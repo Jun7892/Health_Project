@@ -88,7 +88,7 @@
 }
 
 .eattext4 {
-    margin-left: 20vw;
+    margin-left: 28vw;
     display: inline;
     color: white;
     font-size: 1vw;
@@ -138,7 +138,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 10vw;
     flex-wrap: wrap;
 }
 
@@ -201,11 +200,11 @@
 .shadow{
   font-family:Mr Dafoe, sans-serif;
   text-align:center;
-  text-shadow: 0 -1.5px 0 #333,
-    0 3px 4px rgba(0,0,0,.4),
-    0 4.5px 5px rgba(0,0,0,.15),
-    0 15px 5px rgba(0,0,0,.18),
-    0 7.5px 5px rgba(0,0,0,.21);
+  /*text-shadow: 0 -1.5px 0 #333,*/
+  /*  0 3px 4px rgba(0,0,0,.4),*/
+  /*  0 4.5px 5px rgba(0,0,0,.15),*/
+  /*  0 15px 5px rgba(0,0,0,.18),*/
+  /*  0 7.5px 5px rgba(0,0,0,.21);*/
 }
 
 .animation-area {
@@ -213,7 +212,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 280vh;
+    height: 325vh;
     z-index: -1;
     background: #ececec;
     background-image: url('data:image/svg+xml,%3Csvg width="42" height="44" viewBox="0 0 42 44" xmlns="http://www.w3.org/2000/svg"%3E%3Cg id="Page-1" fill="none" fill-rule="evenodd"%3E%3Cg id="brick-wall" fill="%239C92AC" fill-opacity="0.4"%3E%3Cpath d="M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
@@ -330,8 +329,8 @@
 /*}*/
 
 .product_price_taps {
-    width: 90%;
-    margin: 100px auto;
+    width: 72%;
+    margin: 100px auto 10px auto;
 }
 
 
@@ -347,6 +346,8 @@ ul.tabs li {
     display: inline-block;
     padding: 10px 15px;
     cursor: pointer;
+    border-radius: 50%;
+    font-weight: bolder;
 }
 
 ul.tabs li.current {
@@ -356,10 +357,51 @@ ul.tabs li.current {
 
 .tab-content {
     display: none;
-    background: #ededed;
+    background: gray;
+    /*#ededed*/
     padding: 15px;
+    height: 300px;
+    overflow: scroll;
+    overscroll-behavior-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    text-align: center;
+    color: white;
+}
+
+.tab-content::-webkit-scrollbar {
+    display: flex;
+}
+
+.tab-content::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+
+.tab-content::-webkit-scrollbar-track {
+    background-color: darkslategrey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px black;
+}
+
+.tab-content table{
+    border-collapse: separate;
+    border-spacing: 100px 0;
+}
+
+.tab-content p{
+    /*word-spacing: 30px;*/
 }
 
 .tab-content.current {
     display: inherit;
 }
+
+.recipe_search{
+    position: absolute;
+    top: 3%;
+    left: 45%;
+}
+

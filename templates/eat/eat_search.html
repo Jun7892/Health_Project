@@ -26,21 +26,23 @@
     <div class="header">
         <h2 id="SBL_font" class="movemain" onclick="location.href='/eat/'">RECIPE</h2>
         <h3 class="eattext1">Recommendation</h3>
-        <h3 class="eattext2" onclick="location.href='/item/'">Item</h3>
+        <h3 class="eattext2">Item</h3>
 {#        <h3 class="eattext3">Vegetable</h3>#}
-        <h3 class="eattext4" onclick="location.href='http://127.0.0.1:8000/main/'">Main</h3>
+        <h3 class="eattext4" onclick="location.href='/main/'">Main</h3>
         <h3 class="eattext5" onclick="location.href='/second/sign_in'">Logout</h3>
-        <img src="../static/img/logo.png" class="eatlogo">
+        <img src="/static/img/logo.png" class="eatlogo">
     </div>
     <form action="/eat/search/" method="GET">
             <input class="recipe_search" type="text" name="search_recipe">
-        </form>
+    </form>
 
+
+    {#city_product_price#}
     <div class="product_price_taps">
 
         <ul class="tabs">
             {% for i in code %}
-                <li class="tab-link current" data-tab="tab-{{ forloop.counter }}">{{ i }}</>
+                <li class="tab-link current" data-tab="tab-{{ forloop.counter }}">{{ i }}</li>
             {% endfor %}
             {#            <li class="tab-link" data-tab="tab-2">{{ code }}</li>#}
             {#            <li class="tab-link" data-tab="tab-3">Tab Three</li>#}
@@ -142,16 +144,21 @@
 
 
     </div>
-    {#recipe#}
-    <div id="container">
-        {% for i in page.object_list %}
-            <div class="recipe">
-                <a href="/eat/detail/{{ i.id }}"> <img class="foodimg" src="{{ i.image }}"> </a>
-                <a>&nbsp;</a>
-                <p class="foodname shadow">{{ i.title }}</p>
-            </div>
-        {% endfor %}
-    </div>
+
+    {% if error %}
+        <h1>{{ error }}</h1>
+    {% else %}
+        {#recipe#}
+        <div id="container">
+            {% for i in page.object_list %}
+                <div class="recipe">
+                    <a href="/eat/detail/{{ i.id }}"> <img class="foodimg" src="{{ i.image }}"> </a>
+                    <a>&nbsp;</a>
+                    <p class="foodname shadow">{{ i.title }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {# pagination #}
     <nav aria-label="Page navigation example">
@@ -164,12 +171,12 @@
             {% for page_num in page.paginator.page_range %}
                 {% if page_num > page.number|add:-2 and page_num <= page.number|add:3 %}
                     <li><a style="color: mediumpurple;" class="page-link"
-                           href="?page={{ page_num }}">{{ page_num }} </a></li>
+                           href="?page={{ page_num }}&search_recipe={{ search }}">{{ page_num }} </a></li>
                     {#            {% elif page_num > page.number|add:-3 and page_num <= page.number|add:3 %}#}
                     {#            ...#}
                 {% endif %}
             {% endfor %}
-            <li class="page-item"><a class="page-link" href="?page={{ page.paginator.num_pages }}">Last Page</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page.paginator.num_pages }}&search_recipe={{ search }}">Last Page</a></li>
             {#        {% if page.has_next %}#}
             {#            <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}">다음</a></li>#}
             {#        {% endif %}#}

@@ -27,3 +27,15 @@ class FoodModel(models.Model):
 
     def get_step(self):
         return ast.literal_eval(json.loads(self.step))
+
+
+class ProductModel(models.Model):
+    country_name = models.CharField(max_length=10)
+    item_name = models.CharField(max_length=256)
+    day1 = models.CharField(max_length=10)
+    dpr1 = models.CharField(max_length=256)
+    day2 = models.CharField(max_length=10)
+    dpr2 = models.CharField(max_length=256)
+    value = models.CharField(max_length=10)
+    unit = models.CharField(max_length=10)
+
