@@ -22,9 +22,10 @@
 
 .box {
     position: relative;
-    top: 40%;
-    left: 41.5%;
-    width: 30%;
+    top: 35%;
+    left: 31%;
+    width: 40%;
     height: 30%;
     color: white;
+    text-align: center;
 }
