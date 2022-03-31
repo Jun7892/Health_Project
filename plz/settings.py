@@ -142,13 +142,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'second.User' # Auth_user_model second앱의 user모델로 바꾼다고 알려줌.
 
-# import os, json  #깃헙에 올릴때 주석처리
+import os, json  #깃헙에 올릴때 주석처리
 #
 # # 미디어 파일을 위한 스토리지 설정
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # # # # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # # #
-# with open(os.path.join(BASE_DIR, 'plz/secret.json')) as f:
+# with open(os.path.join(BASE_DIR, 'secret.json')) as f:
 #     secrets = json.loads(f.read())
 #
 # AWS_S3_REGION_NAME = 'ap-northeast-2'
