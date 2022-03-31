@@ -145,19 +145,21 @@
         <p class="box_title">북마크한 레시피</p>
         <div id="recommend_container"><!--추천박스-->
 
-            <div class="box">
+         {% for i in bookmark_recipe %}
 
-                {#                <div class="recommend_imgbox"  ><!--추천맛집 div가 두개 하나는 사진 하나는 가게정보-->#}
-                {#                    <img id="recommend_img"  class="rcm_img" src="{{ another.profile_img }}"> <!--사진url앞에것만 잘라보기-->#}
-                {#                </div>#}
-                {#                <div class="recommend_descbox" onclick="location.href='/mypage/{{ another.id }}'">#}
-                {#                    <p class="s_descs">닉네임: {{ another.nickname }}</p>#}
-                {#                    <p class="s_descs">운동레벨: {{ another.level }}</p>#}
-                {#                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>#}
-                {#                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>#}
-                {#                </div>#}
+            <div class="box">
+             <div class="recommend_imgbox"  >
+                    <img id="recommend_img"  class="rcm_img" src="{{ i.image }}"> <!--사진url앞에것만 잘라보기-->
+                </div>
+                <div class="recommend_descbox" onclick="location.href='/eat/detail/{{ i.id }}'">
+                    <p class="s_descs">제목: {{ i.title }}</p>
+{#                    <p class="s_descs">운동레벨: {{ another.level }}</p>#}
+{#                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>#}
+{#                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>#}
+                </div>
 
             </div>
+                 {% endfor %}
 
         </div>
     </div>

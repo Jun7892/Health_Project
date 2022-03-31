@@ -27,13 +27,17 @@ def mypage(request, id):
     paginator = Paginator(article_list, 10)  # 게시글리스트를 한 페이지에 10개씩 불러오는 페이지네이터 정의
     articles = paginator.get_page(page)  # 현재 페이지에 표시될 댓글들을 넘겨줌
 
+    bookmark_recipe = User.objects.get(id=id).bookmark.all()
+
+
     doc = {
         'user': user,
         'login_user': login_user,
         'another_user_list': another_user_list,
         'follow': follow_list,
         'articles':articles,
-        'article_list': len(article_list)
+        'article_list': len(article_list),
+        'bookmark_recipe': bookmark_recipe
     }
     if request.method == 'GET':
         return render(request, 'mypage/mypage.html', doc)
