@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from workout.services.level_service import boy_youth_level_service, girl_youth_level_service
+from workout.services.level_service import boy_youth_level_service, girl_youth_level_service, man_senior_level_service, \
+    woman_senior_level_service
 from second.models import User
 
 def workout_view(request):
@@ -16,6 +17,10 @@ def age_different_show_page(request):
     age_range= user.age
     if age_range == '유소년':
         return render(request, 'workout/youth_level_test.html')
+    elif age_range == '노인':
+        return render(request, 'workout/senior_level_test.html')
+    elif age_range == '청소년':
+        return render(request, 'workout/senior_level_test.html')
 
 
 def youth_and_old_level_confirm(request, id):
@@ -35,8 +40,12 @@ def youth_and_old_level_confirm(request, id):
                     return render(request, 'workout/show_level.html', {'user': login_user})
             elif age_range == '노인':
                 if user.gender == '남자':
-                    pass
+                    man_senior_level_service(real_age, int(count), user)
+                    return render(request, 'workout/show_level.html', {'user': login_user})
                 elif user.gender == '여자':
-                    pass
+                    woman_senior_level_service(real_age, int(count), user)
+                    return render(request, 'workout/show_level.html', {'user': login_user})
         else:
             return redirect('age_different_show_page')
+
+
