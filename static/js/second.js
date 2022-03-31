@@ -91,10 +91,13 @@ $('#btn-signup').click(function () {
                 alert('빈칸이 있는지 확인하세요!');
                 // 나이가 6~99살안에 존재하지 않을때
             } else if (data.noway) {
-                alert('6세이상~99세이하의 나이로 입력해주세요');
+                alert('11세이상~99세이하의 나이로 입력해주세요');
                  // 나이가 6세미만
             } else if (data.baby) {
-                alert('6세이상부터 가입이 가능합니다.');
+                alert('11세이상부터 가입이 가능합니다.');
+            // 그 밖 모든 data를 JsonResponse로 보낸 경우
+            } else if (data.str_age) {
+                alert('나이는 숫자만 입력해주세요.');
             // 그 밖 모든 data를 JsonResponse로 보낸 경우
             } else {
                 alert('정상 요청이 아닙니다');
