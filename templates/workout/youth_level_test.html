@@ -53,9 +53,9 @@
         <div id="player2"></div>
     </div>
 
-    <form method="post" action="{% url 'youth_and_old_level_confirm' user.id %}">
+    <form method="post" action="{% url 'level_confirm' user.id %}">
     {% csrf_token %}
-        20초동안 반복 옆뛰기를 정확하게 한 횟수를 입력하세요: <input name="count" placeholder="숫자만 입력하세요">회
+        20초동안 반복 옆뛰기를 정확하게 한 횟수를 입력하세요: <input type="number" name="count" placeholder="숫자만 입력하세요">회
         <button>제출하기</button>
     </form>
 

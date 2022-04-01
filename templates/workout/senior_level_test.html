@@ -52,9 +52,9 @@
         <div id="player2"></div>
     </div>
 
-    <form method="post" action="{% url 'youth_and_old_level_confirm' user.id %}">
+    <form method="post" action="{% url 'level_confirm' user.id %}">
     {% csrf_token %}
-        30초동안 의자에 앉았다 일어난 횟수 입력: <input name="count" placeholder="숫자만 입력하세요">회
+        30초동안 의자에 앉았다 일어난 횟수 입력: <input type="number" name="count" placeholder="숫자만 입력하세요">회
         <button>제출하기</button>
     </form>
 

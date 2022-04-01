@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from workout.services.level_service import boy_youth_level_service, girl_youth_level_service, man_senior_level_service, \
-    woman_senior_level_service
+    woman_senior_level_service, boy_student_level_service, girl_student_level_service, man_adult_level_service, \
+    woman_adult_level_service
 from second.models import User
 
 def workout_view(request):
@@ -11,7 +12,7 @@ def workout_view(request):
         else: #유저 등급주어졌다면 운동페이지 보여줘야해
             return render(request, 'workout.html')
 
-
+#측정후에도 다시하고싶을수도 있으니까 나이대별 측정페이지 보여줄수 있음
 def age_different_show_page(request):
     user = request.user
     age_range= user.age
@@ -23,7 +24,7 @@ def age_different_show_page(request):
         return render(request, 'workout/student_and_adult_level_test.html')
 
 
-def youth_and_old_level_confirm(request, id):
+def level_confirm(request, id):
     login_user = request.user
     user = User.objects.get(id=id)
     age_range = user.age
@@ -33,19 +34,33 @@ def youth_and_old_level_confirm(request, id):
         if login_user == user:
             if age_range == '유소년':
                 if user.gender == '남자':
-                    boy_youth_level_service(real_age, int(count), user) # 등급여기서 나눠서 저장해줌
+                    boy_youth_level_service(int(real_age), int(count), user) # 등급여기서 나눠서 저장해줌
                     return render(request, 'workout/show_level.html', {'user': login_user})
                 elif user.gender == '여자':
-                    girl_youth_level_service(real_age, int(count), user)
+                    girl_youth_level_service(int(real_age), int(count), user)
+                    return render(request, 'workout/show_level.html', {'user': login_user})
+            elif age_range == '청소년':
+                if user.gender == '남자':
+                    boy_student_level_service(int(real_age), int(count), user)  # 등급여기서 나눠서 저장해줌
+                    return render(request, 'workout/show_level.html', {'user': login_user})
+                elif user.gender == '여자':
+                    girl_student_level_service(int(real_age), int(count), user)
+                    return render(request, 'workout/show_level.html', {'user': login_user})
+            elif age_range == '성인':
+                if user.gender == '남자':
+                    man_adult_level_service(int(real_age), int(count), user)
+                    return render(request, 'workout/show_level.html', {'user': login_user})
+                elif user.gender == '여자':
+                    woman_adult_level_service(int(real_age), int(count), user)
                     return render(request, 'workout/show_level.html', {'user': login_user})
             elif age_range == '노인':
                 if user.gender == '남자':
-                    man_senior_level_service(real_age, int(count), user)
+                    man_senior_level_service(int(real_age), int(count), user)
                     return render(request, 'workout/show_level.html', {'user': login_user})
                 elif user.gender == '여자':
-                    woman_senior_level_service(real_age, int(count), user)
+                    woman_senior_level_service(int(real_age), int(count), user)
                     return render(request, 'workout/show_level.html', {'user': login_user})
         else:
             return redirect('age_different_show_page')
-
-
+    else:
+        return redirect('age_different_show_page')
