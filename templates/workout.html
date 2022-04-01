@@ -15,6 +15,10 @@
 
     <div class="fullcontain">
      <a href="get/level_test" style="color:white">일단 나이대별 레벨측정하기전 페이지. 유저저장된 age가 뭐냐에따라 다르게 나옴.</a>
+        {% for ytb in warm_up_list %}
+            <iframe width="200px" height="100px" src="https://www.youtube.com/embed/{{ ytb }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+        {% endfor %}
+
         <div>
             <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn()"
                     style="position: absolute; top: 20%; left: 15%; width: 20vw;">
@@ -28,11 +32,15 @@
                     style="position: absolute; top: 40%; left: 15%; width: 20vw;">
                 LOWER
             </button>
+            <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn4()"
+                    style="position: absolute; top: 20%; left: 15%; width: 20vw;">
+                준비운동
+            </button>
         <p class="movemain" onclick="location.href='http://127.0.0.1:8000/main/'">Main</p>
         <p onclick="location.href='http://127.0.0.1:8000/second/logout'" class="logout")>Logout</p>
         </div>
 
-        <div class="modalbox" id="modal">
+        <div class="modalbox" id="modal4">
             <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff()">TODAY'S WORKOUT</p>
             <div style="height: 100%; left: 10%">
                 <div style="width: 100%; height: 20%;"></div>
