@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
     var Draggable = FullCalendar.Draggable;
