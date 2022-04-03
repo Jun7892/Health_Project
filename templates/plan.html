@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
     <link href="../static/css/plan.css" rel="stylesheet" type="text/css"/>
-    <link href="../static/css/plan/fullcalender.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/plan/fullcalendar.min.css" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/7348b434cd.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+    <script src="../static/js/plan/jquery.min.js"></script>
+    <script src="../static/js/plan/jquery-ui.min.js"></script>
+    <script src="../static/js/plan/moment.min.js"></script>
+    <script src="../static/js/plan/fullcalendar.min.js"></script>
     {#    <script src="../static/js/plan/fullcalendar.min.js"></script>#}
 {% endblock %}
 
@@ -26,192 +27,75 @@
 
 
 
-        <div id='external-events'>
-            <p class="DraggableEvent">
-                <strong style="color: white">Draggable Events</strong>
-            </p>
-
-    <div id='external-events'>
-        <p class="DraggableEvent">
-            <strong style="color: white">Draggable Events</strong>
-        </p>
-            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                <div class='fc-event-main'><p class="event">Worked Out</p></div>
-            </div>
-            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                <div class='fc-event-main'><p class="event">Breakfast</p></div>
-            </div>
-            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                <div class='fc-event-main'><p class="event">Lunch</p></div>
-            </div>
-            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                <div class='fc-event-main'><p class="event">Dinner</p></div>
-            </div>
-            {#        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>#}
-            {#            <div class='fc-event-main'><p class="event">My Event 5</p></div>#}
-            {#        </div>#}
-
-            <p class="remove_box">
-                <input type='checkbox' id='drop-remove'/>
-                <label for='drop-remove' style="color: white">remove after drop</label>
-            </p>
-
-
-        </div>
-
-        {#        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>#}
-        {#            <div class='fc-event-main'><p class="event">My Event 5</p></div>#}
-        {#        </div>#}
-
-        <p class="remove_box">
-            <input type='checkbox' id='drop-remove'/>
-            <label for='drop-remove' style="color: white">remove after drop</label>
-        </p>
-
-    </div>
-
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var Draggable = FullCalendar.Draggable;
-            var containerEl = document.getElementById('external-events');
-            var checkbox = document.getElementById('drop-remove');
-            var calendarEl = document.getElementById('calendar');
-            new Draggable(containerEl, {
-                itemSelector: '.fc-event',
-                eventData: function (eventEl) {
-                    return {
-                        title: eventEl.innerText
-                    };
-                }
-            });
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                height: 550,
-                locale: "ko",
-                editable: true,
-                eventLimit: true,
-                selectable: true,
-                selectHelper: true,
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                select: function (start, end, allDay) {
-                    var title = prompt("일정을 입력하세요:");
-                    if (title) {
-                        var start = FullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                        var end = FullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-                        $.ajax({
-                            url: '/add_event',
-                            type: "GET",
-                            data: {'title':title, 'start':start,'end':end},
-                            datatype:"json",
-                            success: function (data) {
-                                calendar.refetchEvents();
-                                alert("add successfully")
-                            },
-                            error: function (data) {
-                                alert("cannot insert!")
-                            }
-                        });
-                    }
-                },
-                eventResize:function (event){
-                     var start = FullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                    var end = FullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                    var title = event.title;
-                    var id = event.id;
-                    $.ajax({
-                        type: "GET",
-                        url: '/update',
-                        data: {'title': title, 'start': start, 'end': end, 'id': id},
-                        dataType: "json",
-                        success: function (data) {
-                            calendar.refetchEvents();
-                            alert('Event Update');
+         $(document).ready(function () {
+
+
+         $('#calendar').fullCalendar({
+            height: 550,
+            lang: "kor",
+            header: {
+               left: 'prev,next today',
+               center: 'title',
+               right: 'month,basicWeek,basicDay'
+            },
+            events: [
+{#                    {% for i in events %}#}
+                        {
+                            title: "{{ event.title}}",
+                            start: '{{ event.start|date:"Y-m-d" }}',
+                            end: '{{ event.end|date:"Y-m-d" }}',
+                            id: '{{ event.id }}',
                         },
-                        error: function (data) {
-                            alert('There is a problem!!!');
-                        }
-                    });
-                },
-
-                eventDrop: function (event) {
-                    var start = FullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                    var end = FullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                    var title = event.title;
-                    var id = event.id;
-                    $.ajax({
-                        type: "GET",
-                        url: '/update',
-                        data: {'title': title, 'start': start, 'end': end, 'id': id},
-                        dataType: "json",
-                        success: function (data) {
-                            calendar.refetchEvents();
-                            alert('Event Update');
-                        },
-                        error: function (data) {
-                            alert('There is a problem!!!');
-                        }
-                    });
-                },
-                eventClick: function (event) {
-                    if (confirm("Are you sure you want to remove it?")) {
-                        var id = event.id;
-                        $.ajax({
-                            type: "GET",
-                            url: '/remove',
-                            data: {'id': id},
-                            dataType: "json",
-                            success: function (data) {
-                                calendar.refetchEvents();
-                                alert('Event Removed');
-                            },
-                            error: function (data) {
-                                alert('There is a problem!!!');
-                            }
-                        });
-                    }
-                },
-
+{#                    {% endfor %}#}
+                ],
+            timeFormat: 'HH:mm',
+            selectable: true,
+            selectHelper: true,
+            navLinks: true,
+            // eventSources: [{
+            // 　 url: '/fullcalendar/calendar',
+            //    dataType: 'json',
+            //    async: false,
+            //    type : 'GET',
+            //    error: function() {
+            //       $('#script-warning').show();
+            //    }
+            // }],
+            select: function(start, end, resource) {
+               var title = prompt("일정을 입력하세요:");
+               var eventData;
+               if (title) {
+                  eventData = {
+                     title: title,
+                     start: start,
+                     end: end,
+                     allDay: true,
+                  };
+                  $('#calendar').fullCalendar('renderEvent', eventData, true);
+                  $.ajax({
+                     url: '/plan/add_event',
+                     type: "GET",
+                     data: eventData,
+                     success: function(jsonResponse) {
+                        alert("일정 입력 완료")
+                     },
+                     error: function(jsonResponse) {
+                        alert("cannot insert!")
+                     }
+                  });
+               }
+               $('#calendar').fullCalendar('unselect');
+               },
+               editable: true,
+               eventLimit: true,
             });
-            calendar.render()
-        });
+         });
+      </script>
 
-
-    </script>
     <script type="text/javascript" src="../static/js/plan/maincalender.js"></script>
-    <script type="text/javascript" src="../static/js/plan/plan.js"></script>
     <script type="text/javascript" src="../static/js/plan/addEvent.js"></script>
-=======
 
-{#        <!-- Edit Modal -->#}
-{#        <div id="fullCalModal" class="modal fade">#}
-{#            <div class="modal-dialog">#}
-{#                <div class="modal-content">#}
-{#                    <div class="modal-header">#}
-{#                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span#}
-{#                                class="sr-only">close</span></button>#}
-{#                        <h4 id="modalTitle" class="modal-title"></h4>#}
-{#                    </div>#}
-{#                    <div id="modalBody" class="modal-body"></div>#}
-{#                    <div class="modal-footer">#}
-{#                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
-{#                        <a class="btn btn-primary" id="eventUrl" target="_blank">Event Page</a>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="../static/js/plan/fullcalendar.min.js"></script>
-    <script type="text/javascript" src="../static/js/plan/plan.js"></script>
-    <script type="text/javascript" src="../static/js/plan/addEvent.js"></script>
-    {#    <script type="text/javascript" src="../static/js/plan/data.js"></script>#}
-    <script type="text/javascript" src="../static/js/plan/maincalender.js"></script>
-
->>>>>>> 8930ef1b4147b6563cf91b3059de0b235fbfa5c1
 {% endblock %}
