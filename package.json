@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fullcalendar": "^5.10.2",
+    "moment": "^2.29.2"
+  }
+}
