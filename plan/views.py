@@ -7,17 +7,17 @@ import calendar
 
 #달력 보여줄수 있게
 def plan_view(request):
-    all_events = Plan.objects.all()
+    all_plan = Plan.objects.all()
     context = {
-        "events":all_events,
+        "events":all_plan,
     }
     return render(request, 'plan.html',context)
 
 
 def all_events(request):
-    all_events = Plan.objects.all()
+    all_plan = Plan.objects.all()
     out = []
-    for event in all_events:
+    for event in all_plan:
         out.append({
             'title': event.name,
             'start': event.start.strftime("%m/%d/%Y, %H:%M:%S"),
@@ -28,7 +28,7 @@ def all_events(request):
 
 
 @login_required(login_url='sign_in') # 유저에 맞는 Event불러올 수 있게 작업중
-def add_Event(request, id):
+def add_event(request, id):
     try:
         start = request.GET.get("start", None)
         end = request.GET.get("end", None)
@@ -40,12 +40,11 @@ def add_Event(request, id):
     except:
         return render(request, 'plan.html')
 
-@login_required(login_url='sign_in') # 유저에 맞는 Event불러올 수 있게 작업중
+@login_required(login_url='sign_in')
 def update(request):
     start = request.GET.get("start", None)
     end = request.GET.get("end", None)
     title = request.GET.get("title", None)
-    user = request.GET.get("user", None)
     event = Plan.objects.get(id=id)
     event.start = start
     event.end = end
@@ -54,18 +53,9 @@ def update(request):
     data = {}
     return JsonResponse(data)
 
-@login_required(login_url='sign_in') # 유저에 맞는 Event불러올 수 있게 작업중
+@login_required(login_url='sign_in')
 def remove(request):
-    user = request.GET.get("user", None)
     event = Plan.objects.get(id=id)
     event.delete()
     data = {}
     return JsonResponse(data)
-
-# def create_to_do(request):
-#     if request.method == 'POST':
-#         user = request.user
-#         to_do = request.POST.get('to_do', '')
-#         my_plan = Plan.objects.create(user=user, to_do=to_do)
-#         my_plan.save()
-#         return render(request, 'plan.html')

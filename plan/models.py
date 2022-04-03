@@ -10,6 +10,6 @@ class Plan(models.Model):
     name = models.CharField(max_length=255,null=True,blank=True)
     start = models.DateTimeField(null=True,blank=True)
     end = models.DateTimeField(null=True,blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    event_type = models.CharField(max_length=10, null=True, blank=True)
+
 
