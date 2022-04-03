@@ -66,7 +66,7 @@ def eat_detail(request, id):
     recipe.step = recipe.get_step()
     # --------------------추천시스템--------------------------------
     # 형태소 분석을 위한 객체를 만들고,
-    mecab = Mecab()
+    mecab = Mecab(dicpath=r"C:/mecab/mecab-ko-dic")
     # 명사 단위로 뉴스 본문을 나누고,
     tmp = mecab.nouns(recipe.title)
     # print(tmp)
@@ -192,4 +192,5 @@ def eat_search(request):
 #
 #     return city_product_price
 
-
+def item_view(request):
+    return render(request, 'item.html')

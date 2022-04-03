@@ -24,25 +24,41 @@
         </div>
     </div>
 
-    {#    modal add Event#}
+
+
+        <div id='external-events'>
+            <p class="DraggableEvent">
+                <strong style="color: white">Draggable Events</strong>
+            </p>
 
     <div id='external-events'>
         <p class="DraggableEvent">
             <strong style="color: white">Draggable Events</strong>
         </p>
+            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                <div class='fc-event-main'><p class="event">Worked Out</p></div>
+            </div>
+            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                <div class='fc-event-main'><p class="event">Breakfast</p></div>
+            </div>
+            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                <div class='fc-event-main'><p class="event">Lunch</p></div>
+            </div>
+            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                <div class='fc-event-main'><p class="event">Dinner</p></div>
+            </div>
+            {#        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>#}
+            {#            <div class='fc-event-main'><p class="event">My Event 5</p></div>#}
+            {#        </div>#}
 
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-            <div class='fc-event-main'><p class="event">Worked Out</p></div>
+            <p class="remove_box">
+                <input type='checkbox' id='drop-remove'/>
+                <label for='drop-remove' style="color: white">remove after drop</label>
+            </p>
+
+
         </div>
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-            <div class='fc-event-main'><p class="event">Breakfast</p></div>
-        </div>
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-            <div class='fc-event-main'><p class="event">Lunch</p></div>
-        </div>
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-            <div class='fc-event-main'><p class="event">Dinner</p></div>
-        </div>
+
         {#        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>#}
         {#            <div class='fc-event-main'><p class="event">My Event 5</p></div>#}
         {#        </div>#}
@@ -55,38 +71,6 @@
     </div>
 
 
-    <div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    <form name="save-event" method="post">
-                        <div class="form-group">
-                            <label>Title</label>
-                            <input type="text" name="title" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Event start</label>
-                            <input type="text" name="evtStart" class="form-control col-xs-3"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Event end</label>
-                            <input type="text" name="evtEnd" class="form-control col-xs-3"/>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var Draggable = FullCalendar.Draggable;
@@ -201,4 +185,33 @@
     <script type="text/javascript" src="../static/js/plan/maincalender.js"></script>
     <script type="text/javascript" src="../static/js/plan/plan.js"></script>
     <script type="text/javascript" src="../static/js/plan/addEvent.js"></script>
+=======
+
+{#        <!-- Edit Modal -->#}
+{#        <div id="fullCalModal" class="modal fade">#}
+{#            <div class="modal-dialog">#}
+{#                <div class="modal-content">#}
+{#                    <div class="modal-header">#}
+{#                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span#}
+{#                                class="sr-only">close</span></button>#}
+{#                        <h4 id="modalTitle" class="modal-title"></h4>#}
+{#                    </div>#}
+{#                    <div id="modalBody" class="modal-body"></div>#}
+{#                    <div class="modal-footer">#}
+{#                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
+{#                        <a class="btn btn-primary" id="eventUrl" target="_blank">Event Page</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../static/js/plan/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="../static/js/plan/plan.js"></script>
+    <script type="text/javascript" src="../static/js/plan/addEvent.js"></script>
+    {#    <script type="text/javascript" src="../static/js/plan/data.js"></script>#}
+    <script type="text/javascript" src="../static/js/plan/maincalender.js"></script>
+
+>>>>>>> 8930ef1b4147b6563cf91b3059de0b235fbfa5c1
 {% endblock %}

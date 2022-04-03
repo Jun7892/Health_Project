@@ -592,6 +592,7 @@ button:active {
     text-align: center;
     position: relative;
     top: 10%;
+    font-size: 1vw;
     cursor: url("/static/img/press.png") 2 2, default;
 }
 

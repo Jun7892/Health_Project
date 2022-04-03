@@ -23,7 +23,7 @@ class Exercise(models.Model):
     main = models.TextField(blank=True)
 
     def set_main(self, x):
-        self.step = json.dumps(x)
+        self.main = json.dumps(x)
 
     def get_main(self):
-        return ast.literal_eval(json.loads(self.step))
+        return ast.literal_eval(json.loads(self.main))
