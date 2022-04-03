@@ -27,42 +27,6 @@
 
 
 
-    <div id='external-events'>
-        <p class="DraggableEvent">
-            <strong style="color: white">Draggable Events</strong>
-        </p>
-
-        <div id='external-events'>
-            <p class="DraggableEvent">
-                <strong style="color: white">Draggable Events</strong>
-            </p>
-            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                <div class='fc-event-main'><p class="event">Worked Out</p></div>
-            </div>
-            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                <div class='fc-event-main'><p class="event">Breakfast</p></div>
-            </div>
-            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                <div class='fc-event-main'><p class="event">Lunch</p></div>
-            </div>
-            <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                <div class='fc-event-main'><p class="event">Dinner</p></div>
-            </div>
-            {#        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>#}
-            {#            <div class='fc-event-main'><p class="event">My Event 5</p></div>#}
-            {#        </div>#}
-
-            <p class="remove_box">
-                <input type='checkbox' id='drop-remove'/>
-                <label for='drop-remove' style="color: white">remove after drop</label>
-            </p>
-
-
-        </div>
-
-
-    </div>
-
 
     <script>
 
@@ -112,9 +76,9 @@
                   };
                   $('#calendar').fullCalendar('renderEvent', eventData, true);
                   $.ajax({
-                     url: '/fullcalendar/add_event',
+                     url: '/plan/add_event',
                      type: "GET",
-                     data: JSON.stringify(eventData),
+                     data: eventData,
                      success: function(jsonResponse) {
                         alert("일정 입력 완료")
                      },
