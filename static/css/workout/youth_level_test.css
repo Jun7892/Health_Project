@@ -7,6 +7,7 @@
     background-color: black;
     color: white;
     font-family: SB_L;
+    cursor: url("/static/img/pointer.png") 2 6, default;
 }
 
 button {
@@ -18,6 +19,7 @@ button {
     font-weight: bold;
     font-size: 9pt;
     outline: none;
+    cursor: url("/static/img/press.png") 2 2, default;
 }
 
 button:hover {
@@ -25,10 +27,12 @@ button:hover {
     box-shadow: 1px 1px 1px #EAEAEA;
     color: #333333;
     background: #F7F7F7;
+    cursor: url("/static/img/press.png") 2 2, default;
 }
 
 button:active {
     box-shadow: inset 1px 1px 1px #DFDFDF;
+    cursor: url("/static/img/press.png") 2 2, default;
 }
 
 .box {
@@ -49,4 +53,58 @@ button:active {
 p {
     font-family: SB_L;
     color: white;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+#scrollpath {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#progressbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(to top, #008aff, #00ffe7);
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+#progressbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #008aff, #00ffe7);
+    filter: blur(10px);
+}
+
+#progressbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #008aff, #00ffe7);
+    filter: blur(30px);
 }

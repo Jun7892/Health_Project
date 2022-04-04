@@ -111,8 +111,8 @@ button {
 .modalbox {
     position: absolute;
     top: 30%;
-    left: 20%;
-    width: 60%;
+    left: 17.5%;
+    width: 65%;
     height: 50%;
     background-color: white;
     display: none;
@@ -219,7 +219,7 @@ button {
     top: 1%;
     left: 95%;
     width: 5vw;
-    color: antiquewhite;
+    color: white;
     z-index: 2;
     cursor: url("/static/img/press.png") 2 2, default;
 }
@@ -230,7 +230,7 @@ button {
         top: 1%;
         left: 85%;
         width: 5vw;
-        color: antiquewhite;
+        color: white;
         z-index: 2;
         cursor: url(/static/img/press.png) 2 2, default;
         font-size: 4vw;
@@ -242,7 +242,7 @@ button {
     top: 93%;
     left: 95%;
     width: 5vw;
-    color: antiquewhite;
+    color: white;
     z-index: 2;
     cursor: url("/static/img/press.png") 2 2, default;
 }
@@ -253,9 +253,46 @@ button {
         top: 93%;
         left: 81%;
         width: 5vw;
-        color: antiquewhite;
+        color: white;
         z-index: 2;
         cursor: url(/static/img/press.png) 2 2, default;
         font-size: 4vw;
     }
+}
+
+.video_box {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 35%;
+    height: 50vh;
+    background: black;
+    overflow: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: 0;
+}
+
+.video_box::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+.warnup_text {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+}
+
+.mainworkout_text {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+}
+
+.recommend_text {
+    position: absolute;
+    top: 8%;
+    left: 24%;
+    color: white;
+    font-size: 15px;
 }
