@@ -4,18 +4,22 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/workout/show_level.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block title %}YOUR LEVEL{% endblock %}
 
 {% block content %}
-    <p>당신의 운동능력은 {{ user.level }} 입니다.</p>
-    {% if messages %}
-        {% for msg in messages %}
-            <h3>{{ msg.message }} 입니다.</h3>
-        {% endfor %}
-    {% endif %}
 
+    <div class="fullcontain">
+        <div class="box">
+            <p>당신의 운동능력은 {{ user.level }} 입니다.</p>
+            {% if messages %}
+                {% for msg in messages %}
+                    <h3>{{ msg.message }} 입니다.</h3>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 
 {% endblock %}
