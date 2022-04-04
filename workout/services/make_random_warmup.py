@@ -60,7 +60,7 @@ def get_warm_up_video_id(warm_up_db_list,age):
         result = Video_id.objects.filter(title__contains='['+age+']'+ warm_up_db_list[i])
         print(Video_id.objects.filter(title__contains='[' + age + ']' + warm_up_db_list[i]).exists())
         if Video_id.objects.filter(title__contains='[' + age + ']' + warm_up_db_list[i]).exists():
-            warm_up_list.append(result[0].video_id)
+            warm_up_list.append(result[0].video_id.replace('"',''))
         else:
             pass
     return warm_up_list
@@ -70,7 +70,7 @@ def get_main_video_id(main_db_list, age):
     for i in range(len(main_db_list)):  # 반복문돌리고
         result = Video_id.objects.filter(title__contains='['+age+']'+ main_db_list[i])
         if Video_id.objects.filter(title__contains='[' + age + ']' + main_db_list[i]).exists():
-            main_list.append(result[0].video_id)
+            main_list.append(result[0].video_id.replace('"',''))
         else:
             pass
     return main_list
