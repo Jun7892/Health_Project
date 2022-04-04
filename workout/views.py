@@ -61,14 +61,12 @@ def workout_view(request):
 
             else: # 준비운동 있고, 본운동 있고
                 warm_up_list = get_warm_up_video_id(warm_up_db_list, who.age)
-                if warm_up_list == 0:
+                if len(warm_up_list) == 0:
                     if who.age == '유소년':
                         warm_up_list = make_youth_random_warmup(grade)
                 main_list = get_main_video_id(main_db_list, who.age)
-                if main_list == 0:
-                    if who.age == '유소년':
-                        make_random_main(who.age, grade)
-
+                if len(main_list) == 0:
+                    make_random_main(who.age, grade)
                 print(warm_up_list,main_list)
 
                 return render(request, 'workout.html', {'warm_up_list': warm_up_list,'main_list': main_list})
