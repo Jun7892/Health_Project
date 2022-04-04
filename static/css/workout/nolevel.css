@@ -42,6 +42,7 @@
     /*opacity: 0.6;*/
     /*border: 1px solid white;*/
     background-color: transparent;
+    cursor: url("/static/img/pointer.png") 2 6, default;
 }
 
 /*.box:hover:before {*/
