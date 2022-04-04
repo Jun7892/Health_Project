@@ -611,8 +611,26 @@ button.red:active {
     left: 5%;
 }
 
+@media (max-width: 1000px) {
+    .find_id {
+        position: absolute;
+        top: 75%;
+        left: 20%;
+        font-size: 4vw;
+    }
+}
+
 .find_pw {
     position: absolute;
     top: 62%;
     left: 12.6%;
+}
+
+@media (max-width: 1000px) {
+    .find_pw {
+        position: absolute;
+        top: 75%;
+        left: 60%;
+        font-size: 4vw;
+    }
 }
