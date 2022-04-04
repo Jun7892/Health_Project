@@ -10,15 +10,19 @@
 
 {% block content %}
     <div class="header" style="display: flex">
-        <p class="itemtext1">User searching </p>
+        <p class="itemtext">User searching </p>
         <form action="/mypage/search/users" method="POST" class="search_form">
             {% csrf_token %}
             <input class="search_box" type="text" name="user_search" placeholder="사용자를 검색하세요">
             <button class="search_btn" type="submit">search</button>
         </form>
-        <h3 class="itemtext2" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</h3>
-        <h3 class="itemtext3" onclick="location.href='/mypage/{{ login_user.id }}'">Mypage</h3>
-        <h3 class="itemtext4" onclick="location.href='http://127.0.0.1:8000/main/'">Main</h3>
+        <h3 class="itemtext1" onclick="location.href={% url 'commu' %}">Board</h3>
+        <h3 class="itemtext2" onclick="location.href={% url 'eat' %}">Eat</h3>
+        <h3 class="itemtext3" onclick="location.href={% url 'workout' %}">Work out</h3>
+        <h3 class="itemtext4" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</h3>
+        <h3 class="itemtext5" onclick="location.href='/mypage/{{ login_user.id }}'">Mypage</h3>
+        <h3 class="itemtext6" onclick="location.href='http://127.0.0.1:8000/main/'">Main</h3>
+        <
     </div>
     {% if login_user != user %}
         <a href="/mypage/{{ login_user.id }}">Mypage</a>
@@ -86,6 +90,8 @@
                                 <input type="radio" class="level" name="level" value="중급자"/>2등급
                                 <input type="radio" class="level" name="level" value="상급자" checked/>1등급
                             {% endif %}
+                            <!--체력측정 다시하기 추가함 내가만지면 더 어려워질것같아서 표시만 할게여-->
+                            <a class="test_again" href={% url 'age_different_show_page' %}>체력측정 다시하기</a>
                             <p class="t5"> 이메일 : {{ user.email }}</p>
                             <p class="t6"> 이메일주소는 아이디찾기/비밀번호 변경에 사용됩니다.</p>
                             <a class="change_email" href="/mypage/update/email/{{ user.id }}">이메일변경하기</a>
