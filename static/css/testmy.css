@@ -420,6 +420,72 @@ body {
         text-decoration-line: none;
     }
 }
+.article_and_plan{
+    display: flex;
+}
+
+.inner_wrapper{
+    display: flex;
+}
+
+@media (max-width: 1000px) {
+    .inner_wrapper{
+        width: 78vw;
+    }
+}
+
+.left_article{
+    width: 250px;
+}
+
+@media (max-width: 1000px) {
+    .left_article{
+        width: 37vw;
+    }
+}
+
+.right_article{
+    width: 250px;
+}
+@media (max-width: 1000px) {
+    .right_article{
+        width: 37vw;
+    }
+}
+
+
+.title{
+    text-decoration-line: none;
+    color: white;
+    font-size: 12px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+@media (max-width: 1000px) {
+    .title{
+        font-size: 25px;
+        margin-left: 16px;
+        overflow: hidden;
+        height: 32px;
+        margin-bottom: 2vh;
+    }
+}
+
+.planner{
+    width: 200px;
+    height: 200px;
+    opacity: 54%;
+}
+
+@media (max-width: 1000px) {
+    .planner{
+        margin-top: 7vh;
+        margin-left: 5.5vh;
+        width: 22vw;
+        opacity: 65%;
+    }
+}
 
 #recommend_container {
     width: 1260px;

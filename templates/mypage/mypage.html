@@ -107,31 +107,35 @@
         <div>
             <img src="/static/img/backtmp2.jpeg" class="tmpimg">
             <p class="first_post">{{ user }}님이 작성한 게시글</p>
-            <div style="display: flex;">
-                {% if articles_list == 0 %}
-                    <p class="third_post"> 아직 작성한 게시글이 없어요 :)</p>
-                {% endif %}
-                <div>
-                    {% for article in articles %}
-
-                        {% if forloop.counter <= 5 %}
-                            <div>
-                                <a href=""><h6 style="color: white">{{ article.title }}</h6></a>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+            <div class = "article_and_plan">
+                <div class="inner_wrapper">
+                    {% if articles_list == 0 %}
+                        <p class="third_post"> 아직 작성한 게시글이 없어요 :)</p>
+                    {% endif %}
+                    <div class="left_article">
+                        {% for article in articles %}
+                            {% if forloop.counter <= 5 %}
+                                <div>
+                                    <a href="{% url 'article_detail' article.id  %}"><h6 class="title">{{ article.title }}</h6></a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="right_article">
+                        {% for article in articles %}
+                            {% if forloop.counter > 5 %}
+                                <div>
+                                    <a href="{% url 'article_detail' article.id  %}"><h6 class="title">{{ article.title }}</h6></a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-                <div>
-                    {% for article in articles %}
-                        {% if forloop.counter > 5 %}
-                            <div>
-                                <h6 style="color: white">{{ article.title }}</h6>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                <div> <!--임의로 넣은 이미지라서 바꿔도 됩니다.-->
+                    <a href="{% url 'plan' %}"><img class="planner" src="https://cdn0.iconfinder.com/data/icons/running-15/64/calendar-running-plan-training-program-1024.png"></a>
                 </div>
             </div>
-            <div>
+                <div>
                 {% if articles.has_previous %}
                     <a href="?page=1" style="color: white">맨 앞으로</a>
                     <a href="?page={{ articles.precious_page_number }}"style="color: white">이전으로</a>
