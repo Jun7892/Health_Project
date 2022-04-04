@@ -67,7 +67,7 @@ def eat_detail(request, id):
     # --------------------추천시스템--------------------------------
     # 형태소 분석을 위한 객체를 만들고,
     mecab = Mecab(dicpath=r"C:/mecab/mecab-ko-dic")
-    # 명사 단위로 뉴스 본문을 나누고,
+    # 명사 단위로 레시피 제목을 나누고,
     tmp = mecab.nouns(recipe.title)
     # print(tmp)
     #학습된 모델 불러와서
