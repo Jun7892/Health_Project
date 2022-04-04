@@ -22,39 +22,43 @@ def sign_up(request):
     select = json.loads(request.body.decode('utf-8'))
     # print(select)
     if request.method == 'POST':
-        username = select['username']
-        password = str(select['password'])
-        nickname = select['nickname']
-        email = select['email']
-        age = select['age']
-        if username == '' or password =='' or nickname == '' or email == '' or not select['gender'] or age == '':
-            return JsonResponse({'blank': True})
-        else:
-            gender = select['gender']
-            # print('빈칸통과!:', gender, age)
-            founduser = User.objects.filter(username=username)
-            existemail = User.objects.filter(email=email)
-            if len(founduser) > 0:  # 같은아이디가 있을때.
-                # print('여기서 걸리니?:', 'founduser')
-                return JsonResponse({'existid': True})
-            elif existemail: #같은 이메일로 가입하면 에러메세지
-                return JsonResponse({'existemail': True})
-            else:  # 중복아이디/이메일이 아니면
-                try:
-                    changed_age = change_age(age) # 나이 '유소년/청소년/성인/노인'으로 변환
-                    if changed_age == 'error':
-                        return JsonResponse({'noway':True})
-                    elif changed_age == 'baby':
-                        return JsonResponse({'baby': True})
-                    else:
-                        result =create_user(username, password, nickname, email, gender, changed_age)
-                        result.full_clean() #얘가 이메일 유효성검사해줌
-                        auth.login(request, result)
-                        return JsonResponse({'works': True})
-                except ValidationError: #이메일 유효성 검사 통과못했을때
-                    user=User.objects.get(username=username)
-                    user.delete() #생성했던 유저 다시 삭제
-                    return JsonResponse({'invalid_email': True})
+        try:
+            username = select['username']
+            password = str(select['password'])
+            nickname = select['nickname']
+            email = select['email']
+            age = int(select['age'])
+            print(age, type(age))
+            if username == '' or password =='' or nickname == '' or email == '' or not select['gender'] or age == '':
+                return JsonResponse({'blank': True})
+            else:
+                gender = select['gender']
+                # print('빈칸통과!:', gender, age)
+                founduser = User.objects.filter(username=username)
+                existemail = User.objects.filter(email=email)
+                if len(founduser) > 0:  # 같은아이디가 있을때.
+                    # print('여기서 걸리니?:', 'founduser')
+                    return JsonResponse({'existid': True})
+                elif existemail: #같은 이메일로 가입하면 에러메세지
+                    return JsonResponse({'existemail': True})
+                else:  # 중복아이디/이메일이 아니면
+                    try:
+                        changed_age = change_age(age) # 나이 '유소년/청소년/성인/노인'으로 변환
+                        if changed_age == 'error':
+                            return JsonResponse({'noway':True})
+                        elif changed_age == 'baby':
+                            return JsonResponse({'baby': True})
+                        else:
+                            result =create_user(username, password, nickname, email, gender, changed_age, age)
+                            result.full_clean() #얘가 이메일 유효성검사해줌
+                            auth.login(request, result)
+                            return JsonResponse({'works': True})
+                    except ValidationError: #이메일 유효성 검사 통과못했을때
+                        user=User.objects.get(username=username)
+                        user.delete() #생성했던 유저 다시 삭제
+                        return JsonResponse({'invalid_email': True})
+        except ValueError:
+            return JsonResponse({'str_age':True})
 
 
 def sign_in(request):

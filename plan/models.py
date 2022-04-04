@@ -6,9 +6,10 @@ from second.models import User
 class Plan(models.Model):
     class Meta:
         db_table = 'plan'
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    to_do = models.CharField(max_length=60)
-    meal = models.CharField(max_length=60)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    name = models.CharField(max_length=255,null=True,blank=True)
+    start = models.DateTimeField(null=True,blank=True)
+    end = models.DateTimeField(null=True,blank=True)
+    event_type = models.CharField(max_length=10, null=True, blank=True)
+
 
