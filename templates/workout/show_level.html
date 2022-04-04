@@ -4,7 +4,7 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/workout/show_level.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block title %}YOUR LEVEL{% endblock %}
@@ -16,6 +16,36 @@
         <p>당신의 운동능력은 {{ user.level }} 입니다.</p>
     {% endif %}
 
+
+    <div class="fullcontain">
+        <div class="box">
+            <p>당신의 운동능력은 {{ user.level }} 입니다.</p>
+            {% if messages %}
+                {% for msg in messages %}
+                    <h3>{{ msg.message }} 입니다.</h3>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="cube">
+            <div class="top"></div>
+            <div>
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+            </div>
+        </div>
+        <div class="cube2">
+            <div class="top2"></div>
+            <div>
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}

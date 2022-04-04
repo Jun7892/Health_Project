@@ -175,6 +175,7 @@ AUTH_USER_MODEL = 'second.User' # Auth_user_model second앱의 user모델로 바
 #
 # SECURE_SSL_REDIRECT=False
 # SESSION_COOKIE_SECURE=False
+
 # CSRF_COOKIE_SECURE=False
 
 # try:
