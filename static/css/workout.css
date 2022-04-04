@@ -271,10 +271,33 @@ button {
     overflow-x: hidden;
     -ms-overflow-style: none;
     scrollbar-width: 0;
+    cursor: url("/static/img/pointer.png") 2 6, default;
+}
+
+@media (max-width: 1000px) {
+    .video_box {
+        position: absolute;
+        top: 15%;
+        left: 10%;
+        width: 35%;
+        height: 40vh;
+        background: black;
+        overflow: scroll;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: 0;
+        cursor: url("/static/img/pointer.png") 2 6, default;
+    }
 }
 
 .video_box::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
+}
+
+@media (max-width: 1000px) {
+    .video_box::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+    }
 }
 
 .warnup_text {
@@ -295,4 +318,10 @@ button {
     left: 24%;
     color: white;
     font-size: 15px;
+}
+
+@media (max-width: 1000px) {
+    a {
+        font-size: 3vw; /* Chrome, Safari, Opera*/
+    }
 }
