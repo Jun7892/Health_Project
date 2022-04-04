@@ -1,11 +1,15 @@
+import googleapiclient.errors
 from django.shortcuts import render, redirect
-
+import random
 from workout.models import Exercise
 from workout.services.get_youtube_video_id import get_video_list
 from workout.services.level_service import boy_youth_level_service, girl_youth_level_service, man_senior_level_service, \
     woman_senior_level_service, boy_student_level_service, girl_student_level_service, man_adult_level_service, \
     woman_adult_level_service
 from second.models import User
+from googleapiclient.errors import HttpError
+
+
 
 def workout_view(request):
     user = request.user
@@ -15,26 +19,77 @@ def workout_view(request):
             return render(request, 'workout/nolevel.html')
         else: #유저 등급주어졌다면 운동페이지 보여줘야해
             user_match_exercise_list= Exercise.objects.filter(gender=who.gender, level=who.level,age=who.age)
-            # picked_exercise =user_match_exercise_list.order_by('?').first()
-            picked_exercise = user_match_exercise_list[300] #준비운동 없는 친구
+            picked_exercise =user_match_exercise_list.order_by('?').first()
+            # picked_exercise = user_match_exercise_list[300] #준비운동 없는 친구
             user_warm_up = picked_exercise.get_warm_up() #get_warm_up으로 꺼내야 한글로나옴
             user_main = picked_exercise.get_main()
             print(user_main)
-            if len(user_warm_up) == 0: #나중에 연령대별로 나누든지...
-                result = get_video_list('안동국민체력센터 '+'운동전 스트레칭') #이래야 얘가나오네
+            #데이터셋자체가 둘다없는 경우는 없음.
+            #준비운동이 없을때
+            if len(user_warm_up) == 0 :
+                #준비운동 정해진 리스트에서 던져주고
+                # 본운동은 데이터셋에 저장된 거 검색어로 불러오기
+                if who.age == '유소년':
+                    if who.level == '3등급':
+                        youth3_warmup_list = ['13pReCtwYgM', 'cjQJXqVguGY', 'cXQJEYiRnUM', 'ZmUj-E9A44E']
+                        random_index= random.randrange(1,len(youth3_warmup_list))
+                        warmup_video_id = youth3_warmup_list[random_index]
+                        #본운동은 있는거 던져줘야지
+                        user_main
+                        return render(request, 'workout.html', {'warm_up_list': warmup_video_id })
+                    elif who.level =='2등급':
+                        youth2_warmup_list = ['13pReCtwYgM','cjQJXqVguGY','cXQJEYiRnUM','J79-J2aQa0s','ZmUj-E9A44E']
+                        random_index = random.randrange(1, len(youth2_warmup_list))
+                        warmup_video_id = youth2_warmup_list[random_index]
+                        return render(request, 'workout.html', {'warm_up_list': warmup_video_id})
+                    else: #유소년 1등급
+                        youth1_warmup_list = ['13pReCtwYgM','J79-J2aQa0s','ZmUj-E9A44E','ipB3TD0BpwA']
+                        random_index = random.randrange(1, len(youth1_warmup_list))
+                        warmup_video_id = youth1_warmup_list[random_index]
+                        return render(request, 'workout.html', {'warm_up_list': warmup_video_id})
+                elif who.age == '청소년':
+                    pass
+                elif who.age == '성인':
+                    try:
+                        print('여기?')
+                        #성인은 준비운동 다 같아서 이거에서 랜덤으로 던져주고
+
+                        adult_warmup_list = ['dsKW-rdjPwA','Tvw42auu5N4','UKQEojC4G9k','_bqes3Cw5ug','yyz_iOD_ZH0']
+                        random_index = random.randrange(1, len(adult_warmup_list))
+                        warmup_video_id = adult_warmup_list[random_index]
+                        # 본운동은 불러온거에서 주기
+                        main_db_list = user_main.split(',')
+                        print(main_db_list, len(main_db_list))
+                        main_list = []
+                        for i in range(len(main_db_list)): #반복문돌리고
+                            result = get_video_list('국민체력100_운동처방전 ' + who.age + main_db_list[i])
+                            main_list.append(result)
+                        return render(request, 'workout.html', {'warm_up_list': warmup_video_id, 'main_list': main_list})
+                    except googleapiclient.errors.HttpError: #API할당량 넘으면 이렇게됨.
+                        return render(request,'workout.html')
+
+
+                else: #노인
+                    pass
+
+                result = get_video_list('검색어로 던져줄 친구') #이래야 얘가나오네
                 video_id_list=[]
                 video_id_list.append(result)
                 # print('이게결과:',result, '얘는리스트:',video_id_list)
 
-                return render(request, 'workout.html', {'warm_up_list':video_id_list})
+            #본운동이 없을때
+            elif len(user_main) == 0:
+                    # result = get_video_list()
+                    # pass
+
+                return render(request, 'workout.html')
 
 
 
 
 
 
-
-            else: # 준비운동 있으면
+            else: # 준비운동 있고, 본운동 있고
                 split_warm_up = user_warm_up.split(',')
                 video_id_list=[]
                 for i in range(len(split_warm_up)):

@@ -181,3 +181,4 @@ AUTH_USER_MODEL = 'second.User' # Auth_user_model second앱의 user모델로 바
 #     from plz.local_settings import *
 # except ImportError:
 #     pass
+
