@@ -26,11 +26,12 @@ def workout_view(request):
             main_db_list = user_main.split(',')
             grade = who.level.replace('등급', "")
 
-            print('어디서 오류나나보쟈', picked_exercise, warm_up_db_list, main_db_list)
-            # 데이터셋자체가 둘다없는 경우는 없음.
-            # 준비운동이 없을때
-            if len(user_warm_up) == 0:
-                # 준비운동 정해진 리스트에서 던져주고
+            # print('어디서 오류나나보쟈',picked_exercise, warm_up_db_list,main_db_list)
+            #데이터셋자체가 둘다없는 경우는 없음.
+            #준비운동이 없을때
+            if len(user_warm_up) == 0 :
+                #준비운동 정해진 리스트에서 던져주고
+
                 # 본운동은 데이터셋에 저장된 거 검색어로 불러오기
                 if who.age == '유소년':
                     if who.level == '3등급':
@@ -144,5 +145,4 @@ def level_confirm(request, id):
         except MultiValueDictKeyError(KeyError):  # 등급받고서 또 주소창에서 엔터치면
             return redirect('workout')
     else:
-        print('여기지?')
         return redirect('workout')
