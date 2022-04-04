@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <link href="{% static 'css/workout/nolevel.css' %}" rel="stylesheet" type="text/css"/>
-{#    <link href="/static/css" rel="stylesheet" type="text/css"/>#}
+    <script type="text/javascript" src="{% static 'js/workout/senior_level_text.js'%}"></script>
+    {#    <link href="/static/css" rel="stylesheet" type="text/css"/>#}
 
 {% endblock %}
 
@@ -16,17 +17,40 @@
     <div class="fullcontain">
         <div class="box">
             <div class="first_box">
-                <p>당신의 운동능력을 알아봅시다.</p>
-                <p>가까운 체력인증센터에 가서 체력등급을 알아보고 싶다면</p>
-                <button>체력인증센터 알아보기</button>
+                <div class="first_line">
+                    <p>당신의 운동능력을 알아봅시다.</p>
+                    <p>가까운 체력인증센터에 가서 체력등급을 알아보고 싶다면</p>
+                    <button>체력인증센터 알아보기</button>
+                </div>
             </div>
 
+{#            <p class="decoration_num">1</p>#}
+{#            <p class="decoration_num2">0</p>#}
+{#            <p class="decoration_num3">1</p>#}
+{#            <p class="decoration_num4">0</p>#}
+
             <div class="second_box">
-                <p>간단히 집에서 측정해 보고 싶다면</p>
-                <a href="{% url 'age_different_show_page' %}">운동능력 테스트하러 가기</a>
+                <div class="second_line">
+                    <p>간단히 집에서 측정해 보고 싶다면</p>
+                    <button><a style="text-decoration: none" href="{% url 'age_different_show_page' %}">운동능력 테스트하러 가기</a></button>
+                </div>
             </div>
 
         </div>
+    </div>
+
+    <div class="animation-area hint">
+        <ui class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+
+            <li></li>
+
+
     </div>
 
 

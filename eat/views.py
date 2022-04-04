@@ -67,7 +67,7 @@ def eat_detail(request, id):
     # --------------------추천시스템--------------------------------
     # 형태소 분석을 위한 객체를 만들고,
     mecab = Mecab(dicpath=r"C:/mecab/mecab-ko-dic")
-    # 명사 단위로 뉴스 본문을 나누고,
+    # 명사 단위로 레시피 제목을 나누고,
     tmp = mecab.nouns(recipe.title)
     # print(tmp)
     #학습된 모델 불러와서
@@ -150,47 +150,6 @@ def eat_search(request):
         else:
             return redirect('/eat')
 
-# def city_select():
-#     code = {
-#           '서울':'1101',
-#           '부산':'2100',
-#           '대구':'2200',
-#           '인천':'2300',
-#           '광주':'2401',
-#           '대전':'2501',
-#           '울산':'2601',
-#           '수원':'3111',
-#           '춘천':'3211',
-#           '청주':'3311',
-#           '전주':'3511',
-#           '포항':'3711',
-#           '제주':'3911',
-#           '순천':'3613',
-#           '안동':'3714',
-#           '창원':'3814'
-#           }
-#     params = []
-#     for i,j in code.items():
-#         a = {"p_cert_key":"50ae0e04-be51-4bf2-a7a1-ee6ac5062542", "p_cert_id":"2371", "p_returntype":"json", "p_countycode":f"{j}"}
-#         params.append(a)
-#
-#     return params
-#
-#
-# def get_city_product_price():
-#     params_list = city_select()
-#     city_product_price = []
-#     for params in params_list:
-#       url = 'http://www.kamis.or.kr/service/price/xml.do?action=dailyCountyList'
-#       response = requests.get(url, params=params)
-#       df = response.json()
-#       target = df['price']
-#
-#       for idx in range(len(target)):
-#         product_price = [target[idx]['county_name'], target[idx]['item_name'], target[idx]['day1'], target[idx]['dpr1'], target[idx]['day2'], target[idx]['dpr2'], target[idx]['value'], target[idx]['unit']]
-#         city_product_price.append(product_price)
-#
-#     return city_product_price
 
 def item_view(request):
     return render(request, 'item.html')
