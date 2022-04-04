@@ -40,6 +40,8 @@
 {% block title %}YOUTH LEVEL TEST{% endblock %}
 
 {% block content %}
+    <div id="progressbar"></div>
+    <div id="scrollpath"></div>
 
     <div class="fullcontain">
         <div class="box">
@@ -79,5 +81,12 @@
 
 
     {#<script type="text/javascript" src="{% static 'js/workout/youth_level_text.js'%}"></script>#}
-
+    <script>
+        let progress = document.getElementById('progressbar');
+        let totalHeight = document.body.scrollHeight - window.innerHeight;
+        window.onscroll = function (){
+            let progressHeight = (window.pageYOffset / totalHeight) * 100;
+            progressHeight.style.height = progressHeight + "%";
+        }
+    </script>
 {% endblock %}

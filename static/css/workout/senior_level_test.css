@@ -6,6 +6,7 @@
     height: 125vh;
     background-color: black;
     color: white;
+    cursor: url("/static/img/pointer.png") 2 6, default;
 }
 
 button {
@@ -17,6 +18,7 @@ button {
     font-weight: bold;
     font-size: 9pt;
     outline: none;
+    cursor: url("/static/img/press.png") 2 2, default;
 }
 
 button:hover {
@@ -24,10 +26,12 @@ button:hover {
     box-shadow: 1px 1px 1px #EAEAEA;
     color: #333333;
     background: #F7F7F7;
+    cursor: url("/static/img/press.png") 2 2, default;
 }
 
 button:active {
     box-shadow: inset 1px 1px 1px #DFDFDF;
+    cursor: url("/static/img/press.png") 2 2, default;
 }
 
 .box {
@@ -48,4 +52,8 @@ button:active {
 p {
     font-family: SB_L;
     color: white;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }

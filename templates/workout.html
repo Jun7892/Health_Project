@@ -14,166 +14,211 @@
     <img src="../static/img/workoutback.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
 
     <div class="fullcontain">
-     <a href="get/level_test" style="color:white">일단 나이대별 레벨측정하기전 페이지. 유저저장된 age가 뭐냐에따라 다르게 나옴.</a>
+    <a href="get/level_test" style="color:white">Test</a>
+    <p class="recommend_text">오늘의 추천 운동</p>
+    <div class="video_box">
+        <p class="warnup_text">Warn-Up</p>
+
         {% for ytb in warm_up_list %}
-            <iframe height="270" width="480" src="https://www.youtube.com/embed/{{ ytb }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+        <iframe height="270" width="489" src="https://www.youtube.com/embed/{{ ytb }}" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style=""></iframe>
         {% endfor %}
+
+        <p class="mainworkout_text">Main Workout</p>
 
         {% for main in main_list %}
-            <iframe height="270" width="480" src="https://www.youtube.com/embed/{{ main }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+            <iframe height="270" width="489" src="https://www.youtube.com/embed/{{ main }}" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
         {% endfor %}
+    </div>
 
-        <div>
-            <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn()"
-                    style="position: absolute; top: 20%; left: 15%; width: 20vw;">
-                UPPER
-            </button>
-            <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn2()"
-                    style="position: absolute; top: 30%; left: 15%; width: 20vw;">
-                MIDDLE
-            </button>
-            <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn3()"
-                    style="position: absolute; top: 40%; left: 15%; width: 20vw;">
-                LOWER
-            </button>
-            <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn4()"
-                    style="position: absolute; top: 20%; left: 15%; width: 20vw;">
-                준비운동
-            </button>
+
+    <div>
+        <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn()"
+                style="position: absolute; top: 80%; left: 68%; width: 20vw;">
+            UPPER
+        </button>
+        <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn2()"
+                style="position: absolute; top: 80%; left: 38%; width: 20vw;">
+            MIDDLE
+        </button>
+        <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn3()"
+                style="position: absolute; top: 80%; left: 8%; width: 20vw;">
+            LOWER
+        </button>
+{#        <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn4()"#}
+{#                style="position: absolute; top: 20%; left: 15%; width: 20vw;">#}
+{#            준비운동#}
+{#        </button>#}
         <p class="movemain" onclick="location.href='http://127.0.0.1:8000/main/'">Main</p>
-        <p onclick="location.href='http://127.0.0.1:8000/second/logout'" class="logout")>Logout</p>
-        </div>
+        <p onclick="location.href='http://127.0.0.1:8000/second/logout'" class="logout">Logout</p>
+    </div>
 
-        <div class="modalbox" id="modal4">
-            <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff()">TODAY'S WORKOUT</p>
-            <div style="height: 100%; left: 10%">
-                <div style="width: 100%; height: 20%;"></div>
-                <div style="width: 6.5%; height: 80%; float: left;"></div>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/c_5ENJWekbQ?autoplay=1&controls=0';">
-                    CHEST
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/YGAlSSmPXRQ?autoplay=1&controls=0';">
-                    SHOULDER
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/gd2Ojrh8JSE?autoplay=1&controls=0';">
-                    SIX PACK
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/7SpV_ZJue68?autoplay=1&controls=0';">
-                    BACK
-                </button>
+    <div class="modalbox" id="modal">
+        <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff()">TODAY'S WORKOUT</p>
+        <div style="height: 100%; left: 10%">
+            <div style="width: 100%; height: 20%;"></div>
+            <div style="width: 6.5%; height: 80%; float: left;"></div>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/c_5ENJWekbQ?autoplay=1&controls=0';">
+                CHEST
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/YGAlSSmPXRQ?autoplay=1&controls=0';">
+                SHOULDER
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/gd2Ojrh8JSE?autoplay=1&controls=0';">
+                SIX PACK
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/7SpV_ZJue68?autoplay=1&controls=0';">
+                BACK
+            </button>
 
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/eUI-Z2uajmA?start=62&autoplay=1&controls=0';">
-                    UPPER ARM
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/eUI-Z2uajmA?start=62&autoplay=1&controls=0';">
+                UPPER ARM
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/N3BjAFVF2bA?start=102&autoplay=1&controls=0';">
+                FORE ARM
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/4aI2kfahWP0?start=19&autoplay=1&controls=0';">
+                TIGHT
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/cMH7D4PJM0I?autoplay=1&controls=0';">
+                CALF
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/lDsJi3_EW-Y?autoplay=1&controls=0';">
+                Cardiovascular
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/Z_9WKzbQdyw?start=38&autoplay=1&controls=0';">
+                BUTT
+            </button>
+            <div style="width: 100%;">
+                <button class="w-btn-neon2" type="button" style="margin-left: 32%;"
+                        onclick="location.href='https://www.youtube.com/embed/kbt61KoWMlU?autoplay=1&controls=0&vq=hd720';">
+                    STIMULUS
                 </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/N3BjAFVF2bA?start=102&autoplay=1&controls=0';">
-                    FORE ARM
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/4aI2kfahWP0?start=19&autoplay=1&controls=0';">
-                    TIGHT
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/cMH7D4PJM0I?autoplay=1&controls=0';">
-                    CALF
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/lDsJi3_EW-Y?autoplay=1&controls=0';">
-                    Cardiovascular
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/Z_9WKzbQdyw?start=38&autoplay=1&controls=0';">
-                    BUTT
-                </button>
-                <div style="width: 100%;">
-                    <button class="w-btn-neon2" type="button" style="margin-left: 32%;" onclick="location.href='https://www.youtube.com/embed/kbt61KoWMlU?autoplay=1&controls=0&vq=hd720';">
-                        STIMULUS
-                    </button>
-                </div>
             </div>
+        </div>
     </div>
 
     <div class="modalbox" id="modal2" style="display: none;">
         <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff2()">TODAY'S WORKOUT</p>
         <div style="height: 100%; left: 10%">
-                <div style="width: 100%; height: 20%;"></div>
-                <div style="width: 6.5%; height: 80%; float: left;"></div>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/6VXarwcdbeY?start=29&autoplay=1&controls=0';">
-                    CHEST
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/DT3OJptiI8o?autoplay=1&controls=0';">
-                    SHOULDER
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/8HZ7tBlstRg?autoplay=1&controls=0';">
-                    SIX PACK
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/rVpwtURxdmc?autoplay=1&controls=0';">
-                    BACK
-                </button>
+            <div style="width: 100%; height: 20%;"></div>
+            <div style="width: 6.5%; height: 80%; float: left;"></div>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/6VXarwcdbeY?start=29&autoplay=1&controls=0';">
+                CHEST
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/DT3OJptiI8o?autoplay=1&controls=0';">
+                SHOULDER
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/8HZ7tBlstRg?autoplay=1&controls=0';">
+                SIX PACK
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/rVpwtURxdmc?autoplay=1&controls=0';">
+                BACK
+            </button>
 
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/qkQdIMW1xlw?autoplay=1&controls=0';">
-                    UPPER ARM
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/qkQdIMW1xlw?autoplay=1&controls=0';">
+                UPPER ARM
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/6Wue1ezJcgE?start=56&autoplay=1&controls=0';">
+                FORE ARM
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/pDFuLG0xrsU?autoplay=1&controls=0';">
+                TIGHT
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/RvUTjRPZ9a8?autoplay=1&controls=0';">
+                CALF
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/s14NQ6Cz4QE?autoplay=1&controls=0';">
+                Cardiovascular
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/fEmcPLe-n9E?autoplay=1&controls=0';">
+                BUTT
+            </button>
+            <div style="width: 100%;">
+                <button class="w-btn-neon2" type="button" style="margin-left: 32%;"
+                        onclick="location.href='https://www.youtube.com/embed/zDcOqeLGymE?autoplay=1&controls=0';">
+                    STRETCHING
                 </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/6Wue1ezJcgE?start=56&autoplay=1&controls=0';">
-                    FORE ARM
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/pDFuLG0xrsU?autoplay=1&controls=0';">
-                    TIGHT
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/RvUTjRPZ9a8?autoplay=1&controls=0';">
-                    CALF
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/s14NQ6Cz4QE?autoplay=1&controls=0';">
-                    Cardiovascular
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/fEmcPLe-n9E?autoplay=1&controls=0';">
-                    BUTT
-                </button>
-                <div style="width: 100%;">
-                    <button class="w-btn-neon2" type="button" style="margin-left: 32%;" onclick="location.href='https://www.youtube.com/embed/zDcOqeLGymE?autoplay=1&controls=0';">
-                        STRETCHING
-                    </button>
-                </div>
             </div>
+        </div>
     </div>
 
     <div class="modalbox" id="modal3" style="display: none;">
         <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff3()">TODAY'S WORKOUT</p>
         <div style="height: 100%; left: 10%">
-                <div style="width: 100%; height: 20%;"></div>
-                <div style="width: 6.5%; height: 80%; float: left;"></div>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/Oz5ts01rzEo?autoplay=1&controls=0';">
-                    CHEST
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/Oz5ts01rzEo?autoplay=1&controls=0';">
-                    SHOULDER
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/3SVfmfpDx9M?autoplay=1&controls=0';">
-                    SIX PACK
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/xQVQn6l6Iu4?autoplay=1&controls=0';">
-                    BACK
-                </button>
+            <div style="width: 100%; height: 20%;"></div>
+            <div style="width: 5.5%; height: 80%; float: left;"></div>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/Oz5ts01rzEo?autoplay=1&controls=0';">
+                CHEST
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/Oz5ts01rzEo?autoplay=1&controls=0';">
+                SHOULDER
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/3SVfmfpDx9M?autoplay=1&controls=0';">
+                SIX PACK
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/xQVQn6l6Iu4?autoplay=1&controls=0';">
+                BACK
+            </button>
 
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/qkQdIMW1xlw?autoplay=1&controls=0';">
-                    UPPER ARM
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/qkQdIMW1xlw?autoplay=1&controls=0';">
+                UPPER ARM
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/qkQdIMW1xlw?autoplay=1&controls=0';">
+                FORE ARM
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/DWYDL-WxF1U?autoplay=1&controls=0';">
+                TIGHT
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/W4SpM2gxGdE?autoplay=1&controls=0';">
+                CALF
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/2ude9p2H9bY?autoplay=1&controls=0';">
+                Cardiovascular
+            </button>
+            <button class="w-btn w-btn-indigo" type="button"
+                    onclick="location.href='https://www.youtube.com/embed/Ym6cmkDnsao?autoplay=1&controls=0';">
+                BUTT
+            </button>
+            <div style="width: 100%;">
+                <button class="w-btn-neon2" type="button" style="margin-left: 32%;"
+                        onclick="location.href='https://www.youtube.com/embed/zDcOqeLGymE?autoplay=1&controls=0';">
+                    STRETCHING
                 </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/qkQdIMW1xlw?autoplay=1&controls=0';">
-                    FORE ARM
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/DWYDL-WxF1U?autoplay=1&controls=0';">
-                    TIGHT
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/W4SpM2gxGdE?autoplay=1&controls=0';">
-                    CALF
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/2ude9p2H9bY?autoplay=1&controls=0';">
-                    Cardiovascular
-                </button>
-                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='https://www.youtube.com/embed/Ym6cmkDnsao?autoplay=1&controls=0';">
-                    BUTT
-                </button>
-                <div style="width: 100%;">
-                    <button class="w-btn-neon2" type="button" style="margin-left: 32%;" onclick="location.href='https://www.youtube.com/embed/zDcOqeLGymE?autoplay=1&controls=0';">
-                        STRETCHING
-                    </button>
-                </div>
             </div>
+        </div>
     </div>
 
 {% endblock %}
