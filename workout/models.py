@@ -27,3 +27,10 @@ class Exercise(models.Model):
 
     def get_main(self):
         return json.loads(self.main)
+
+class Video_id(models.Model):
+    class Meta:
+        db_table = "video_id"
+
+    video_id = models.CharField(max_length=20)
+    title = models.TextField()
