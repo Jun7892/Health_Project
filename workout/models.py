@@ -2,6 +2,8 @@ from django.db import models
 import json
 import ast
 from second.models import User
+
+
 # Create your models here.
 
 
@@ -15,10 +17,10 @@ class Exercise(models.Model):
     warm_up = models.TextField(blank=True)
 
     def set_warm_up(self, x):
-        self.warm_up = json.dumps(x)# 객체를 json 문자열로 변환
+        self.warm_up = json.dumps(x)  # 객체를 json 문자열로 변환
 
     def get_warm_up(self):
-        return json.loads(self.warm_up) # json 문자열을 객체로 변환 후 리스트형태로 변환
+        return json.loads(self.warm_up)  # json 문자열을 객체로 변환 후 리스트형태로 변환
 
     main = models.TextField(blank=True)
 
@@ -27,6 +29,7 @@ class Exercise(models.Model):
 
     def get_main(self):
         return json.loads(self.main)
+
 
 class Video_id(models.Model):
     class Meta:
