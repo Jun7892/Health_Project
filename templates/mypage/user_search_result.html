@@ -4,53 +4,58 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="../../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/user_search_result.css" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block title %}User search result{% endblock %}
 
 {% block content %}
-    <form action="" method="POST" class="search_form">
-        {% csrf_token %}
-        <input class="search_box" type="text" name="user_search" placeholder="사용자를 검색하세요">
-        <button class="search_btn" type="submit">search</button>
-    </form>
 
-    <p> 사용자 검색 결과입니다. </p>
-    {% if messages %}
-        {% for msg in messages %}
-            <h3>{{ msg.message }}</h3>
-        {% endfor %}
-    {% endif %}
-    {% for member in members %}
-        <div>
-            <a href="/mypage/{{ member.id }}" style="text-decoration-line: none;" >
-            <div class='member' style="display:flex">
+    <div class="fullcontain">
+        <div class="second_contain">
+            <form action="" method="POST" class="search_form">
+                {% csrf_token %}
+                <input class="search_box" type="text" name="user_search" placeholder="사용자를 검색하세요">
+                <button class="search_btn" type="submit">search</button>
+            </form>
+
+            <p> 사용자 검색 결과입니다. </p>
+            {% if messages %}
+                {% for msg in messages %}
+                    <h3>{{ msg.message }}</h3>
+                {% endfor %}
+            {% endif %}
+            {% for member in members %}
                 <div>
-                    <img style="width: 50px; height: 50px; border-radius: 50%" src="{{ member.profile_img }}">
+                    <a href="/mypage/{{ member.id }}" style="text-decoration-line: none;" >
+                    <div class='member' style="display:flex">
+                        <div>
+                            <img style="width: 50px; height: 50px; border-radius: 50%" src="{{ member.profile_img }}">
+                        </div>
+                        <div style="height: 50px; text-align-all: center">
+                            <p style="margin: 0;">{{ member.username }}</p>
+                            <p style="margin: 0; color:gray">{{ member.nickname }}</p>
+                        </div>
+                    </div>
+                    </a>
                 </div>
-                <div style="height: 50px; text-align-all: center">
-                    <p style="margin: 0;">{{ member.username }}</p>
-                    <p style="margin: 0; color:gray">{{ member.nickname }}</p>
-                </div>
-            </div>
-            </a>
+            {% endfor %}
+
+            {% if members.has_previous %}
+                <a href="?page=1">맨 앞으로</a>
+                <a href="?page={{ members.precious_page_number }}">이전으로</a>
+            {% endif %}
+            {% if members %}
+            <span>{{ members.number }}</span>
+            <span>/</span>
+            <span>{{ members.paginator.num_pages }}</span>
+            {% endif %}
+            {% if members.has_next %}
+                <a href="?page={{ members.next_page_number }}" style="color: white">다음으로</a>
+                <a href="?page={{ members.paginator.num_pages }}" style="color: white">맨 뒤로</a>
+            {% endif %}
+
+            <a style="position: absolute; top: 90%; left: 0; color: white; text-decoration-line: none;" href="/mypage/{{ login_user.id }}">MyPage돌아가기</a>
         </div>
-    {% endfor %}
-
-    {% if members.has_previous %}
-        <a href="?page=1">맨 앞으로</a>
-        <a href="?page={{ members.precious_page_number }}">이전으로</a>
-    {% endif %}
-    {% if members %}
-    <span>{{ members.number }}</span>
-    <span>/</span>
-    <span>{{ members.paginator.num_pages }}</span>
-    {% endif %}
-    {% if members.has_next %}
-        <a href="?page={{ members.next_page_number }}" style="color: white">다음으로</a>
-        <a href="?page={{ members.paginator.num_pages }}" style="color: white">맨 뒤로</a>
-    {% endif %}
-
-    <a href="/mypage/{{ login_user.id }}">마이페이지로 돌아가기</a>
+    </div>
 {% endblock %}

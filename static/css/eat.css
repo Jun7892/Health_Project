@@ -405,3 +405,6 @@ ul.tabs li.current {
     left: 45%;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+}
