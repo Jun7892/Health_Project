@@ -8,7 +8,7 @@ var player;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        videoId: 'gp1rcsPubMI'
+        videoId: 'D7KExoUhSA0'
     });
 }
 
@@ -21,6 +21,5 @@ secondScriptTag.parentNode.insertBefore(tag2, secondScriptTag);
 var player2;
 
 function onYouTubeIfram() {
-    player2 = new YT.Player('player2', {videoId: 'NF84anZ1Yok'});
-    document.getElementsByClassName("fullcontain")[0].style.height = "185vh";
+    player2 = new YT.Player('player2', {videoId: 'cNudQAODyyM'});
 }
