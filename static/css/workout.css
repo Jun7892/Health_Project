@@ -306,6 +306,16 @@ button {
     font-size: 22px;
 }
 
+.youtube {
+
+}
+
+@media (max-width: 1000px) {
+    .youtube {
+    width: 343px;
+    }
+}
+
 .mainworkout_text {
     text-align: center;
     color: white;
