@@ -119,6 +119,7 @@ def eat_search(request):
         suncheon = ProductModel.objects.filter(country_name='순천')
         andong = ProductModel.objects.filter(country_name='안동')
         changwon = ProductModel.objects.filter(country_name='창원')
+
         if search_recipe:
             search_list = recipe.filter(Q(title__icontains=search_recipe) | Q(ingredients__icontains=search_recipe))
             page = request.GET.get('page')
