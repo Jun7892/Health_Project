@@ -61,9 +61,6 @@ def eat_view(request):
 
 def eat_detail(request, id):
     recipe = FoodModel.objects.get(id=id)
-    print(recipe)
-    recipe.ingredients = recipe.get_ingredients()
-    recipe.step = recipe.get_step()
     # --------------------추천시스템--------------------------------
     # 형태소 분석을 위한 객체를 만들고,
     mecab = Mecab(dicpath=r"C:/mecab/mecab-ko-dic")
