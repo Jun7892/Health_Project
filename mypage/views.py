@@ -1,8 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q, QuerySet
+from django.db.models import Q
 from django.shortcuts import render, redirect
-from django.utils.datastructures import MultiValueDictKeyError
-from django.core.exceptions import ValidationError, ObjectDoesNotExist
+from django.core.exceptions import ValidationError
 from django.contrib import messages
 from commu.models import Article
 from mypage.services.profile_service import get_profile_img_src, profile_update
@@ -10,11 +9,11 @@ from second.models import User
 from django.core.paginator import Paginator
 
 
-def item_view(request):
-    return render(request, 'item.html')
+# def item_view(request):
+#     return render(request, 'item.html')
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def mypage(request, id):
     login_user = request.user  # 접속한 유저의 정보들고있음
     user = User.objects.get(id=id)  # 마이페이지의 유저
@@ -45,7 +44,7 @@ def mypage(request, id):
         return redirect('mypage', login_user.id)
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def editprofile(request, id):
     if request.method == 'POST':
         login_user = request.user  # 접속한 유저의 정보들고있음
@@ -76,7 +75,7 @@ def editprofile(request, id):
         return redirect('/main/')
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def reset_email(request, id):
     login_user = request.user
     try:
@@ -120,7 +119,7 @@ def reset_email(request, id):
                 return redirect('reset_email', login_user.id)
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def user_follow(request, id):  # 팔로우할 사람의 id
     user = request.user  # 지금 접속한 사용자
     click_user = User.objects.get(id=id)  # 클릭한 유저
@@ -134,14 +133,14 @@ def user_follow(request, id):  # 팔로우할 사람의 id
         return redirect(url)
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def show_follow(request, id):
     login_user = request.user  # 접속한 유저
     user = User.objects.get(id=id)  # 마이페이지의 유저
     follow_list = User.objects.get(id=user.id).follow.all()
     followee_list = User.objects.get(id=user.id).followee.all()
     user_list = User.objects.filter(is_superuser=0).all().exclude(username=user.username)  # 로그인한 사용자와 admin계정 제외한 유저리스트
-    another_user_list = user_list.difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
+    another_user_list = set(user_list).difference(set(follow_list))  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
     doc = {
         'user': user,
         'login_user': login_user,
@@ -152,6 +151,7 @@ def show_follow(request, id):
     return render(request, 'mypage/follow_detail.html', doc)
 
 
+@login_required(login_url='sign_in')
 def user_search(request):
     if request.method == 'POST':
         login_user = request.user

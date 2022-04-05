@@ -208,7 +208,7 @@ def reset_password(request, uidb64, token):
             return redirect(request.path)
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def user_delete(request, id):
     login_user = request.user
     if request.method == "GET":

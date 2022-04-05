@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from eat.models import FoodModel, ProductModel
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -11,7 +12,7 @@ import json
 from django.db.models import Q
 from second.models import *
 
-
+@login_required(login_url='sign_in')
 def eat_view(request):
     if request.method == 'GET':
         recipe = FoodModel.objects.all().order_by('id')
@@ -59,6 +60,7 @@ def eat_view(request):
         return render(request, 'eat/eat.html', context)
 
 
+@login_required(login_url='sign_in')
 def eat_detail(request, id):
     recipe = FoodModel.objects.get(id=id)
     print(recipe)
@@ -87,6 +89,7 @@ def eat_detail(request, id):
     return render(request, 'eat/eat_detail.html', {'recipe': recipe, 'recommend': recommend})
 
 
+@login_required(login_url='sign_in')
 def bookmark(request,id):
     if request.method == 'POST':
         user = request.user
@@ -98,6 +101,7 @@ def bookmark(request,id):
     return redirect(f'/eat/detail/{id}')
 
 
+@login_required(login_url='sign_in')
 def eat_search(request):
     if request.method == 'GET':
         recipe = FoodModel.objects.all().order_by('id')
@@ -119,6 +123,7 @@ def eat_search(request):
         suncheon = ProductModel.objects.filter(country_name='순천')
         andong = ProductModel.objects.filter(country_name='안동')
         changwon = ProductModel.objects.filter(country_name='창원')
+
         if search_recipe:
             search_list = recipe.filter(Q(title__icontains=search_recipe) | Q(ingredients__icontains=search_recipe))
             page = request.GET.get('page')
@@ -151,5 +156,5 @@ def eat_search(request):
             return redirect('/eat')
 
 
-def item_view(request):
-    return render(request, 'item.html')
+# def item_view(request):
+#     return render(request, 'item.html')

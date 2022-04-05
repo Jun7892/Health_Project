@@ -96,12 +96,16 @@
 
 @media (max-width: 1000px) {
     .eattext3 {
-        display: none;
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 1vw;
+        font-weight: lighter;
     }
 }
 
 .eattext4 {
-    margin-left: 2vw;
+    margin-left: 22vw;
     display: inline;
     color: white;
     font-size: 1vw;
@@ -110,7 +114,7 @@
 
 @media (max-width: 1000px) {
     .eattext4 {
-        margin-left: 10vw;
+        margin-left: 2vw;
         display: inline;
         color: white;
         font-size: 1vw;
@@ -128,7 +132,7 @@
 
 @media (max-width: 1000px) {
     .eattext5 {
-        margin-left: 0vw;
+        margin-left: 2vw;
         display: inline;
         color: white;
         font-size: 1vw;
@@ -147,6 +151,19 @@
     }
 }
 
+.recipe_search{
+    position: absolute;
+    top: 3%;
+    left: 45%;
+}
+
+@media (max-width: 1000px) {
+    .recipe_search{
+        position: absolute;
+        top: 6%;
+        left: 25%;
+    }
+}
 
 #container {
     display: flex;

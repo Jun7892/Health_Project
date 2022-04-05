@@ -10,7 +10,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 
 
-# @login_required(login_url:'sign_in')
+@login_required(login_url='sign_in')
 def commu_view(request):
     if request.method == 'GET':
        article = Article.objects.all().order_by('-id')
@@ -25,7 +25,7 @@ def commu_view(request):
        return render(request, 'commu/commu.html', context)
 
 
-# @login_required(login_url:'sign_in')
+@login_required(login_url='sign_in')
 def write_comment(request, id): #해당게시글의 id
     user = request.user  # 지금 접속중인 user정보
     comment = request.POST['comment']
@@ -39,7 +39,7 @@ def write_comment(request, id): #해당게시글의 id
             messages.error(request, '내용을 입력하세요')
             return redirect(f'/commu/{id}')
 
-# @login_required(login_url:'sign_in')
+@login_required(login_url='sign_in')
 def update_comment(request, id): #해당댓글의 id
     comment = Comment.objects.filter(id=id).get()  # 쿼리셋
     article_id = comment.article_id
@@ -62,7 +62,7 @@ def update_comment(request, id): #해당댓글의 id
         return redirect('/commu/' + str(article_id))
 
           
-# @login_required(login_url:'sign_in')
+@login_required(login_url='sign_in')
 def delete_comment(request, id):# 해당댓글 id
     comment = Comment.objects.filter(id=id).get()
     article_id = comment.article_id
@@ -74,6 +74,7 @@ def delete_comment(request, id):# 해당댓글 id
         return redirect('/commu/' + str(article_id),messages=message)
 
 
+@login_required(login_url='sign_in')
 def article_create(request):
     if request.method == 'GET':
         return render(request, 'commu/commu_create_article.html')
@@ -89,6 +90,7 @@ def article_create(request):
             return redirect("/commu")
 
 
+@login_required(login_url='sign_in')
 def article_detail(request, id):
     try:
         get_article = Article.objects.get(id=id)
@@ -99,12 +101,14 @@ def article_detail(request, id):
         return redirect('/commu')
 
 
+@login_required(login_url='sign_in')
 def delete_an_article(request, id): # 글 삭제
     my_article = Article.objects.get(id=id)
     my_article.delete()
     return redirect('/commu')
 
 
+@login_required(login_url='sign_in')
 def article_update(request, id):
     article = Article.objects.get(id=id)
     if request.method == 'POST':
@@ -119,6 +123,7 @@ def article_update(request, id):
         return render(request, 'commu/commu_update_article.html', {'article':article})
 
 
+@login_required(login_url='sign_in')
 def like(request, id):
     if request.method == 'POST':
         user = request.user
@@ -130,6 +135,7 @@ def like(request, id):
     return redirect(f'/commu/{id}')
 
 
+@login_required(login_url='sign_in')
 def search_article(request):
     article_list = Article.objects.all()
     search = request.GET.get('search_article', '')

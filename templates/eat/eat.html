@@ -25,16 +25,16 @@
     {# header #}
     <div class="header">
         <h2 id="SBL_font" class="movemain" onclick="location.href='/eat/'">RECIPE</h2>
-        <h3 class="eattext1">Recommendation</h3>
-        <h3 class="eattext2" onclick="location.href='/item/'">Item</h3>
-{#        <h3 class="eattext3">Vegetable</h3>#}
-        <h3 class="eattext4" onclick="location.href='http://127.0.0.1:8000/main/'">Main</h3>
-        <h3 class="eattext5" onclick="location.href='/second/sign_in'">Logout</h3>
+        <h3 class="eattext1" onclick="location.href={% url 'workout' %}" >Work out</h3>
+        <h3 class="eattext2" onclick="location.href={% url 'commu' %}">Board</h3>
+        <h3 class="eattext3" onclick="location.href='/mypage/{{ user.id }}'">My page</h3>
+        <h3 class="eattext4" onclick="location.href={% url 'main' %}">Main</h3>
+        <h3 class="eattext5" onclick="location.href='/second/logout'">Logout</h3>
         <img src="../static/img/logo.png" class="eatlogo">
     </div>
     <form action="/eat/search/" method="GET">
             <input class="recipe_search" type="text" name="search_recipe">
-        </form>
+    </form>
 
     <div class="product_price_taps">
 

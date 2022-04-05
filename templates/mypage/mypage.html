@@ -3,9 +3,9 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/testmy.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/static/js/testmy.js"></script>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/testmy.css' %}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/testmy.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -19,10 +19,11 @@
         <h3 class="itemtext1" onclick="location.href={% url 'commu' %}">Board</h3>
         <h3 class="itemtext2" onclick="location.href={% url 'eat' %}">Eat</h3>
         <h3 class="itemtext3" onclick="location.href={% url 'workout' %}">Work out</h3>
-        <h3 class="itemtext4" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</h3>
-        <h3 class="itemtext5" onclick="location.href='/mypage/{{ login_user.id }}'">Mypage</h3>
-        <h3 class="itemtext6" onclick="location.href='http://127.0.0.1:8000/main/'">Main</h3>
-        <
+
+        <h3 class="itemtext4" onclick="window.location.href='/second/logout'">Logout</h3>
+        <h3 class="itemtext5" onclick="window.location.href='/mypage/{{ login_user.id }}'">Mypage</h3>
+        <h3 class="itemtext6" onclick="location.href={% url 'main' %}">Main</h3>
+
     </div>
     {% if login_user != user %}
         <a href="/mypage/{{ login_user.id }}">Mypage</a>
