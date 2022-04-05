@@ -3,22 +3,26 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/testmy.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/static/js/testmy.js"></script>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/testmy.css' %}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/testmy.js' %}"></script>
 {% endblock %}
 
 {% block content %}
     <div class="header" style="display: flex">
-        <p class="itemtext1">User searching </p>
+        <p class="itemtext">User searching </p>
         <form action="/mypage/search/users" method="POST" class="search_form">
             {% csrf_token %}
             <input class="search_box" type="text" name="user_search" placeholder="사용자를 검색하세요">
             <button class="search_btn" type="submit">search</button>
         </form>
-        <h3 class="itemtext2" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</h3>
-        <h3 class="itemtext3" onclick="location.href='/mypage/{{ login_user.id }}'">Mypage</h3>
-        <h3 class="itemtext4" onclick="location.href='http://127.0.0.1:8000/main/'">Main</h3>
+        <h3 class="itemtext1" onclick="location.href={% url 'commu' %}">Board</h3>
+        <h3 class="itemtext2" onclick="location.href={% url 'eat' %}">Eat</h3>
+        <h3 class="itemtext3" onclick="location.href={% url 'workout' %}">Work out</h3>
+        <h3 class="itemtext4" onclick="location.href='/second/logout'">Logout</h3>
+        <h3 class="itemtext5" onclick="location.href='/mypage/{{ login_user.id }}'">Mypage</h3>
+        <h3 class="itemtext6" onclick="location.href='/main/'">Main</h3>
+        <
     </div>
     {% if login_user != user %}
         <a href="/mypage/{{ login_user.id }}">Mypage</a>
@@ -73,19 +77,21 @@
                             <p class="t3"> 닉네임 : <input style="width: 150px;" type="text" name="nickname"
                                              value="{{ user.nickname }}"></p>
                             <p class="t4"> 운동 level: {{ user.level }}</p>
-                            {% if user.level == '초심자' %}
-                                <input type="radio" class="level" name="level" value="초심자" checked/>초심자
-                                <input type="radio" class="level" name="level" value="중급자"/>중급자
-                                <input type="radio" class="level" name="level" value="상급자"/>상급자
-                            {% elif user.level == '중급자' %}
-                                <input type="radio" class="level" name="level" value="초심자"/>초심자
-                                <input type="radio" class="level" name="level" value="중급자" checked/>중급자
-                                <input type="radio" class="level" name="level" value="상급자"/>상급자
+                            {% if user.level == '3등급' %}
+                                <input type="radio" class="level" name="level" value="초심자" checked/>3등급
+                                <input type="radio" class="level" name="level" value="중급자"/>2등급
+                                <input type="radio" class="level" name="level" value="상급자"/>1등급
+                            {% elif user.level == '2등급' %}
+                                <input type="radio" class="level" name="level" value="초심자"/>3등급
+                                <input type="radio" class="level" name="level" value="중급자" checked/>2등급
+                                <input type="radio" class="level" name="level" value="상급자"/>1등급
                             {% else %}
-                                <input type="radio" class="level" name="level" value="초심자"/>초심자
-                                <input type="radio" class="level" name="level" value="중급자"/>중급자
-                                <input type="radio" class="level" name="level" value="상급자" checked/>상급자
+                                <input type="radio" class="level" name="level" value="초심자"/>3등급
+                                <input type="radio" class="level" name="level" value="중급자"/>2등급
+                                <input type="radio" class="level" name="level" value="상급자" checked/>1등급
                             {% endif %}
+                            <!--체력측정 다시하기 추가함 내가만지면 더 어려워질것같아서 표시만 할게여-->
+                            <a class="test_again" href={% url 'age_different_show_page' %}>체력측정 다시하기</a>
                             <p class="t5"> 이메일 : {{ user.email }}</p>
                             <p class="t6"> 이메일주소는 아이디찾기/비밀번호 변경에 사용됩니다.</p>
                             <a class="change_email" href="/mypage/update/email/{{ user.id }}">이메일변경하기</a>
@@ -101,31 +107,35 @@
         <div>
             <img src="/static/img/backtmp2.jpeg" class="tmpimg">
             <p class="first_post">{{ user }}님이 작성한 게시글</p>
-            <div style="display: flex;">
-                {% if articles_list == 0 %}
-                    <p class="third_post"> 아직 작성한 게시글이 없어요 :)</p>
-                {% endif %}
-                <div>
-                    {% for article in articles %}
-
-                        {% if forloop.counter <= 5 %}
-                            <div>
-                                <a href=""><h6 style="color: white">{{ article.title }}</h6></a>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+            <div class = "article_and_plan">
+                <div class="inner_wrapper">
+                    {% if articles_list == 0 %}
+                        <p class="third_post"> 아직 작성한 게시글이 없어요 :)</p>
+                    {% endif %}
+                    <div class="left_article">
+                        {% for article in articles %}
+                            {% if forloop.counter <= 5 %}
+                                <div>
+                                    <a href="{% url 'article_detail' article.id  %}"><h6 class="title">{{ article.title }}</h6></a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="right_article">
+                        {% for article in articles %}
+                            {% if forloop.counter > 5 %}
+                                <div>
+                                    <a href="{% url 'article_detail' article.id  %}"><h6 class="title">{{ article.title }}</h6></a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-                <div>
-                    {% for article in articles %}
-                        {% if forloop.counter > 5 %}
-                            <div>
-                                <h6 style="color: white">{{ article.title }}</h6>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                <div> <!--임의로 넣은 이미지라서 바꿔도 됩니다.-->
+                    <a href="{% url 'plan' %}"><img class="planner" src="https://cdn0.iconfinder.com/data/icons/running-15/64/calendar-running-plan-training-program-1024.png"></a>
                 </div>
             </div>
-            <div>
+                <div>
                 {% if articles.has_previous %}
                     <a href="?page=1" style="color: white">맨 앞으로</a>
                     <a href="?page={{ articles.precious_page_number }}"style="color: white">이전으로</a>
@@ -145,19 +155,21 @@
         <p class="box_title">북마크한 레시피</p>
         <div id="recommend_container"><!--추천박스-->
 
-            <div class="box">
+         {% for i in bookmark_recipe %}
 
-                {#                <div class="recommend_imgbox"  ><!--추천맛집 div가 두개 하나는 사진 하나는 가게정보-->#}
-                {#                    <img id="recommend_img"  class="rcm_img" src="{{ another.profile_img }}"> <!--사진url앞에것만 잘라보기-->#}
-                {#                </div>#}
-                {#                <div class="recommend_descbox" onclick="location.href='/mypage/{{ another.id }}'">#}
-                {#                    <p class="s_descs">닉네임: {{ another.nickname }}</p>#}
-                {#                    <p class="s_descs">운동레벨: {{ another.level }}</p>#}
-                {#                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>#}
-                {#                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>#}
-                {#                </div>#}
+            <div class="box">
+             <div class="recommend_imgbox"  >
+                    <img id="recommend_img"  class="rcm_img" src="{{ i.image }}"> <!--사진url앞에것만 잘라보기-->
+                </div>
+                <div class="recommend_descbox" onclick="location.href='/eat/detail/{{ i.id }}'">
+                    <p class="s_descs">제목: {{ i.title }}</p>
+{#                    <p class="s_descs">운동레벨: {{ another.level }}</p>#}
+{#                    <p class="s_descs">팔로우 수: {{ another.follow.count }}명</p>#}
+{#                    <p class="s_descs">팔로워 수: {{ another.followee.count }}명</p>#}
+                </div>
 
             </div>
+                 {% endfor %}
 
         </div>
     </div>

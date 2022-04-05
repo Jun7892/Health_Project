@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="{% static 'css/workout/show_level.css' %}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/workout/show_level.js' %}"></script>
+{% endblock %}
+
+{% block title %}YOUR LEVEL{% endblock %}
+
+{% block content %}
+    {% if grade  %}
+        <p>당신의 운동능력은 {{ grade }} 입니다.</p>
+    {% else %}
+        <p>당신의 운동능력은 {{ user.level }} 입니다.</p>
+    {% endif %}
+
+
+    <div class="fullcontain">
+        <div class="box">
+            {% if grade %}
+                <p>당신의 운동능력은 {{ grade }} 입니다.</p>
+            {% else %}
+                <p>당신의 운동능력은 {{ user.level }} 입니다.</p>
+            {% endif %}
+        </div>
+
+        <div class="cube">
+            <div class="top"></div>
+            <div>
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+            </div>
+        </div>
+        <div class="cube2">
+            <div class="top2"></div>
+            <div>
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+            </div>
+        </div>
+
+        <button onclick="" class="moveworkout"><span class="">운동하러가기!</span></button>
+    </div>
+
+
+{% endblock %}

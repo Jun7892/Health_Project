@@ -40,7 +40,7 @@
             <a class="text2" href="/mypage/{{ article.author.id }}" style="text-decoration-line: none;">author: {{ article.author.nickname }}</a>
 
             <br>
-            <p class="text2">content: {{ article.content }}</p>
+            <pre class="text2">content: {{ article.content }}</pre>
             <br>
             {% if article.author == user %}
                 <a class="text2" href="/commu/delete/{{ article.id }}">삭제</a>

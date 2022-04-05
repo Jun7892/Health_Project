@@ -1,0 +1,757 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block others %}
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="{% static 'css/workout/nolevel.css' %}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/workout/senior_level_text.js' %}"></script>
+    {#    <link href="/static/css" rel="stylesheet" type="text/css"/>#}
+    {#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">#}
+    {#    <script src="https://kit.fontawesome.com/ffa15799a0.js" crossorigin="anonymous"></script>#}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock %}
+
+{% block title %}FIGURE_OUT YOUR LEVEL{% endblock %}
+
+{% block content %}
+
+    <section>
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+    <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+
+    <div class="row">
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                <i class="fa fa-eercast" aria-hidden="true"></i>
+                <i class="fa fa-simplybuilt" aria-hidden="true"></i>
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <i class="fa fa-podcast" aria-hidden="true"></i>
+                <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <i class="fa fa-bicycle" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                <i class="fa fa-magnet" aria-hidden="true"></i>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="box">
+        <div class="first_box">
+            <div class="first_line">
+                <p>당신의 운동능력을 알아봅시다.</p>
+                <p>가까운 체력인증센터에 가서 체력등급을 알아보고 싶다면</p>
+                <button>체력인증센터 알아보기</button>
+            </div>
+        </div>
+
+        <div class="second_box">
+            <div class="second_line">
+                <p>간단히 집에서 측정해 보고 싶다면</p>
+                <button><a style="text-decoration: none" href="{% url 'age_different_show_page' %}">운동능력 테스트하러 가기</a></button>
+            </div>
+        </div>
+
+    </div>
+
+
+    {#    <div class="animation-area hint">#}
+    {#        <ui class="box-area">#}
+    {#            <li></li>#}
+    {#            <li></li>#}
+    {#            <li></li>#}
+    {#            <li></li>#}
+    {#            <li></li>#}
+    {#            <li></li>#}
+    {##}
+    {#            <li></li>#}
+    {##}
+    {##}
+    {#    </div>#}
+
+
+{% endblock %}
