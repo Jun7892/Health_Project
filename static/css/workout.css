@@ -1,0 +1,360 @@
+.fullcontain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: url("/static/img/pointer.png") 2 6, default;
+}
+
+
+/*btn*/
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+button {
+    margin: 20px;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+
+.w-btn-indigo {
+    background-color: aliceblue;
+    color: #1e6b7b;
+}
+
+.w-btn-indigo-outline {
+    border: 3px solid aliceblue;
+    color: #1e6b7b;
+}
+
+.w-btn-indigo-outline:hover {
+    color: #1e6b7b;
+    background: aliceblue;
+}
+
+
+.w-btn:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+
+.w-btn:active {
+    transform: scale(1.5);
+}
+
+
+@keyframes ring {
+    0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+.w-btn-neon2 {
+    position: relative;
+    border: none;
+    min-width: 200px;
+    min-height: 50px;
+    background: linear-gradient(
+            90deg,
+            rgba(255, 37, 248, 1) 0%,
+            rgba(173, 255, 197, 1) 100%
+    );
+    border-radius: 1000px;
+    color: black;
+    cursor: pointer;
+    box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.w-btn-neon2:hover {
+    transform: scale(1.2);
+}
+
+. :hover::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00ffcb;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+}
+
+.modalbox {
+    position: absolute;
+    top: 30%;
+    left: 17.5%;
+    width: 65%;
+    height: 50%;
+    background-color: white;
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .modalbox {
+        position: absolute;
+        top: 30%;
+        left: 5%;
+        width: 90%;
+        height: 25%;
+        background-color: white;
+        border-radius: 18%;
+    }
+}
+
+.recom1 {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    width: 27%;
+    height: 70%;
+    background-color: gray;
+}
+
+.recom2 {
+    position: absolute;
+    top: 20%;
+    left: 36.5%;
+    width: 27%;
+    height: 70%;
+    background-color: gray;
+}
+
+.recom3 {
+    position: absolute;
+    top: 20%;
+    left: 68%;
+    width: 27%;
+    height: 70%;
+    background-color: gray;
+}
+
+.modaltext {
+    top: 55%;
+    margin-left: 5%;
+    font-weight: normal;
+}
+
+/*btn2*/
+
+@keyframes ring {
+    0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+.w-btn-neon2 {
+    position: relative;
+    border: none;
+    min-width: 200px;
+    min-height: 50px;
+    background: linear-gradient(
+            90deg,
+            rgba(255, 37, 248, 1) 0%,
+            rgba(173, 255, 197, 1) 100%
+    );
+    border-radius: 1000px;
+    color: darkviolet;
+    cursor: pointer;
+    box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.w-btn-neon2:hover {
+    transform: scale(1.2);
+}
+
+.w-btn-neon2:hover::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid hotpink;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+}
+
+.movemain {
+    position: absolute;
+    top: 1%;
+    left: 95%;
+    width: 5vw;
+    color: white;
+    z-index: 2;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+@media (max-width: 1000px) {
+    .movemain {
+        position: absolute;
+        top: 1%;
+        left: 85%;
+        width: 5vw;
+        color: white;
+        z-index: 2;
+        cursor: url(/static/img/press.png) 2 2, default;
+        font-size: 4vw;
+    }
+}
+
+.logout {
+    position: absolute;
+    top: 93%;
+    left: 95%;
+    width: 5vw;
+    color: white;
+    z-index: 2;
+    cursor: url("/static/img/press.png") 2 2, default;
+}
+
+@media (max-width: 1000px) {
+    .logout {
+        position: absolute;
+        top: 93%;
+        left: 81%;
+        width: 5vw;
+        color: white;
+        z-index: 2;
+        cursor: url(/static/img/press.png) 2 2, default;
+        font-size: 4vw;
+    }
+}
+
+.video_box {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 35%;
+    height: 50vh;
+    background: black;
+    overflow: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: 0;
+    cursor: url("/static/img/pointer.png") 2 6, default;
+}
+
+@media (max-width: 1000px) {
+    .video_box {
+        position: absolute;
+        top: 15%;
+        left: 10%;
+        width: 35%;
+        height: 40vh;
+        background: black;
+        overflow: scroll;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: 0;
+        cursor: url("/static/img/pointer.png") 2 6, default;
+    }
+}
+
+.video_box::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+@media (max-width: 1000px) {
+    .video_box::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+    }
+}
+
+.warnup_text {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+}
+
+.mainworkout_text {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+}
+
+.recommend_text {
+    position: absolute;
+    top: 8%;
+    left: 24%;
+    color: white;
+    font-size: 15px;
+}
+
+@media (max-width: 1000px) {
+    a {
+        font-size: 3vw; /* Chrome, Safari, Opera*/
+    }
+}
+
+.location {
+    position: absolute;
+    top: 1%;
+    left: 90%;
+    width: 5vw;
+    font-weight: bolder;
+    font-size: 1vw;
+}
+
+@media (max-width: 1000px) {
+    .location {
+        position: absolute;
+        top: 1%;
+        left: 85%;
+        width: 5vw;
+        font-weight: bolder;
+        font-size: 1vw;
+    }
+}
+
+@font-face {
+    src: url("../font/SB_L.ttf");
+    font-family: "SB_L";
+}
+
+#SBL_font {
+    font-family: "SB_L";
+}
+
+.SBL_font {
+    font-family: "SB_L";
+}
