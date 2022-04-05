@@ -47,3 +47,5 @@ second/migrations/0002_user_age_alter_user_level.py
 video_id_.csv
 
 workout_data_.csv
+
+static
