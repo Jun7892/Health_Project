@@ -65,28 +65,33 @@
     </div>
 
     <div class="dropdown location" id="SBL_font">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                Others
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li>
-                    <button class="dropdown-item" type="button" onclick="location.href={% url 'commu' %}">Board</button>
-                </li>
-                <li>
-                    <button class="dropdown-item" type="button" onclick="location.href={% url 'eat' %}">Eat</button>
-                </li>
-                <li>
-                    <button class="dropdown-item" type="button" onclick="location.href='/mypage/{{ login_user.id }}'">Mypage</button>
-                </li>
-                <li>
-                    <button class="dropdown-item" type="button" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</button>
-                </li>
-                <li>
-                    <button class="dropdown-item" type="button" onclick="location.href='http://127.0.0.1:8000/main/'">Main</button>
-                </li>
-            </ul>
-        </div>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Others
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li>
+                <button class="dropdown-item" type="button" onclick="location.href={% url 'commu' %}">Board</button>
+            </li>
+            <li>
+                <button class="dropdown-item" type="button" onclick="location.href={% url 'eat' %}">Eat</button>
+            </li>
+            <li>
+                <button class="dropdown-item" type="button" onclick="location.href='/mypage/{{ login_user.id }}'">
+                    Mypage
+                </button>
+            </li>
+            <li>
+                <button class="dropdown-item" type="button"
+                        onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout
+                </button>
+            </li>
+            <li>
+                <button class="dropdown-item" type="button" onclick="location.href='http://127.0.0.1:8000/main/'">Main
+                </button>
+            </li>
+        </ul>
+    </div>
 
     <div class="modalbox" id="modal">
         <p id="SBL_font" style="position: absolute; left: 40%;" onclick="modalOff()">TODAY'S WORKOUT</p>
