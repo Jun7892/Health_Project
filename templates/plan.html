@@ -3,14 +3,14 @@
 
 {% block others %}
     <meta charset="UTF-8">
-    <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../static/css/plan.css" rel="stylesheet" type="text/css"/>
-    <link href="../static/css/plan/fullcalendar.min.css" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/plan.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/plan/fullcalendar.min.css' %}" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/7348b434cd.js" crossorigin="anonymous"></script>
-    <script src="../static/js/plan/jquery.min.js"></script>
-    <script src="../static/js/plan/jquery-ui.min.js"></script>
-    <script src="../static/js/plan/moment.min.js"></script>
-    <script src="../static/js/plan/fullcalendar.min.js"></script>
+    <script src="{% static 'js/plan/jquery.min.js' %}"></script>
+    <script src="{% static 'js/plan/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/plan/moment.min.js' %}"></script>
+    <script src="{% static 'js/plan/fullcalendar.min.js' %}"></script>
     {#    <script src="../static/js/plan/fullcalendar.min.js"></script>#}
 {% endblock %}
 
@@ -95,7 +95,7 @@
          });
       </script>
 
-    <script type="text/javascript" src="../static/js/plan/maincalender.js"></script>
-    <script type="text/javascript" src="../static/js/plan/addEvent.js"></script>
+    <script type="text/javascript" src="{% static 'js/plan/maincalender.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plan/addEvent.js' %}"></script>
 
 {% endblock %}
