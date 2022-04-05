@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
 
@@ -10,6 +11,7 @@ from workout.services.make_random_warmup import make_youth_random_warmup, make_r
     get_warm_up_video_id, make_random_others_warmup
 
 
+@login_required(login_url='sign_in')
 def workout_view(request):
     user = request.user
     who = User.objects.get(username=user.username)
@@ -92,6 +94,7 @@ def workout_view(request):
 
 
 # 측정후에도 다시하고싶을수도 있으니까 나이대별 측정페이지 보여줄수 있음
+@login_required(login_url='sign_in')
 def age_different_show_page(request):
     user = request.user
     age_range = user.age
@@ -103,6 +106,7 @@ def age_different_show_page(request):
         return render(request, 'workout/student_and_adult_level_test.html')
 
 
+@login_required(login_url='sign_in')
 def level_confirm(request, id):
     login_user = request.user
     user = User.objects.get(id=id)

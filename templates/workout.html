@@ -26,18 +26,17 @@
         <p class="warnup_text">Warn-Up</p>
 
         {% for ytb in warm_up_list %}
-            <iframe height="270" width="489" src="https://www.youtube.com/embed/{{ ytb }}" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    style=""></iframe>
+        <iframe height="270" width="489" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/{{ ytb }}" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  class="youtube"></iframe>
         {% endfor %}
 
         <p class="mainworkout_text">Main Workout</p>
 
         {% for main in main_list %}
-            <iframe height="270" width="489" src="https://www.youtube.com/embed/{{ main }}" title="YouTube video player"
+            <iframe height="270" width="489" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/{{ main }}" title="YouTube video player"
                     frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="youtube"></iframe>
         {% endfor %}
     </div>
 

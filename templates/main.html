@@ -18,14 +18,14 @@
               <source src="../static/video/eat.mp4" type="video/mp4">
               <strong>Your browser does not support the video tag.</strong>
             </video>
-            <p id="SBL_font" class="movepagebtn" onclick="location.href='http://127.0.0.1:8000/eat/'" style="position: absolute; top: 40%; left: 44%; color: white; font-size: 2vw; font-weight: bolder;">EAT</p>
+            <p id="SBL_font" class="movepagebtn" onclick="location.href={% url 'eat' %}" style="position: absolute; top: 40%; left: 44%; color: white; font-size: 2vw; font-weight: bolder;">EAT</p>
         </div>
         <div class="secondvideo">
             <video muted autoplay loop>
               <source src="../static/video/workout.mp4" type="video/mp4">
               <strong>Your browser does not support the video tag.</strong>
             </video>
-            <p id="SBL_font" class="movepagebtn" onclick="location.href='http://127.0.0.1:8000/workout/'" style="position: absolute; top: 40%; left: 40%; color: white; font-size: 2vw; font-weight: bolder;">WORK OUT</p>
+            <p id="SBL_font" class="movepagebtn" onclick="location.href={% url 'workout' %}" style="position: absolute; top: 40%; left: 40%; color: white; font-size: 2vw; font-weight: bolder;">WORK OUT</p>
         </div>
         {% if user.is_authenticated %}
         <div class="thirdvideo">
@@ -33,7 +33,7 @@
               <source src="../static/video/plan.mp4" type="video/mp4">
               <strong>Your browser does not support the video tag.</strong>
             </video>
-            <p id="SBL_font" class="movepagebtn" onclick="location.href='/plan/{{ user.id }}'" style="position: absolute; top: 40%; left: 45%; color: white; font-size: 2vw; font-weight: bolder;">PLAN</p>
+            <p id="SBL_font" class="movepagebtn" onclick="location.href={% url 'commu' %}" style="position: absolute; top: 40%; left: 45%; color: white; font-size: 2vw; font-weight: bolder;">BOARD</p>
         </div>
         {% endif %}
         <div class="fourthvideo">
@@ -41,10 +41,10 @@
               <source src="../static/video/item.mp4" type="video/mp4">
               <strong>Your browser does not support the video tag.</strong>
             </video>
-            <p id="SBL_font" class="movepagebtn" onclick="location.href='/mypage/{{ user.id }}'" style="position: absolute; top: 40%; left: 46%; color: white; font-size: 2vw; font-weight: bolder;">MY PAGE</p>
+            <p id="SBL_font" class="movepagebtn" onclick="window.location.href='/mypage/{{ user.id }}'" style="position: absolute; top: 40%; left: 46%; color: white; font-size: 2vw; font-weight: bolder;">MY PAGE</p>
         </div>
 
-        <img src="../static/img/service.png" onclick="location.href='http://127.0.0.1:8000/commu/'" class="movepagebtn">
+{#        <img src="../static/img/service.png" onclick="location.href='http://127.0.0.1:8000/commu/'" class="movepagebtn">#}
     </div>
 
 {% endblock %}

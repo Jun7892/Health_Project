@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.item_view, name='item'),
+    # path('', views.item_view, name='item'),
     path('<int:id>', views.mypage, name='mypage'),  # 마이페이지로 이동
     path('update/profile/<int:id>', views.editprofile, name='edit_profile'),  # 프로필변경용 url
     path('update/email/<int:id>', views.reset_email, name='reset_email'),

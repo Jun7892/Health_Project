@@ -5,7 +5,9 @@ from plan.models import Plan
 from second.models import User
 import calendar
 
+
 #달력 보여줄수 있게
+@login_required(login_url='sign_in')
 def plan_view(request):
     all_plan = Plan.objects.all()
     context = {
@@ -14,6 +16,7 @@ def plan_view(request):
     return render(request, 'plan.html',context)
 
 
+@login_required(login_url='sign_in')
 def all_events(request):
     all_plan = Plan.objects.all()
     out = []
@@ -40,6 +43,7 @@ def add_event(request, id):
     except:
         return render(request, 'plan.html')
 
+
 @login_required(login_url='sign_in')
 def update(request):
     start = request.GET.get("start", None)
@@ -52,6 +56,7 @@ def update(request):
     event.save()
     data = {}
     return JsonResponse(data)
+
 
 @login_required(login_url='sign_in')
 def remove(request):
