@@ -335,6 +335,17 @@ button {
     font-size: 1vw;
 }
 
+@media (max-width: 1000px) {
+    .location {
+        position: absolute;
+        top: 1%;
+        left: 85%;
+        width: 5vw;
+        font-weight: bolder;
+        font-size: 1vw;
+    }
+}
+
 @font-face {
     src: url("../font/SB_L.ttf");
     font-family: "SB_L";
