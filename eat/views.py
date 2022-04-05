@@ -63,7 +63,7 @@ def eat_detail(request, id):
     recipe = FoodModel.objects.get(id=id)
     # --------------------추천시스템--------------------------------
     # 형태소 분석을 위한 객체를 만들고,
-    mecab = Mecab(dicpath=r"C:/mecab/mecab-ko-dic")
+    mecab = Mecab()
     # 명사 단위로 레시피 제목을 나누고,
     tmp = mecab.nouns(recipe.title)
     # print(tmp)
