@@ -111,12 +111,22 @@ button {
 .modalbox {
     position: absolute;
     top: 30%;
-    left: 17.5%;
-    width: 65%;
-    height: 50%;
+    left: 25%;
+    width: 55%;
+    height: 35%;
     background-color: white;
     display: none;
 }
+
+/*.modalbox {*/
+/*    position: absolute;*/
+/*    top: 30%;*/
+/*    left: 17.5%;*/
+/*    width: 65%;*/
+/*    height: 50%;*/
+/*    background-color: white;*/
+/*    display: none;*/
+/*}*/
 
 @media (max-width: 1000px) {
     .modalbox {
@@ -124,7 +134,7 @@ button {
         top: 30%;
         left: 5%;
         width: 90%;
-        height: 25%;
+        height: 20%;
         background-color: white;
         border-radius: 18%;
     }
