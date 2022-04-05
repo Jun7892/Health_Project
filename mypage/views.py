@@ -1,8 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q, QuerySet
+from django.db.models import Q
 from django.shortcuts import render, redirect
-from django.utils.datastructures import MultiValueDictKeyError
-from django.core.exceptions import ValidationError, ObjectDoesNotExist
+from django.core.exceptions import ValidationError
 from django.contrib import messages
 from commu.models import Article
 from mypage.services.profile_service import get_profile_img_src, profile_update
@@ -10,11 +9,11 @@ from second.models import User
 from django.core.paginator import Paginator
 
 
-def item_view(request):
-    return render(request, 'item.html')
+# def item_view(request):
+#     return render(request, 'item.html')
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def mypage(request, id):
     login_user = request.user  # 접속한 유저의 정보들고있음
     user = User.objects.get(id=id)  # 마이페이지의 유저
@@ -28,6 +27,7 @@ def mypage(request, id):
     articles = paginator.get_page(page)  # 현재 페이지에 표시될 댓글들을 넘겨줌
 
     bookmark_recipe = User.objects.get(id=id).bookmark.all()
+
 
     doc = {
         'user': user,
@@ -44,7 +44,7 @@ def mypage(request, id):
         return redirect('mypage', login_user.id)
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def editprofile(request, id):
     if request.method == 'POST':
         login_user = request.user  # 접속한 유저의 정보들고있음
@@ -75,7 +75,7 @@ def editprofile(request, id):
         return redirect('/main/')
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def reset_email(request, id):
     login_user = request.user
     try:
@@ -119,7 +119,7 @@ def reset_email(request, id):
                 return redirect('reset_email', login_user.id)
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def user_follow(request, id):  # 팔로우할 사람의 id
     user = request.user  # 지금 접속한 사용자
     click_user = User.objects.get(id=id)  # 클릭한 유저
@@ -133,7 +133,7 @@ def user_follow(request, id):  # 팔로우할 사람의 id
         return redirect(url)
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def show_follow(request, id):
     login_user = request.user  # 접속한 유저
     user = User.objects.get(id=id)  # 마이페이지의 유저
@@ -151,6 +151,7 @@ def show_follow(request, id):
     return render(request, 'mypage/follow_detail.html', doc)
 
 
+@login_required(login_url='sign_in')
 def user_search(request):
     if request.method == 'POST':
         login_user = request.user

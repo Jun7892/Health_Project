@@ -265,7 +265,7 @@ button {
     top: 15%;
     left: 10%;
     width: 35%;
-    height: 50vh;
+    height: 47vh;
     background: black;
     overflow: scroll;
     overflow-x: hidden;
@@ -304,6 +304,16 @@ button {
     text-align: center;
     color: white;
     font-size: 22px;
+}
+
+.youtube {
+
+}
+
+@media (max-width: 1000px) {
+    .youtube {
+    width: 343px;
+    }
 }
 
 .mainworkout_text {
