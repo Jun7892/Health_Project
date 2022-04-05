@@ -265,7 +265,7 @@ button {
     top: 15%;
     left: 10%;
     width: 35%;
-    height: 50vh;
+    height: 47vh;
     background: black;
     overflow: scroll;
     overflow-x: hidden;
@@ -334,4 +334,37 @@ button {
     a {
         font-size: 3vw; /* Chrome, Safari, Opera*/
     }
+}
+
+.location {
+    position: absolute;
+    top: 1%;
+    left: 90%;
+    width: 5vw;
+    font-weight: bolder;
+    font-size: 1vw;
+}
+
+@media (max-width: 1000px) {
+    .location {
+        position: absolute;
+        top: 1%;
+        left: 85%;
+        width: 5vw;
+        font-weight: bolder;
+        font-size: 1vw;
+    }
+}
+
+@font-face {
+    src: url("../font/SB_L.ttf");
+    font-family: "SB_L";
+}
+
+#SBL_font {
+    font-family: "SB_L";
+}
+
+.SBL_font {
+    font-family: "SB_L";
 }
