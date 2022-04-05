@@ -1,0 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: SB_L, sans-serif;
+}
+
+@font-face {
+    src: url("../font/SB_L.ttf");
+    font-family: "SB_L";
+}
+
+#SBL_font {
+    font-family: "SB_L";
+}
+
+a {
+    font-family: SB_L;
+}
+
+#particles-js {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/commu.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@font-face {
+    src: url("../font/SB_L.ttf");
+    font-family: "SB_L";
+}
+
+#SBL_font {
+    font-family: "SB_L";
+}
+
+.SBL_font {
+    font-family: "SB_L";
+}
+
+.h1 {
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: white;
+    text-decoration-line: none;
+}
+
+.mainh1 {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    font-size: 3vw;
+    color: white;
+    text-decoration-line: none;
+}
+
+@media (max-width: 1000px) {
+    .mainh1 {
+        position: absolute;
+        top: 5%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        font-size: 5vw;
+        color: white;
+        text-decoration-line: none;
+    }
+}
+
+.mainh1:hover {
+    color: gray;
+}
+
+.search_input {
+    position: absolute;
+    right: 47%;
+    top: 6.5%;
+}
+
+@media (max-width: 1000px) {
+    .search_input {
+        position: absolute;
+        right: 45%;
+        top: 10%;
+        width: 50vw;
+        height: 5vh;
+    }
+}
+
+.search_box {
+    border: none;
+    height: 30px;
+}
+
+.search_button {
+    border-radius: 50%;
+    display: inline;
+    width: 2vw;
+    height: 4vh;
+}
+
+@media (max-width: 1000px) {
+    .search_button {
+        border-radius: 50%;
+        width: 4vw;
+        height: 2vh;
+    }
+}
+
+input[type=text] {
+    width: 60%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+@media (max-width: 1000px) {
+    input[type=text] {
+        width: 60%;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 3vw;
+    }
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
+
+@media (max-width: 1000px) {
+    h1 {
+        position: absolute;
+        top: 7%;
+        left: 22%;
+        transform: translate(-50%, -50%);
+        font-size: 5vw;
+        color: white;
+    }
+}
+
+h3 {
+    position: absolute;
+    left: 8%;
+}
+
+.commu_pagination {
+    text-decoration-line: none;
+}
+
+.commuinput {
+    position: absolute;
+    top: 120%;
+    left: 30%;
+    width: 40%;
+    height: 10%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    text-decoration-line: none;
+    align-items: center;
+    text-align: center;
+    font-size: 1vw;
+    color: white;
+    background-color: cornflowerblue;
+}
+
+@media (max-width: 1000px) {
+    .commuinput {
+        position: absolute;
+        top: 120%;
+        left: 30%;
+        width: 40%;
+        height: 10%;
+        border: none;
+        display: flex;
+        justify-content: center;
+        text-decoration-line: none;
+        align-items: center;
+        text-align: center;
+        font-size: 4vw;
+        color: white;
+        background-color: cornflowerblue;
+    }
+}
+
+p {
+    color: white;
+}
+
+.mainmove {
+    position: absolute;
+    top: 3%;
+    left: 95%;
+    color: white;
+    text-decoration-line: none;
+}
+
+@media (max-width: 1000px) {
+    .mainmove {
+        color: white;
+        font-size: 3vw;
+        position: absolute;
+        top: 2%;
+        left: 88%;
+    }
+}
+
+.textbox {
+    position: absolute;
+    top: 19%;
+    right: 8%;
+}
+
+.searchimg {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%
+}
+
+@media (max-width: 1000px) {
+    .searchimg {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%
+    }
+}
+
+.page-link {
+    padding: 0.05rem 0.5rem;
+}
+
+.
+
+@media (max-width: 1000px) {
+    .page-link {
+        padding: 0.05rem 0.5rem;
+        font-size: 3vw;
+    }
+}
+
+/*section {*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    height: 100vh;*/
+/*    background-color: gray;*/
+/*}*/
+
+/*section h2 {*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    height: 100vh;*/
+/*    text-align: center;*/
+/*    line-height: 100vh;*/
+/*    font-size: 10vw;*/
+/*    color: white;*/
+/*    font-weight: 700;*/
+/*}*/
+
+/*.banner {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    overflow: hidden;*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+
+/*.banner .blocks {*/
+/*    position: relative;*/
+/*    display: block;*/
+/*    width: 5vw;*/
+/*    height: 5vw;*/
+/*    background-color: white;*/
+/*    animation: animate 0.75s ease-in-out forwards;*/
+/*}*/
+
+/*@keyframes animate {*/
+/*    0% {*/
+/*        opacity: 0;*/
+/*        transform: scale(0) translateY(1000px);*/
+/*    }*/
+/*    50% {*/
+/*        opacity: 1;*/
+/*        !*background: url("../img/commu.jpg");*!*/
+/*        !*background-position: center;*!*/
+/*        !*background-attachment: fixed;*!*/
+/*        !*background-repeat: no-repeat;*!*/
+/*    }*/
+/*    100% {*/
+/*        opacity: 1;*/
+/*        transform: scale(1) translateY(0px);*/
+/*        !*background: url("../img/commu.jpg");*!*/
+/*        !*background-position: center;*!*/
+/*        !*background-attachment: fixed;*!*/
+/*        !*background-repeat: no-repeat;*!*/
+/*    }*/
+/*}*/
