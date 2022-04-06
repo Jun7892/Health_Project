@@ -17,10 +17,10 @@
             title="second page video" frameborder="0"
             style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></iframe>
 
-    <img src="/static/img/music.png" onclick="charm(sound1)" class="music">
+    <img src="{% static 'img/music.png' %}" onclick="charm(sound1)" class="music">
     <audio id="myAudio" src="{% static "music/bgm.m4a" %}" preload="auto"></audio>
-    <img src="/static/img/logo_red.png" class="teamlogo">
-    <div class="modalonbox" onclick="modalOn()"><img src="/static/img/talkgroomm.png" class="hoverimg">
+    <img src="{% static 'img/logo_red.png' %}" class="teamlogo">
+    <div class="modalonbox" onclick="modalOn()"><img src="{% static 'img/talkgroomm.png' %}" class="hoverimg">
         <div><p class="hovertext1">회원가입을 하려면</p></div>
         <div><p class="hovertext2">캐릭터를 클릭하세요</p></div></div>
 
@@ -70,8 +70,8 @@
                 <label for="woman" class="checkboxwoman"><input type="radio" class="gender" id="woman" name="gender"
                                                                 value="여자"/> 여자</label>
                 <div class="genderpic">
-                    <img src="/static/img/male.png" class="menimg">
-                    <img src="/static/img/female.png" class="womenimg">
+                    <img src="{% static 'img/male.png' %}" class="menimg">
+                    <img src="{% static 'img/female.png' %}" class="womenimg">
                 </div>
             </div>
 {#            <div class="workoutlevel" style="color: white;">#}
@@ -100,8 +100,8 @@
     </form>
 
     <div>
-        <img src="/static/img/login.png" type="button" id="btn-login" class="btn-login loginbtn">
+        <img src="{% static 'img/login.png' %}" type="button" id="btn-login" class="btn-login loginbtn">
     </div>
 
-    <script type="text/javascript" src="/static/js/second.js"></script>
+    <script type="text/javascript" src="{% static 'js/second.js' %}"></script>
 {% endblock %}

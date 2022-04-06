@@ -54,7 +54,7 @@
 
         <div class="ingredients">
             <p class="shadow">재료:&nbsp;</p>
-            {% for ingredient in recipe.ingredients %}
+            {% for ingredient in recipe.get_ingredients %}
                 <p class="shadow">{{ ingredient }}&nbsp;</p>
             {% endfor %}
         </div>
@@ -63,7 +63,7 @@
 
         <div class="step">
             <p>조리 순서</p>
-            {% for step in recipe.step %}
+            {% for step in recipe.get_step %}
                 <p>{{ forloop.counter }}. {{ step }}</p>
             {% endfor %}
         </div>
@@ -75,8 +75,9 @@
         </h1>
     <section class="hero-section">
         <div class="card-grid">
-          {% for rec_list in recommend %}
-            {% for rec in rec_list %}
+{#          {% for rec_list in recommend %}#}
+{#            {% for rec in rec_list %}#}
+            {% for rec in recommend %}
               <a class="card" href="/eat/detail/{{ rec.id }}">
                 <div class="card__background" style="background-image: url({{rec.image}})"></div>
                 <div class="card__content">
@@ -85,7 +86,7 @@
                 </div>
               </a>
             {% endfor %}
-          {% endfor %}
+{#          {% endfor %}#}
         <div>
       </section>
     {% comment %} 추천시스템 리스트  {% endcomment %}

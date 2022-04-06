@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" conetent="width-device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <script>var sound1 = "{% static "music/bgm.m4a" %}"</script>
-    <link href="/static/css/first.css" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/first.css' %}" rel="stylesheet" type="text/css"/>
 {% comment %} <link href="../static/css/base.css" rel="stylesheet" type="text/css"/> {% endcomment %}
     {% comment %} <script type="text/javascript" src="../static/js/first.js"></script> {% endcomment %}
 {% endblock %}
@@ -22,24 +22,17 @@
     </div>
 </div>
 
-<img src="/static/img/music.png" onclick="charm(sound1)" class="music">
+<img src="{% static 'img/music.png' %}" onclick="charm(sound1)" class="music">
 <audio id="myAudio" src="{% static "music/bgm.m4a" %}" preload="auto"></audio>
-<img src="/static/img/logo.png" class="teamlogo">
+<img src="{% static 'img/logo.png' %}" class="teamlogo">
 
 <div class="fullcontain">
     <figure class="logos _flex_h visible">
         <figure class="image image--lazy contain loaded"
-                style="margin-right: 0.3em; --image-height:100%; left: -13vw; top: 2vw;"><img class="img1" alt=""
-                                                                                              draggable="false"
-                                                                                              decoding="async"
-                                                                                              src="/static/img/food_meal.png">
+                style="margin-right: 0.3em; --image-height:100%; left: -13vw; top: 2vw;"><img class="img1" alt="" draggable="false" decoding="async" src="{% static 'img/food_meal.png' %}">
         </figure>
-        <div class="logos__separator"><img class="img2" src="/static/img/letterX.png"
-                                           style="position: absolute;top: 2vw;right: 19.6vw;"></div>
-        <figure class="image image--lazy contain loaded" style="--image-height:100%; right: 22vw;top: 2vw;"><img alt=""
-                                                                                                                 draggable="false"
-                                                                                                                 decoding="async"
-                                                                                                                 src="/static/img/exercise_icon.png">
+        <div class="logos__separator"><img class="img2" src="{% static 'img/letterX.png'%}" style="position: absolute;top: 2vw;right: 19.6vw;"></div>
+        <figure class="image image--lazy contain loaded" style="--image-height:100%; right: 22vw;top: 2vw;"><img alt="" draggable="false" decoding="async" src="{% static 'img/exercise_icon.png' %}">
         </figure>
     </figure>
 
@@ -59,6 +52,6 @@
         </div>
 </div>
 
-<script type="text/javascript" src="/static/js/second.js"></script>
+<script type="text/javascript" src="{% static 'js/second.js' %}"></script>
 
 {% endblock %}
