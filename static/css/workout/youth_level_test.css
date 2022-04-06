@@ -1,3 +1,126 @@
+.itemtext1 {
+    margin-left: 11vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext1 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext2 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext2 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext3 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext3 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext4 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext4 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext5 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext5 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext6 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext6 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemlogo {
+    margin-left: 21vw;
+    /*float: right;*/
+    width: 25vw;
+}
+@media (max-width: 1000px) {
+    .itemlogo {
+        margin-left: 6vw;
+        width: 28vw;
+        height: 5vw;
+        margin-top: 2.4vw;
+    }
+}
+
+
 .fullcontain {
     position: absolute;
     top: 0;
@@ -9,6 +132,19 @@
     font-family: SB_L;
     cursor: url("/static/img/pointer.png") 2 6, default;
 }
+.text_box{
+    width: 650px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 3vw;
+}
+.description{
+    margin-left: 1vw;
+}
+.slice_sentence{
+    margin-left: 2.3vw;
+}
+
 
 button {
     color: #444444;
@@ -53,6 +189,7 @@ button:active {
 p {
     font-family: SB_L;
     color: white;
+    font-size: 16px;
 }
 
 ::-webkit-scrollbar {

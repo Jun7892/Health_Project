@@ -91,6 +91,38 @@ function modalOff4() {
     console.log(modal4)
     modal4.style.display = "none"
 }
+$( document ).ready(function() {
+  var windowWidth = $( window ).width();
+    console.log(windowWidth)
+    if (windowWidth <= 1000){
+        $('.myButton').hide();
+    }
+
+})
+$( window ).resize(function() {
+   var windowWidth = $( window ).width();
+    console.log(windowWidth)
+    if (windowWidth <= 1000){
+        $('.myButton').hide();
+    }   else  {
+        $('.myButton').show();
+    }
+});
+
+
+
+
+// function block(){
+//     var windowWidth = $( window ).width();
+//     console.log(windowWidth)
+//     if (windowWidth <= 600){
+//         $('.myButton').hide();
+//     }
+// }
+
+// if (document.documentElement.clientWidth <= 1000){
+//     $('.myButton').style= 'display:none;'
+// }
 
 
 

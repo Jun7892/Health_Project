@@ -46,7 +46,11 @@
 
 @media (max-width: 1000px) {
     .eattext1 {
-        display: none;
+        margin-left: 0;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
     }
 }
 
@@ -63,7 +67,7 @@
         margin-left: 2vw;
         display: inline;
         color: white;
-        font-size: 1vw;
+        font-size: 3vw;
         font-weight: lighter;
 
     }
@@ -82,13 +86,13 @@
         margin-left: 2vw;
         display: inline;
         color: white;
-        font-size: 1vw;
+        font-size: 3vw;
         font-weight: lighter;
     }
 }
 
 .eattext4 {
-    margin-left: 28vw;
+    margin-left: 22vw;;
     display: inline;
     color: white;
     font-size: 1vw;
@@ -97,10 +101,10 @@
 
 @media (max-width: 1000px) {
     .eattext4 {
-        margin-left: 20vw;
+        margin-left: 2vw;
         display: inline;
         color: white;
-        font-size: 1vw;
+        font-size: 3vw;
         font-weight: lighter;
     }
 }
@@ -118,7 +122,7 @@
         margin-left: 2vw;
         display: inline;
         color: white;
-        font-size: 1vw;
+        font-size: 3vw;
         font-weight: lighter;
     }
 }
@@ -408,3 +412,12 @@ ul.tabs li.current {
 ::-webkit-scrollbar {
     width: 0;
 }
+
+@media (max-width: 1000px) {
+    .recipe_search{
+        position: absolute;
+        top: 6%;
+        left: 25%;
+    }
+}
+

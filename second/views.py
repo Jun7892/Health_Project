@@ -143,22 +143,18 @@ def password_reset_mailing(request):
                     }
                     template = render_to_string('login/email.html', context)
                     try:
-                        print('오긴왔니?')
                         send_mail(title, template ,settings.EMAIL_HOST_USER, [user.email])
                         return redirect('/second/password_reset/done/')
                     except:
-                        print('안됐니?')
                         messages.debug(request, '잘못된 요청입니다.')
                         return redirect('/second/password_reset/')
 
                 else: #id에 입력된 이메일과 입력한 이메일이 같지 않으면 ValueError일으킴
                     raise ValueError
             except User.DoesNotExist:
-                print('어디있니?')
                 messages.error(request, '해당 아이디로 가입한 유저가 존재하지 않습니다.')
                 return redirect('/second/password_reset/')
             except ValueError:
-                print('여기니?')
                 messages.info(request, '아이디의 이메일정보와 입력한 이메일이 일치하지 않습니다.')
                 return redirect('/second/password_reset/')
 
@@ -186,7 +182,6 @@ def reset_password(request, uidb64, token):
                 messages.error(request, '입력한 비밀번호가 일치하지 않습니다.')
                 return redirect(request.path)
             else:#패스워드 같다면
-                print('어디로?')
                 try:
                     pk = force_str(urlsafe_base64_decode(uidb64))
                     user = User.objects.get(pk=pk)
@@ -208,7 +203,7 @@ def reset_password(request, uidb64, token):
             return redirect(request.path)
 
 
-# @login_required(login_url='sign_in')
+@login_required(login_url='sign_in')
 def user_delete(request, id):
     login_user = request.user
     if request.method == "GET":

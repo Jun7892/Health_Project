@@ -28,5 +28,5 @@
             <h3 class="find_id">{{ msg.message }}</h3>
         {% endfor %}
     {% endif %}
-    <a class="movesignup" href="/second/sign_in">LOGIN</a>
+    <a class="movesignup" href="{% url 'sign_in' %}">LOGIN</a>
 {% endblock %}

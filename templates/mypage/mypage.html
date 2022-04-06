@@ -19,10 +19,11 @@
         <h3 class="itemtext1" onclick="location.href={% url 'commu' %}">Board</h3>
         <h3 class="itemtext2" onclick="location.href={% url 'eat' %}">Eat</h3>
         <h3 class="itemtext3" onclick="location.href={% url 'workout' %}">Work out</h3>
-        <h3 class="itemtext4" onclick="location.href='/second/logout'">Logout</h3>
-        <h3 class="itemtext5" onclick="location.href='/mypage/{{ login_user.id }}'">Mypage</h3>
-        <h3 class="itemtext6" onclick="location.href='/main/'">Main</h3>
-        <
+
+        <h3 class="itemtext4" onclick="window.location.href='/second/logout'">Logout</h3>
+        <h3 class="itemtext5" onclick="window.location.href='/mypage/{{ login_user.id }}'">Mypage</h3>
+        <h3 class="itemtext6" onclick="location.href={% url 'main' %}">Main</h3>
+
     </div>
     {% if login_user != user %}
         <a href="/mypage/{{ login_user.id }}">Mypage</a>
@@ -135,21 +136,21 @@
                     <a href="{% url 'plan' %}"><img class="planner" src="https://cdn0.iconfinder.com/data/icons/running-15/64/calendar-running-plan-training-program-1024.png"></a>
                 </div>
             </div>
-                <div>
-                {% if articles.has_previous %}
-                    <a href="?page=1" style="color: white">맨 앞으로</a>
-                    <a href="?page={{ articles.precious_page_number }}"style="color: white">이전으로</a>
-                {% endif %}
-                {% if articles %}
-                <span style="color: white">{{ articles.number }}</span>
-                <span style="color: white">/</span>
-                <span style="color: white">{{ articles.paginator.num_pages }}</span>
-                {% endif %}
-                {% if articles.has_next %}
-                    <a href="?page={{ articles.next_page_number }}" style="color: white">다음으로</a>
-                    <a href="?page={{ articles.paginator.num_pages }}" style="color: white">맨 뒤로</a>
-                {% endif %}
-            </div>
+                <div class="page">
+                    {% if articles.has_previous %}
+                        <a href="?page=1" style="color: white">맨 앞으로</a>
+                        <a href="?page={{ articles.precious_page_number }}"style="color: white">이전으로</a>
+                    {% endif %}
+                    {% if articles %}
+                    <span style="color: white">{{ articles.number }}</span>
+                    <span style="color: white">/</span>
+                    <span style="color: white">{{ articles.paginator.num_pages }}</span>
+                    {% endif %}
+                    {% if articles.has_next %}
+                        <a href="?page={{ articles.next_page_number }}" style="color: white">다음으로</a>
+                        <a href="?page={{ articles.paginator.num_pages }}" style="color: white">맨 뒤로</a>
+                    {% endif %}
+                </div>
         </div>
 
         <p class="box_title">북마크한 레시피</p>
@@ -173,5 +174,8 @@
 
         </div>
     </div>
+    {% include 'feedback.html' %}
 {% endblock %}
+
+
 
