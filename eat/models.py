@@ -9,9 +9,9 @@ class FoodModel(models.Model):
         db_table = "food"
 
     image = models.URLField()
-    title = models.CharField(max_length=256)
+    title = models.CharField(max_length=512)
 
-    ingredients = models.CharField(max_length=256)
+    ingredients = models.TextField()
     bookmark = models.ManyToManyField(User, related_name='bookmark', blank=True)
 
     def set_ingredients(self, x):
@@ -20,7 +20,7 @@ class FoodModel(models.Model):
     def get_ingredients(self):
         return ast.literal_eval(json.loads(self.ingredients)) # json 문자열을 객체로 변환 후 리스트형태로 변환
 
-    step = models.CharField(max_length=256)
+    step = models.TextField()
 
     def set_step(self, x):
         self.step = json.dumps(x)
