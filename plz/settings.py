@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os, json  #깃헙에 올릴때 주석처리
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+with open(os.path.join(BASE_DIR, 'secret.json')) as f:
+    secrets = json.loads(f.read())
 
 
 # Quick-start development settings - unsuitable for production
@@ -46,7 +50,7 @@ INSTALLED_APPS = [
     'plan',
     'mypage',
     'commu',
-    # 'storages', #깃헙에 올릴때 주석처리
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -86,8 +90,12 @@ WSGI_APPLICATION = 'plz.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sys',
+        'USER': 'rookieno',
+        'PASSWORD': secrets["RDS"]["PASSWORD"],
+        'HOST': secrets["RDS"]["HOST"],
+        'PORT': '3306',
     }
 }
 
@@ -130,6 +138,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -142,44 +151,40 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'second.User' # Auth_user_model second앱의 user모델로 바꾼다고 알려줌.
 
-# import os, json  #깃헙에 올릴때 주석처리
-#
-# # 미디어 파일을 위한 스토리지 설정
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#
-# with open(os.path.join(BASE_DIR, 'secret.json')) as f:
-#     secrets = json.loads(f.read())
-#
-# AWS_S3_REGION_NAME = 'ap-northeast-2'
-# AWS_S3_SIGNATURE_VERSION = 's3v4'
-# AWS_ACCESS_KEY_ID = secrets['AWS']['Access_key_id']
-# AWS_SECRET_ACCESS_KEY = secrets['AWS']['Secret_access_key']
-# AWS_STORAGE_BUCKET_NAME = secrets['AWS']['Storage_bucket_name']
-# AWS_DEFAULT_ACL = 'public-read' # 올린 파일을 누구나 읽을 수 있게 지정합니다!
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (
-#     AWS_STORAGE_BUCKET_NAME, AWS_S3_REGION_NAME )
-#
-# # Media Setting
-# MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-#
-# #email #전송용
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = secrets['MAIL']["Email_host_user"]
-# EMAIL_PORT = 587
-# EMAIL_HOST_PASSWORD = secrets['MAIL']["Email_host_password"]
-# EMAIL_USE_TLS = True # 이거말고 일단 SSL로 시도
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-# # SECURE_SSL_REDIRECT = True #reset_link 를 https로 보내주기위한 설정
-#
-# SECURE_SSL_REDIRECT=False
-# SESSION_COOKIE_SECURE=False
 
-# CSRF_COOKIE_SECURE=False
+# 미디어 파일을 위한 스토리지 설정
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# try:
-#     from plz.local_settings import *
-# except ImportError:
-#     pass
+AWS_S3_REGION_NAME = 'ap-northeast-2'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_ACCESS_KEY_ID = secrets['AWS']['Access_key_id']
+AWS_SECRET_ACCESS_KEY = secrets['AWS']['Secret_access_key']
+AWS_STORAGE_BUCKET_NAME = secrets['AWS']['Storage_bucket_name']
+AWS_DEFAULT_ACL = 'public-read' # 올린 파일을 누구나 읽을 수 있게 지정합니다!
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (
+    AWS_STORAGE_BUCKET_NAME, AWS_S3_REGION_NAME )
+
+# Media Setting
+MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+#email #전송용
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = secrets['MAIL']["Email_host_user"]
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = secrets['MAIL']["Email_host_password"]
+EMAIL_USE_TLS = True # 이거말고 일단 SSL로 시도
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# SECURE_SSL_REDIRECT = True #reset_link 를 https로 보내주기위한 설정
+
+SECURE_SSL_REDIRECT=False
+SESSION_COOKIE_SECURE=False
+
+CSRF_COOKIE_SECURE=False
+
+try:
+    from plz.local_settings import *
+except ImportError:
+    pass
 

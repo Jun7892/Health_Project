@@ -27,6 +27,8 @@ def mypage(request, id):
     articles = paginator.get_page(page)  # 현재 페이지에 표시될 댓글들을 넘겨줌
 
     bookmark_recipe = User.objects.get(id=id).bookmark.all()
+
+
     doc = {
         'user': user,
         'login_user': login_user,
@@ -138,7 +140,7 @@ def show_follow(request, id):
     follow_list = User.objects.get(id=user.id).follow.all()
     followee_list = User.objects.get(id=user.id).followee.all()
     user_list = User.objects.filter(is_superuser=0).all().exclude(username=user.username)  # 로그인한 사용자와 admin계정 제외한 유저리스트
-    another_user_list = user_list.difference(follow_list)  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
+    another_user_list = set(user_list).difference(set(follow_list))  # 나와, 내가 팔로우한 사람을 제외한 모든사람의 리스트
     doc = {
         'user': user,
         'login_user': login_user,
