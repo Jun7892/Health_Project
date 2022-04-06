@@ -3,9 +3,9 @@
 
 {% block others %}
     <meta charset="UTF-8">
-    <link href="../static/css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../static/css/workout.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="../static/js/workout.js"></script>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/workout.css' %}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/workout.js' %}"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -17,10 +17,10 @@
 {% block title %}WORKOUT{% endblock %}
 
 {% block content %}
-    <img src="../static/img/workoutback.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    <img src="{% static 'img/workoutback.jpg' %}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
 
     <div class="fullcontain">
-    <a href="get/level_test" style="color:white">Test</a>
+{#    <a href="/get/level_test" style="color:white">Test</a>#}
     <p class="recommend_text">오늘의 추천 운동</p>
     <div class="video_box">
         <p class="warnup_text">Warn-Up</p>
@@ -54,13 +54,6 @@
                 style="position: absolute; top: 80%; left: 8%; width: 20vw;">
             LOWER
         </button>
-        {#        <button id="SBL_font" class="w-btn w-btn-indigo" type="button" onclick="modalOn4()"#}
-        {#                style="position: absolute; top: 20%; left: 15%; width: 20vw;">#}
-        {#            준비운동#}
-        {#        </button>#}
-        {#        <p class="movemain" onclick="location.href='http://127.0.0.1:8000/main/'">Main</p>#}
-{#        <p onclick="location.href='http://127.0.0.1:8000/second/logout'" class="logout">Logout</p>#}
-
     </div>
 
     <div class="dropdown location" id="SBL_font">
@@ -76,13 +69,13 @@
                     <button class="dropdown-item" type="button" onclick="location.href={% url 'eat' %}">Eat</button>
                 </li>
                 <li>
-                    <button class="dropdown-item" type="button" onclick="location.href='/mypage/{{ login_user.id }}'">Mypage</button>
+                    <button class="dropdown-item" type="button" onclick="location.href='/mypage/{{ user.id }}'">Mypage</button>
                 </li>
                 <li>
-                    <button class="dropdown-item" type="button" onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout</button>
+                    <button class="dropdown-item" type="button" onclick="location.href='/second/logout'">Logout</button>
                 </li>
                 <li>
-                    <button class="dropdown-item" type="button" onclick="location.href='http://127.0.0.1:8000/main/'">Main</button>
+                    <button class="dropdown-item" type="button" onclick="location.href={% url 'main' %}}">Main</button>
                 </li>
             </ul>
         </div>
@@ -251,7 +244,7 @@
             </div>
         </div>
     </div>
-
+{% include 'feedback.html' %}
 {% endblock %}
 
 {#    Photo Designed By 壮年听雨 From <a href="https://kr.lovepik.com/image-400113020/health-movement-background.html">LovePik.com</a>#}

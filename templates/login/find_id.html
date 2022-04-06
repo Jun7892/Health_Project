@@ -4,8 +4,8 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/find_id.css" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/find_id.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block title %}FIND ID{% endblock %}
@@ -28,5 +28,5 @@
             <h3 class="find_id">{{ msg.message }}</h3>
         {% endfor %}
     {% endif %}
-    <a class="movesignup" href="/second/sign_in">LOGIN</a>
+    <a class="movesignup" href="{% url 'sign_in' %}">LOGIN</a>
 {% endblock %}

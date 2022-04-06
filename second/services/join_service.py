@@ -11,7 +11,7 @@ def create_user(username:str, password:str, nickname:str, email:str, gender:str,
                                     gender= gender,
                                     level= '',
                                     age= changed_age,
-                                    profile_img= '/static/img/male.png')
+                                    profile_img= "{% static 'img/male.png' %}")
         return new_user
     else:#여자라면
         new_user = User.objects.create_user(
@@ -23,7 +23,7 @@ def create_user(username:str, password:str, nickname:str, email:str, gender:str,
                                     gender= gender,
                                     level='',
                                     age = changed_age,
-                                    profile_img='/static/img/female.png')
+                                    profile_img="{% static 'img/female.png'%}")
         return new_user
 
 def change_age(age):
