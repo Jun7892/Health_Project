@@ -16,6 +16,7 @@
     font-family: "SB_L",
     sans-serif;
     font-weight: bolder;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 .hero-section {
@@ -26,6 +27,7 @@
     padding: var(--spacing-xxl) var(--spacing-l);
     background: #ececec;
     background-image: url('data:image/svg+xml,%3Csvg width="42" height="44" viewBox="0 0 42 44" xmlns="http://www.w3.org/2000/svg"%3E%3Cg id="Page-1" fill="none" fill-rule="evenodd"%3E%3Cg id="brick-wall" fill="%239C92AC" fill-opacity="0.4"%3E%3Cpath d="M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 
@@ -76,6 +78,7 @@
     transition:
         filter 200ms linear,
         transform 200ms linear;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .card:hover .card__background {
@@ -91,6 +94,7 @@
     padding: var(--spacing-l);
     position: absolute;
     top: 0;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .card__category {
@@ -98,6 +102,7 @@
     font-size: 0.9rem;
     margin-bottom: var(--spacing-s);
     text-transform: uppercase;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .card__heading {
@@ -105,4 +110,5 @@
     font-size: 1.9rem;
     text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
     line-height: 1.4;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }

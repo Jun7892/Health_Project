@@ -31,6 +31,7 @@
     display: inline;
     color: white;
     font-size: 3vw;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -48,6 +49,7 @@
     color: white;
     font-size: 1vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -66,6 +68,7 @@
     color: white;
     font-size: 1vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -85,6 +88,7 @@
     color: white;
     font-size: 1vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -98,11 +102,12 @@
 }
 
 .eattext4 {
-    margin-left: 32vw;
+    margin-left: 28vw;
     display: inline;
     color: white;
     font-size: 1vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -121,6 +126,7 @@
     color: white;
     font-size: 1vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -149,6 +155,7 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 .recipe {
@@ -157,6 +164,7 @@
     margin: 1vw;
     align-items: center;
     flex-wrap: wrap;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
