@@ -14,7 +14,7 @@
 
     <div class="fullmain">
         <div class="firstvideo">
-            <video muted autoplay loop>
+            <video muted autoplay loop onclick="location.href={% url 'eat' %}">
               <source src="{% static 'video/eat.mp4' %}" type="video/mp4">
               <strong>Your browser does not support the video tag.</strong>
             </video>
@@ -23,7 +23,7 @@
 
         </div>
         <div class="secondvideo">
-            <video muted autoplay loop>
+            <video muted autoplay loop onclick="location.href={% url 'workout' %}">
               <source src="{% static 'video/workout.mp4' %}" type="video/mp4">
               <strong>Your browser does not support the video tag.</strong>
             </video>
@@ -33,7 +33,7 @@
         </div>
         {% if user.is_authenticated %}
         <div class="thirdvideo">
-            <video muted autoplay loop>
+            <video muted autoplay loop onclick="location.href={% url 'commu' %}">
               <source src="{% static 'video/plan.mp4' %}" type="video/mp4">
               <strong>Your browser does not support the video tag.</strong>
             </video>
@@ -41,7 +41,7 @@
         </div>
         {% endif %}
         <div class="fourthvideo">
-            <video muted autoplay loop>
+            <video muted autoplay loop onclick="window.location.href='/mypage/{{ user.id }}'">
               <source src="{% static 'video/item.mp4' %}" type="video/mp4">
               <strong>Your browser does not support the video tag.</strong>
             </video>
