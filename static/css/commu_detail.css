@@ -76,13 +76,18 @@ p {
 }
 
 .text2 {
-
+    color : white;
 }
 
 @media (max-width: 1000px) {
     .text2 {
+        color : white;
         font-size: 3vw;
     }
+}
+
+.text_input{
+
 }
 
 .text3 {
