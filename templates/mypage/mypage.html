@@ -79,17 +79,17 @@
                                              value="{{ user.nickname }}"></p>
                             <p class="t4"> 운동 level: {{ user.level }}</p>
                             {% if user.level == '3등급' %}
-                                <input type="radio" class="level" name="level" value="초심자" checked/>3등급
-                                <input type="radio" class="level" name="level" value="중급자"/>2등급
-                                <input type="radio" class="level" name="level" value="상급자"/>1등급
+                                <input type="radio" class="level" name="level" value="3등급" checked/>3등급
+                                <input type="radio" class="level" name="level" value="2등급"/>2등급
+                                <input type="radio" class="level" name="level" value="1등급"/>1등급
                             {% elif user.level == '2등급' %}
-                                <input type="radio" class="level" name="level" value="초심자"/>3등급
-                                <input type="radio" class="level" name="level" value="중급자" checked/>2등급
-                                <input type="radio" class="level" name="level" value="상급자"/>1등급
+                                <input type="radio" class="level" name="level" value="3등급"/>3등급
+                                <input type="radio" class="level" name="level" value="2등급" checked/>2등급
+                                <input type="radio" class="level" name="level" value="1등급"/>1등급
                             {% else %}
-                                <input type="radio" class="level" name="level" value="초심자"/>3등급
-                                <input type="radio" class="level" name="level" value="중급자"/>2등급
-                                <input type="radio" class="level" name="level" value="상급자" checked/>1등급
+                                <input type="radio" class="level" name="level" value="3등급"/>3등급
+                                <input type="radio" class="level" name="level" value="2등급"/>2등급
+                                <input type="radio" class="level" name="level" value="1등급" checked/>1등급
                             {% endif %}
                             <!--체력측정 다시하기 추가함 내가만지면 더 어려워질것같아서 표시만 할게여-->
                             <a class="test_again" href={% url 'age_different_show_page' %}>체력측정 다시하기</a>
