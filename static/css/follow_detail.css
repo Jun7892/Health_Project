@@ -94,7 +94,7 @@
     background: black;
     background-size: cover;
     z-index: -1;
-    cursor: url("/static/img/pointer.png") 2 6, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 @media (max-width: 1000px) {
@@ -106,7 +106,7 @@
         background: black;
         background-size: cover;
         z-index: -1;
-        cursor: url(/static/img/pointer.png) 2 6, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
     }
 }
 
@@ -165,7 +165,7 @@ button:hover {
     box-shadow: 1px 1px 1px #EAEAEA;
     color: #333333;
     background: #F7F7F7;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 button:active {

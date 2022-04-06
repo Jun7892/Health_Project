@@ -6,7 +6,7 @@
     height: 100vh;
     background: black;
     color: white;
-    cursor: url("/static/img/pointer.png") 2 6, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 .second_contain {

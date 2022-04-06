@@ -2,7 +2,7 @@ body {
     font-family: Cafe24SsurroundAir;
     overflow-y: scroll;
     background-color: black;
-    cursor: url("/static/img/pointer.png") 2 6, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 .header {
@@ -12,7 +12,7 @@ body {
     width: 100%;
     height: 4vw;
     background-color: black;
-    cursor: url("/static/img/pointer.png") 2 6, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 @media (max-width: 1000px) {
@@ -23,7 +23,7 @@ body {
         width: 130%;
         height: 15vw;
         background-color: black;
-        cursor: url(/static/img/pointer.png) 2 6, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
     }
 }
 
@@ -33,7 +33,7 @@ body {
     color: white;
     font-size: 1.3vw;
     font-weight: lighter;
-    /*cursor: url("/static/img/press.png") 2 2, default;*/
+    /*cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;*/
 }
 
 @media (max-width: 1000px) {
@@ -267,7 +267,7 @@ body {
     top: -30px;
     right: 0;
     border: 1px solid white;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -278,7 +278,7 @@ body {
         top: -8vw;
         right: 0;
         border: 1px solid white;
-        cursor: url("/static/img/press.png") 2 2, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
     }
 }
 
@@ -290,7 +290,7 @@ body {
     text-indent: -9999px;
     background-color: white;
     background-size: cover;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -302,7 +302,7 @@ body {
         text-indent: -9999px;
         background-color: white;
         background-size: cover;
-        cursor: url("/static/img/press.png") 2 2, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
     }
 }
 
@@ -528,7 +528,7 @@ body {
 
 .recommend_imgbox {
     border: 1px solid white;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .recommend_img_box {
@@ -548,7 +548,7 @@ body {
 
 #recommend_img:hover {
     z-index: 1;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .recommend_descbox {
@@ -567,7 +567,7 @@ body {
 
 .recommend_descbox:hover {
     z-index: 7;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .box_title {
@@ -579,7 +579,7 @@ body {
     margin: 10px 0 0 5px;
     font-weight: 600;
     color: white;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .go {
@@ -620,7 +620,7 @@ button:hover {
     box-shadow: 1px 1px 1px #EAEAEA;
     color: #333333;
     background: #F7F7F7;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 button:active {
@@ -678,7 +678,7 @@ button:active {
     position: relative;
     top: 10%;
     left: 15%;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -686,7 +686,7 @@ button:active {
         position: relative;
         top: 25%;
         left: 15%;
-        cursor: url(/static/img/press.png) 2 2, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
         font-size: 2.5vw;
     }
 }
@@ -696,7 +696,7 @@ button:active {
     position: relative;
     top: 10%;
     font-size: 1vw;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -704,7 +704,7 @@ button:active {
         text-align: center;
         position: relative;
         top: 30%;
-        cursor: url(/static/img/press.png) 2 2, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
         font-size: 2.5vw;
     }
 }
@@ -744,28 +744,28 @@ button:active {
     position: absolute;
     top: 3%;
     left: 91%;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .follow {
     color: white;
     text-decoration-line: none;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .profileedit_btn {
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .change_email {
     color: white;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
     .change_email {
         color: white;
-        cursor: url("/static/img/press.png") 2 2, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
         font-size: 3vw;
     }
 }
@@ -773,14 +773,14 @@ button:active {
 .change_pw {
     color: white;
     margin-left: 1vw;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
     .change_pw {
         color: white;
         margin-left: 1vw;
-        cursor: url("/static/img/press.png") 2 2, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
         font-size: 3vw;
     }
 }
@@ -788,14 +788,14 @@ button:active {
 .delete_id {
     color: white;
     margin-left: 1vw;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
     .delete_id {
         color: white;
         margin-left: 1vw;
-        cursor: url("/static/img/press.png") 2 2, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
         font-size: 4vw;
     }
 }

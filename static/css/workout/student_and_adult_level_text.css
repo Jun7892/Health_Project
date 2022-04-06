@@ -128,7 +128,7 @@
     height: 145vh;
     background-color: black;
     color: white;
-    cursor: url("/static/img/pointer.png") 2 6, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 .text_box{
@@ -153,7 +153,7 @@ button {
     font-weight: bold;
     font-size: 9pt;
     outline: none;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 button:hover {
@@ -161,12 +161,12 @@ button:hover {
     box-shadow: 1px 1px 1px #EAEAEA;
     color: #333333;
     background: #F7F7F7;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 button:active {
     box-shadow: inset 1px 1px 1px #DFDFDF;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 .box {
@@ -194,7 +194,7 @@ p {
 .hyperlink {
     text-decoration-line: none;
     color: #0f0;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 ::-webkit-scrollbar {
