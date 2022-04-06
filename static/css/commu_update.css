@@ -27,7 +27,7 @@
     background-image: url("../img/commu.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    cursor: url("/static/img/pointer.png") 2 6, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 @media (max-width: 1000px) {
@@ -40,7 +40,7 @@
         background-image: url("../img/commu.jpg");
         background-repeat: no-repeat;
         background-size: cover;
-        cursor: url("/static/img/pointer.png") 2 6, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
     }
 }
 

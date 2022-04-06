@@ -5,7 +5,7 @@
     width: 100%;
     height: 100%;
     background-color: gray;
-    cursor: url("/static/img/pointer.png") 2 6, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 .firstvideo {
@@ -69,7 +69,7 @@ video:hover {
     top: 30%;
     left: 40%;
     width: 20vw;
-    cursor: url("/static/img/press.png") 2 2, default;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -78,13 +78,13 @@ video:hover {
         top: 40%;
         left: 30%;
         width: 40vw;
-        cursor: url("/static/img/press.png") 2 2, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
     }
 }
 
 @media (max-width: 1000px) {
     p {
         font-size: 3vw;
-        cursor: url("/static/img/press.png") 2 2, default;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
     }
 }
