@@ -55,7 +55,7 @@
                 <a href="?page={{ members.paginator.num_pages }}" style="color: white">맨 뒤로</a>
             {% endif %}
 
-            <a style="position: absolute; top: 90%; left: 0; color: white; text-decoration-line: none; cursor: url(/static/img/press.png) 2 2, default;" href="/mypage/{{ login_user.id }}">MyPage돌아가기</a>
+            <a style="position: absolute; top: 90%; left: 0; color: white; text-decoration-line: none; cursor: url(/static/img/press.png) 2 2, default;" href="/mypage/{{ user.id }}">MyPage돌아가기</a>
         </div>
     </div>
 {% endblock %}
