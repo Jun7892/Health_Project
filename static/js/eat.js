@@ -95,7 +95,9 @@ $( document ).ready(function() {
   var windowWidth = $( window ).width();
     console.log(windowWidth)
     if (windowWidth <= 1000){
-        $('.myButton').hide();
+        var btn = document.getElementsByClassName("myButton")
+        btn.style.display= 'none';
+        // $('.myButton').hide();
     }
 
 })

@@ -364,7 +364,7 @@ body {
 
 @media (max-width: 1000px) {
     #profile {
-        width: 50vw;
+        width: 42vw;
         height: 20vh;
         display: flex;
         flex-direction: column;
