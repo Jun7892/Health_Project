@@ -1,0 +1,41 @@
+.myButton {
+	background: linear-gradient(to left, #38ef7d 10%, #00c3ff 90%);
+    background-color: #f3f0f0;
+    border-radius: 28px;
+    border: 1px solid #583d68;
+    display: inline-block;
+    cursor: pointer;
+    color: #fffffff5;
+    font-family: 'SB_L';
+    font-size: 19px;
+    padding: 9px 33px;
+    text-decoration: none;
+    position: absolute;
+    right: 5%;
+    top: 9%;
+}
+
+@media (max-width: 1000px) {
+    .myButton {
+		background: linear-gradient(to left, #38ef7d 10%, #00c3ff 90%);
+		background-color: #f3f0f0;
+		border-radius: 28px;
+		border: 1px solid #583d68;
+		display: inline-block;
+		cursor: pointer;
+		color: #fffffff5;
+		font-family: 'SB_L';
+		font-size: 26px;
+		padding: 13px 30px;
+		text-decoration: none;
+		position: fixed;
+		right: 5px;
+		top: 6%;
+	}
+}
+
+.myButton:hover {
+	background:linear-gradient(to bottom, #e696d7 5%, #f2e0ac 100%);
+	background-color:#e696d7;
+}
+
