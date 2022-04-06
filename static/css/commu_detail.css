@@ -89,6 +89,11 @@ p {
 .text_input{
 
 }
+@media (max-width: 1000px) {
+    .text_input{
+    
+    }
+}
 
 .text3 {
     color: white;
