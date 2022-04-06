@@ -152,7 +152,7 @@ input[type="text"], input[type="password"] {
     position: absolute;
     top: 6%;
     left: 21%;
-    width: 55%;
+    width: 24%;
     height: 88%;
     cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
     opacity: 0;

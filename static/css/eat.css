@@ -180,7 +180,7 @@
 .recipe img {
     width: 400px;
     height: 300px;
-    cursor: pointer;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -237,6 +237,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
 
 
@@ -433,5 +434,13 @@ ul.tabs li.current {
         top: 6%;
         left: 25%;
     }
+}
+
+.pagination{
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
+}
+
+.page-link{
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
