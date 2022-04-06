@@ -183,8 +183,3 @@ SESSION_COOKIE_SECURE=False
 
 CSRF_COOKIE_SECURE=False
 
-try:
-    from plz.local_settings import *
-except ImportError:
-    pass
-
