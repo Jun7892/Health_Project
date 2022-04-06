@@ -176,7 +176,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_PASSWORD = secrets['MAIL']["Email_host_password"]
 EMAIL_USE_TLS = True # 이거말고 일단 SSL로 시도
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-# SECURE_SSL_REDIRECT = True #reset_link 를 https로 보내주기위한 설정
+SECURE_SSL_REDIRECT = True #reset_link 를 https로 보내주기위한 설정
 
 SECURE_SSL_REDIRECT=False
 SESSION_COOKIE_SECURE=False
