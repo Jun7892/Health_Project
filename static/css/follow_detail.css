@@ -286,3 +286,7 @@ button:active {
         border-radius: 50%;
     }
 }
+
+::-webkit-scrollbar {
+    width: 0;
+}
