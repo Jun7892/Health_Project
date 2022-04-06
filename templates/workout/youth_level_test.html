@@ -57,7 +57,7 @@
             <h3 class="itemtext4" onclick="window.location.href='/second/logout'">Logout</h3>
             <h3 class="itemtext5" onclick="window.location.href='/mypage/{{ user.id }}'">Mypage</h3>
             <h3 class="itemtext6" onclick="location.href={% url 'main' %}">Main</h3>
-            <img src="/static/img/logo.png" class="itemlogo">
+            <img src="{% static 'img/logo.png' %}" class="itemlogo">
         </div>
         <div class="box">
             <p>당신의 운동능력을 알아봅시다.</p>

@@ -3,9 +3,9 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="/static/css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/testmy.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/static/js/testmy.js"></script>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/testmy.css' %}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/testmy.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -134,21 +134,21 @@
                     <a href="{% url 'plan' %}"><img class="planner" src="https://cdn0.iconfinder.com/data/icons/running-15/64/calendar-running-plan-training-program-1024.png"></a>
                 </div>
             </div>
-                <div>
-                {% if articles.has_previous %}
-                    <a href="?page=1" style="color: white">맨 앞으로</a>
-                    <a href="?page={{ articles.precious_page_number }}"style="color: white">이전으로</a>
-                {% endif %}
-                {% if articles %}
-                <span style="color: white">{{ articles.number }}</span>
-                <span style="color: white">/</span>
-                <span style="color: white">{{ articles.paginator.num_pages }}</span>
-                {% endif %}
-                {% if articles.has_next %}
-                    <a href="?page={{ articles.next_page_number }}" style="color: white">다음으로</a>
-                    <a href="?page={{ articles.paginator.num_pages }}" style="color: white">맨 뒤로</a>
-                {% endif %}
-            </div>
+                <div class="page">
+                    {% if articles.has_previous %}
+                        <a href="?page=1" style="color: white">맨 앞으로</a>
+                        <a href="?page={{ articles.precious_page_number }}"style="color: white">이전으로</a>
+                    {% endif %}
+                    {% if articles %}
+                    <span style="color: white">{{ articles.number }}</span>
+                    <span style="color: white">/</span>
+                    <span style="color: white">{{ articles.paginator.num_pages }}</span>
+                    {% endif %}
+                    {% if articles.has_next %}
+                        <a href="?page={{ articles.next_page_number }}" style="color: white">다음으로</a>
+                        <a href="?page={{ articles.paginator.num_pages }}" style="color: white">맨 뒤로</a>
+                    {% endif %}
+                </div>
         </div>
 
         <p class="box_title">북마크한 레시피</p>
@@ -172,5 +172,8 @@
 
         </div>
     </div>
+    {% include 'feedback.html' %}
 {% endblock %}
+
+
 
