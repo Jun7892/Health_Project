@@ -24,7 +24,7 @@
     margin-left: 2vw;
     display: inline;
     color: white;
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 @media (max-width: 1000px) {
@@ -92,7 +92,7 @@
 }
 
 .eattext4 {
-    margin-left: 22vw;;
+    margin-left: 32vw;
     display: inline;
     color: white;
     font-size: 1vw;
