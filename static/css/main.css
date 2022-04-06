@@ -81,3 +81,10 @@ video:hover {
         cursor: url("/static/img/press.png") 2 2, default;
     }
 }
+
+@media (max-width: 1000px) {
+    p {
+        font-size: 3vw;
+        cursor: url("/static/img/press.png") 2 2, default;
+    }
+}
