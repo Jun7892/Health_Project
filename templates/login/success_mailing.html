@@ -4,7 +4,7 @@
 {% block others %}
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <link href="/static/css/success_mailing.css" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/success_mailing.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block title %}SEND PASSWORD RESET EMAIL{% endblock %}
@@ -19,7 +19,8 @@
                 30분내에 비밀번호를 재설정 해주세요.<br>
                 만약 메일이 오지 않는다면 이메일주소를 다시 한번 확인해 주시고,<br>
                 스팸메일함도 확인해 주세요!</p>
-            <a class="btn" href="/second/sign_in">마음이 바뀌었어요 그냥 로그인 할게요!</a>
+            <!--마이페이지에서 변경하러 올 경우도 있어서 메인으로 던지면 로그인안했으면 로그인화면, 했으면 메인으로 던짐-->
+            <a class="btn" href="{% url 'main' %}">마음이 바뀌었어요 그냥 로그인 할게요!</a>
         </div>
     </div>
 

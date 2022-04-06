@@ -3,13 +3,13 @@
 
 {% block others %}
     <meta charset="UTF-8">
-    <link href="../../static/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'css/eat.css' %}" rel="stylesheet" type="text/css"/>
     {#    <script type="text/javascript" src="../../static/js/eat.js"></script>#}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="../../static/js/eat.js"></script>
+    <script type="text/javascript" src="{% static 'js/eat.js' %}"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -30,7 +30,7 @@
         <h3 class="eattext3" onclick="location.href='/mypage/{{ user.id }}'">My page</h3>
         <h3 class="eattext4" onclick="location.href={% url 'main' %}">Main</h3>
         <h3 class="eattext5" onclick="location.href='/second/logout'">Logout</h3>
-        <img src="../static/img/logo.png" class="eatlogo">
+        <img src="{% static 'img/logo.png' %}" class="eatlogo">
     </div>
     <form action="/eat/search/" method="GET">
             <input class="recipe_search" type="text" name="search_recipe">
@@ -40,7 +40,7 @@
 
         <ul class="tabs">
             {% for i in code %}
-                <li class="tab-link current" data-tab="tab-{{ forloop.counter }}">{{ i }}</>
+                <li class="tab-link current" data-tab="tab-{{ forloop.counter }}">{{ i }}</li>
             {% endfor %}
             {#            <li class="tab-link" data-tab="tab-2">{{ code }}</li>#}
             {#            <li class="tab-link" data-tab="tab-3">Tab Three</li>#}
@@ -189,5 +189,5 @@
 
     {#<script src="../static/js/particles2.js"></script>#}
     {#<script src="../static/js/app2.js"></script>#}
-
+{% include 'feedback.html' %}
 {% endblock %}

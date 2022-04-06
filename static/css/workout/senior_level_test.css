@@ -1,3 +1,127 @@
+.itemtext1 {
+    margin-left: 11vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext1 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext2 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext2 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext3 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext3 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext4 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext4 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext5 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext5 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemtext6 {
+    margin-left: 4vw;
+    display: inline;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+    .itemtext6 {
+        margin-left: 2vw;
+        display: inline;
+        color: white;
+        font-size: 3vw;
+        font-weight: lighter;
+    }
+}
+
+.itemlogo {
+    margin-left: 21vw;
+    /*float: right;*/
+    width: 25vw;
+}
+
+@media (max-width: 1000px) {
+    .itemlogo {
+        margin-left: 6vw;
+        width: 28vw;
+        height: 5vw;
+        margin-top: 2.4vw;
+    }
+}
+
+
 .fullcontain {
     position: absolute;
     top: 0;
@@ -7,6 +131,15 @@
     background-color: black;
     color: white;
     cursor: url("/static/img/pointer.png") 2 6, default;
+}
+.text_box{
+    width: 650px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 3vw;
+}
+.description{
+    margin-left: 1vw;
 }
 
 button {
@@ -52,8 +185,61 @@ button:active {
 p {
     font-family: SB_L;
     color: white;
+    font-size: 24px;
+    /*시니어버전은 글씨 크게*/
 }
 
 ::-webkit-scrollbar {
     width: 0;
+}
+
+
+#scrollpath {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#progressbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(to top, #008aff, #00ffe7);
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+#progressbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #008aff, #00ffe7);
+    filter: blur(10px);
+}
+
+#progressbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #008aff, #00ffe7);
+    filter: blur(30px);
 }

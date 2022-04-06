@@ -46,7 +46,7 @@
 
 @media (max-width: 1000px) {
     .eattext1 {
-        margin-left: 5vw;
+        margin-left: 0;
         display: inline;
         color: white;
         font-size: 3vw;
@@ -92,7 +92,7 @@
 }
 
 .eattext4 {
-    margin-left: 28vw;
+    margin-left: 22vw;;
     display: inline;
     color: white;
     font-size: 1vw;
