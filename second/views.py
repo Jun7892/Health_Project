@@ -132,7 +132,7 @@ def password_reset_mailing(request):
                     title = '[비밀번호 재설정 요청] Longevity홈페이지에서 보낸 메일입니다.'
                     context = {
                                 "email":user.email,
-                                "domain": '127.0.0.1:8000',#도메인 이름으로 나중에 변경 settings.HOSTNAME,
+                                "domain": 'https://www.rookieno.com',
                                 "site_name": '10장생 프로젝트',
                                 # MTE4 토큰보내줄거면
                                 "uid": urlsafe_base64_encode(force_bytes(user.pk)),
