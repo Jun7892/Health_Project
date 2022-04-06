@@ -36,13 +36,13 @@
                     <button class="dropdown-item" type="button" onclick="location.href={% url 'eat' %}">Eat</button>
                 </li>
                 <li>
-                    <button class="dropdown-item" type="button" onclick="location.href='/mypage/{{ login_user.id }}'">
+                    <button class="dropdown-item" type="button" onclick="location.href='/mypage/{{ user.id }}'">
                         Mypage
                     </button>
                 </li>
                 <li>
                     <button class="dropdown-item" type="button"
-                            onclick="location.href='http://127.0.0.1:8000/second/logout'">Logout
+                            onclick="location.href='/second/logout'">Logout
                     </button>
                 </li>
                 <li>
