@@ -322,7 +322,7 @@ button {
 
 @media (max-width: 1000px) {
     .youtube {
-    width: 343px;
+        width: 343px;
     }
 }
 
@@ -377,4 +377,23 @@ button {
 
 .SBL_font {
     font-family: "SB_L";
+}
+
+@media (max-width: 1000px) {
+    .location_btn {
+        font-size: 4vw;
+        position: absolute;
+        top: 1%;
+        left: -125%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .recommend_text {
+        position: absolute;
+        top: 8%;
+        left: 18%;
+        color: white;
+        font-size: 30px;
+    }
 }
