@@ -132,14 +132,14 @@ def password_reset_mailing(request):
                     title = '[비밀번호 재설정 요청] Longevity홈페이지에서 보낸 메일입니다.'
                     context = {
                                 "email":user.email,
-                                "domain": 'https://www.rookieno.com',
+                                "domain": 'www.rookieno.com',
                                 "site_name": '10장생 프로젝트',
                                 # MTE4 토큰보내줄거면
                                 "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                                 "user": user,
                                 # Return a token that can be used once to do a password reset for the given user.
                                 'token': default_token_generator.make_token(user),
-                                "protocol": 'http', #"로컬": 'http', #도메인: https
+                                "protocol": 'https', #"로컬": 'http', #도메인: https
                     }
                     template = render_to_string('login/email.html', context)
                     try:
