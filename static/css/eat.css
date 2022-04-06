@@ -196,7 +196,7 @@
 
 @media (max-width: 1000px) {
     .foodname {
-        color: white;
+        color: black;
         text-align: center;
     }
 }
