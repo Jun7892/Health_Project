@@ -37,6 +37,7 @@
         }
         function close_stretching(){
             $('#stretching_box').hide()
+            document.getElementsByClassName("fullcontain")[0].style.height = "160vh";
             $('.close_stretching').hide()
         }
     </script>
@@ -77,19 +78,26 @@
                         <div id="player2"></div>
                         <button class="close_stretching" style="display: none" onclick="close_stretching()">닫기</button>
                     </div>
-                    <p class="description"> 3. <strong>혼자서 측정한다면,</strong> 스마트폰으로 자신이 운동하는 모습이 잘 보이도록 촬영합니다.</p>
-                    <p class="description"> 4. <strong>도와줄 사람이 있다면,</strong> 스마트폰 촬영을 부탁하고,</p>
-                    <p class="slice_sentence">시작을 외치면 반복 옆 뛰기를 20초동안 실행합니다.</p>
-                    <p class="description"> 5. 촬영된 자신의 영상을 보며 횟수를 세고 밑에 입력란에 입력하고 제출합니다.</p>
+                    <p class="description"> 3. <strong>혼자서 측정한다면,</strong> 스마트폰으로 자신이 운동하는 모습이<br>
+                    <span class="slice_sentence">잘 보이도록 촬영합니다.</span></p>
+                    <p class="description"> 4. <strong>도와줄 사람이 있다면,</strong> 스마트폰 촬영을 부탁하고,<br>
+                    <span class="slice_sentence">시작을 외치면 반복 옆 뛰기를 20초동안 실행합니다.</span></p>
+                    <p class="description"> 5. 촬영된 자신의 영상을 보며 횟수를 세고 <br>
+                    <span class="slice_sentence">아래 입력란에 입력하고 제출합니다.</span></p>
                 </div>
             </div>
 
             <form method="post" action="{% url 'level_confirm' user.id %}" style="margin-top: 1vw;">
                 {% csrf_token %}
-                20초동안 반복 옆뛰기를 정확하게 한 횟수를 입력하세요: <input type="number" name="count" placeholder="숫자만 입력하세요">회
-                <button>제출하기</button>
+                <p class="input_desc">20초동안 반복 옆뛰기를 정확하게 한 횟수를 입력하세요<p>
+                <p class="input_desc"><input type="number" name="count" placeholder="숫자만 입력하세요" class="count">회</p>
+                <button class="submit_btn">제출하기</button>
             </form>
-
+            {% if messages %}
+                {% for msg in messages %}
+                    <p class="msg">{{ msg.message }}</p>
+                {% endfor %}
+            {% endif %}
 
             <p class="more">더 정확한 체력등급을 알아보고 싶다면</p>
             <button onclick="window.open('http://14.49.46.105/front/center/centerIntroList.do')">체력인증센터 알아보기</button>
