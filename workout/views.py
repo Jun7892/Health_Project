@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
-
+from django.contrib import messages
 from workout.models import Exercise
 from workout.services.level_service import boy_youth_level_service, girl_youth_level_service, man_senior_level_service, \
     woman_senior_level_service, boy_student_level_service, girl_student_level_service, man_adult_level_service, \
@@ -115,37 +115,44 @@ def level_confirm(request, id):
     if request.method == 'POST':
         try:
             count = request.POST['count']
-            if login_user == user:
-                if age_range == '유소년':
-                    if user.gender == '남자':
-                        grade = boy_youth_level_service(int(real_age), int(count), user)  # 등급여기서 나눠서 저장해줌
-                        return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
-                    elif user.gender == '여자':
-                        grade = girl_youth_level_service(int(real_age), int(count), user)
-                        return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
-                elif age_range == '청소년':
-                    if user.gender == '남자':
-                        grade = boy_student_level_service(int(real_age), int(count), user)  # 등급여기서 나눠서 저장해줌
-                        return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
-                    elif user.gender == '여자':
-                        grade = girl_student_level_service(int(real_age), int(count), user)
-                        return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
-                elif age_range == '성인':
-                    if user.gender == '남자':
-                        grade = man_adult_level_service(int(real_age), int(count), user)
-                        return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
-                    elif user.gender == '여자':
-                        grade = woman_adult_level_service(int(real_age), int(count), user)
-                        return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
-                elif age_range == '노인':
-                    if user.gender == '남자':
-                        grade = man_senior_level_service(int(real_age), int(count), user)
-                        return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
-                    elif user.gender == '여자':
-                        grade = woman_senior_level_service(int(real_age), int(count), user)
-                        return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
+            if count == '':
+                raise ValueError
             else:
-                return redirect('age_different_show_page')
+                if login_user == user:
+                    if age_range == '유소년':
+                        if user.gender == '남자':
+                            grade = boy_youth_level_service(int(real_age), int(count), user)  # 등급여기서 나눠서 저장해줌
+                            print('반환값',grade)
+                            return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
+                        elif user.gender == '여자':
+                            grade = girl_youth_level_service(int(real_age), int(count), user)
+                            return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
+                    elif age_range == '청소년':
+                        if user.gender == '남자':
+                            grade = boy_student_level_service(int(real_age), int(count), user)  # 등급여기서 나눠서 저장해줌
+                            return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
+                        elif user.gender == '여자':
+                            grade = girl_student_level_service(int(real_age), int(count), user)
+                            return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
+                    elif age_range == '성인':
+                        if user.gender == '남자':
+                            grade = man_adult_level_service(int(real_age), int(count), user)
+                            return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
+                        elif user.gender == '여자':
+                            grade = woman_adult_level_service(int(real_age), int(count), user)
+                            return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
+                    elif age_range == '노인':
+                        if user.gender == '남자':
+                            grade = man_senior_level_service(int(real_age), int(count), user)
+                            return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
+                        elif user.gender == '여자':
+                            grade = woman_senior_level_service(int(real_age), int(count), user)
+                            return render(request, 'workout/show_level.html', {'grade': grade, 'user': login_user})
+                else:
+                    return redirect('age_different_show_page')
+        except ValueError:
+            messages.info(request, '값을 입력하세요')
+            return redirect('age_different_show_page')
         except MultiValueDictKeyError(KeyError):  # 등급받고서 또 주소창에서 엔터치면
             return redirect('workout')
     else:
