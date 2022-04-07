@@ -185,10 +185,10 @@ SESSION_COOKIE_SECURE=False
 
 CSRF_COOKIE_SECURE=False
 
-CORS_ORIGIN_WHITELIST = [
-    'https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_L.ttf',
-    'https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_B.ttf',
-    'https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_M.ttf'
-]
-
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_WHITELIST = [
+#     'https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_L.ttf',
+#     'https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_B.ttf',
+#     'https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_M.ttf'
+# ]
+#
+# CORS_ALLOW_CREDENTIALS = True
