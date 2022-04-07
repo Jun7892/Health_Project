@@ -127,7 +127,15 @@ input[type="text"], input[type="password"] {
     position: absolute;
     top: 65%;
     left: 4%;
-    display: none
+}
+
+@media (max-width: 1000px) {
+    .signin_desc {
+        position: absolute;
+        top: 65%;
+        left: 4%;
+        display: none;
+    }
 }
 
 .signin_desc_msg1 {
@@ -140,6 +148,11 @@ input[type="text"], input[type="password"] {
 
 @media (max-width: 1000px) {
     .signin_desc_msg1 {
+        font-family: "SB_L", sans-serif;
+        font-weight: bolder;
+        text-decoration: none;
+        font-size: 21px;
+        color: white;
         display: none;
     }
 }
@@ -154,6 +167,11 @@ input[type="text"], input[type="password"] {
 
 @media (max-width: 1000px) {
     .signin_desc_msg2 {
+        font-family: "SB_L", sans-serif;
+        font-weight: bolder;
+        text-decoration: none;
+        font-size: 21px;
+        color: white;
         display: none;
     }
 }
