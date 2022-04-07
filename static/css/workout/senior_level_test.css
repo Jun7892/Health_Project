@@ -1,9 +1,14 @@
+@font-face {
+    src: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_L.ttf);
+    font-family: "SB_L";
+}
 .itemtext1 {
-    margin-left: 11vw;
+    margin-left: 4vw;
     display: inline;
     color: white;
     font-size: 1.3vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -13,6 +18,7 @@
         color: white;
         font-size: 3vw;
         font-weight: lighter;
+        font-family: sans-serif;
     }
 }
 
@@ -22,6 +28,7 @@
     color: white;
     font-size: 1.3vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -31,6 +38,7 @@
         color: white;
         font-size: 3vw;
         font-weight: lighter;
+        font-family: sans-serif;
     }
 }
 
@@ -40,6 +48,7 @@
     color: white;
     font-size: 1.3vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -49,6 +58,7 @@
         color: white;
         font-size: 3vw;
         font-weight: lighter;
+        font-family: sans-serif;
     }
 }
 
@@ -58,6 +68,7 @@
     color: white;
     font-size: 1.3vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -67,6 +78,7 @@
         color: white;
         font-size: 3vw;
         font-weight: lighter;
+        font-family: sans-serif;
     }
 }
 
@@ -76,6 +88,7 @@
     color: white;
     font-size: 1.3vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -85,6 +98,7 @@
         color: white;
         font-size: 3vw;
         font-weight: lighter;
+        font-family: sans-serif;
     }
 }
 
@@ -94,6 +108,7 @@
     color: white;
     font-size: 1.3vw;
     font-weight: lighter;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
 
 @media (max-width: 1000px) {
@@ -103,6 +118,7 @@
         color: white;
         font-size: 3vw;
         font-weight: lighter;
+        font-family: sans-serif;
     }
 }
 
@@ -111,7 +127,6 @@
     /*float: right;*/
     width: 25vw;
 }
-
 @media (max-width: 1000px) {
     .itemlogo {
         margin-left: 6vw;
@@ -127,11 +142,27 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 175vh;
+    height: 185vh;
     background-color: black;
     color: white;
+    font-family: SB_L;
     cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
 }
+
+@media (max-width: 1000px) {
+    .fullcontain {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 130vh;
+        background-color: black;
+        color: white;
+        font-family: SB_L;
+        cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
+    }
+}
+
 .text_box{
     width: 650px;
     margin: 0 auto;
@@ -140,7 +171,7 @@
 }
 .description{
     margin-left: 1vw;
-    font-size: 20px;
+    font-size: 25px;
 }
 @media (max-width: 1000px) {
     .description{
@@ -159,14 +190,29 @@
     }
 }
 .input_desc{
-    font-size: 22px;
+    font-size: 26px;
 }
 .count{
     margin-right: 15px;
-    padding-top: 9px;
+    font-size: 20px;
+    width: 13vw;
+    text-align: center;
+}
+@media (max-width: 1000px) {
+    .count{
+        margin-right: 15px;
+        width: 21vw;
+        height: 33px;
+    }
 }
 .submit_btn{
     font-size: 17px;
+}
+@media (max-width: 1000px) {
+    .submit_btn{
+        font-size: 23px;
+        font-family: SB_L;
+    }
 }
 .msg{
     font-family: SB_L;
@@ -178,6 +224,7 @@
 }
 
 button {
+    font-family: "SB_L";
     color: #444444;
     background: #F3F3F3;
     border: 1px #DADADA solid;
@@ -220,14 +267,12 @@ button:active {
 p {
     font-family: SB_L;
     color: white;
-    font-size: 24px;
-    /*시니어버전은 글씨 크게*/
+    font-size: 20px;
 }
 
 ::-webkit-scrollbar {
     width: 0;
 }
-
 
 #scrollpath {
     position: fixed;

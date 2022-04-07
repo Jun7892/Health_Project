@@ -123,14 +123,14 @@ input[type="text"], input[type="password"] {
     appearance: none;
 }
 
-.signin_desc {
+.login_desc {
     position: absolute;
     top: 65%;
     left: 4%;
 }
 
 @media (max-width: 1000px) {
-    .signin_desc {
+    .login_desc {
         position: absolute;
         top: 65%;
         left: 4%;
@@ -138,16 +138,17 @@ input[type="text"], input[type="password"] {
     }
 }
 
-.signin_desc_msg1 {
+.login_desc_msg1 {
     font-family: "SB_L", sans-serif;
     font-weight: bolder;
     text-decoration: none;
     font-size: 21px;
     color: white;
+    display: none;
 }
 
 @media (max-width: 1000px) {
-    .signin_desc_msg1 {
+    .login_desc_msg1 {
         font-family: "SB_L", sans-serif;
         font-weight: bolder;
         text-decoration: none;
@@ -157,16 +158,17 @@ input[type="text"], input[type="password"] {
     }
 }
 
-.signin_desc_msg2 {
+.login_desc_msg2 {
     font-family: "SB_L", sans-serif;
     font-weight: bolder;
     text-decoration: none;
     font-size: 21px;
     color: white;
+    display: none;
 }
 
 @media (max-width: 1000px) {
-    .signin_desc_msg2 {
+    .login_desc_msg2 {
         font-family: "SB_L", sans-serif;
         font-weight: bolder;
         text-decoration: none;

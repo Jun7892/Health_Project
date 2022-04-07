@@ -35,10 +35,13 @@
             document.getElementsByClassName("fullcontain")[0].style.height = "250vh";
             $('.close_stretching').show()
         }
+
         function close_stretching(){
             $('#stretching_box').hide()
-            document.getElementsByClassName("fullcontain")[0].style.height = "185vh";
             $('.close_stretching').hide()
+            if (matchMedia("(max-width: 800px)").matches){} else {
+                document.getElementsByClassName("fullcontain")[0].style.height = "185vh";
+            }
         }
     </script>
 
@@ -55,9 +58,10 @@
             <h3 class="itemtext1" onclick="location.href={% url 'commu' %}">Board</h3>
             <h3 class="itemtext2" onclick="location.href={% url 'eat' %}">Eat</h3>
             <h3 class="itemtext3" onclick="location.href={% url 'workout' %}">Work out</h3>
-            <h3 class="itemtext4" onclick="window.location.href='/second/logout'">Logout</h3>
+            <h3 class="itemtext4" onclick="location.href={% url 'main' %}">Main</h3>
             <h3 class="itemtext5" onclick="window.location.href='/mypage/{{ user.id }}'">Mypage</h3>
-            <h3 class="itemtext6" onclick="location.href={% url 'main' %}">Main</h3>
+            <h3 class="itemtext6" onclick="window.location.href='/second/logout'">Logout </h3>
+
             <img src="{% static 'img/logo.png' %}" class="itemlogo">
         </div>
         <div class="box">
