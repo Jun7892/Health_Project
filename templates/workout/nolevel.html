@@ -875,14 +875,14 @@
             <div class="first_line">
                 <p>당신의 운동능력을 알아봅시다.</p>
                 <p>가까운 체력인증센터에 가서 체력등급을 알아보고 싶다면</p>
-                <button><a style="text-decoration: none" href="http://14.49.46.105/front/center/centerIntroList.do" target="_blank">체력인증센터 알아보기</a></button>
+                <button onclick="window.open('http://14.49.46.105/front/center/centerIntroList.do')">체력인증센터 알아보기</button>
             </div>
         </div>
 
         <div class="second_box">
             <div class="second_line">
                 <p>간단히 집에서 측정해 보고 싶다면</p>
-                <button><a style="text-decoration: none" href="{% url 'age_different_show_page' %}">운동능력 테스트하러 가기</a></button>
+                <button onclick="location.href='{% url 'age_different_show_page' %}'">운동능력 테스트하러 가기</button>
             </div>
         </div>
 
