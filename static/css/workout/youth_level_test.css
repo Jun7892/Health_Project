@@ -197,7 +197,6 @@
     font-size: 20px;
     width: 13vw;
     text-align: center;
-    font-family: "SB_L";
 }
 @media (max-width: 1000px) {
     .count{

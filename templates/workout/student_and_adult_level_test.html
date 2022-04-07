@@ -51,9 +51,9 @@
             <h3 class="itemtext1" onclick="location.href={% url 'commu' %}">Board</h3>
             <h3 class="itemtext2" onclick="location.href={% url 'eat' %}">Eat</h3>
             <h3 class="itemtext3" onclick="location.href={% url 'workout' %}">Work out</h3>
-            <h3 class="itemtext4" onclick="window.location.href='/second/logout'">Logout</h3>
+            <h3 class="itemtext4" onclick="location.href={% url 'main' %}">Main</h3>
             <h3 class="itemtext5" onclick="window.location.href='/mypage/{{ user.id }}'">Mypage</h3>
-            <h3 class="itemtext6" onclick="location.href={% url 'main' %}">Main</h3>
+            <h3 class="itemtext6" onclick="window.location.href='/second/logout'">Logout </h3>
             <img src="{% static 'img/logo.png' %}" class="itemlogo">
         </div>
         <div class="box">
@@ -89,7 +89,7 @@
             <form method="post" action="{% url 'level_confirm' user.id %}" style="margin-top: 1vw;">
             {% csrf_token %}
                 <p class="input_desc">윗몸 말아올리기를 실시한 후 횟수를 입력하세요<p>
-                <p class="input_desc"><input class="count" type="number" name="count" placeholder="윗몸말아올리기 횟수입력">회</p>
+                <p class="input_desc"><input class="count" type="number" name="count" placeholder="숫자만 입력하세요">회</p>
                 <button class="submit_btn">제출하기</button>
             </form>
             {% if messages %}
