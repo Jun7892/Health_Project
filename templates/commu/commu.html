@@ -90,7 +90,7 @@
                                style="float: left; width: 54%; text-decoration-line: none; color: white">{{ i.title }} </a>
                             <p style="float: left; width: 28%;">{{ i.get_created_at }}</p>
                             <a href="/mypage/{{ i.author.id }}"
-                               style="text-decoration-line:none; float: left; width: 4%; color: white; ">{{ i.author.nickname }}</a>
+                               style="text-decoration-line:none; float: left; width: 8%; color: white; ">{{ i.author.nickname }}</a>
                         </div>
                     {% endif %}
 
@@ -109,7 +109,7 @@
                                style="color:white; text-decoration-line:none;float: left; width: 55%;">{{ i.title }}</a>
                             <p style="float: left; width: 27%;">{{ i.get_created_at }}</p>
                             <a href="/mypage/{{ i.author.id }}"
-                               style="color:white; text-decoration-line:none; float: left; width: 4%;">{{ i.author.nickname }}</a>
+                               style="color:white; text-decoration-line:none; float: left; width: 8%;">{{ i.author.nickname }}</a>
                         </div>
                     {% endif %}
                 {% endfor %}
