@@ -123,23 +123,37 @@ input[type="text"], input[type="password"] {
     appearance: none;
 }
 
-.signin_desc{
+.signin_desc {
     position: absolute;
     top: 65%;
     left: 4%;
-    display: none
 }
 
-.signin_desc_msg1{
+@media (max-width: 1000px) {
+    .signin_desc {
+        position: absolute;
+        top: 65%;
+        left: 4%;
+        display: none;
+    }
+}
+
+.signin_desc_msg1 {
     font-family: "SB_L", sans-serif;
     font-weight: bolder;
     text-decoration: none;
     font-size: 21px;
-    color:white;
- }
+    color: white;
+}
+
 @media (max-width: 1000px) {
-    .signin_desc_msg1{
-        display:none;
+    .signin_desc_msg1 {
+        font-family: "SB_L", sans-serif;
+        font-weight: bolder;
+        text-decoration: none;
+        font-size: 21px;
+        color: white;
+        display: none;
     }
 }
 
@@ -148,12 +162,17 @@ input[type="text"], input[type="password"] {
     font-weight: bolder;
     text-decoration: none;
     font-size: 21px;
-    color:white;
- }
+    color: white;
+}
 
 @media (max-width: 1000px) {
-    .signin_desc_msg2{
-        display:none;
+    .signin_desc_msg2 {
+        font-family: "SB_L", sans-serif;
+        font-weight: bolder;
+        text-decoration: none;
+        font-size: 21px;
+        color: white;
+        display: none;
     }
 }
 
@@ -196,10 +215,10 @@ input[type="text"], input[type="password"] {
     .modalonbox {
         z-index: 2;
         position: absolute;
-        top: 40%;
-        left: 23%;
-        width: 20%;
-        height: 18%;
+        top: 25%;
+        left: 0%;
+        width: 50%;
+        height: 48%;
         cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
         opacity: 1;
     }
@@ -215,57 +234,63 @@ input[type="text"], input[type="password"] {
     }
 }
 
-.signup_desc{
-    display:none;
+.signup_desc {
+    display: none;
 }
 
 @media (max-width: 1000px) {
-    .signup_desc{
+    .signup_desc {
         display: inline;
     }
 }
 
-.signup_desc_img{
+.signup_desc_img {
     position: absolute;
     top: 4%;
     left: 7%;
     width: 15vw;
 }
+
 @media (max-width: 1000px) {
-    .signup_desc_img{
+    .signup_desc_img {
         top: 41%;
         width: 36vw;
         left: 50%;
     }
 }
-.signup_desc_msg1{
+
+.signup_desc_msg1 {
     font-family: "SB_L", sans-serif;
     position: absolute;
     left: 11%;
     top: 13.5%;
     color: white;
 }
+
 @media (max-width: 1000px) {
-    .signup_desc_msg1{
+    .signup_desc_msg1 {
         top: 47%;
         left: 60%;
         font-size: 22px;
     }
 }
-.signup_desc_msg2{
+
+.signup_desc_msg2 {
     font-family: "SB_L", sans-serif;
     position: absolute;
     left: 11%;
     top: 17.5%;
     color: white;
 }
+
 @media (max-width: 1000px) {
-    .signup_desc_msg2{
+    .signup_desc_msg2 {
         left: 59%;
         top: 50%;
         font-size: 23px;
     }
 }
+
 .hoverimg {
     display: none;
     /*position: absolute;*/
@@ -359,6 +384,7 @@ input[type="text"], input[type="password"] {
         border-width: medium;
         opacity: 0.97;
         cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/pointer.png) 2 6, default;
+        z-index: 5;
     }
 }
 
