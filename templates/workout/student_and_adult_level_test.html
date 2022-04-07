@@ -29,11 +29,12 @@
     function onYouTubeIfram(){
         $('#stretching_box').show()
         player2 = new YT.Player('player2', {videoId: '9B58JBknwV4' });
-        document.getElementsByClassName("fullcontain")[0].style.height = "200vh";
+        document.getElementsByClassName("fullcontain")[0].style.height = "220vh";
         $('.close_stretching').show()
     }
     function close_stretching(){
             $('#stretching_box').hide()
+            document.getElementsByClassName("fullcontain")[0].style.height = "160vh";
             $('.close_stretching').hide()
         }
     </script>
@@ -42,8 +43,8 @@
 {% block title %}LEVEL TEST{% endblock %}
 
 {% block content %}
-    <div id="progressbar"></div>
-    <div id="scrollpath"></div>
+{#    <div id="progressbar"></div>#}
+{#    <div id="scrollpath"></div>#}
 
     <div class="fullcontain">
         <div class="header" style="display: flex">
@@ -72,7 +73,7 @@
                                 <button class="close_stretching" style="display: none" onclick="close_stretching()">닫기</button>
                             </div>
                         <p class="description"> 3. 요가매트 혹은 얇은 이불을 깐상태로 눕습니다.</p>
-                        <p class="description"> 4. <a href="https://www.youtube.com/watch?v=evnL4gfl3Cc" target="_blank" class="hyperlink"> 준비된음원(클릭시 새탭/새창으로열립니다)</a>이 있습니다. </p>
+                        <p class="description"> 4. <a onclick=location.href="https://www.youtube.com/watch?v=evnL4gfl3Cc" target="_blank" class="hyperlink"> 준비된음원(클릭시 새탭/새창으로열립니다)</a>이 있습니다. </p>
                         <p class="slice_sentence"> 미리확인하여 음원에 맞게 실시할 수 있도록 합니다.</p>
                         <p class="description"> 5. 준비된음원의 신호음이 들릴때 윗몸말아올리기를 실시합니다.</p>
                         <p class="description"> 6. 스마트폰으로 자신의 모습을 촬영하면 횟수를 세기 쉽습니다.</p>
