@@ -123,6 +123,40 @@ input[type="text"], input[type="password"] {
     appearance: none;
 }
 
+.signup_desc{
+    position: absolute;
+    top: 65%;
+    left: 4%;
+    display: none
+}
+
+.signup_desc_msg1{
+    font-family: "SB_L", sans-serif;
+    font-weight: bolder;
+    text-decoration: none;
+    font-size: 21px;
+    color:white;
+ }
+@media (max-width: 1000px) {
+    .signup_desc_msg1{
+        display:none;
+    }
+}
+
+.signup_desc_msg2 {
+    font-family: "SB_L", sans-serif;
+    font-weight: bolder;
+    text-decoration: none;
+    font-size: 21px;
+    color:white;
+ }
+
+@media (max-width: 1000px) {
+    .signup_desc_msg2{
+        display:none;
+    }
+}
+
 .music {
     z-index: 2;
     position: absolute;

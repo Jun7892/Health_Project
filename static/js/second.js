@@ -28,13 +28,6 @@ function charm(sound1) {
     console.log('aaaa');
 }
 
-// $(function () {
-// // 회원가입, 로그인 창 닫기
-// $('.btn-close').click(function (e) {
-//     // 회원가입, 로그인 창 닫을 시 현재 화면으로 새로고침
-//     location.reload();
-// });
-// 회원가입 진행
 $('#btn-signup').click(function () {
     var id = $('#user_id').val();
     var pw = $('#login-user-password').val();
@@ -42,14 +35,6 @@ $('#btn-signup').click(function () {
     var em = $('#user_em').val();
     var ge = $("input[name='gender']:checked").val();
     var age = $('#user_age').val();
-
-    // let form_data = new FormData();
-    //
-    // form_data.append('username',id);
-    // form_data.append('password',pw);
-    // form_data.append('nickname',nn);
-    // form_data.append('gender',ge);
-    // form_data.append('level',le);
 
     console.log(id)
     console.log(pw)
@@ -106,22 +91,18 @@ $('#btn-signup').click(function () {
     })
 });
 
-        // .done(function (data) {
-        // // request 보낸 url에서 회원가입 정상 진행해도 무방하여 {'works':True}를 JsonResponse로 보낸 경우
-        // if (data.works) { //통과했으면 로그인시켜서 데이터가 넘어왔기 때문에 메인페이지로 보냄
-        //     alert('회원가입이 성공적으로 완료되었습니다');
-        //     window.location.href = '/main'
-        //     // request 보낸 url에서 사용자 이름이 없다고 {'noRealName':True}를 JsonResponse로 보낸 경우
-        // } else if (data.existid) {
-        //     alert('이미 존재하는 아이디 입니다.');
-        //     window.location.reload();
-        //     // request 보낸 url에서 사용자 패스워드가 없다고 {'noPassword':True}를 JsonResponse로 보낸 경우
-        // } else if (data.blank) {
-        //     alert('빈칸이 있는지 확인하세요!');
-        //     // 그 밖 모든 data를 JsonResponse로 보낸 경우
-        // } else {
-        //     alert('정상 요청이 아닙니다');
-        // }
+//아이디 인풋창 입력시 로그인div 보이게하기
+if (matchMedia("(max-width: 500px)").matches){
+    var signup_desc = document.getElementsByClassName("signup_desc")
+    signup_desc.style.display ='none'
+} else {
+    const id_input = document.getElementById("user_id2");
+    id_input.addEventListener("keypress",function(e){
+        $(".signup_desc").show();
+    });
+   // change functionality for larger screens
+}
+
 
 // 로그인 진행
 $('.btn-login').click(function (e) {
@@ -165,28 +146,3 @@ $('.btn-login').click(function (e) {
         }
     });
 });
-//     // 로그아웃 진행
-//     $('.user-logout').click(function (e) {
-//         e.preventDefault();
-//         var url = $(this).attr('href');
-//         var check = confirm('로그아웃 하시겠습니까?');
-//         if (check == true) {
-//             $.ajax({
-//                 url: url,
-//                 method: "POST",
-//                 data: {
-//                     'csrfmiddlewaretoken': '{{csrf_token}}',
-//                 },
-//             }).done(function (data) {
-//                 if (data.works) {
-//                     alert('로그아웃 되었습니다.');
-//                     location.reload();
-//                 } else {
-//                     alert('정상 요청이 아닙니다.');
-//                 }
-//             });
-//         } else {
-//             location.reload();
-//         }
-//     });
-// });
