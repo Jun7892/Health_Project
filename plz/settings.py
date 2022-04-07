@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'mypage',
     'commu',
     'storages',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'plz.urls'
@@ -183,3 +185,10 @@ SESSION_COOKIE_SECURE=False
 
 CSRF_COOKIE_SECURE=False
 
+CORS_ORIGIN_WHITELIST = [
+    'https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_L.ttf',
+    'https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_B.ttf',
+    'https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_M.ttf'
+]
+
+CORS_ALLOW_CREDENTIALS = True
