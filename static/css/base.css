@@ -1,5 +1,5 @@
 @font-face {
-    src: url("../font/SB_L.ttf");
+    src: url("https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_L.ttf);
     font-family: "SB_L";
 }
 
@@ -8,7 +8,7 @@
 }
 
 @font-face {
-    src: url("../font/SB_B.ttf");
+    src: url("https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_B.ttf");
     font-family: "SB_B";
 }
 
@@ -17,7 +17,7 @@
 }
 
 @font-face {
-    src: url("../font/SB_M.ttf");
+    src: url("https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_M.ttf");
     font-family: "SB_M";
 }
 
