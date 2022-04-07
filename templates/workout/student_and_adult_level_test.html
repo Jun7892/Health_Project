@@ -72,22 +72,31 @@
                                 <button class="close_stretching" style="display: none" onclick="close_stretching()">닫기</button>
                             </div>
                         <p class="description"> 3. 요가매트 혹은 얇은 이불을 깐상태로 눕습니다.</p>
-                        <p class="description"> 4. <a href="https://www.youtube.com/watch?v=evnL4gfl3Cc" target="_blank" class="hyperlink"> 준비된음원(클릭시 새탭/새창으로열립니다)</a>이 있습니다. </p>
-                        <p class="slice_sentence"> 미리확인하여 음원에 맞게 실시할 수 있도록 합니다.</p>
-                        <p class="description"> 5. 준비된음원의 신호음이 들릴때 윗몸말아올리기를 실시합니다.</p>
-                        <p class="description"> 6. 스마트폰으로 자신의 모습을 촬영하면 횟수를 세기 쉽습니다.</p>
-                        <p class="description"> 7. 자신이 할 수 있는만큼만 실시한뒤 아래의 입력창에 횟수를 입력합니다.</p>
+                        <p class="description"> 4. <a href="https://www.youtube.com/watch?v=evnL4gfl3Cc" target="_blank" class="hyperlink"> 준비된음원(클릭시 새탭/새창으로열립니다)</a>이 있습니다.<br>
+                            <span class="slice_sentence">미리확인하여 음원에 맞게 실시할 수 있도록 합니다.</span></p>
+                        <p class="description"> 5. 준비된음원의 신호음이 들릴때<br>
+                            <span class="slice_sentence">윗몸말아올리기를 실시합니다.</span></p>
+                        <p class="description"> 6. 스마트폰으로 자신의 모습을 촬영하면<br>
+                            <span class="slice_sentence">횟수를 세기 쉽습니다.</span></p>
+                        <p class="description"> 7. 자신이 할 수 있는만큼만 실시한뒤<br>
+                            <span class="slice_sentence">아래의 입력창에 횟수를 입력합니다.</span></p>
                     </div>
                 </div>
             </div>
 
             <form method="post" action="{% url 'level_confirm' user.id %}" style="margin-top: 1vw;">
             {% csrf_token %}
-                윗몸 말아올리기를 실시한 후 횟수를 입력하세요: <input type="number" name="count" placeholder="윗몸말아올리기 횟수입력">회<br>
-                <button>제출하기</button>
+                <p class="input_desc">윗몸 말아올리기를 실시한 후 횟수를 입력하세요<p>
+                <p class="input_desc"><input class="count" type="number" name="count" placeholder="윗몸말아올리기 횟수입력">회</p>
+                <button class="submit_btn">제출하기</button>
             </form>
+            {% if messages %}
+                {% for msg in messages %}
+                    <p class="msg">{{ msg.message }}</p>
+                {% endfor %}
+            {% endif %}
 
-            <p>더 정확한 체력등급을 알아보고 싶다면</p>
+            <p class="more">더 정확한 체력등급을 알아보고 싶다면</p>
             <button onclick="window.open('http://14.49.46.105/front/center/centerIntroList.do')">체력인증센터 알아보기</button>
         </div>
     </div>

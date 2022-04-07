@@ -79,11 +79,17 @@
 
             <form method="post" action="{% url 'level_confirm' user.id %}" style="margin-top: 1vw;">
             {% csrf_token %}
-                30초동안 의자에 앉았다 일어난 횟수 입력: <input type="number" name="count" placeholder="숫자만 입력하세요">회
-                <button>제출하기</button>
+                <p class="input_desc">30초동안 의자에 앉았다 일어난 횟수 입력</p>
+                <p class="input_desc"><input class="count" type="number" name="count" placeholder="숫자만 입력하세요">회</p>
+                <button class="submit_btn">제출하기</button>
             </form>
+            {% if messages %}
+                {% for msg in messages %}
+                    <p class="msg">{{ msg.message }}</p>
+                {% endfor %}
+            {% endif %}
 
-            <p>더 정확한 체력등급을 알아보고 싶다면</p>
+            <p class="more">더 정확한 체력등급을 알아보고 싶다면</p>
             <button onclick="window.open('http://14.49.46.105/front/center/centerIntroList.do')">체력인증센터 알아보기</button>
             <!--나중에 체력인증센터에서 받은 등급 입력하는 페이지도 만들어야함.-->
         </div>

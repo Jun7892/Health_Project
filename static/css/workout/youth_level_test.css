@@ -169,6 +169,14 @@
 .submit_btn{
     font-size: 17px;
 }
+.msg{
+    font-family: SB_L;
+    font-size: 16px;
+    color: red;
+}
+.more{
+    margin-top: 3%;
+}
 
 button {
     color: #444444;
@@ -214,14 +222,6 @@ p {
     font-family: SB_L;
     color: white;
     font-size: 20px;
-}
-.msg{
-    font-family: SB_L;
-    font-size: 16px;
-    color: red;
-}
-.more{
-    margin-top: 3%;
 }
 
 ::-webkit-scrollbar {

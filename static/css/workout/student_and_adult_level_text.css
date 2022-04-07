@@ -139,9 +139,41 @@
 }
 .description{
     margin-left: 1vw;
+    font-size: 20px;
+}
+@media (max-width: 1000px) {
+    .description{
+        margin-left: 1vw;
+        font-size: 23px;
+    }
 }
 .slice_sentence{
-    margin-left: 2.3vw;
+    margin-left: 1.2vw;
+    font-size: 20px;
+}
+@media (max-width: 1000px) {
+    .slice_sentence {
+        margin-left: 2.1vw;
+        font-size: 23px;
+    }
+}
+.input_desc{
+    font-size: 22px;
+}
+.count{
+    margin-right: 15px;
+    padding-top: 9px;
+}
+.submit_btn{
+    font-size: 17px;
+}
+.msg{
+    font-family: SB_L;
+    font-size: 16px;
+    color: red;
+}
+.more{
+    margin-top: 3%;
 }
 
 button {
@@ -151,7 +183,7 @@ button {
     padding: 5px 10px;
     border-radius: 2px;
     font-weight: bold;
-    font-size: 9pt;
+    font-size: 15px;
     outline: none;
     cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
