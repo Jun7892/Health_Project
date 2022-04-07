@@ -15,30 +15,28 @@
 {% block content %}
     <iframe src="https://www.youtube.com/embed/TY-RRhU4Z9o?autoplay=1&mute=1&controls=0&loop=1&playlist=TY-RRhU4Z9o&vq=hd1080"
             title="second page video" frameborder="0"
-            style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></iframe>
+            style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;" class="full_body"></iframe>
 
     <img src="{% static 'img/music.png' %}" onclick="charm(sound1)" class="music">
     <audio id="myAudio" src="{% static "music/bgm.m4a" %}" preload="auto"></audio>
     <img src="{% static 'img/logo_red.png' %}" class="teamlogo">
-    <div class="modalonbox" onclick="modalOn()"><img src="{% static 'img/talkgroomm.png' %}" class="hoverimg">
+    <div class="modalonbox" onclick="modalOn()">
+        <img src="{% static 'img/talkgroomm.png' %}" class="hoverimg">
         <div><p class="hovertext1">회원가입을 하려면</p></div>
         <div><p class="hovertext2">캐릭터를 클릭하세요</p></div></div>
 
+    <div class="signup_desc" >
+        <p class="signup_desc_msg1">로그인 하려면 </p>
+        <p class="signup_desc_msg2">오른쪽의 전원버튼을 눌러주세요</p>
+    </div>
 
     <div class="maincontain">
         <div class="loginbox">
             <div class="idcontain textbox">
-                <form>
-                    <input type="text" name="username" id="user_id2" style="font-family: SB_L;" placeholder="ID 입력하세요">
-
-                </form>
+                <input type="text" name="username" id="user_id2" style="font-family: SB_L;" placeholder="ID 입력하세요">
             </div>
             <div class="pwcontain textbox">
-                <form>
-
-                    <input type="password" name="password" id="login-user-password2" style="font-family: SB_L;" placeholder="PW 입력하세요">
-
-                </form>
+                <input type="password" name="password" id="login-user-password2" style="font-family: SB_L;" placeholder="PW 입력하세요">
             </div>
         </div>
         <button onclick="location.href='/second/find_id'" class="red find_id">아이디 찾기</button>
