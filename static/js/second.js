@@ -91,7 +91,7 @@ $('#btn-signup').click(function () {
     })
 });
 
-if (matchMedia("(max-width: 500px)").matches){
+if (matchMedia("(max-width: 800px)").matches){
 
 } else {
     window.addEventListener("mousemove",function (){
@@ -100,13 +100,15 @@ if (matchMedia("(max-width: 500px)").matches){
 }
 
 //아이디 인풋창 입력시 로그인div 보이게하기
-if (matchMedia("(max-width: 500px)").matches){
-    var signin_desc = document.getElementsByClassName("signin_desc")
-    signin_desc.style.display ='none'
+if (matchMedia("(max-width: 800px)").matches){
+    var login_desc = document.getElementsByClassName("login_desc")
+    login_desc.style.display ='none'
 } else {
     const id_input = document.getElementById("user_id2");
     id_input.addEventListener("keypress",function(e){
-        $(".signin_desc").show();
+        $(".login_desc").show();
+        $(".login_desc_msg1").show()
+        $(".login_desc_msg2").show()
     });
    // change functionality for larger screens
 }
