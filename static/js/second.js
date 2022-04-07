@@ -91,18 +91,25 @@ $('#btn-signup').click(function () {
     })
 });
 
+if (matchMedia("(max-width: 500px)").matches){
+
+} else {
+    window.addEventListener("mousemove",function (){
+    $('.signup_desc').show()
+})
+}
+
 //아이디 인풋창 입력시 로그인div 보이게하기
 if (matchMedia("(max-width: 500px)").matches){
-    var signup_desc = document.getElementsByClassName("signup_desc")
-    signup_desc.style.display ='none'
+    var signin_desc = document.getElementsByClassName("signin_desc")
+    signin_desc.style.display ='none'
 } else {
     const id_input = document.getElementById("user_id2");
     id_input.addEventListener("keypress",function(e){
-        $(".signup_desc").show();
+        $(".signin_desc").show();
     });
    // change functionality for larger screens
 }
-
 
 // 로그인 진행
 $('.btn-login').click(function (e) {

@@ -123,14 +123,14 @@ input[type="text"], input[type="password"] {
     appearance: none;
 }
 
-.signup_desc{
+.signin_desc{
     position: absolute;
     top: 65%;
     left: 4%;
     display: none
 }
 
-.signup_desc_msg1{
+.signin_desc_msg1{
     font-family: "SB_L", sans-serif;
     font-weight: bolder;
     text-decoration: none;
@@ -138,12 +138,12 @@ input[type="text"], input[type="password"] {
     color:white;
  }
 @media (max-width: 1000px) {
-    .signup_desc_msg1{
+    .signin_desc_msg1{
         display:none;
     }
 }
 
-.signup_desc_msg2 {
+.signin_desc_msg2 {
     font-family: "SB_L", sans-serif;
     font-weight: bolder;
     text-decoration: none;
@@ -152,7 +152,7 @@ input[type="text"], input[type="password"] {
  }
 
 @media (max-width: 1000px) {
-    .signup_desc_msg2{
+    .signin_desc_msg2{
         display:none;
     }
 }
@@ -215,57 +215,117 @@ input[type="text"], input[type="password"] {
     }
 }
 
-.hoverimg {
+.signup_desc{
+    display:none;
+}
+
+@media (max-width: 1000px) {
+    .signup_desc{
+        display: inline;
+    }
+}
+
+.signup_desc_img{
     position: absolute;
-    top: -3%;
-    left: -8%;
+    top: 4%;
+    left: 7%;
     width: 15vw;
+}
+@media (max-width: 1000px) {
+    .signup_desc_img{
+        top: 41%;
+        width: 36vw;
+        left: 50%;
+    }
+}
+.signup_desc_msg1{
+    font-family: "SB_L", sans-serif;
+    position: absolute;
+    left: 11%;
+    top: 13.5%;
+    color: white;
+}
+@media (max-width: 1000px) {
+    .signup_desc_msg1{
+        top: 47%;
+        left: 60%;
+        font-size: 22px;
+    }
+}
+.signup_desc_msg2{
+    font-family: "SB_L", sans-serif;
+    position: absolute;
+    left: 11%;
+    top: 17.5%;
+    color: white;
+}
+@media (max-width: 1000px) {
+    .signup_desc_msg2{
+        left: 59%;
+        top: 50%;
+        font-size: 23px;
+    }
+}
+.hoverimg {
+    display: none;
+    /*position: absolute;*/
+    /*top: 4%;*/
+    /*left: 7%;*/
+    /*width: 15vw;*/
 }
 
 @media (max-width: 1000px) {
     .hoverimg {
-        position: absolute;
-        top: -20%;
-        left: 100%;
-        width: 50vw;
+        display: none;
+        /*position: absolute;*/
+        /*top: -20%;*/
+        /*left: 100%;*/
+        /*width: 50vw;*/
     }
 }
 
 .hovertext1 {
-    position: absolute;
-    left: -1%;
-    top: 7.5%;
-    color: white;
+    display: none;
+    /*font-family: "SB_L", sans-serif;*/
+    /*position: absolute;*/
+    /*left: 11%;*/
+    /*top: 13.5%;*/
+    /*color: white;*/
 }
 
 @media (max-width: 1000px) {
     .hovertext1 {
-        position: absolute;
-        left: 171%;
-        top: 32.5%;
-        color: white;
-        font-size: 3vw;
-        width: 200%;
+        display: none;
+        /*position: absolute;*/
+        /*left: 171%;*/
+        /*top: 32.5%;*/
+        /*color: white;*/
+        /*font-size: 3vw;*/
+        /*width: 200%;*/
     }
 }
 
 .hovertext2 {
-    position: absolute;
-    left: -1%;
-    top: 12.5%;
-    color: white;
+    display: none;
+    /*font-family: "SB_L", sans-serif;*/
+    /*position: absolute;*/
+    /*left: 11%;*/
+    /*top: 17.5%;*/
+    /*color: white;*/
 }
 
 @media (max-width: 1000px) {
     .hovertext2 {
-        position: absolute;
-        left: 165%;
-        top: 55.5%;
-        color: white;
-        font-size: 3vw;
-        width: 200%;
+        display: none;
+        /*position: absolute;*/
+        /*left: 165%;*/
+        /*top: 55.5%;*/
+        /*color: white;*/
+        /*font-size: 3vw;*/
+        /*width: 200%;*/
     }
 }
+
 
 .signupbox {
     position: absolute;
