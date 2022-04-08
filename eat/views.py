@@ -63,27 +63,27 @@ def eat_view(request):
 @login_required(login_url='sign_in')
 def eat_detail(request, id):
     recipe = FoodModel.objects.get(id=id)
-    # --------------------추천시스템--------------------------------
-    # 형태소 분석을 위한 객체를 만들고,
-    mecab = Mecab()
-    # 명사 단위로 레시피 제목을 나누고,
-    tmp = mecab.nouns(recipe.title)
-    # print(tmp)
-    #학습된 모델 불러와서
-    model = Doc2Vec.load('vmodel.model')
-    # print(model)
-    #현재페이지의 제목과 학습된 모델을 이용하여 유사도를 구하고
-    inferred_doc_vec = model.infer_vector(tmp)
-    # 유사도구한 것들을 문서화 시키는과정
-    most_similar_docs = model.docvecs.most_similar([inferred_doc_vec], topn=8)
-    # print(most_similar_docs)
-    recommend=[]
-    # index와 그 유사도를 함께 보여줍니다.
-    for index, similarity in most_similar_docs:
-        recommend_image = FoodModel.objects.filter(id=index)
-        recommend.append(recommend_image)
-    # all_recipe = FoodModel.objects.all().order_by('id')
-    # recommend = random.sample(list(all_recipe), 8)
+    # # --------------------추천시스템--------------------------------
+    # # 형태소 분석을 위한 객체를 만들고,
+    # mecab = Mecab()
+    # # 명사 단위로 레시피 제목을 나누고,
+    # tmp = mecab.nouns(recipe.title)
+    # # print(tmp)
+    # #학습된 모델 불러와서
+    # model = Doc2Vec.load('vmodel.model')
+    # # print(model)
+    # #현재페이지의 제목과 학습된 모델을 이용하여 유사도를 구하고
+    # inferred_doc_vec = model.infer_vector(tmp)
+    # # 유사도구한 것들을 문서화 시키는과정
+    # most_similar_docs = model.docvecs.most_similar([inferred_doc_vec], topn=8)
+    # # print(most_similar_docs)
+    # recommend=[]
+    # # index와 그 유사도를 함께 보여줍니다.
+    # for index, similarity in most_similar_docs:
+    #     recommend_image = FoodModel.objects.filter(id=index)
+    #     recommend.append(recommend_image)
+    all_recipe = FoodModel.objects.all().order_by('id')
+    recommend = random.sample(list(all_recipe), 8)
 
     return render(request, 'eat/eat_detail.html', {'recipe': recipe, 'recommend': recommend})
 
