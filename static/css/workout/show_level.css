@@ -1,3 +1,7 @@
+@font-face {
+    src: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_L.ttf);
+    font-family: "SB_L";
+}
 .fullcontain {
     position: absolute;
     top: 0;
@@ -20,6 +24,12 @@ p {
     font-family: SB_L;
     color: white;
 }
+@media (max-width: 1000px) {
+    p {
+        color: white;
+        font-size: 25px;
+    }
+}
 
 .box {
     position: absolute;
@@ -27,6 +37,16 @@ p {
     left: 43%;
     text-align: center;
     font-weight: bolder;
+}
+
+@media (max-width: 1000px) {
+    .box {
+        position: absolute;
+        top: 37%;
+        left: 35%;
+        text-align: center;
+        font-weight: bolder;
+    }
 }
 
 .cube {
@@ -149,8 +169,22 @@ button {
     padding: 5px 10px;
     border-radius: 2px;
     font-weight: bold;
-    font-size: 9pt;
+    font-size: 11pt;
     outline: none;
+    font-family: SB_L;
+}
+@media (max-width: 1000px) {
+    button {
+        color: #444444;
+        background: #F3F3F3;
+        border: 1px #DADADA solid;
+        padding: 5px 10px;
+        border-radius: 2px;
+        font-weight: bold;
+        font-size: 20pt;
+        outline: none;
+        font-family: SB_L;
+    }
 }
 
 button:hover {
@@ -166,6 +200,14 @@ button:active {
 
 .moveworkout {
     position: absolute;
-    top: 80%;
+    top: 72%;
     left: 47.5%;
+}
+
+@media (max-width: 1000px) {
+    .moveworkout {
+        position: absolute;
+        top: 53%;
+        left: 43%;
+    }
 }
