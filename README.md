@@ -132,4 +132,4 @@
 
 ### 📌[Notion](https://meowing-tile-53d.notion.site/Final-Project-10Team-c373c38ab10f47dc95cf7437ae24d0cc)
 
-### 📌AWS EC2 업로드 / [Link](https://rookieno.com/)
+### 📌AWS EB 업로드 / [Link](https://rookieno.com/)
