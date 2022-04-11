@@ -80,6 +80,17 @@ boby {
     top: 8%;
     width: 50%;
 }
+
+@media (max-width: 1000px) {
+    .article_container{
+        background-color: white;
+        position: absolute;
+        top: 8%;
+        width: 70%;
+    }
+}
+
+
 .title{
     text-align: center;
     display: flex;
@@ -98,9 +109,24 @@ boby {
     text-decoration-line: none;
 }
 
+@media (max-width: 1000px) {
+    .author {
+        margin-right: 7%;
+        text-decoration-line: none;
+        font-size: 22px;
+    }
+}
+
 .like{
 
 }
+@media (max-width: 1000px) {
+    .like{
+        font-size: 20px;
+    }
+}
+
+
 .delete_edit{
     display: flex;
     justify-content: flex-end;
@@ -171,7 +197,19 @@ boby {
 .text_input{
     width: 80%;
     resize: vertical;
+    margin-left: 4%;
 }
+
+@media (max-width: 1000px) {
+    .text_input{
+        width: 80%;
+        resize: vertical;
+        background-color: aliceblue;
+        margin-left: 4%;
+    }
+}
+
+
 .submit_button{
 
 }
@@ -185,6 +223,8 @@ boby {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin-left: 4%;
+    margin-top:1%
 }
 .author_img{
     width: 40px;
@@ -210,6 +250,22 @@ boby {
     width: 300px;
     margin-left: 24%;
 }
+
+@media (max-width: 1000px) {
+    .comment_input {
+        width: 300px;
+        margin-left: 24%;
+        background-color: aliceblue;
+    }
+
+}
+
 #edit_comment_box{
     display:none;
+}
+
+.back_btn{
+    position: absolute;
+    top: 5%;
+    left: 44%;
 }
