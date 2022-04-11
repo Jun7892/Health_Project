@@ -1,8 +1,7 @@
 @font-face {
-    src: url("../font/SB_L.ttf");
+    src: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/font/SB_L.ttf);
     font-family: "SB_L";
 }
-
 #SBL_font {
     font-family: "SB_L";
 }
@@ -48,14 +47,16 @@
 .contain {
     position: absolute;
     top: 10%;
-    left: 20%;
+    left: 29%;
+    width: 41%;
 }
 
 @media (max-width: 1000px) {
     .contain {
         position: absolute;
         top: 10%;
-        left: 14%;
+        left: 20%;
+        width: 60%;
     }
 }
 
@@ -77,8 +78,9 @@ a {
     .article_title {
         left: 0%;
         position: relative;
-        width: 120%;
+        width: 100%;
         font-size: 2vw;
+        overflow-y: scroll;
     }
 }
 
@@ -104,18 +106,110 @@ a {
     }
 }
 
-.submit_button {
-    position: relative;
-    left: 80%;
-    width: 40%;
+/*.submit_button {*/
+/*    position: relative;*/
+/*    left: 80%;*/
+/*    width: 40%;*/
+/*}*/
+
+/*@media (max-width: 1000px) {*/
+/*    .submit_button {*/
+/*        position: relative;*/
+/*        left: 35%;*/
+/*        width: 50%;*/
+/*        font-size: 2vw;*/
+/*        margin-top: 5vw;*/
+/*    }*/
+/*}*/
+
+.submit_button{
+    width: 140px;
+    height: 45px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #000;
+    background-color: #ebf2ed;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+    transition: all 0.3s ease 0s;
+    outline: none;
+    margin-left: 39.5%;
+    margin-top: 20px;
+    font-weight: 600;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
+
 }
 
 @media (max-width: 1000px) {
     .submit_button {
-        position: relative;
-        left: 35%;
-        width: 50%;
-        font-size: 2vw;
-        margin-top: 5vw;
+        width: 164px;
+        height: 52px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        color: #000000;
+        background-color: #a2e086;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+        transition: all 0.3s ease 0s;
+        outline: none;
+        margin-left: 35.5%;
+        margin-top: 74px;
+        font-weight: 600;
+        font-size: 22px;
     }
+}
+.submit_button:hover {
+    background-color: #73d376;
+    box-shadow: 0px 15px 20px rgb(46 229 157 / 40%);
+    color: #fff;
+    transform: translateY(-7px);
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
+}
+
+.back_btn{
+    width: 100px;
+    height: 45px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: white;
+    background-color: #298bbc;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+    transition: all 0.3s ease 0s;
+    outline: none;
+    margin-left: 43%;
+    margin-top: 20px;
+    font-weight: 400;
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
+}
+
+@media (max-width: 1000px) {
+    .back_btn {
+        width: 165px;
+        height: 54px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: white;
+        background-color: #298bbc;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+        transition: all 0.3s ease 0s;
+        outline: none;
+        margin-left: 35.5%;
+        margin-top: 87px;
+        font-weight: 400;
+        font-size: 21px;
+    }
+}
+
+.back_btn:hover {
+    background-color: #73d3be;
+    box-shadow: 0px 15px 20px rgb(46 229 157 / 40%);
+    color: #fff;
+    transform: translateY(-7px);
+    cursor: url(https://tenten2.s3.ap-northeast-2.amazonaws.com/img/press.png) 2 2, default;
 }
