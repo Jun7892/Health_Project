@@ -63,9 +63,9 @@ a {
     color: white;
 }
 
-p {
-    color: white;
-}
+/*p {*/
+/*    color: white;*/
+/*}*/
 
 .article_title {
     left: 0%;
@@ -81,6 +81,11 @@ p {
         font-size: 2vw;
     }
 }
+
+.editor{
+    background-color: white;
+}
+
 
 .article_content {
     width: 200%;
