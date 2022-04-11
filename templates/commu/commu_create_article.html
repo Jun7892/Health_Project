@@ -9,6 +9,35 @@
     <script type="text/javascript" src="{% static 'js/commu.js' %}"></script>
     <script src="{% static 'js/particles.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
+
+    <!--서머노트를 위해 추가한 코드들-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <!--이 밑에 코드들 밑줄있으면 마우스가져다대면 라이브러리 다운로드하라고 나옴. 다운. (모듈-프로젝트명) jsdelivr에만 밑줄나오는건 무시하세용-->
+
+
+<script>
+    $(document).ready(function($) {
+	//여기 아래 부분
+        $('#summernote').summernote({
+            placeholder: '최대 2048자까지 쓸 수 있습니다',
+            tabsize: 2,
+            height: 300,
+            focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+            lang: "ko-KR",					// 한글 설정
+            toolbar: [
+		        ['fontsize', ['fontsize']],      // 글자 크기 설정
+                ['style', ['style']],
+                ['font', ['bold', 'underline']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture']],
+            ],
+            fontSizes: ['8','9','10','11','12','14','16','18','20','22']
+        });
+});
+</script>
 {% endblock %}
 
 {% block title %}COMMU{% endblock %}
@@ -21,9 +50,12 @@
                 <div>
                     <textarea class="article_title" name="title" rows="3" cols="70" placeholder="제목"></textarea>
                 </div>
-                <div class="contentbox">
-                    <textarea class="article_content" name="content" rows="30" cols="70" placeholder="내용"></textarea>
+                <div class="editor" >
+                    <textarea id="summernote" name="editordata" ></textarea>
                 </div>
+{#                <div class="contentbox">#}
+{#                    <textarea class="article_content" name="content" rows="30" cols="70" placeholder="내용"></textarea>#}
+{#                </div>#}
                 <button type="submit" class="submit_button">작성하기</button>
                 {% if error %}
                     <p style="color: red">{{ error }}</p>
