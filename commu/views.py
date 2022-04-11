@@ -78,10 +78,13 @@ def delete_comment(request, id):# 해당댓글 id
 def article_create(request):
     if request.method == 'GET':
         return render(request, 'commu/commu_create_article.html')
+        # return render(request, 'commu/test.html')
     elif request.method == 'POST':
         user = request.user
         title = request.POST.get('title', '')
-        content = request.POST.get('content', '')
+        content = request.POST['editordata']
+        print(content)
+        # content = request.POST.get('content', '')
         if content == '' or title == '':
             return render(request, 'commu/commu_create_article.html', {'error': '제목, 내용은 공백으로 작성 될 수 없습니다.'})
         else:
@@ -113,7 +116,9 @@ def article_update(request, id):
     article = Article.objects.get(id=id)
     if request.method == 'POST':
         article.title = request.POST['title']
-        article.content = request.POST['content']
+        article.content = request.POST['editordata']
+        print(article.content)
+        # article.content = request.POST['content']
         if article.content == '' or article.title == '':
             return render(request, 'commu/commu_update_article.html', {'error': '내용에 빈칸이 있습니다'})
         else:

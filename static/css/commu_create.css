@@ -93,6 +93,9 @@ body {
         /*line-height: ;*/
     }
 }
+.editor{
+    background-color: white;
+}
 
 .article_content {
     margin-top: 2%;
