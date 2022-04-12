@@ -8,13 +8,18 @@
     <link href="{% static 'css/commu_detail.css' %}" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="{% static 'js/commu.js' %}"></script>
     <script>
-        function show_edit() {
-            var box = document.getElementById("edit_comment_box");
-            if (box.style.display == 'none') {
-                box.style.display = 'block';
-            } else {
-                box.style.display = 'none';
-            }
+        {#function show_edit() {#}
+        {#    var box = document.getElementById("edit_comment_box");#}
+        {#    if (box.style.display == 'none') {#}
+        {#        box.style.display = 'block';#}
+        {#    } else {#}
+        {#        box.style.display = 'none';#}
+        {#    }#}
+
+        const show_edit = (id) =>{
+            $(".box_"+id).show()
+
+
         }
     </script>
 {% endblock %}
@@ -23,86 +28,86 @@
 
 {% block content %}
     <div id="particles-js" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
-        <div class="contain">
-            <a href="/commu" class="text1">게시판으로</a>
-            <p>&nbsp;</p>
-            <form action="/commu/like/{{ article.id }}" method="POST">
-                {% csrf_token %}
-                {% if user in article.like_user.all %}
-                    <input type="submit" value="좋아요 취소"><p>like:{{ article.like_user.count }}</p>
-                {% else %}
-                    <input type="submit" value="좋아요"> <p>like:{{ article.like_user.count }}</p>
+        <div class="article_container">
+            <h2 class="title"> {{ article.title }}</h2>
+            <div class="under_title">
+                <a class="author" href="/mypage/{{ article.author.id }}">{{ article.author.nickname }}</a>
+                <p>{{ article.created_at }}</p>
+                <form action="/commu/like/{{ article.id }}" method="POST">
+                    {% csrf_token %}
+                    {% if user in article.like_user.all %}
+                        <input type="submit" value="좋아요 취소"><p class="like">like:{{ article.like_user.count }}</p>
+                    {% else %}
+                        <input type="submit" value="좋아요"> <p class="like">like:{{ article.like_user.count }}</p>
+                    {% endif %}
+                </form>
+            </div>
+            <div class="delete_edit">
+                {% if article.author == user %}
+                    <a class="delete" href="/commu/delete/{{ article.id }}">삭제</a>
+                    <a class="edit" href="/commu/update/{{ article.id }}">수정</a>
                 {% endif %}
-            </form>
-            <br>
+            </div>
+            <pre class="content">{{ article.content | safe }}</pre>
+            <div class="comment_container">
+                <form method="POST" action="/commu/comment/{{ article.id }}" class="text3">
+                    {% csrf_token %}
+                    comment<br>
+                    <input hidden>
+                    <textarea class="text_input" name="comment" rows="3"> </textarea>
+                    <button type="submit" class="submit_button">작성하기</button>
+                    {% if error %}
+                        {{ error }}
+                    {% endif %}
+                </form>
 
-            <p class="text2">title: {{ article.title }}</p>
-            <a class="text2" href="/mypage/{{ article.author.id }}" style="text-decoration-line: none;">author: {{ article.author.nickname }}</a>
+                {% for comment in comments %}
+                    <div>
+                        <div class='comment' style="display:flex">
+                            <img class="author_img" src="{{ comment.author.profile_img }}">
+                            <a class="comment_author" href="/mypage/{{ comment.author.id }}">{{ comment.author.nickname }})</a>
+                            <span>:</span><pre class="comment_content">{{ comment.comment }}</pre>
 
-            <br>
-            <pre class="text2">content: {{ article.content | safe }}</pre>
-            <br>
-            {% if article.author == user %}
-                <a class="text2" href="/commu/delete/{{ article.id }}">삭제</a>
-                <a class="text2" href="/commu/update/{{ article.id }}">수정</a>
-            {% endif %}
-
-            <form method="POST" action="/commu/comment/{{ article.id }}" class="text3">
-                {% csrf_token %}
-                댓글 : <input class="text_input" type="text" name="comment">
-                <button type="submit" class="submit_button">작성하기</button>
-                {% if error %}
-                    {{ error }}
-                {% endif %}
-            </form>
-
-            {% for comment in comments %}
-                <div>
-                    <div class='comment' style="display:flex">
-                        <a href="/mypage/{{ comment.author.id }}" style="text-decoration-line: none; color: white">{{ comment.author.nickname }})님 </a><span style="color: white">: &nbsp;</span>
-                        <h6 style="color: white">{{ comment.comment }}</h6>
-
-                        {% if comment.author == user %}
-                            <a style="color: white; text-decoration-line : none;"
-                               href="/commu/delete/comment/{{ comment.id }}">&nbsp;삭제&nbsp;</a>
-                            <a id="edit_comment" style="color: white; text-decoration-line : none;" onclick="show_edit()">수정&nbsp;</a>
-                            <div id='edit_comment_box' style="display: none">
-                                <form method="post" action="/commu/update/comment/{{ comment.id }}" style="color: white">
-                                    {% csrf_token %}
-                                    / 수정할 댓글 내용을 입력하세요: <input type="text" name="update_comment">
-                                    <input type="submit">
-                                </form>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            {% endfor %}
-            {% if messages %}
-                {% for msg in messages %}
-                    <div class="alert_{{ msg.tags }}"><!--css에서 alert_info 는 댓글수정,삭제 관련 에러메세지-->
-                        <p style="color: red">{{ msg.message }}</p>
-                        <!--css에서 alert_error는 댓글 작성시 에러메세지로 위치바꾸고, css다르게 줄 수 있음-->
+                            {% if comment.author == user %}
+                                <a class="delete_comment" href="/commu/delete/comment/{{ comment.id }}">&nbsp;삭제&nbsp;</a>
+                                <a class="edit_comment" onclick="show_edit({{ comment.id }})">수정&nbsp;</a>
+                                <div class='box_{{ comment.id }}' style="display: none" >
+                                    <form method="post" action="/commu/update/comment/{{ comment.id }}" class="comment_form">
+                                        {% csrf_token %}
+                                        <input hidden>
+                                        <textarea class="comment_input" name="update_comment" rows="2">{{ comment.comment }}</textarea>
+                                        <input type="submit">
+                                    </form>
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 {% endfor %}
-            {% endif %}
-            {% if comments.has_previous %}
-                <a href="?page=1" style="color: white">맨 앞으로</a>
-                <a href="?page={{ comments.precious_page_number }}"style="color: white">이전으로</a>
-            {% endif %}
-            {% if comments %}
-            <span style="color: white">{{ comments.number }}</span>
-            <span style="color: white">/</span>
-            <span style="color: white">{{ comments.paginator.num_pages }}</span>
-            {% endif %}
-            {% if comments.has_next %}
-                <a href="?page={{ comments.next_page_number }}" style="color: white">다음으로</a>
-                <a href="?page={{ comments.paginator.num_pages }}" style="color: white">맨 뒤로</a>
-            {% endif %}
+                {% if messages %}
+                    {% for msg in messages %}
+                        <div class="alert_{{ msg.tags }}"><!--css에서 alert_info 는 댓글수정,삭제 관련 에러메세지-->
+                            <p style="color: red">{{ msg.message }}</p>
+                            <!--css에서 alert_error는 댓글 작성시 에러메세지로 위치바꾸고, css다르게 줄 수 있음-->
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if comments.has_previous %}
+                    <a href="?page=1" style="color: white">맨 앞으로</a>
+                    <a href="?page={{ comments.precious_page_number }}">이전으로</a>
+                {% endif %}
+                {% if comments %}
+                <span style="color: white">{{ comments.number }}</span>
+                <span style="color: white">/</span>
+                <span style="color: white">{{ comments.paginator.num_pages }}</span>
+                {% endif %}
+                {% if comments.has_next %}
+                    <a href="?page={{ comments.next_page_number }}" >다음으로</a>
+                    <a href="?page={{ comments.paginator.num_pages }}" >맨 뒤로</a>
+                {% endif %}
+            </div>
         </div>
     </div>
-
-
-
+    <button class="back_btn" onclick="location.href='{% url 'commu' %}'">게시글페이지로 돌아가기</button>
     <script src="{% static 'js/particles.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
 
