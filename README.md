@@ -125,11 +125,6 @@
     팔로우/팔로워
     
 
-
-### 📌 끈기와 집념! 문제해결!
-
-##### 안되면 될때까지!! - <a href="https://github.com/Jun7892/FinalProject_Team10/wiki/Wiki" >상세보기 - WIKI 이동</a>
-
 ### 📌[Notion](https://meowing-tile-53d.notion.site/Final-Project-10Team-c373c38ab10f47dc95cf7437ae24d0cc)
 
-### 📌AWS EC2 업로드 / [Link](https://rookieno.com/)
+### 📌AWS EB 업로드 / [Link](https://rookieno.com/)
