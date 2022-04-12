@@ -106,6 +106,7 @@ def find_id(request):
             messages.warning(request, '해당 이메일로 가입한 아이디가 없습니다.')
             return redirect('/second/find_id')
 
+
 def send_email(request): #이메일 서비스 점검용
     from django.core.mail import EmailMessage
     email = EmailMessage()
@@ -114,6 +115,7 @@ def send_email(request): #이메일 서비스 점검용
     email.from_email= settings.EMAIL_HOST_USER
     email.to = ['']
     email.send()
+
 
 def password_reset_mailing(request):
     if request.method == 'GET':
@@ -158,8 +160,10 @@ def password_reset_mailing(request):
                 messages.info(request, '아이디의 이메일정보와 입력한 이메일이 일치하지 않습니다.')
                 return redirect('/second/password_reset/')
 
+
 def email_send_success(request):
     return render(request, 'login/success_mailing.html')
+
 
 def reset_password(request, uidb64, token):
     if request.method =='GET':
