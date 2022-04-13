@@ -12,7 +12,6 @@
     <img src="https://img.shields.io/badge/Javascript-ES6-blue?logo=Javascript"/>
     <img src="https://img.shields.io/badge/Python-v3.9.8-blue?logo=Python"/>
     <img src="https://img.shields.io/badge/PythonDjango-v4.1.0-purple?logo=Django"/>
-    <img src="https://img.shields.io/badge/Tensorflow-v9.0.1-00E7C3?logo=Tensorflow"/>
     <img src="https://img.shields.io/badge/MySQL-v8.0.21-purple?logo=MySQL"/>
     <img src="https://img.shields.io/badge/AWS-^2.1.29-yellow?logo=AWS" />
 </p>
@@ -45,21 +44,21 @@
 
 ## 🔧 기술스택
 
-**✔**사용언어 및 프레임워크 및 기능 : HTML, JavaScript(ES6+), Ajax, Python, PythonDjango  Bootstrap
+**✔**사용언어 및 프레임워크 및 기능 : HTML, JavaScript(ES6+), Ajax, Python, PythonDjango
 
 **✔**사용기술 백엔드 언어: HTML, JavaScript(ES6+), Python
 
-**✔**라이브러리 : bs4  requests jsonify tensorflow
+**✔**라이브러리 : bs4  requests jsonify 
 
-**✔**데이터베이스: AWS S3, RDS, ORM
+**✔**데이터베이스: AWS S3, RDS
 
-**✔**프로젝트 관리도구: Sourcetree
+**✔**프로젝트 관리도구: Git
 
 **✔**프론트엔드 언어: html css javascript
 
 **✔**개발툴: PyCharm, VScode
 
-**✔**Common : Git, Github, Slack, Notion, Figma, Google_Spread_Sheet
+**✔**Common : Slack, Notion, Figma, Google_Spread_Sheet
 
 <!-- ### 📌 기술 선택 이유! - <a href="https://github.com/seongolee/17team_netflix_clone/wiki" >상세보기 - WIKI 이동</a> -->
 <br></br>
