@@ -123,8 +123,9 @@
 
     팔로우/팔로워
     
-### [acab , doc2vec 사용 과정](https://colab.research.google.com/drive/1o61DMoEKiGYcXf0wZHqN0U5LWEgr54TJ#scrollTo=VDGdg1F7DZzE)
 
 ### 📌[Notion](https://meowing-tile-53d.notion.site/Final-Project-10Team-c373c38ab10f47dc95cf7437ae24d0cc)
 
 ### 📌AWS EB 업로드 / [Link](https://rookieno.com/)
+
+### 📌[macab , doc2vec 사용 과정](https://colab.research.google.com/drive/1o61DMoEKiGYcXf0wZHqN0U5LWEgr54TJ#scrollTo=VDGdg1F7DZzE)
